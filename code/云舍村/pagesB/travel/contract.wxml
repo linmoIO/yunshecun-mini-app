@@ -1,0 +1,6 @@
+<view class="contract_ui data-v-e97a7c80">
+    <image class="contract-img data-v-e97a7c80" src="https://dsplatweb.oss-cn-chengdu.aliyuncs.com/songzan/images/contract-icon.png"></image>
+    <view class="tl data-v-e97a7c80">合同生成中</view>
+    <view class="progress data-v-e97a7c80"></view>
+    <view class="tips data-v-e97a7c80"> 请在2小时内完成签约，签约成功后可在<view class="data-v-e97a7c80"></view>订单详情页获取合同附件 </view>
+</view>

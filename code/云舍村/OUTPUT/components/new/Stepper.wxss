@@ -1,0 +1,18 @@
+.stepper.data-v-77a393cd {
+    align-items: center;
+    display: flex
+}
+
+.stepper-icon.data-v-77a393cd {
+    font-size: 40rpx
+}
+
+.stepper-icon--disabled.data-v-77a393cd {
+    color: #ccc
+}
+
+.stepper-value.data-v-77a393cd {
+    min-width: 104rpx;
+    padding: 0 32rpx;
+    text-align: center
+}

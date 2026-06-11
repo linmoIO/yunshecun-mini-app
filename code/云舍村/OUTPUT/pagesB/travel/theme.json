@@ -1,0 +1,10 @@
+{
+    "navigationBarTitleText":  "",
+    "navigationStyle":  "custom",
+    "usingComponents":  {
+                            "mp-html":  "../../uni_modules/mp-html/components/mp-html/mp-html",
+                            "coustom-head":  "../../components/coustomHead",
+                            "product-card-list":  "../../components/new/ProductCardList",
+                            "float-button-kf":  "/components/new/FloatButtonKf"
+                        }
+}

@@ -1,0 +1,28 @@
+<view bindtap="{{h}}" class="content" id="{{i}}">
+    <view class="no-page">
+        <image lazyLoad bindload="{{b}}" mode="widthFix" src="{{a}}" style="width:100%;border-radius:6px"></image>
+        <view class="no-video" wx:if="{{c}}">
+            <view class="video-icon">
+                <view class="iconfont icon-a-20_bofang"></view>
+            </view>
+        </view>
+        <view class="no-video" wx:if="{{d}}">
+            <view class="video-icon" style="margin-left:-1px">
+                <view class="iconfont icon-audio-fill"></view>
+            </view>
+        </view>
+    </view>
+    <view class="water">
+        <view class="water-title">{{e}}</view>
+        <view class="water-flex">
+            <view class="flex-category" wx:for="{{f}}" wx:for-item="node" wx:key="b">{{node.a}}</view>
+            <view class="collection">
+                <view class="iconfont icon-a-20_shoucang_yishoucang" style="color:#a43127" wx:if="{{true}}"></view>
+                <view class="iconfont icon-a-20_shoucang_weishoucang" wx:else></view>
+                <view class="collection-quany">
+                    <view>{{g}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

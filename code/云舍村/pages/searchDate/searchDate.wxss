@@ -1,0 +1,123 @@
+.relative {
+  position: relative;
+}
+
+.wrapper {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  color: #515151;
+}
+
+.wrapper .datePart {
+  position: absolute;
+  top: 180rpx;
+  right: 98rpx;
+  text-align: right;
+  font-size: 40rpx;
+}
+
+.wrapper .datePart .picker {
+  display: flex;
+  /* align-items: center; */
+}
+
+.datePart .datePart-day {
+  font-size: 100rpx;
+}
+
+.datePart-yearMonth {
+  font-size: 40rpx;
+}
+
+.datePart .datePart-text {
+  margin-left: 20rpx;
+  font-size: 50rpx;
+  width: 67rpx;
+}
+
+.wrapper .leaveDate {
+  top: 420rpx;
+}
+
+.wrapper .totalDays {
+  position: absolute;
+  top:180rpx;
+  left: 115rpx;
+  text-align: center;
+  width: 45rpx;
+  line-height: 40rpx;
+  font-size: 40rpx;
+}
+
+.top-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  width: 100vw;
+  height: 14rpx;
+}
+
+.wrapper .bottomPart {
+  position: absolute;
+  top: 772rpx;
+  left: 102rpx;
+  display: flex;
+  justify-content: space-between;
+  width: 485rpx;
+}
+
+.bottomPart .search  {
+  margin-left: 150rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100rpx;
+  height: 242rpx;
+  line-height: 90rpx;
+  font-size: 55rpx;
+  text-align: center;
+  color: #515151;
+}
+
+.bottomPart .search image {
+  position: absolute;
+  width: 100rpx;
+  height: 242rpx;
+  z-index: -1;
+}
+
+.number,
+.home {
+  display: flex
+}
+
+.number .quantity,
+.home .quantity {
+  text-align: center;
+  width: 83rpx;
+  font-size: 100rpx;
+}
+
+.number image,
+.home image {
+  position: absolute;
+  width: 51rpx;
+  height: 115rpx;
+  z-index: -1;
+}
+
+.number .text,
+.home .text {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 51rpx;
+  height: 115rpx;
+  font-size: 36rpx;
+}

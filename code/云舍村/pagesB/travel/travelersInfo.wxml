@@ -1,0 +1,116 @@
+<coustom-head bind:__l="__l" class="data-v-adac4bb5" uI="adac4bb5-0" uP="{{a}}" wx:if="{{a}}"></coustom-head>
+<view class="travelersInfo_ui data-v-adac4bb5">
+    <view bindtap="{{b}}" class="add-btn data-v-adac4bb5">
+        <view class="iconfont icon-a-20_shibieshenfenzheng data-v-adac4bb5"></view> 识别身份证信息 </view>
+    <view class="form-infos data-v-adac4bb5">
+        <view class="form-info data-v-adac4bb5">
+            <view class="form-inline data-v-adac4bb5">
+                <view class="label data-v-adac4bb5">与我的关系</view>
+                <view class="val data-v-adac4bb5">
+                    <picker bindchange="{{g}}" class="data-v-adac4bb5" range="{{f}}" rangeKey="name" value="{{e}}">
+                        <view class="picker-box data-v-adac4bb5">
+                            <view class="picker-box data-v-adac4bb5">
+                                <view class="data-v-adac4bb5" wx:if="{{c}}">{{d}}</view>
+                                <view class="grey data-v-adac4bb5" wx:else>请选择与本人关系</view>
+                            </view>
+                            <view class="iconfont icon-a-16_youlajiantou_hei data-v-adac4bb5"></view>
+                        </view>
+                    </picker>
+                </view>
+            </view>
+            <view class="form-inline data-v-adac4bb5">
+                <view class="label data-v-adac4bb5">姓名</view>
+                <view class="val data-v-adac4bb5">
+                    <input bindinput="{{k}}" class="{{['input-text','data-v-adac4bb5',h&&'disabled']}}" disabled="{{i}}" placeholder="请输入出行人姓名" placeholderStyle="color: #CCCCCC;" type="text" value="{{j}}"></input>
+                </view>
+            </view>
+            <view class="tips data-v-adac4bb5" wx:if="{{l}}">
+                <view class="iconfont icon-a-12_tishi data-v-adac4bb5"></view>请确保出行人姓名与所须证件一致 </view>
+        </view>
+        <view class="form-info data-v-adac4bb5">
+            <view class="tl data-v-adac4bb5">证件信息</view>
+            <view class="form-inline data-v-adac4bb5">
+                <view class="label data-v-adac4bb5">证件类型</view>
+                <view class="val data-v-adac4bb5">
+                    <picker bindchange="{{q}}" class="data-v-adac4bb5" range="{{p}}" rangeKey="name" value="{{o}}">
+                        <view class="picker-box data-v-adac4bb5">
+                            <view class="data-v-adac4bb5" wx:if="{{m}}">{{n}}</view>
+                            <view class="grey data-v-adac4bb5" wx:else>请选择证件类型</view>
+                            <view class="iconfont icon-a-16_youlajiantou_hei data-v-adac4bb5"></view>
+                        </view>
+                    </picker>
+                </view>
+            </view>
+            <view class="form-inline data-v-adac4bb5">
+                <view class="label data-v-adac4bb5">证件号码</view>
+                <view class="val data-v-adac4bb5">
+                    <input bindinput="{{v}}" class="{{['input-text','data-v-adac4bb5',r&&'disabled']}}" disabled="{{s}}" placeholder="请输入证件号码" placeholderStyle="color: #CCCCCC;" type="text" value="{{t}}"></input>
+                </view>
+            </view>
+            <view class="form-inline data-v-adac4bb5">
+                <view class="label data-v-adac4bb5">性别</view>
+                <view class="val data-v-adac4bb5">
+                    <picker bindchange="{{D}}" class="data-v-adac4bb5" disabled="{{E}}" range="{{C}}" rangeKey="name" value="{{B}}">
+                        <view class="{{['picker-box','data-v-adac4bb5',A&&'disabled']}}">
+                            <view class="data-v-adac4bb5" wx:if="{{w}}">{{x}}</view>
+                            <view class="grey data-v-adac4bb5" wx:else>
+                                <block wx:if="{{y}}"> 将根据身份证自动带出 </block>
+                                <block wx:else> 请选择性别 </block>
+                            </view>
+                            <view class="iconfont icon-a-16_youlajiantou_hei data-v-adac4bb5" wx:if="{{z}}"></view>
+                        </view>
+                    </picker>
+                </view>
+            </view>
+            <view class="form-inline data-v-adac4bb5">
+                <view class="label data-v-adac4bb5">出生日期</view>
+                <view class="val data-v-adac4bb5">
+                    <picker bindchange="{{O}}" class="data-v-adac4bb5" disabled="{{N}}" end="{{M}}" mode="date" start="{{L}}" value="{{K}}">
+                        <view class="{{['picker-box','data-v-adac4bb5',J&&'disabled']}}">
+                            <view class="data-v-adac4bb5" wx:if="{{F}}">{{G}}</view>
+                            <view class="grey data-v-adac4bb5" wx:else>
+                                <block wx:if="{{H}}"> 将根据身份证自动带出 </block>
+                                <block wx:else> 请选择出生日期 </block>
+                            </view>
+                            <view class="iconfont icon-a-16_youlajiantou_hei data-v-adac4bb5" wx:if="{{I}}"></view>
+                        </view>
+                    </picker>
+                </view>
+            </view>
+        </view>
+        <view class="form-info data-v-adac4bb5">
+            <view class="tl data-v-adac4bb5">其他信息</view>
+            <view class="form-inline data-v-adac4bb5">
+                <view class="label data-v-adac4bb5">手机号</view>
+                <view class="val data-v-adac4bb5">
+                    <input bindinput="{{S}}" class="{{['input-text','data-v-adac4bb5',P&&'disabled']}}" disabled="{{Q}}" maxlength="11" placeholder="请输入手机号" placeholderStyle="color: #CCCCCC;" type="text" value="{{R}}"></input>
+                </view>
+            </view>
+            <view class="form-inline data-v-adac4bb5">
+                <view class="label data-v-adac4bb5">邮箱</view>
+                <view class="val data-v-adac4bb5">
+                    <input bindinput="{{W}}" class="{{['input-text','data-v-adac4bb5',T&&'disabled']}}" disabled="{{U}}" placeholder="选填" placeholderStyle="color: #CCCCCC;" type="text" value="{{V}}"></input>
+                </view>
+            </view>
+        </view>
+        <view class="form-info data-v-adac4bb5" wx:if="{{X}}">
+            <view class="form-inline data-v-adac4bb5">
+                <view class="label data-v-adac4bb5">旅行喜好</view>
+                <view bindtap="{{Y}}" class="val data-v-adac4bb5">
+                    <view class="picker data-v-adac4bb5">
+                        <view class="picker-box data-v-adac4bb5"> 选填<view class="iconfont icon-a-16_youlajiantou_hei data-v-adac4bb5"></view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="footer data-v-adac4bb5" wx:if="{{Z}}">
+        <view bindtap="{{aa}}" class="footer-btn baseBtn data-v-adac4bb5">保存</view>
+        <view bindtap="{{ab}}" class="del data-v-adac4bb5">
+            <view class="iconfont icon-a-16_shanchulishijilu data-v-adac4bb5"></view> 删除 </view>
+    </view>
+    <view class="footer data-v-adac4bb5" wx:else>
+        <view bindtap="{{ac}}" class="footer-btn baseBtn data-v-adac4bb5">下一步</view>
+    </view>
+</view>

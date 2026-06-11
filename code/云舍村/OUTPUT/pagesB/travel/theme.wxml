@@ -1,0 +1,37 @@
+<view class="theme_ui data-v-6b522bac" style="{{'overflow:'+D}}">
+    <coustom-head bind:__l="__l" class="data-v-6b522bac" style="z-index:1001" uI="6b522bac-0" uP="{{a}}" wx:if="{{a}}"></coustom-head>
+    <scroll-view scrollY bindscroll="{{v}}" class="{{['header','data-v-6b522bac',t&&'header-expand']}}" id="topContent">
+        <view class="data-v-6b522bac" style="{{'padding-top:'+r+';'+'background:'+s+';'+'background-size:'+'cover'+';'+'background-repeat:'+'no-repeat'+';'+'background-position:'+'center'}}">
+            <view class="load-font-1 data-v-6b522bac"> load HAN </view>
+            <view bindtouchend="{{q}}" bindtouchmove="{{p}}" bindtouchstart="{{o}}" class="{{['header-content','data-v-6b522bac',l&&'blur']}}" style="{{'padding-top:'+m+';'+'min-height:'+n}}">
+                <view class="labels data-v-6b522bac" wx:if="{{b}}">
+                    <view class="label data-v-6b522bac" wx:for="{{c}}" wx:key="b">{{item.a}}</view>
+                </view>
+                <view class="tl data-v-6b522bac">{{d}}</view>
+                <view class="desc data-v-6b522bac">
+                    <view class="{{['content','data-v-6b522bac',h&&'expand',i&&'hide']}}">
+                        <rich-text class="data-v-6b522bac" nodes="{{f}}" wx:if="{{e}}"></rich-text>
+                        <mp-html bind:__l="__l" class="infoText data-v-6b522bac" uI="6b522bac-1" uP="{{g||''}}" wx:else></mp-html>
+                    </view>
+                </view>
+                <view bindtap="{{k}}" class="open-btn data-v-6b522bac">{{j}}</view>
+            </view>
+        </view>
+    </scroll-view>
+    <view class="{{['product-group','data-v-6b522bac',B&&'down',C&&'full']}}">
+        <view class="wrap-top data-v-6b522bac">
+            <view bindtouchend="{{y}}" bindtouchmove="{{x}}" bindtouchstart="{{w}}" class="line data-v-6b522bac">
+                <view class="rect-wrap data-v-6b522bac">
+                    <view class="rect data-v-6b522bac"></view>
+                </view>
+            </view>
+            <view class="tl data-v-6b522bac"> 相关产品 </view>
+        </view>
+        <view class="ui_productGroup data-v-6b522bac" style="{{'overflow:'+A}}">
+            <view class="product-group data-v-6b522bac">
+                <product-card-list bind:__l="__l" class="data-v-6b522bac" uI="6b522bac-2" uP="{{z}}" wx:if="{{z}}"></product-card-list>
+            </view>
+        </view>
+    </view>
+</view>
+<float-button-kf bind:__l="__l" class="data-v-6b522bac" uI="6b522bac-3"></float-button-kf>

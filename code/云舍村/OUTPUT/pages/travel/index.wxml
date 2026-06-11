@@ -1,0 +1,87 @@
+<view class="home data-v-d22a2b02">
+    <view class="data-v-d22a2b02" wx:if="{{a}}">
+        <error-limiting bind:__l="__l" bindretry="{{b}}" class="data-v-d22a2b02" uI="d22a2b02-0" uP="{{c}}" wx:if="{{c}}"></error-limiting>
+    </view>
+    <block wx:elif="{{d}}">
+        <search-bar-view bind:__l="__l" class="data-v-d22a2b02" uI="d22a2b02-1" uP="{{e}}" wx:if="{{e}}"></search-bar-view>
+        <banner bind:__l="__l" bindvideoPlay="{{f}}" class="data-v-d22a2b02" uI="d22a2b02-2" uP="{{g}}" wx:if="{{g}}"></banner>
+        <view class="home-content data-v-d22a2b02">
+            <view class="ad-member data-v-d22a2b02" wx:if="{{h}}">
+                <view class="ad-member__not-logged data-v-d22a2b02" style="{{'background-image:'+l}}" wx:if="{{i}}">
+                    <label class="data-v-d22a2b02">加入松赞会员，尊享专享折扣</label>
+                    <st-button bind:__l="__l" bindclick="{{j}}" class="data-v-d22a2b02" uI="d22a2b02-3" uP="{{k}}" uS="{{['d']}}" wx:if="{{k}}"> 立即登录 </st-button>
+                </view>
+                <st-ad bind:__l="__l" class="data-v-d22a2b02" id="ad-logged" uI="d22a2b02-4" uP="{{n}}" wx:elif="{{m}}"></st-ad>
+            </view>
+            <view class="title data-v-d22a2b02">
+                <view class="data-v-d22a2b02">松赞目的地</view>
+                <view bindtap="{{o}}" class="extra data-v-d22a2b02">
+                    <label class="data-v-d22a2b02">全部</label>
+                    <view class="iconfont icon-a-16_youlajiantou_hei icon data-v-d22a2b02"></view>
+                </view>
+            </view>
+            <view class="ad-destination data-v-d22a2b02">
+                <view class="ad-destination-row data-v-d22a2b02">
+                    <view class="ad-destination-col ad-destination__item data-v-d22a2b02">
+                        <st-ad bind:__l="__l" bindplayAfter="{{q}}" class="data-v-d22a2b02" id="destination-ul" uI="d22a2b02-5" uP="{{r}}" wx:if="{{p}}"></st-ad>
+                    </view>
+                    <view class="ad-destination-col ad-destination__items data-v-d22a2b02" style="{{'margin-left:'+A}}">
+                        <view class="ad-destination__item data-v-d22a2b02">
+                            <st-ad bind:__l="__l" bindplayAfter="{{t}}" class="data-v-d22a2b02" id="destination-ur1" uI="d22a2b02-6" uP="{{v}}" wx:if="{{s}}"></st-ad>
+                        </view>
+                        <view class="ad-destination__item data-v-d22a2b02" style="{{'margin-top:'+z}}">
+                            <st-ad bind:__l="__l" bindplayAfter="{{x}}" class="data-v-d22a2b02" id="destination-ur2" uI="d22a2b02-7" uP="{{y}}" wx:if="{{w}}"></st-ad>
+                        </view>
+                    </view>
+                </view>
+                <view class="ad-destination-row data-v-d22a2b02">
+                    <view class="ad-destination-col ad-destination__items data-v-d22a2b02">
+                        <view class="ad-destination__item data-v-d22a2b02">
+                            <st-ad bind:__l="__l" bindplayAfter="{{C}}" class="data-v-d22a2b02" id="destination-dl1" uI="d22a2b02-8" uP="{{D}}" wx:if="{{B}}"></st-ad>
+                        </view>
+                        <view class="ad-destination__item data-v-d22a2b02" style="{{'margin-top:'+H}}">
+                            <st-ad bind:__l="__l" bindplayAfter="{{F}}" class="data-v-d22a2b02" id="destination-dl2" uI="d22a2b02-9" uP="{{G}}" wx:if="{{E}}"></st-ad>
+                        </view>
+                    </view>
+                    <view class="ad-destination-col ad-destination__item data-v-d22a2b02" style="{{'margin-left:'+L}}">
+                        <st-ad bind:__l="__l" bindplayAfter="{{J}}" class="data-v-d22a2b02" id="destination-dr" uI="d22a2b02-10" uP="{{K}}" wx:if="{{I}}"></st-ad>
+                    </view>
+                </view>
+            </view>
+            <view class="ad-what-is data-v-d22a2b02" wx:if="{{M}}">
+                <swiper autoplay circular class="data-v-d22a2b02">
+                    <swiper-item class="data-v-d22a2b02" wx:for="{{N}}" wx:key="e">
+                        <view class="ad-what-is__item data-v-d22a2b02">
+                            <st-ad bind:__l="__l" bindplayAfter="{{item.b}}" class="data-v-d22a2b02" id="{{item.a}}" uI="{{item.c}}" uP="{{item.d}}" wx:if="{{item.d}}"></st-ad>
+                        </view>
+                    </swiper-item>
+                </swiper>
+            </view>
+            <view class="title data-v-d22a2b02"> 热门推荐 </view>
+            <view class="ad-recommend-top ad-recommend-item data-v-d22a2b02">
+                <st-ad bind:__l="__l" bindplayAfter="{{P}}" class="data-v-d22a2b02" id="recommend-top" uI="d22a2b02-12" uP="{{Q}}" wx:if="{{O}}"></st-ad>
+            </view>
+            <scroll-view enhanced scrollX class="ad-recommend-list--scroll data-v-d22a2b02" showScrollbar="{{false}}">
+                <view class="ad-recommend-list data-v-d22a2b02">
+                    <view class="ad-recommend-item data-v-d22a2b02" wx:for="{{R}}" wx:key="e">
+                        <st-ad bind:__l="__l" class="data-v-d22a2b02" id="{{item.a}}" key="{{item.b}}" uI="{{item.c}}" uP="{{item.d}}" wx:if="{{item.d}}"></st-ad>
+                    </view>
+                </view>
+            </scroll-view>
+            <view class="title data-v-d22a2b02"> 探索更多 </view>
+            <view class="ad-travels data-v-d22a2b02">
+                <view class="ad-travel data-v-d22a2b02" wx:for="{{S}}" wx:key="d">
+                    <st-ad bind:__l="__l" class="data-v-d22a2b02" id="{{item.a}}" uI="{{item.b}}" uP="{{item.c}}" wx:if="{{item.c}}"></st-ad>
+                </view>
+            </view>
+            <view class="home-footer data-v-d22a2b02">
+                <view bindtap="{{T}}" class="home-footer__btn data-v-d22a2b02" role="button"> 查看全部产品 </view>
+            </view>
+            <safe-area bind:__l="__l" class="data-v-d22a2b02" uI="d22a2b02-15" uP="{{U}}" wx:if="{{U}}"></safe-area>
+        </view>
+        <float-button-kf bind:__l="__l" class="data-v-d22a2b02" uI="d22a2b02-16"></float-button-kf>
+        <bottom-nav bind:__l="__l" class="data-v-d22a2b02" uI="d22a2b02-17"></bottom-nav>
+    </block>
+    <ad-popup bind:__l="__l" class="data-v-d22a2b02" uI="d22a2b02-18" uP="{{W}}" wx:if="{{V}}"></ad-popup>
+    <user-agreement bind:__l="__l" bindclose="{{X}}" class="data-v-d22a2b02" uI="d22a2b02-19"></user-agreement>
+</view>

@@ -1,0 +1,25 @@
+<view class="ui_browserPay data-v-3cd849b3">
+    <coustom-head bind:__l="__l" class="data-v-3cd849b3" uI="3cd849b3-0" uP="{{a}}" wx:if="{{a}}"></coustom-head>
+    <view class="logo-box data-v-3cd849b3">
+        <image class="logo data-v-3cd849b3" src="https://songtsam-internal-static.oss-cn-chengdu.aliyuncs.com/mobile/assets/browser-pay-logo.svg"></image>
+    </view>
+    <view class="main-box data-v-3cd849b3"></view>
+    <view class="content-wrapper data-v-3cd849b3">
+        <view class="header data-v-3cd849b3">
+            <view class="price-text data-v-3cd849b3">待支付金额</view>
+            <view class="price-number data-v-3cd849b3">¥ {{b}}</view>
+            <view class="price-notice data-v-3cd849b3">{{c}}</view>
+        </view>
+        <view class="content data-v-3cd849b3">
+            <view class="content-item data-v-3cd849b3">
+                <view class="number data-v-3cd849b3">1</view>点击「复制链接」 </view>
+            <view class="line data-v-3cd849b3"></view>
+            <view class="content-item data-v-3cd849b3">
+                <view class="number data-v-3cd849b3">2</view>打开浏览器粘贴，前往支付宝app支付 </view>
+        </view>
+        <view class="dialog-footer data-v-3cd849b3">
+            <view bindtap="{{d}}" class="cancel-btn data-v-3cd849b3">复制链接</view>
+        </view>
+    </view>
+    <view class="footer data-v-3cd849b3"></view>
+</view>

@@ -1,0 +1,57 @@
+<view class="checkIn_ui data-v-43c2940e">
+    <coustom-head bind:__l="__l" class="data-v-43c2940e" uI="43c2940e-0" uP="{{a}}" wx:if="{{a}}"></coustom-head>
+    <view class="header_wrap data-v-43c2940e" style="{{'background-image:'+p}}">
+        <view class="subTitle data-v-43c2940e">
+            <view class="data-v-43c2940e">欢迎来到</view>
+            <view class="title data-v-43c2940e">{{b}}</view>
+            <view class="data-v-43c2940e">{{c}}</view>
+        </view>
+        <view class="hotel-box data-v-43c2940e" wx:if="{{d}}">
+            <view class="userInfoList data-v-43c2940e">
+                <view class="userInfoItem botbom data-v-43c2940e">
+                    <view class="userTitle data-v-43c2940e">入住人信息</view>
+                </view>
+                <view class="userInfoItem data-v-43c2940e">
+                    <view class="userInfoTitle data-v-43c2940e">姓名</view>
+                    <view class="userInfoDesc data-v-43c2940e">{{e}}</view>
+                </view>
+                <view class="userInfoItem data-v-43c2940e">
+                    <view class="userInfoTitle data-v-43c2940e">证件类型</view>
+                    <view class="userInfoDesc data-v-43c2940e">{{f}}</view>
+                </view>
+                <view class="userInfoItem data-v-43c2940e">
+                    <view class="userInfoTitle data-v-43c2940e">证件号码</view>
+                    <view class="userInfoDesc data-v-43c2940e">{{g}}</view>
+                </view>
+                <view class="userInfoItem data-v-43c2940e">
+                    <view class="userInfoTitle data-v-43c2940e">性别</view>
+                    <view class="userInfoDesc data-v-43c2940e">{{h}}</view>
+                </view>
+                <view class="userInfoItem data-v-43c2940e">
+                    <view class="userInfoTitle data-v-43c2940e">出生日期</view>
+                    <view class="userInfoDesc data-v-43c2940e">{{i}}</view>
+                </view>
+            </view>
+            <view class="form_tip data-v-43c2940e" wx:if="{{j}}">
+                <view class="icon_more iconfont icon-a-20_hangchengbangzhu1 data-v-43c2940e"></view> 入住办理需要用户自拍一张照片以方便与公安系统核对 </view>
+            <view class="form_tip data-v-43c2940e" wx:if="{{k}}">
+                <view class="icon_more iconfont icon-a-20_hangchengbangzhu1 data-v-43c2940e"></view> 如需取消入住办理，请联系酒店人员 <label bindtap="{{n}}" class="phone data-v-43c2940e" wx:if="{{l}}">{{m}} <view class="icon iconfont icon-a-16_youlajiantou_hei data-v-43c2940e"></view>
+                </label>
+            </view>
+        </view>
+        <view class="hotel-box data-v-43c2940e" wx:else>
+            <view class="userInfoList qrcode_wrap data-v-43c2940e">
+                <image class="qrcode_img data-v-43c2940e" showMenuByLongpress="{{true}}" src="{{o}}"></image>
+                <view class="qrcode_text data-v-43c2940e">
+                    <view class="data-v-43c2940e">行程内首次入住需长按保存上方公安二维码</view>
+                    <view class="data-v-43c2940e" style="margin-top:5px">微信识别图片办理</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="bottom_dis data-v-43c2940e"></view>
+    <view class="footer data-v-43c2940e" wx:if="{{q}}">
+        <view bindtap="{{r}}" class="order-btn data-v-43c2940e">拍照办理入住</view>
+    </view>
+    <kf-dialog bind:__l="__l" class="r data-v-43c2940e" uI="43c2940e-1" uP="{{t}}" uR="kf" wx:if="{{t}}"></kf-dialog>
+</view>

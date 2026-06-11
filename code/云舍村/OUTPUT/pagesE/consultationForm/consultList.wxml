@@ -1,0 +1,60 @@
+<view class="ui_consultList data-v-51e00b20">
+    <coustom-head bind:__l="__l" class="data-v-51e00b20" uI="51e00b20-0" uP="{{a}}" wx:if="{{a}}"></coustom-head>
+    <view class="data-v-51e00b20" wx:for="{{b}}" wx:key="B">
+        <view class="time_wrap data-v-51e00b20">{{item.a}}</view>
+        <view class="list_wrap data-v-51e00b20">
+            <view class="list_title data-v-51e00b20">咨询记录</view>
+            <view class="list_item data-v-51e00b20">
+                <view class="item_in data-v-51e00b20">
+                    <view class="item_left data-v-51e00b20">目的地</view>
+                    <view class="item_right data-v-51e00b20">{{item.b}}</view>
+                </view>
+                <view class="item_in data-v-51e00b20">
+                    <view class="item_left data-v-51e00b20">出发时段</view>
+                    <view class="item_right data-v-51e00b20">{{item.c}} - {{item.d}}</view>
+                </view>
+                <view class="item_in data-v-51e00b20">
+                    <view class="item_left data-v-51e00b20">行程天数</view>
+                    <view class="item_right data-v-51e00b20">{{item.e}} 天</view>
+                </view>
+                <view class="item_in data-v-51e00b20">
+                    <view class="item_left data-v-51e00b20">出行人数</view>
+                    <view class="item_right data-v-51e00b20">
+                        <label class="data-v-51e00b20" wx:if="{{item.f}}">{{item.g}}成人</label>
+                        <label class="data-v-51e00b20" wx:if="{{item.h}}">,{{item.i}}大童</label>
+                        <label class="data-v-51e00b20" wx:if="{{item.j}}">,{{item.k}}中童</label>
+                        <label class="data-v-51e00b20" wx:if="{{item.l}}">,{{item.m}}幼童</label>
+                        <label class="data-v-51e00b20" wx:if="{{item.n}}">,含{{item.o}}老人</label>
+                        <label class="data-v-51e00b20" wx:if="{{item.p}}">,含{{item.q}}港澳台人士</label>
+                        <label class="data-v-51e00b20" wx:if="{{item.r}}">,含{{item.s}}外籍人士</label>
+                    </view>
+                </view>
+                <view class="item_in data-v-51e00b20">
+                    <view class="item_left data-v-51e00b20">旅行喜好</view>
+                    <view class="item_right data-v-51e00b20">{{item.t}}</view>
+                </view>
+                <view class="item_in data-v-51e00b20">
+                    <view class="item_left data-v-51e00b20">备注信息</view>
+                    <view class="item_right data-v-51e00b20">{{item.v}}</view>
+                </view>
+                <view class="line data-v-51e00b20"></view>
+                <view class="item_in data-v-51e00b20">
+                    <view class="item_left data-v-51e00b20">联系人</view>
+                    <view class="item_right data-v-51e00b20">{{item.w}} {{item.x}}</view>
+                </view>
+                <view class="item_in data-v-51e00b20">
+                    <view class="item_left data-v-51e00b20">出发地</view>
+                    <view class="item_right data-v-51e00b20">{{item.y}}</view>
+                </view>
+                <view bindtap="{{item.A}}" class="item_in data-v-51e00b20">
+                    <view class="item_left data-v-51e00b20">咨询单号</view>
+                    <view class="item_right data-v-51e00b20">{{item.z}} <view class="iconfont icon-a-12_fuzhi consult_icon data-v-51e00b20"></view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <empty bind:__l="__l" class="data-v-51e00b20" uI="51e00b20-1" uP="{{d}}" wx:if="{{c}}"></empty>
+    <view class="zhanwei data-v-51e00b20"></view>
+</view>
+<float-button-kf bind:__l="__l" class="data-v-51e00b20" uI="51e00b20-2"></float-button-kf>

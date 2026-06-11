@@ -1,0 +1,12 @@
+<center-dialog bind:__l="__l" bindopenState="{{c}}" class="hook-dialog r data-v-63770bb8" uI="63770bb8-0" uR="confirmationDialog" uS="{{['d']}}">
+    <view class="content__wrapper data-v-63770bb8">
+        <view class="icon data-v-63770bb8">
+            <view class="icon iconfont icon-a-20_jieguo_chenggong data-v-63770bb8"></view>
+        </view>
+        <view class="title data-v-63770bb8">咨询单下单成功，待顾问联系</view>
+        <view class="content data-v-63770bb8"> 松赞顾问将在3天内联系您确认具体旅行方案，请保持联系。 </view>
+        <view class="dialog-footer data-v-63770bb8">
+            <view bindtap="{{a}}" class="cancel-btn data-v-63770bb8">我知道了</view>
+        </view>
+    </view>
+</center-dialog>

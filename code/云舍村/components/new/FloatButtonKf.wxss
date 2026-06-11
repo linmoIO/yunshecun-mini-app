@@ -1,0 +1,29 @@
+.container__area.data-v-5b07848a {
+    background: transparent;
+    bottom: calc(constant(safe-area-inset-bottom) + 100rpx);
+    bottom: calc(env(safe-area-inset-bottom) + 100rpx);
+    height: auto;
+    left: 0;
+    pointer-events: none;
+    position: fixed;
+    right: 0;
+    top: constant(safe-area-inset-top);
+    top: env(safe-area-inset-top);
+    width: auto;
+    z-index: 9999
+}
+
+.container__area .movable-view.data-v-5b07848a {
+    height: 96rpx;
+    width: 96rpx
+}
+
+.container__area__button.data-v-5b07848a {
+    height: 96rpx;
+    pointer-events: auto;
+    width: 96rpx
+}
+
+.icon-kf.data-v-5b07848a {
+    font-size: 40rpx
+}

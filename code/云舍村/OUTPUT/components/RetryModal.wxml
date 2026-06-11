@@ -1,0 +1,13 @@
+<view bindtap="{{f}}" class="modal-mask data-v-11f788e6" wx:if="{{a}}">
+    <view catchtap="{{e}}" class="modal-container data-v-11f788e6">
+        <view class="modal-header data-v-11f788e6">
+            <text class="modal-title data-v-11f788e6">家人您的手速太快啦！</text>
+        </view>
+        <view class="modal-body data-v-11f788e6">
+            <text class="modal-description data-v-11f788e6">远方的朋友呀，此刻提交的人数如雪山融水般涌来，请稍后再来试试吧~</text>
+        </view>
+        <view class="modal-footer data-v-11f788e6">
+            <button bindtap="{{c}}" class="modal-button data-v-11f788e6" disabled="{{d}}">{{b}}</button>
+        </view>
+    </view>
+</view>

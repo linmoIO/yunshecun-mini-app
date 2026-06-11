@@ -1,0 +1,402 @@
+<view class="ui_confirmOrder data-v-9ce70134">
+    <coustom-head bind:__l="__l" bindnavigateBackGuard="{{a}}" class="data-v-9ce70134" uI="9ce70134-0" uP="{{b}}" wx:if="{{b}}"></coustom-head>
+    <view class="travel-info data-v-9ce70134" style="{{'padding-top:'+l}}">
+        <view class="name data-v-9ce70134">{{c}}</view>
+        <view class="time_infos data-v-9ce70134">
+            <view class="info data-v-9ce70134">
+                <view class="label data-v-9ce70134"> 预约时间 </view>
+                <view class="label_name data-v-9ce70134">{{d}} {{e}}</view>
+            </view>
+        </view>
+        <view class="infos hotel_cont data-v-9ce70134" style="{{'height:'+k}}">
+            <view class="info data-v-9ce70134">
+                <view class="label data-v-9ce70134"> 适用酒店 </view>
+                <view class="data-v-9ce70134">
+                    <view class="hotel_name data-v-9ce70134" wx:for="{{f}}" wx:key="b">{{item.a}}</view>
+                </view>
+            </view>
+            <view bindtap="{{h}}" class="open-btn data-v-9ce70134" wx:if="{{g}}"> 展开 <view class="iconfont icon-a-12_xialajiantou_hei data-v-9ce70134"></view>
+            </view>
+            <view bindtap="{{j}}" class="open-btn data-v-9ce70134" wx:if="{{i}}"> 收起 <view class="iconfont icon-a-12_shanglajiantou_hei data-v-9ce70134"></view>
+            </view>
+        </view>
+    </view>
+    <view class="form-infos data-v-9ce70134">
+        <view class="form-info data-v-9ce70134">
+            <view class="tl data-v-9ce70134"> 预订信息 </view>
+            <view class="form-inline data-v-9ce70134">
+                <view class="label data-v-9ce70134"> 预订份数 </view>
+                <view class="val end data-v-9ce70134">
+                    <view class="number data-v-9ce70134">
+                        <view bindtap="{{n}}" class="{{['iconfont','icon-a-20_jian','data-v-9ce70134',m&&'invalid']}}"></view>
+                        <view class="num data-v-9ce70134">{{o}}份 </view>
+                        <view bindtap="{{q}}" class="{{['iconfont','icon-a-20_jia','data-v-9ce70134',p&&'invalid']}}"></view>
+                    </view>
+                </view>
+            </view>
+            <view class="form-inline data-v-9ce70134" style="display:none">
+                <view class="label data-v-9ce70134"> 预约时间 </view>
+                <view class="val data-v-9ce70134">
+                    <view bindtap="{{v}}" class="select-box data-v-9ce70134">
+                        <view class="text data-v-9ce70134" wx:if="{{r}}"> 请选择预约时间 </view>
+                        <view class="date data-v-9ce70134" wx:else>{{s}} {{t}}</view>
+                        <view class="iconfont icon-a-16_youlajiantou_hei data-v-9ce70134"></view>
+                    </view>
+                </view>
+            </view>
+            <view class="form-inline padding data-v-9ce70134">
+                <view class="label data-v-9ce70134"> 出行人 </view>
+                <view class="vals data-v-9ce70134">
+                    <view class="val data-v-9ce70134" wx:if="{{w}}">
+                        <view class="check-in-infos data-v-9ce70134">
+                            <view class="check-in-info data-v-9ce70134" wx:for="{{x}}" wx:for-item="guest" wx:key="g">
+                                <view bindtap="{{guest.a}}" class="iconfont icon-a-16_guanbi_ciji data-v-9ce70134"></view>
+                                <view class="name data-v-9ce70134">{{guest.b}} <view class="ageType data-v-9ce70134" wx:if="{{guest.c}}">{{guest.d}}</view>
+                                </view>
+                                <view class="id-card data-v-9ce70134">
+                                    <label class="data-v-9ce70134">{{guest.e}}</label>
+                                    <label class="data-v-9ce70134"> </label> {{guest.f}}</view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="val data-v-9ce70134">
+                        <view bindtap="{{z}}" class="already-box data-v-9ce70134" wx:if="{{y}}"> + 请选择 </view>
+                        <view bindtap="{{B}}" class="already-box2 data-v-9ce70134" wx:elif="{{A}}"> + 添加出行人 </view>
+                    </view>
+                </view>
+            </view>
+            <view class="form-inline data-v-9ce70134">
+                <view class="label data-v-9ce70134"> 其他需求 </view>
+                <view class="val data-v-9ce70134">
+                    <input autoHeight bindinput="{{D}}" class="textarea-text data-v-9ce70134" disableDefaultPadding="true" placeholder="请填写其他需求 (选填)" placeholderStyle="color: #CCCCCC;" value="{{C}}"></input>
+                </view>
+            </view>
+        </view>
+        <view class="form-info data-v-9ce70134">
+            <view class="tl data-v-9ce70134"> 联系人 </view>
+            <view class="form-inline data-v-9ce70134">
+                <view class="label data-v-9ce70134"> 姓名 </view>
+                <view class="val data-v-9ce70134">
+                    <input bindinput="{{F}}" class="input-text data-v-9ce70134" placeholder="请输入姓名" placeholderStyle="color: #CCCCCC;" type="text" value="{{E}}"></input>
+                </view>
+            </view>
+            <view class="form-inline data-v-9ce70134">
+                <view class="label data-v-9ce70134"> 手机号 </view>
+                <view class="val data-v-9ce70134">
+                    <input bindinput="{{H}}" class="input-text data-v-9ce70134" maxlength="{{11}}" placeholder="请输入手机号" placeholderStyle="color: #CCCCCC;" type="text" value="{{G}}"></input>
+                </view>
+            </view>
+        </view>
+        <view class="form-info data-v-9ce70134" wx:if="{{I}}">
+            <view class="tl data-v-9ce70134"> 优惠方案 </view>
+            <view class="form-inline padding data-v-9ce70134" wx:if="{{J}}">
+                <view class="val data-v-9ce70134">
+                    <view class="radio-warp data-v-9ce70134">
+                        <radio-box bind:__l="__l" bindupdateVal="{{L}}" class="miniRadio r data-v-9ce70134" uI="9ce70134-1" uP="{{M}}" uR="daysRadio" wx:if="{{M}}"></radio-box>
+                    </view>
+                </view>
+            </view>
+            <view class="form-inline data-v-9ce70134" wx:if="{{N}}">
+                <view class="label data-v-9ce70134"> 积分 </view>
+                <view class="val data-v-9ce70134">
+                    <view class="select-box data-v-9ce70134">
+                        <view class="red data-v-9ce70134"> -{{O}}积分 </view>
+                    </view>
+                </view>
+            </view>
+            <view class="form-inline data-v-9ce70134" wx:if="{{P}}">
+                <view class="label data-v-9ce70134"> 折扣 </view>
+                <view class="val data-v-9ce70134">
+                    <view bindtap="{{V}}" class="select-box data-v-9ce70134">
+                        <view class="text data-v-9ce70134" wx:if="{{Q}}">{{R}}{{S}}折 </view>
+                        <view class="text red data-v-9ce70134" wx:else> -¥{{T}}</view>
+                        <view class="iconfont icon-danxuan_yixuan data-v-9ce70134" wx:if="{{U}}"></view>
+                    </view>
+                    <view class="iconfont icon-a-16_youlajiantou_hei data-v-9ce70134"></view>
+                </view>
+            </view>
+            <view class="form-inline data-v-9ce70134" wx:if="{{W}}">
+                <view class="label data-v-9ce70134"> 券包 </view>
+                <view bindtap="{{ab}}" class="val data-v-9ce70134" wx:if="{{X}}">
+                    <view class="select-box data-v-9ce70134">
+                        <view class="text data-v-9ce70134" wx:if="{{Y}}"> 请选择券包 <view class="coupon-num data-v-9ce70134">{{Z}}张可用 </view>
+                        </view>
+                        <view class="text red data-v-9ce70134" wx:else> -¥{{aa}}</view>
+                    </view>
+                    <view class="iconfont icon-a-16_youlajiantou_hei data-v-9ce70134"></view>
+                </view>
+                <view class="val data-v-9ce70134" wx:else>
+                    <view class="select-box data-v-9ce70134">
+                        <view class="text data-v-9ce70134"> 暂无可用的券 </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="rule data-v-9ce70134" wx:if="{{ac}}">
+        <view class="rule_title data-v-9ce70134"> 费用说明 </view>
+        <view class="data-v-9ce70134">
+            <rich-text class="data-v-9ce70134" nodes="{{ad}}"></rich-text>
+        </view>
+        <view class="rule_title mrt data-v-9ce70134"> 温馨提示 </view>
+        <view class="data-v-9ce70134">
+            <rich-text class="data-v-9ce70134" nodes="{{ae}}"></rich-text>
+        </view>
+        <view class="rule_title mrt data-v-9ce70134"> 预订条款及取消政策 </view>
+        <view class="data-v-9ce70134">
+            <rich-text class="data-v-9ce70134" nodes="{{af}}"></rich-text>
+        </view>
+    </view>
+    <view class="footer_wrap data-v-9ce70134" hidden="{{!ay}}">
+        <view class="agreeBox data-v-9ce70134">
+            <view catchtap="{{ai}}" class="agreeDesc data-v-9ce70134">
+                <image class="iconfont data-v-9ce70134" src="https://dsplatweb.oss-cn-chengdu.aliyuncs.com/songzan/images/select.png" wx:if="{{ag}}"></image>
+                <image class="iconfont data-v-9ce70134" src="https://dsplatweb.oss-cn-chengdu.aliyuncs.com/songzan/images/unSelect.png" wx:else></image> 我已阅读并同意 <label catchtap="{{ah}}" class="userRule data-v-9ce70134">《预约协议》</label>
+                <view class="iconfont icon-a-12_youlajiantou_hei data-v-9ce70134"></view>
+            </view>
+        </view>
+        <view class="footer data-v-9ce70134">
+            <view class="price-info data-v-9ce70134" wx:if="{{aj}}">
+                <view class="price data-v-9ce70134"> ¥---- </view>
+                <view class="price-tips data-v-9ce70134"> 填写出行人后可见 </view>
+            </view>
+            <view class="price-info data-v-9ce70134" wx:else>
+                <view bindtap="{{aw}}" class="price weight data-v-9ce70134">
+                    <view class="{{['price-box','data-v-9ce70134',as&&'point-box']}}" wx:if="{{ak}}">
+                        <label class="data-v-9ce70134" wx:if="{{al}}">¥{{am}}</label>
+                        <label class="data-v-9ce70134" wx:if="{{an}}">{{ao}}积分</label>
+                        <block wx:if="{{ap}}">
+                            <label class="data-v-9ce70134">¥{{aq}}</label>
+                            <view class="point_footer data-v-9ce70134">{{ar}}积分 </view>
+                        </block>
+                    </view>
+                    <view class="data-v-9ce70134" wx:if="{{at}}">
+                        <label class="data-v-9ce70134" wx:if="{{av}}">免费</label>
+                        <label class="data-v-9ce70134" wx:else>¥0</label>
+                    </view>
+                    <view class="price-detail data-v-9ce70134"> 明细 <view class="iconfont icon-a-12_shanglajiantou_hei data-v-9ce70134"></view>
+                    </view>
+                </view>
+            </view>
+            <view bindtap="{{ax}}" class="submit-btn baseBtn data-v-9ce70134"> 立即预订 </view>
+        </view>
+    </view>
+    <bottom-dialog bind:__l="__l" class="r data-v-9ce70134" uI="9ce70134-2" uP="{{aD}}" uR="checkIn" uS="{{['d']}}" wx:if="{{aD}}">
+        <view class="layer-box data-v-9ce70134">
+            <view bindtap="{{az}}" class="add-btn data-v-9ce70134">
+                <view class="icon icon-add data-v-9ce70134"> + </view> 新增出行人 </view>
+            <view class="info-list data-v-9ce70134">
+                <view bindtap="{{item.j}}" class="info-item data-v-9ce70134" wx:for="{{aA}}" wx:key="i">
+                    <view class="info-item-lf data-v-9ce70134">
+                        <view catchtap="{{item.a}}" class="iconfont icon-a-16_bianji data-v-9ce70134"></view>
+                        <view class="info-item-lf-info data-v-9ce70134">
+                            <view class="info-item-name data-v-9ce70134">{{item.b}} <view class="ageType data-v-9ce70134" wx:if="{{item.c}}">{{item.d}}</view>
+                            </view>
+                            <view class="info-item-id-card data-v-9ce70134">
+                                <label class="data-v-9ce70134">{{item.e}}</label>
+                                <label class="data-v-9ce70134"> </label> {{item.f}}</view>
+                        </view>
+                    </view>
+                    <view class="icon-duoxuan_yixuan noCan iconfont data-v-9ce70134" wx:if="{{item.g}}"></view>
+                    <view class="icon-duoxuan_yixuan iconfont data-v-9ce70134" wx:elif="{{item.h}}"></view>
+                    <view class="icon-duoxuan_weixuan iconfont data-v-9ce70134" wx:else></view>
+                </view>
+            </view>
+            <view class="layer-footer data-v-9ce70134">
+                <view bindtap="{{aB}}" class="layer-btn baseBtn data-v-9ce70134"> 完成 </view>
+            </view>
+        </view>
+    </bottom-dialog>
+    <bottom-dialog bind:__l="__l" class="r data-v-9ce70134" uI="9ce70134-3" uP="{{aQ}}" uR="couponListLayer" uS="{{['d']}}" wx:if="{{aQ}}">
+        <view class="coupon_exchange data-v-9ce70134">
+            <view class="input-box data-v-9ce70134">
+                <input bindblur="{{aE}}" bindfocus="{{aF}}" bindinput="{{aH}}" class="input-text data-v-9ce70134" placeholder="请输入兑换码领券" placeholderStyle="color: #CCCCCC;" type="text" value="{{aG}}"></input>
+                <view bindtap="{{aJ}}" class="baseBtn sure_btn data-v-9ce70134" wx:if="{{aI}}"> 确定 </view>
+            </view>
+            <view bindtap="{{aK}}" class="scan data-v-9ce70134">
+                <view class="iconfont icon-a-20_saoyisao data-v-9ce70134"></view>
+            </view>
+        </view>
+        <view class="couponList data-v-9ce70134">
+            <empty bind:__l="__l" class="data-v-9ce70134" uI="9ce70134-4,9ce70134-3" uP="{{aM}}" wx:if="{{aL}}"></empty>
+            <block wx:else>
+                <view class="listItem data-v-9ce70134" wx:for="{{aN}}" wx:for-item="coupon" wx:key="e">
+                    <coupon-item bind:__l="__l" bindchooseCoupon="{{coupon.a}}" bindtoggleCoupon="{{coupon.b}}" class="data-v-9ce70134" uI="{{coupon.c}}" uP="{{coupon.d}}" wx:if="{{coupon.d}}"></coupon-item>
+                </view>
+            </block>
+        </view>
+        <view class="layer-footer data-v-9ce70134">
+            <view bindtap="{{aO}}" class="layer-btn baseBtn data-v-9ce70134"> 完成 </view>
+        </view>
+    </bottom-dialog>
+    <bottom-dialog bind:__l="__l" class="r data-v-9ce70134" style="z-index:1" uI="9ce70134-6" uP="{{cQ}}" uR="priceInfo" uS="{{['d']}}" wx:if="{{cQ}}">
+        <view class="priceInfo data-v-9ce70134">
+            <view class="price-item data-v-9ce70134">
+                <view class="main noMargin data-v-9ce70134" wx:if="{{aR}}"> 订单总价 <view class="data-v-9ce70134" wx:if="{{aS}}">
+                        <view class="price data-v-9ce70134" wx:if="{{aT}}"> ¥{{aU}}</view>
+                        <view class="data-v-9ce70134" wx:elif="{{aV}}"> ¥{{aW}} +{{aX}}积分 </view>
+                        <view class="price data-v-9ce70134" wx:else>
+                            <label class="data-v-9ce70134" wx:if="{{aY}}">{{aZ}}积分</label>
+                            <label class="data-v-9ce70134" wx:else>0</label>
+                        </view>
+                    </view>
+                    <view class="price data-v-9ce70134" wx:else> 免费 </view>
+                </view>
+                <view class="main noMargin data-v-9ce70134" wx:else> 订单总价 <view class="data-v-9ce70134" wx:if="{{ba}}">
+                        <view class="price data-v-9ce70134" wx:if="{{bb}}"> ¥{{bc}}</view>
+                        <view class="data-v-9ce70134" wx:elif="{{bd}}"> ¥{{be}} +{{bf}}积分 </view>
+                        <view class="price data-v-9ce70134" wx:else>
+                            <label class="data-v-9ce70134" wx:if="{{bg}}">{{bh}}积分</label>
+                            <label class="data-v-9ce70134" wx:else>0</label>
+                        </view>
+                    </view>
+                    <view class="price data-v-9ce70134" wx:else> 免费 </view>
+                </view>
+                <view class="other data-v-9ce70134" wx:if="{{bi}}"> 产品价合计 <view class="data-v-9ce70134" wx:if="{{bj}}">
+                        <view class="price data-v-9ce70134" wx:if="{{bk}}"> ¥{{bl}}</view>
+                        <view class="data-v-9ce70134" wx:elif="{{bm}}"> ¥{{bn}} +{{bo}}积分 </view>
+                        <view class="price data-v-9ce70134" wx:else>
+                            <label class="data-v-9ce70134" wx:if="{{bp}}">{{bq}}积分</label>
+                            <label class="data-v-9ce70134" wx:else>0</label>
+                        </view>
+                    </view>
+                    <view class="price data-v-9ce70134" wx:else> 免费 </view>
+                </view>
+                <view class="other data-v-9ce70134" wx:else> 产品价合计 <view class="data-v-9ce70134" wx:if="{{br}}">
+                        <view class="price data-v-9ce70134" wx:if="{{bs}}"> ¥{{bt}}</view>
+                        <view class="data-v-9ce70134" wx:elif="{{bv}}"> ¥{{bw}} +{{bx}}积分 </view>
+                        <view class="price data-v-9ce70134" wx:else>
+                            <label class="data-v-9ce70134" wx:if="{{by}}">{{bz}}积分</label>
+                            <label class="data-v-9ce70134" wx:else>0</label>
+                        </view>
+                    </view>
+                    <view class="price data-v-9ce70134" wx:else> 免费 </view>
+                </view>
+                <view class="other data-v-9ce70134" wx:if="{{bA}}">
+                    <label class="data-v-9ce70134">单价</label>
+                    <view class="price data-v-9ce70134" wx:if="{{bB}}">
+                        <label class="data-v-9ce70134" wx:if="{{bC}}">¥{{bD}} x {{bE}}份</label>
+                        <label class="data-v-9ce70134" wx:if="{{bF}}">¥({{bG}}+{{bH}}积分) x {{bI}}份</label>
+                    </view>
+                    <view class="price data-v-9ce70134" wx:if="{{bJ}}">{{bK}}积分 x {{bL}}份 </view>
+                </view>
+                <view class="data-v-9ce70134" wx:else>
+                    <view class="data-v-9ce70134" wx:if="{{bM}}">
+                        <view class="data-v-9ce70134" wx:if="{{bN}}">
+                            <view class="pric_sty data-v-9ce70134" wx:if="{{bO}}">
+                                <view class="left data-v-9ce70134"> 含成人 </view>
+                                <view class="right data-v-9ce70134"> ¥{{bP}} x {{bQ}}份 </view>
+                            </view>
+                            <view class="pric_sty data-v-9ce70134" wx:if="{{bR}}">
+                                <view class="left data-v-9ce70134"> 含大童 </view>
+                                <view class="right data-v-9ce70134"> ¥{{bS}} x {{bT}}份 </view>
+                            </view>
+                            <view class="pric_sty data-v-9ce70134" wx:if="{{bU}}">
+                                <view class="left data-v-9ce70134"> 含中童 </view>
+                                <view class="right data-v-9ce70134"> ¥{{bV}} x {{bW}}份 </view>
+                            </view>
+                            <view class="pric_sty data-v-9ce70134" wx:if="{{bX}}">
+                                <view class="left data-v-9ce70134"> 含幼童 </view>
+                                <view class="right data-v-9ce70134"> ¥{{bY}} x {{bZ}}份 </view>
+                            </view>
+                        </view>
+                        <view class="data-v-9ce70134" wx:if="{{ca}}">
+                            <view class="pric_sty data-v-9ce70134" wx:if="{{cb}}">
+                                <view class="left data-v-9ce70134"> 含成人 </view>
+                                <view class="right data-v-9ce70134"> (¥{{cc}} +{{cd}}积分) x {{ce}}份 </view>
+                            </view>
+                            <view class="pric_sty data-v-9ce70134" wx:if="{{cf}}">
+                                <view class="left data-v-9ce70134"> 含大童 </view>
+                                <view class="right data-v-9ce70134"> ¥{{cg}} x {{ch}}份 </view>
+                            </view>
+                            <view class="pric_sty data-v-9ce70134" wx:if="{{ci}}">
+                                <view class="left data-v-9ce70134"> 含中童 </view>
+                                <view class="right data-v-9ce70134"> ¥{{cj}} x {{ck}}份 </view>
+                            </view>
+                            <view class="pric_sty data-v-9ce70134" wx:if="{{cl}}">
+                                <view class="left data-v-9ce70134"> 含幼童 </view>
+                                <view class="right data-v-9ce70134"> ¥{{cm}} x {{cn}}份 </view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="price data-v-9ce70134" wx:if="{{co}}">
+                        <view class="pric_sty data-v-9ce70134" wx:if="{{cp}}">
+                            <view class="left data-v-9ce70134"> 含成人 </view>
+                            <view class="right data-v-9ce70134">{{cq}}积分 x {{cr}}份 </view>
+                        </view>
+                    </view>
+                </view>
+                <view class="main data-v-9ce70134" wx:if="{{cs}}"> 权益抵扣 <view class="price redcolor data-v-9ce70134"> -¥{{ct}}</view>
+                </view>
+                <view class="other data-v-9ce70134" wx:if="{{cv}}"> 会员折扣 <view class="price data-v-9ce70134"> -¥{{cw}}</view>
+                </view>
+                <view class="other data-v-9ce70134" wx:if="{{cx}}"> 券包 <view class="price data-v-9ce70134"> -¥{{cy}}</view>
+                </view>
+            </view>
+            <view class="footer_wrap data-v-9ce70134">
+                <view class="agreeBox data-v-9ce70134">
+                    <view catchtap="{{cB}}" class="agreeDesc data-v-9ce70134">
+                        <image class="iconfont data-v-9ce70134" src="https://dsplatweb.oss-cn-chengdu.aliyuncs.com/songzan/images/select.png" wx:if="{{cz}}"></image>
+                        <image class="iconfont data-v-9ce70134" src="https://dsplatweb.oss-cn-chengdu.aliyuncs.com/songzan/images/unSelect.png" wx:else></image> 我已阅读并同意 <label catchtap="{{cA}}" class="userRule data-v-9ce70134">《预约协议》</label>
+                        <view class="iconfont icon-a-12_youlajiantou_hei data-v-9ce70134"></view>
+                    </view>
+                </view>
+                <view class="footer data-v-9ce70134">
+                    <view class="price-info data-v-9ce70134">
+                        <view bindtap="{{cN}}" class="price weight data-v-9ce70134">
+                            <view class="{{['price-box','data-v-9ce70134',cK&&'point-box']}}" wx:if="{{cC}}">
+                                <label class="data-v-9ce70134" wx:if="{{cD}}">¥{{cE}}</label>
+                                <label class="data-v-9ce70134" wx:if="{{cF}}">{{cG}}积分</label>
+                                <block wx:if="{{cH}}">
+                                    <label class="data-v-9ce70134">¥{{cI}}</label>
+                                    <view class="point_footer data-v-9ce70134">{{cJ}}积分 </view>
+                                </block>
+                            </view>
+                            <view class="data-v-9ce70134" wx:if="{{cL}}">
+                                <label class="data-v-9ce70134" wx:if="{{cM}}">免费</label>
+                                <label class="data-v-9ce70134" wx:else>¥0</label>
+                            </view>
+                            <view class="price-detail data-v-9ce70134"> 明细 <view class="iconfont icon-a-12_shanglajiantou_hei data-v-9ce70134"></view>
+                            </view>
+                        </view>
+                    </view>
+                    <view bindtap="{{cO}}" class="submit-btn baseBtn data-v-9ce70134"> 立即预订 </view>
+                </view>
+            </view>
+        </view>
+    </bottom-dialog>
+    <bottom-dialog bind:__l="__l" class="r data-v-9ce70134" uI="9ce70134-7" uP="{{cV}}" uR="orderLayer" uS="{{['d']}}" wx:if="{{cV}}">
+        <view class="order-layer data-v-9ce70134">
+            <view class="order-box data-v-9ce70134">
+                <view class="booking-date data-v-9ce70134">
+                    <daily-price bind:__l="__l" bindchangeDailyPrice="{{cS}}" class="r data-v-9ce70134" uI="9ce70134-8,9ce70134-7" uR="dailyPrices"></daily-price>
+                </view>
+                <view class="next-btn data-v-9ce70134">
+                    <view bindtap="{{cT}}" class="btn baseBtn data-v-9ce70134"> 完成 </view>
+                </view>
+            </view>
+        </view>
+    </bottom-dialog>
+    <bottom-dialog bind:__l="__l" class="r data-v-9ce70134" uI="9ce70134-9" uP="{{da}}" uR="discountListLayer" uS="{{['d']}}" wx:if="{{da}}">
+        <view class="discount-list data-v-9ce70134">
+            <view bindtap="{{item.f}}" class="discount-item data-v-9ce70134" wx:for="{{cW}}" wx:key="e">
+                <view class="discount-lf data-v-9ce70134">
+                    <view class="discount-desc data-v-9ce70134">{{item.a}}</view>
+                    <view class="discount-val data-v-9ce70134" wx:if="{{item.b}}">{{item.c}} <view class="val-desc data-v-9ce70134"> 折 </view>
+                    </view>
+                </view>
+                <view class="select data-v-9ce70134" wx:if="{{cX}}">
+                    <image class="iconfont data-v-9ce70134" src="https://dsplatweb.oss-cn-chengdu.aliyuncs.com/songzan/images/select.png" wx:if="{{item.d}}"></image>
+                    <image class="iconfont data-v-9ce70134" src="https://dsplatweb.oss-cn-chengdu.aliyuncs.com/songzan/images/unSelect.png" wx:else></image>
+                </view>
+            </view>
+        </view>
+        <view class="layer-footer data-v-9ce70134">
+            <view bindtap="{{cY}}" class="layer-btn baseBtn data-v-9ce70134"> 完成 </view>
+        </view>
+    </bottom-dialog>
+    <calendar bind:__l="__l" bindchangeDate="{{dc}}" class="r data-v-9ce70134" uI="9ce70134-10" uP="{{dd}}" uR="calendarCompent" wx:if="{{dd}}"></calendar>
+    <customer-retention-dialog bind:__l="__l" bindcancel="{{de}}" bindconfirm="{{df}}" bindupdateShow="{{dg}}" class="data-v-9ce70134" uI="9ce70134-11" uP="{{dh}}" wx:if="{{dh}}"></customer-retention-dialog>
+    <float-button-kf bind:__l="__l" class="data-v-9ce70134" data-c-h="{{!di}}" uI="9ce70134-12" uP="{{dj}}" wx:if="{{dj}}"></float-button-kf>
+    <retry-modal bind:__l="__l" bindretry="{{dk}}" bindupdateVisible="{{dl}}" class="data-v-9ce70134" uI="9ce70134-13" uP="{{dm}}" wx:if="{{dm}}"></retry-modal>
+</view>

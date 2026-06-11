@@ -1,0 +1,43 @@
+<view bindtap="{{y}}" class="content data-v-8151ee4f" id="{{z}}">
+    <view class="no-page data-v-8151ee4f">
+        <view class="media-tag media-tag--primary data-v-8151ee4f" wx:if="{{a}}">
+            <image class="icon data-v-8151ee4f" src="{{b}}"></image>
+            <label class="data-v-8151ee4f">{{c}}</label>
+        </view>
+        <image bindload="{{e}}" class="data-v-8151ee4f" mode="widthFix" src="{{d}}" style="width:100%;border-radius:6px"></image>
+        <view class="no-video data-v-8151ee4f" wx:if="{{f}}">
+            <view class="video-icon data-v-8151ee4f">
+                <view class="iconfont icon-a-20_bofang data-v-8151ee4f"></view>
+            </view>
+        </view>
+        <view class="no-video data-v-8151ee4f" wx:if="{{g}}">
+            <view class="video-icon data-v-8151ee4f" style="margin-left:-1px">
+                <view class="iconfont icon-audio-fill data-v-8151ee4f"></view>
+            </view>
+        </view>
+    </view>
+    <view class="water data-v-8151ee4f">
+        <view class="water-title data-v-8151ee4f">{{h}}</view>
+        <view class="water-flex data-v-8151ee4f">
+            <view class="flex-category data-v-8151ee4f" wx:for="{{i}}" wx:for-item="node" wx:key="d">
+                <text class="data-v-8151ee4f" wx:if="{{node.a}}">{{node.b}}</text>
+                <text class="data-v-8151ee4f" wx:else>{{node.c}}...</text>
+            </view>
+            <view class="collection data-v-8151ee4f" wx:if="{{j}}">
+                <view class="iconfont icon-a-20_shoucang_yishoucang data-v-8151ee4f" style="color:#a43127" wx:if="{{k}}"></view>
+                <view class="iconfont icon-a-20_shoucang_weishoucang data-v-8151ee4f" wx:else></view>
+                <view class="collection-quany data-v-8151ee4f">
+                    <view class="data-v-8151ee4f" wx:if="{{l}}">收藏</view>
+                    <view class="data-v-8151ee4f" wx:if="{{m}}">{{n}}</view>
+                    <view class="data-v-8151ee4f" wx:if="{{o}}">{{p}}千 </view>
+                    <view class="data-v-8151ee4f" wx:if="{{q}}">{{r}}万 </view>
+                    <view class="data-v-8151ee4f" wx:if="{{s}}">{{t}}万 </view>
+                </view>
+            </view>
+        </view>
+        <view class="water-price data-v-8151ee4f" wx:if="{{v}}">
+            <label class="water-price__desc data-v-8151ee4f" wx:if="{{w}}">免费</label>
+            <label class="water-price__value data-v-8151ee4f" wx:else>￥{{x}}</label>
+        </view>
+    </view>
+</view>

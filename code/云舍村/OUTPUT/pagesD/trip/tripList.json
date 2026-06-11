@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "全部行程",
+  "navigationBarBackgroundColor": "#ffffff",
+  "navigationBarTextStyle": "black",
+  "enablePullDownRefresh": true
+}

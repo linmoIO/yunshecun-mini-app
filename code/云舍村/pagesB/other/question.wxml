@@ -1,0 +1,16 @@
+<view class="question_ui data-v-af273841">
+    <coustom-head bind:__l="__l" class="data-v-af273841" uI="af273841-0" uP="{{a}}" wx:if="{{a}}"></coustom-head>
+    <view class="tabs-box data-v-af273841" wx:if="{{b}}">
+        <view class="tabs data-v-af273841">
+            <tabs bind:__l="__l" bindclickTab="{{c}}" class="data-v-af273841" uI="af273841-1" uP="{{d}}" wx:if="{{d}}"></tabs>
+        </view>
+    </view>
+    <view class="problems data-v-af273841">
+        <view bindtap="{{item.d}}" class="problem data-v-af273841" wx:for="{{e}}" wx:key="c">
+            <view class="question data-v-af273841">Q：{{item.a}}</view>
+            <view class="answer data-v-af273841">A：{{item.b}}</view>
+        </view>
+    </view>
+</view>
+<kf-dialog bind:__l="__l" class="r data-v-af273841" uI="af273841-2" uP="{{g}}" uR="kf" wx:if="{{g}}"></kf-dialog>
+<float-button-kf bind:__l="__l" class="data-v-af273841" uI="af273841-3"></float-button-kf>

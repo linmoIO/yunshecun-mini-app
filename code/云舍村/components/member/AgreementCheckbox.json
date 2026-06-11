@@ -1,0 +1,6 @@
+{
+    "component":  true,
+    "usingComponents":  {
+                            "st-checkbox":  "../new/StCheckbox"
+                        }
+}

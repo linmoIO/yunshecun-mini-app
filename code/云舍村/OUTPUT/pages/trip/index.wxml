@@ -1,0 +1,323 @@
+<view hidden="{{!B}}">
+    <view wx:if="{{a}}">
+        <view style="height:10px"></view>
+        <view class="{{['header',g&&'headers']}}">
+            <view class="header-img" style="{{'top:'+f}}">
+                <view class="header-flex">
+                    <view bindtap="{{b}}" class="action-item">
+                        <view class="icon iconfont icon-arrow-left-line"></view>
+                    </view>
+                    <view bindtap="{{c}}" class="hader-bu">
+                        <view class="bu-flex">
+                            <view class="bu-icon">
+                                <view class="iconfont icon-travel-confirm-line"></view>
+                            </view>
+                            <view class="bu-title">全部行程</view>
+                        </view>
+                    </view>
+                    <view bindtap="{{e}}" class="hader-bu" wx:if="{{d}}">
+                        <view class="bu-flex">
+                            <view class="bu-icon">
+                                <view class="iconfont icon-a-20_jia" style="color:#000;font-weight:600"></view>
+                            </view>
+                            <view class="bu-title">创建计划</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view style="{{'height:'+h}}"></view>
+        <view wx:if="{{i}}">
+            <view class="no-itinerary">
+                <view class="no-title">找到你想要的旅行</view>
+                <view bindtap="{{k}}" class="no-diy">
+                    <view class="no-icon">
+                        <image class="image-circle" src="{{j}}"></image>
+                    </view>
+                    <view class="no-left">DIY行程</view>
+                </view>
+            </view>
+            <view class="recommend">
+                <view class="rec-titlel">别人怎么玩</view>
+                <scroll-view scrollX class="scroll">
+                    <view class="scroll-flex">
+                        <view bindtap="{{item.m}}" class="scroll-roll" style="height:320px" wx:for="{{l}}" wx:key="l">
+                            <image src="{{item.a}}" style="border-radius:6px;height:320px;width:240px"></image>
+                            <view class="rend">
+                                <view class="trip">
+                                    <view class="collection">
+                                        <view class="iconfont icon-a-20_shoucang_yishoucang" wx:if="{{item.b}}"></view>
+                                        <view class="iconfont icon-a-20_shoucang_weishoucang" wx:else></view>
+                                        <view class="collection-quany">
+                                            <view wx:if="{{item.c}}">收藏</view>
+                                            <view wx:if="{{item.d}}">{{item.e}}</view>
+                                            <view wx:if="{{item.f}}">{{item.g}}千 </view>
+                                            <view wx:if="{{item.h}}">{{item.i}}万 </view>
+                                            <view wx:if="{{item.j}}">{{item.k}}万 </view>
+                                        </view>
+                                    </view>
+                                    <view class="trip-text">参考</view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </scroll-view>
+            </view>
+        </view>
+        <view wx:else>
+            <view class="no-itinerary">
+                <view class="no-title">我的行程</view>
+            </view>
+            <view style="position:relative">
+                <view class="haveRelatice"></view>
+                <swiper bindchange="{{o}}" style="{{'height:'+p}}">
+                    <swiper-item wx:for="{{m}}" wx:key="bb">
+                        <view bindtap="{{item.ba}}" class="have-itinerary" id="{{n}}">
+                            <view class="my-trip">
+                                <image src="{{item.a}}" style="width:100%;height:100%;border-radius:8px 8px 8px 8px"></image>
+                                <view class="out-days">{{item.b}}</view>
+                                <view class="out-bj" style="{{'background:'+item.c}}"></view>
+                                <view class="out-Tips">
+                                    <view class="out-time">
+                                        <text>{{item.d}}</text>
+                                    </view>
+                                    <view class="out-title">
+                                        <text>{{item.e}}</text>
+                                        <view class="marginTop">
+                                            <text class="iconfont icon-a-12_youlajiantou_hui" style="font-size:15px;font-weight:400"></text>
+                                        </view>
+                                    </view>
+                                    <view class="tips-option" style="{{'background-color:'+item.K}}" wx:if="{{item.f}}">
+                                        <view class="tips-flex">
+                                            <view catchtap="{{item.h}}" class="tisp-quan" wx:if="{{item.g}}">
+                                                <view>
+                                                    <view class="iconfont icon-a-20_jiudianxiangqing" style="font-size:20px"></view>
+                                                </view>
+                                                <view class="tisp-title">酒店介绍</view>
+                                            </view>
+                                            <block wx:if="{{item.i}}">
+                                                <view catchtap="{{item.k}}" class="tisp-quan" wx:if="{{item.j}}">
+                                                    <view>
+                                                        <view class="iconfont icon-a-20_lvhangxiangce_hei" style="font-size:20px"></view>
+                                                    </view>
+                                                    <view class="tisp-title">松赞相册</view>
+                                                </view>
+                                                <view catchtap="{{item.m}}" class="tisp-quan" wx:if="{{item.l}}">
+                                                    <view>
+                                                        <view class="iconfont icon-a-20_lvhangxiangce_hei" style="font-size:20px"></view>
+                                                    </view>
+                                                    <view class="tisp-title">问卷反馈</view>
+                                                </view>
+                                            </block>
+                                        </view>
+                                        <view>
+                                            <view wx:if="{{item.n}}">
+                                                <block wx:if="{{item.o}}">
+                                                    <view catchtap="{{item.q}}" class="tisp-bu" wx:if="{{item.p}}"> 出行提示 </view>
+                                                    <view catchtap="{{item.s}}" class="tisp-bu" wx:if="{{item.r}}"> 行程天气 </view>
+                                                </block>
+                                                <view catchtap="{{item.v}}" class="lengthen" wx:if="{{item.t}}"> 酒店介绍 </view>
+                                                <block wx:if="{{item.w}}">
+                                                    <view catchtap="{{item.y}}" class="tisp-bu" wx:if="{{item.x}}"> 填写问卷 </view>
+                                                    <view catchtap="{{item.A}}" class="tisp-bu" wx:if="{{item.z}}"> 松赞相册 </view>
+                                                </block>
+                                            </view>
+                                            <view wx:else>
+                                                <block wx:if="{{item.B}}">
+                                                    <view catchtap="{{item.D}}" class="tisp-bu" wx:if="{{item.C}}"> 出行提示 </view>
+                                                    <view catchtap="{{item.F}}" class="tisp-bu" wx:if="{{item.E}}"> 行程天气 </view>
+                                                </block>
+                                                <view catchtap="{{item.H}}" class="lengthen" wx:if="{{item.G}}"> 酒店介绍 </view>
+                                                <view catchtap="{{item.J}}" class="tisp-bu lengthen" wx:if="{{item.I}}"> 松赞相册 </view>
+                                            </view>
+                                        </view>
+                                    </view>
+                                    <view class="tips-option" style="{{'background-color:'+item.aZ}}" wx:else>
+                                        <view class="tips-flex">
+                                            <view catchtap="{{item.M}}" class="tisp-quan" wx:if="{{item.L}}">
+                                                <view>
+                                                    <view class="iconfont icon-a-20_quanbufuwu_hei" style="font-size:20px"></view>
+                                                </view>
+                                                <view class="tisp-title">更多服务</view>
+                                            </view>
+                                            <block wx:if="{{item.N}}">
+                                                <block wx:if="{{item.O}}">
+                                                    <view catchtap="{{item.Q}}" class="tisp-quan" wx:if="{{item.P}}">
+                                                        <view>
+                                                            <view class="iconfont icon-a-20_jiesonganpai1" style="font-size:20px"></view>
+                                                        </view>
+                                                        <view class="tisp-title">出行提示</view>
+                                                    </view>
+                                                    <block wx:if="{{item.R}}">
+                                                        <block wx:if="{{item.S}}">
+                                                            <view catchtap="{{item.U}}" class="tisp-quan" wx:if="{{item.T}}">
+                                                                <view>
+                                                                    <view class="iconfont icon-a-20_jiesonganpai1" style="font-size:20px"></view>
+                                                                </view>
+                                                                <view class="tisp-title">司机管家</view>
+                                                            </view>
+                                                            <view catchtap="{{item.V}}" class="tisp-quan" wx:else>
+                                                                <view>
+                                                                    <view class="iconfont icon-a-20_jiesonganpai1" style="font-size:20px"></view>
+                                                                </view>
+                                                                <view class="tisp-title">接送安排</view>
+                                                            </view>
+                                                        </block>
+                                                        <view catchtap="{{item.W}}" class="tisp-quan" wx:else>
+                                                            <view>
+                                                                <view class="iconfont icon-a-20_jiesonganpai1" style="font-size:20px"></view>
+                                                            </view>
+                                                            <view class="tisp-title">出行提示</view>
+                                                        </view>
+                                                    </block>
+                                                </block>
+                                                <block wx:else>
+                                                    <view catchtap="{{item.Y}}" class="tisp-quan" wx:if="{{item.X}}">
+                                                        <view>
+                                                            <view class="iconfont icon-a-20_jiesonganpai1" style="font-size:20px"></view>
+                                                        </view>
+                                                        <view class="tisp-title">接送安排</view>
+                                                    </view>
+                                                    <view catchtap="{{item.aa}}" class="tisp-quan" wx:if="{{item.Z}}">
+                                                        <view>
+                                                            <view class="iconfont icon-a-20_jiesonganpai1" style="font-size:20px"></view>
+                                                        </view>
+                                                        <view class="tisp-title">出行提示</view>
+                                                    </view>
+                                                </block>
+                                            </block>
+                                            <block wx:if="{{item.ab}}">
+                                                <view catchtap="{{item.ad}}" class="tisp-quan" wx:if="{{item.ac}}">
+                                                    <view>
+                                                        <view class="iconfont icon-a-20_jiudianxiangqing" style="font-size:20px"></view>
+                                                    </view>
+                                                    <view class="tisp-title">酒店介绍</view>
+                                                </view>
+                                                <view catchtap="{{item.ae}}" class="tisp-quan" wx:else>
+                                                    <view>
+                                                        <view class="iconfont icon-a-20_jiudianxiangqing" style="font-size:20px"></view>
+                                                    </view>
+                                                    <view class="tisp-title">今日行程</view>
+                                                </view>
+                                            </block>
+                                            <block wx:if="{{item.af}}">
+                                                <view catchtap="{{item.ah}}" class="tisp-quan" wx:if="{{item.ag}}">
+                                                    <view>
+                                                        <view class="iconfont icon-a-20_lvhangxiangce_hei" style="font-size:20px"></view>
+                                                    </view>
+                                                    <view class="tisp-title">松赞相册</view>
+                                                </view>
+                                                <view catchtap="{{item.aj}}" class="tisp-quan" wx:if="{{item.ai}}">
+                                                    <view>
+                                                        <view class="iconfont icon-a-20_lvhangxiangce_hei" style="font-size:20px"></view>
+                                                    </view>
+                                                    <view class="tisp-title">问卷反馈</view>
+                                                </view>
+                                            </block>
+                                        </view>
+                                        <view>
+                                            <view wx:if="{{item.ak}}">
+                                                <block wx:if="{{item.al}}">
+                                                    <block wx:if="{{item.am}}">
+                                                        <block wx:if="{{item.an}}">
+                                                            <view catchtap="{{item.ap}}" class="tisp-bu" wx:if="{{item.ao}}"> 司机管家 </view>
+                                                            <view catchtap="{{item.aq}}" class="tisp-bu" wx:else> 接送安排 </view>
+                                                        </block>
+                                                        <view catchtap="{{item.as}}" class="tisp-bu" wx:if="{{item.ar}}"> 行程天气 </view>
+                                                    </block>
+                                                    <block wx:else>
+                                                        <view catchtap="{{item.av}}" class="tisp-bu" wx:if="{{item.at}}"> 出行提示 </view>
+                                                        <view catchtap="{{item.ax}}" class="tisp-bu" wx:if="{{item.aw}}"> 联系顾问 </view>
+                                                    </block>
+                                                </block>
+                                                <block wx:if="{{item.ay}}">
+                                                    <view catchtap="{{item.aA}}" class="tisp-bu" wx:if="{{item.az}}"> 今日行程 </view>
+                                                    <view catchtap="{{item.aB}}" class="tisp-bu" wx:else> 接送安排 </view>
+                                                </block>
+                                                <block wx:if="{{item.aC}}">
+                                                    <view catchtap="{{item.aE}}" class="tisp-bu" wx:if="{{item.aD}}"> 填写问卷 </view>
+                                                    <view catchtap="{{item.aG}}" class="tisp-bu" wx:if="{{item.aF}}"> 松赞相册 </view>
+                                                </block>
+                                            </view>
+                                            <view wx:else>
+                                                <block wx:if="{{item.aH}}">
+                                                    <block wx:if="{{item.aI}}">
+                                                        <block wx:if="{{item.aJ}}">
+                                                            <view catchtap="{{item.aL}}" class="tisp-bu" wx:if="{{item.aK}}"> 司机管家 </view>
+                                                            <view catchtap="{{item.aM}}" class="tisp-bu" wx:else> 接送安排 </view>
+                                                        </block>
+                                                        <view catchtap="{{item.aO}}" class="tisp-bu" wx:if="{{item.aN}}"> 行程天气 </view>
+                                                    </block>
+                                                    <block wx:else>
+                                                        <view catchtap="{{item.aQ}}" class="tisp-bu" wx:if="{{item.aP}}"> 出行提示 </view>
+                                                        <view catchtap="{{item.aS}}" class="tisp-bu" wx:if="{{item.aR}}"> 联系顾问 </view>
+                                                    </block>
+                                                </block>
+                                                <block wx:if="{{item.aT}}">
+                                                    <view catchtap="{{item.aV}}" class="tisp-bu" wx:if="{{item.aU}}"> 今日行程 </view>
+                                                    <view catchtap="{{item.aW}}" class="tisp-bu" wx:else> 接送安排 </view>
+                                                </block>
+                                                <view catchtap="{{item.aY}}" class="lengthen" wx:if="{{item.aX}}"> 松赞相册 </view>
+                                            </view>
+                                        </view>
+                                    </view>
+                                </view>
+                            </view>
+                        </view>
+                    </swiper-item>
+                </swiper>
+            </view>
+            <view class="speed-flex" wx:if="{{q}}">
+                <view class="{{['speed',item.b&&'spend-select']}}" wx:for="{{r}}" wx:key="a"></view>
+            </view>
+            <notice bind:__l="__l" class="r" uI="64fa72d1-0" uP="{{v}}" uR="noticeRef" wx:if="{{s}}"></notice>
+        </view>
+    </view>
+    <view class="no-login-page" wx:else>
+        <image class="loginBg" mode="aspectFill" src="{{w}}"></image>
+        <view class="MaskLayer"></view>
+        <view class="login-text">找到你想要的旅行</view>
+        <view bindtap="{{x}}" class="login-desc"> 什么是松赞式旅行 <view class="desc-ribe"></view>
+            <view class="iconfont icon-a-16_youlajiantou_hei"></view>
+        </view>
+        <view bindtap="{{y}}" class="login-bn">立即登录</view>
+        <view class="login-flex">
+            <view class="login-tips"> 注册松赞会员即送5000积分，<view></view>享受免费接送机预订服务。 </view>
+        </view>
+    </view>
+    <view class="recd">
+        <view class="recd-title" wx:if="{{z}}">松赞推荐</view>
+        <view class="recd-box">
+            <view class="recd-water" wx:for="{{A}}" wx:key="b">
+                <view wx:for="{{item.a}}" wx:for-item="node" wx:key="d">
+                    <water bind:__l="__l" bindimageLoad="{{node.a}}" uI="{{node.b}}" uP="{{node.c}}" wx:if="{{node.c}}"></water>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="water-bm"></view>
+</view>
+<bottom-dialog bind:__l="__l" class="r" uI="64fa72d1-2" uP="{{E}}" uR="serviceTeam" uS="{{['d']}}" wx:if="{{E}}">
+    <view class="serviceTeamList">
+        <view bindtap="{{item.l}}" class="item" wx:for="{{C}}" wx:key="k">
+            <view class="head">
+                <image class="head-img" mode="aspectFill" src="{{item.b}}" wx:if="{{item.a}}"></image>
+                <image class="head-img" src="https://dsplatweb.oss-cn-chengdu.aliyuncs.com/songzan/images/head-def.png" wx:else></image>
+            </view>
+            <view class="info">
+                <view class="info-head">
+                    <view class="left-part">
+                        <view class="career" wx:if="{{item.c}}"> 管家 </view>
+                        <view class="career" wx:elif="{{item.d}}"> 司机 </view>
+                        <view class="career" wx:elif="{{item.e}}">顾问</view>
+                        <view class="name">{{item.f}}<view class="iconfont icon-a-12_youlajiantou_hui" wx:if="{{item.g}}"></view>
+                        </view>
+                    </view>
+                    <view catchtap="{{item.i}}" class="iconfont icon-a-28_dianhua" wx:if="{{item.h}}"></view>
+                </view>
+                <view class="desc">{{item.j}}</view>
+            </view>
+        </view>
+    </view>
+</bottom-dialog>
+<float-button-kf bind:__l="__l" uI="64fa72d1-3"></float-button-kf>

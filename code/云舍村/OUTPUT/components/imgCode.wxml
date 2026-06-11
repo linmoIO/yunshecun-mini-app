@@ -1,0 +1,12 @@
+<view class="data-v-36e5643e">
+    <view bindtap="{{b}}" class="imgVerifyCodeMask data-v-36e5643e" hidden="{{!a}}"></view>
+    <view class="dialog data-v-36e5643e" hidden="{{!i}}">
+        <view class="dialogHead data-v-36e5643e"> 输入图形验证码 <view bindtap="{{c}}" class="icon iconfont icon-shangwuguanbi data-v-36e5643e"></view>
+        </view>
+        <view class="dialogBody grey data-v-36e5643e">
+            <input bindinput="{{e}}" class="imgVerifyCode data-v-36e5643e" placeholder="输入验证码" type="number" value="{{d}}"></input>
+            <image alt="" bindtap="{{g}}" class="imgVerify data-v-36e5643e" id="imgVerify" src="{{f}}"></image>
+            <view bindtap="{{h}}" class="btn data-v-36e5643e">提交</view>
+        </view>
+    </view>
+</view>

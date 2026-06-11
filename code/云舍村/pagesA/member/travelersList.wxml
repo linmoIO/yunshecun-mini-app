@@ -1,0 +1,27 @@
+<scroll-view class="tl-wrap" scroll-y>
+  <view class="tl-tip">出行人信息在预订酒店/旅游时可自动填入，无需重复输入</view>
+  <view class="tl-card" wx:for="{{list}}" wx:key="id">
+    <view class="tl-row"><text class="tl-name">{{item.name}}</text><text class="tl-phone">{{item.phone}}</text></view>
+    <view class="tl-row2" wx:if="{{item.idNumber}}">{{item.idType||'身份证'}} {{item.idNumber}}</view>
+    <view class="tl-row2" wx:if="{{item.birthday}}">出生：{{item.birthday}} · {{item.nationality||'中国'}}</view>
+    <view class="tl-actions">
+      <view bindtap="editTraveler" data-idx="{{index}}" class="tl-btn">编辑</view>
+      <view bindtap="del" data-id="{{item.id}}" class="tl-btn red">删除</view>
+    </view>
+  </view>
+  <view wx:if="{{!loading&&!list.length}}" class="tl-empty">暂无出行人，点击下方添加</view>
+  <view class="tl-form-card" id="travelerForm">
+    <view class="tl-form-title">{{editId?'编辑出行人':'添加出行人'}}</view>
+    <view class="tl-field"><text class="tl-lbl">姓名 *</text><input class="tl-inp" value="{{form.name}}" placeholder="真实姓名" bindinput="onInput" data-key="name"/></view>
+    <view class="tl-field"><text class="tl-lbl">手机号</text><input class="tl-inp" type="number" value="{{form.phone}}" placeholder="手机号" bindinput="onInput" data-key="phone" maxlength="11"/></view>
+    <view class="tl-field"><text class="tl-lbl">证件号码</text><input class="tl-inp" value="{{form.idNumber}}" placeholder="身份证/护照号码" bindinput="onInput" data-key="idNumber"/></view>
+    <view class="tl-field"><text class="tl-lbl">出生日期</text><input class="tl-inp" value="{{form.birthday}}" placeholder="如：1990-01-01" bindinput="onInput" data-key="birthday"/></view>
+    <view class="tl-field"><text class="tl-lbl">国籍</text><input class="tl-inp" value="{{form.nationality}}" placeholder="如：中国" bindinput="onInput" data-key="nationality"/></view>
+    <view class="tl-btns">
+      <view bindtap="cancel" class="tl-cancel">取消</view>
+      <view bindtap="save" class="tl-save {{saving?'dis':''}}">{{saving?'保存中...':'保存'}}</view>
+    </view>
+  </view>
+  <view bindtap="newTraveler" class="tl-add-btn">＋ 添加出行人</view>
+  <view style="height:40rpx"></view>
+</scroll-view>

@@ -1,0 +1,133 @@
+<view class="data-v-795ed0c5" wx:if="{{a}}">
+    <view class="{{['nav-list','data-v-795ed0c5',d&&'center']}}" wx:if="{{b}}">
+        <view bindtap="{{item.g}}" class="nav data-v-795ed0c5" wx:for="{{c}}" wx:key="f">
+            <view class="{{['data-v-795ed0c5',item.c]}}" wx:if="{{item.a}}">
+                <view class="drop data-v-795ed0c5" wx:if="{{item.b}}"></view>
+            </view>
+            <image class="icon-img data-v-795ed0c5" src="{{item.d}}" wx:else></image>
+            <view class="txt data-v-795ed0c5">{{item.e}}</view>
+        </view>
+    </view>
+</view>
+<bottom-dialog bind:__l="__l" class="r data-v-795ed0c5" uI="795ed0c5-0" uP="{{h}}" uR="tipsHelp" uS="{{['d']}}" wx:if="{{h}}">
+    <view class="consultant data-v-795ed0c5">
+        <image class="head-img data-v-795ed0c5" src="{{''}}"></image>
+        <view class="career data-v-795ed0c5">顾问</view>
+        <view class="name data-v-795ed0c5">{{e}}</view>
+        <view class="tips data-v-795ed0c5">行程有任何疑问或需求，都可以向我咨询。</view>
+    </view>
+    <view class="layer-footer data-v-795ed0c5">
+        <view bindtap="{{f}}" class="layer-btn baseBtn data-v-795ed0c5"> 拨打电话 </view>
+    </view>
+</bottom-dialog>
+<bottom-dialog bind:__l="__l" class="r data-v-795ed0c5" uI="795ed0c5-1" uP="{{B}}" uR="tripInfo" uS="{{['d']}}" wx:if="{{B}}">
+    <view class="trip-info-list data-v-795ed0c5">
+        <view class="name data-v-795ed0c5"> 尊敬的{{i}}<block wx:if="{{j}}">先生</block>
+            <block wx:else>女士</block>
+        </view>
+        <view class="trip-info-item data-v-795ed0c5">欢迎来到松赞，以下为临行信息。</view>
+        <block wx:if="{{item.a}}" wx:for="{{k}}" wx:key="d">
+            <view class="trip-info-tl data-v-795ed0c5">{{item.b}}</view>
+            <view class="trip-info-item data-v-795ed0c5">{{item.c}}</view>
+        </block>
+        <block wx:if="{{l}}">
+            <view class="trip-info-tl data-v-795ed0c5">入住酒店的天气预报及海拔</view>
+            <view class="trip-info-item data-v-795ed0c5">
+                <view class="trip-info-item-table data-v-795ed0c5">
+                    <view class="tr data-v-795ed0c5">
+                        <view class="th data-v-795ed0c5">酒店</view>
+                        <view class="th data-v-795ed0c5">天气</view>
+                        <view class="th data-v-795ed0c5">海拔</view>
+                    </view>
+                    <view class="tr data-v-795ed0c5" wx:if="{{item.a}}" wx:for="{{m}}" wx:key="i">
+                        <view class="td data-v-795ed0c5" wx:if="{{item.b}}">{{item.c}}</view>
+                        <view class="td data-v-795ed0c5">
+                            <block wx:if="{{item.d}}">↑{{item.e}} - ↓{{item.f}}°C</block>
+                        </view>
+                        <view class="td data-v-795ed0c5">
+                            <block wx:if="{{item.g}}">{{item.h}}m</block>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </block>
+        <block wx:if="{{n}}">
+            <view class="trip-info-tl data-v-795ed0c5">穿衣&建议</view>
+            <view class="trip-info-item data-v-795ed0c5">{{o}}</view>
+        </block>
+        <block wx:if="{{p}}">
+            <view class="trip-info-tl data-v-795ed0c5">高原反应与健康</view>
+            <view class="trip-info-item data-v-795ed0c5">{{q}}</view>
+        </block>
+        <block wx:if="{{r}}">
+            <view class="trip-info-tl data-v-795ed0c5">文化习惯及禁忌</view>
+            <view class="trip-info-item data-v-795ed0c5">{{s}}</view>
+        </block>
+        <block wx:if="{{t}}">
+            <view class="trip-info-tl data-v-795ed0c5">路况&用车</view>
+            <view class="trip-info-item data-v-795ed0c5">{{v}}</view>
+        </block>
+        <block wx:if="{{w}}">
+            <view class="trip-info-tl data-v-795ed0c5">住宿餐饮注意事项</view>
+            <view class="trip-info-item data-v-795ed0c5">{{x}}</view>
+        </block>
+        <block wx:if="{{y}}">
+            <view class="trip-info-tl data-v-795ed0c5">酒店所在区域最近医院</view>
+            <view class="trip-info-item data-v-795ed0c5">
+                <view class="trip-info-item-table table-big data-v-795ed0c5">
+                    <view class="tr data-v-795ed0c5">
+                        <view class="th data-v-795ed0c5">酒店</view>
+                        <view class="th data-v-795ed0c5">医院</view>
+                    </view>
+                    <view class="tr data-v-795ed0c5" wx:if="{{item.a}}" wx:for="{{z}}" wx:key="d">
+                        <view class="td data-v-795ed0c5">{{item.b}}</view>
+                        <view class="td data-v-795ed0c5">{{item.c}}</view>
+                    </view>
+                </view>
+            </view>
+        </block>
+    </view>
+</bottom-dialog>
+<bottom-dialog bind:__l="__l" class="r data-v-795ed0c5" uI="795ed0c5-2" uP="{{E}}" uR="serviceTeam" uS="{{['d']}}" wx:if="{{E}}">
+    <view class="serviceTeamList data-v-795ed0c5">
+        <view bindtap="{{item.l}}" class="item data-v-795ed0c5" wx:for="{{C}}" wx:key="k">
+            <view class="head data-v-795ed0c5">
+                <image class="head-img data-v-795ed0c5" mode="aspectFill" src="{{item.b}}" wx:if="{{item.a}}"></image>
+                <image class="head-img data-v-795ed0c5" src="https://dsplatweb.oss-cn-chengdu.aliyuncs.com/songzan/images/head-def.png" wx:else></image>
+            </view>
+            <view class="info data-v-795ed0c5">
+                <view class="info-head data-v-795ed0c5">
+                    <view class="left-part data-v-795ed0c5">
+                        <view class="career data-v-795ed0c5" wx:if="{{item.c}}"> 管家 </view>
+                        <view class="career data-v-795ed0c5" wx:elif="{{item.d}}"> 司机 </view>
+                        <view class="career data-v-795ed0c5" wx:elif="{{item.e}}">顾问</view>
+                        <view class="name data-v-795ed0c5">{{item.f}}<view class="iconfont icon-a-12_youlajiantou_hui data-v-795ed0c5" wx:if="{{item.g}}"></view>
+                        </view>
+                    </view>
+                    <view catchtap="{{item.i}}" class="iconfont icon-a-28_dianhua data-v-795ed0c5" wx:if="{{item.h}}"></view>
+                </view>
+                <view class="desc data-v-795ed0c5">{{item.j}}</view>
+            </view>
+        </view>
+    </view>
+</bottom-dialog>
+<bottom-dialog bind:__l="__l" class="r data-v-795ed0c5" uI="795ed0c5-3" uP="{{L}}" uR="timeSelect" uS="{{['d']}}" wx:if="{{L}}">
+    <view class="arriveChoose data-v-795ed0c5">
+        <view class="tips data-v-795ed0c5" wx:if="{{F}}">
+            <view class="icon iconfont icon-a-12_tishi data-v-795ed0c5"></view>房间整晚保留，12:00前到店可能需要等房，如需接机请联系酒店前台 <view bindtap="{{G}}" class="phone data-v-795ed0c5"> 400-0000-830<view class="iconfont icon-a-12_youlajiantou_hei data-v-795ed0c5"></view>
+            </view>
+        </view>
+        <view class="tips data-v-795ed0c5" wx:else>
+            <view class="icon iconfont icon-a-12_tishi data-v-795ed0c5"></view>如需送机请联系酒店前台 <view bindtap="{{H}}" class="phone data-v-795ed0c5"> 400-0000-830<view class="iconfont icon-a-12_youlajiantou_hei data-v-795ed0c5"></view>
+            </view>
+        </view>
+        <view class="picker-view data-v-795ed0c5">
+            <view class="picker-view-bg data-v-795ed0c5"></view>
+            <view class="picker-time data-v-795ed0c5" wx:if="{{I}}">
+                <view class="time data-v-795ed0c5">{{J}}</view>
+                <view class="time-tips data-v-795ed0c5">(如需修改请联系酒店的前厅)</view>
+            </view>
+        </view>
+    </view>
+</bottom-dialog>
+<kf-dialog bind:__l="__l" class="r data-v-795ed0c5" uI="795ed0c5-4" uP="{{N}}" uR="kf" wx:if="{{N}}"></kf-dialog>

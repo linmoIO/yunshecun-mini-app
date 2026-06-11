@@ -1,0 +1,120 @@
+page {
+  background: #f3f3f3;
+}
+
+.page {
+  min-height: 100vh;
+  background: #f3f3f3;
+}
+
+.hero {
+  position: relative;
+  height: 420rpx;
+}
+
+.hero-bg {
+  width: 100%;
+  height: 100%;
+}
+
+.hero-mask {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2));
+}
+
+.top-nav {
+  position: absolute;
+  top: 92rpx;
+  left: 32rpx;
+  right: 32rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.back {
+  width: 56rpx;
+  height: 56rpx;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.84);
+  color: #111;
+  font-size: 56rpx;
+  line-height: 52rpx;
+  text-align: center;
+}
+
+.capsule {
+  width: 172rpx;
+  height: 64rpx;
+  border-radius: 32rpx;
+  background: rgba(255, 255, 255, 0.84);
+}
+
+.hero-title {
+  position: absolute;
+  left: 32rpx;
+  bottom: 106rpx;
+  color: #fff;
+  font-size: 62rpx;
+  font-weight: 600;
+}
+
+.hero-sub {
+  position: absolute;
+  left: 32rpx;
+  bottom: 56rpx;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 36rpx;
+}
+
+.content {
+  padding: 22rpx 24rpx 170rpx;
+}
+
+.section-title {
+  font-size: 56rpx;
+  color: #111;
+  font-weight: 700;
+  margin-bottom: 18rpx;
+}
+
+.tip-card {
+  background: #fff;
+  border-radius: 14rpx;
+  padding: 20rpx;
+  margin-bottom: 16rpx;
+}
+
+.tip-title {
+  color: #1a1a1a;
+  font-size: 44rpx;
+  font-weight: 600;
+}
+
+.tip-desc {
+  margin-top: 10rpx;
+  color: #696969;
+  font-size: 34rpx;
+  line-height: 46rpx;
+}
+
+.bottom-fixed {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #f3f3f3;
+  padding: 18rpx 24rpx 34rpx;
+}
+
+.btn {
+  height: 94rpx;
+  border-radius: 10rpx;
+  background: #111;
+  color: #fff;
+  font-size: 44rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

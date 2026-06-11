@@ -1,0 +1,13 @@
+<view class="search-result data-v-2978d863" style="{{j}}">
+    <scroll-view enablePassive scrollWithAnimation scrollX class="tabs-scroll data-v-2978d863" scrollIntoView="{{b}}" style="{{'position:'+c+';'+'top:'+d}}">
+        <view bindtap="{{item.e}}" class="{{['tab','data-v-2978d863',item.d]}}" id="{{item.c}}" wx:for="{{a}}" wx:key="b">{{item.a}}</view>
+    </scroll-view>
+    <view class="search-result__products data-v-2978d863" wx:if="{{e}}">
+        <product-card-list bind:__l="__l" class="data-v-2978d863" uI="2978d863-0" uP="{{f}}" wx:if="{{f}}"></product-card-list>
+        <image bindtap="{{h}}" class="ad-custom-travel data-v-2978d863" mode="widthFix" src="{{g}}"></image>
+    </view>
+    <view class="empty data-v-2978d863" wx:else>
+        <image class="empty-image data-v-2978d863" src="{{i}}"></image>
+        <text class="empty-title data-v-2978d863">更多产品敬请期待</text>
+    </view>
+</view>

@@ -1,0 +1,51 @@
+.ui_searchInput.data-v-b648dd5b {
+    align-items: center;
+    background: #f8f8f8;
+    border-radius: 32rpx;
+    display: flex;
+    height: 64rpx;
+    width: 100%
+}
+
+.ui_searchInput .icon-a-16_sousuo_hui.data-v-b648dd5b {
+    color: #ccc;
+    margin-left: 24rpx;
+    margin-right: 16rpx
+}
+
+.ui_searchInput .icon-a-16_sousuo_hui.active.data-v-b648dd5b {
+    color: #000
+}
+
+.ui_searchInput wx-input.data-v-b648dd5b {
+    color: #000;
+    flex: 1;
+    font-size: 28rpx
+}
+
+.ui_searchInput .clear.data-v-b648dd5b {
+    align-items: center;
+    background: #ccc;
+    border-radius: 50%;
+    display: flex;
+    height: 32rpx;
+    justify-content: center;
+    margin-left: 24rpx;
+    margin-right: 24rpx;
+    position: relative;
+    width: 32rpx
+}
+
+.ui_searchInput .clear.data-v-b648dd5b:after {
+    bottom: -60rpx;
+    content: "";
+    left: -60rpx;
+    position: absolute;
+    right: -60rpx;
+    top: -60rpx;
+    z-index: 9
+}
+
+.ui_searchInput .clear .iconfont.data-v-b648dd5b {
+    font-size: 24rpx
+}

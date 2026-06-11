@@ -1,0 +1,10 @@
+{
+    "navigationBarTitleText":  "常见问题",
+    "navigationStyle":  "custom",
+    "usingComponents":  {
+                            "tabs":  "../../components/tabs",
+                            "kf-dialog":  "../../components/kfDialog",
+                            "coustom-head":  "../../components/coustomHead",
+                            "float-button-kf":  "/components/new/FloatButtonKf"
+                        }
+}

@@ -1,0 +1,15 @@
+<view class="ui_submitSucceed data-v-5730ea34">
+    <view class="topBox data-v-5730ea34">
+        <view class="tipBox data-v-5730ea34">
+            <view class="icon iconfont icon-a-120_tijiaochenggong data-v-5730ea34"></view>
+            <view class="tips data-v-5730ea34" wx:if="{{a}}">提交成功</view>
+            <view class="subTips data-v-5730ea34" wx:if="{{b}}"> 松赞顾问将在3个工作日内与您联系，届时您将得到具体行程方案及报价。 </view>
+            <view class="tips data-v-5730ea34" wx:if="{{c}}">已完成认证</view>
+        </view>
+        <image class="authBg data-v-5730ea34" mode="widthFix" src="https://dsplatweb.oss-cn-chengdu.aliyuncs.com/songzan/images/authBg.png"></image>
+    </view>
+    <view class="bottomBox data-v-5730ea34">
+        <view bindtap="{{e}}" class="back data-v-5730ea34" wx:if="{{d}}">返回主页</view>
+        <view bindtap="{{g}}" class="back data-v-5730ea34" wx:if="{{f}}">编辑</view>
+    </view>
+</view>

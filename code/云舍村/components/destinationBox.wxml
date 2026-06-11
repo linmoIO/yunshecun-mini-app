@@ -1,0 +1,40 @@
+<view class="ui_destinationBox data-v-1a8e267e">
+    <view class="destination data-v-1a8e267e">
+        <view class="search-top data-v-1a8e267e">
+            <view class="search data-v-1a8e267e">
+                <search-input bind:__l="__l" bindupdateModelValue="{{a}}" class="search-input data-v-1a8e267e" uI="1a8e267e-0" uP="{{b}}" wx:if="{{b}}"></search-input>
+            </view>
+            <view class="search-history data-v-1a8e267e" wx:if="{{c}}">
+                <view class="tl data-v-1a8e267e"> 搜索历史 <view bindtap="{{d}}" class="iconfont icon-a-16_shanchulishijilu data-v-1a8e267e"></view>
+                </view>
+                <collapse bind:__l="__l" class="r data-v-1a8e267e" uI="1a8e267e-1" uP="{{g}}" uR="collapseBox" uS="{{['content']}}" wx:if="{{g}}">
+                    <view class="search-list data-v-1a8e267e" slot="content">
+                        <view bindtap="{{item.c}}" class="search-item data-v-1a8e267e" wx:for="{{e}}" wx:key="b">{{item.a}}</view>
+                    </view>
+                </collapse>
+            </view>
+        </view>
+        <view class="search-list-box data-v-1a8e267e" wx:if="{{h}}">
+            <view bindtap="{{item.e}}" class="search-item data-v-1a8e267e" wx:for="{{i}}" wx:key="d">
+                <view class="left-part data-v-1a8e267e">
+                    <view class="iconfont icon-a-12_dingwei data-v-1a8e267e"></view>
+                    <view class="dictionaryDesc data-v-1a8e267e">
+                        <rich-text class="data-v-1a8e267e" nodes="{{item.a}}"></rich-text>
+                    </view>
+                </view>
+                <view class="right-part data-v-1a8e267e">{{item.b}}-{{item.c}}</view>
+            </view>
+            <view class="result data-v-1a8e267e">
+                <view class="iconfont icon-a-16_sousuo data-v-1a8e267e"></view>搜索“{{j}}”相关的结果 </view>
+        </view>
+        <view class="data-v-1a8e267e" wx:else>
+            <view class="city-list data-v-1a8e267e" wx:for="{{k}}" wx:for-item="destination" wx:key="c">
+                <view class="tl data-v-1a8e267e">{{destination.a}}</view>
+                <view class="citys data-v-1a8e267e">
+                    <view bindtap="{{item.d}}" class="city data-v-1a8e267e" wx:for="{{destination.b}}" wx:key="c">{{item.a}} <image class="popular-icon data-v-1a8e267e" src="https://dsplatweb.oss-cn-chengdu.aliyuncs.com/songzan/images/popular-icon.png" wx:if="{{item.b}}"></image>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

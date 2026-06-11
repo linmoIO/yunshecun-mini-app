@@ -1,0 +1,26 @@
+<view class="paySuccess_ui data-v-f28ce492">
+    <view class="pay-sta data-v-f28ce492">
+        <view class="icon iconfont icon-a-120_tijiaochenggong data-v-f28ce492"></view>
+        <view class="tl data-v-f28ce492">取消原因已提交</view>
+        <view class="progress data-v-f28ce492"></view>
+        <view class="tips data-v-f28ce492"> 感谢您的建议，给您带来不便我们深感抱歉<view class="data-v-f28ce492"></view>请联系客服为您处理取消订单事宜 </view>
+        <image class="bg data-v-f28ce492" mode="widthFix" src="https://dsplatweb.oss-cn-chengdu.aliyuncs.com/songzan/images/authBg.png"></image>
+        <view class="pay-actions data-v-f28ce492">
+            <view class="pay-action--block data-v-f28ce492">
+                <st-button bind:__l="__l" bindclick="{{a}}" class="data-v-f28ce492" uI="f28ce492-0" uP="{{b}}" uS="{{['d']}}" wx:if="{{b}}">联系客服</st-button>
+            </view>
+            <view class="pay-action-row data-v-f28ce492">
+                <view class="pay-second-action data-v-f28ce492">
+                    <st-button bind:__l="__l" bindclick="{{c}}" class="data-v-f28ce492" style="{{'width:'+'100%'+';'+'border:'+'none'+';'+'padding-left:'+'40%'}}" uI="f28ce492-1" uP="{{d}}" uS="{{['d']}}" wx:if="{{d}}">订单详情</st-button>
+                </view>
+                <view class="separate-line data-v-f28ce492"></view>
+                <view class="pay-second-action data-v-f28ce492">
+                    <st-button bind:__l="__l" bindclick="{{e}}" class="data-v-f28ce492" style="{{'width:'+'100%'+';'+'border:'+'none'+';'+'padding-right:'+'40%'}}" uI="f28ce492-2" uP="{{f}}" uS="{{['d']}}" wx:if="{{f}}">返回首页</st-button>
+                </view>
+            </view>
+        </view>
+    </view>
+    <recommend-products bind:__l="__l" class="data-v-f28ce492" uI="f28ce492-3" uP="{{g}}" wx:if="{{g}}"></recommend-products>
+</view>
+<float-button-kf bind:__l="__l" class="data-v-f28ce492" data-c-h="{{!h}}" uI="f28ce492-4"></float-button-kf>
+<kf-dialog bind:__l="__l" bindopenState="{{j}}" class="r data-v-f28ce492" uI="f28ce492-5" uP="{{k}}" uR="kf" wx:if="{{k}}"></kf-dialog>

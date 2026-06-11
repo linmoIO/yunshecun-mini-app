@@ -1,0 +1,20 @@
+<view class="{{['st-carousel','data-v-b4274907',n&&'st-carousel--rounded']}}" style="{{o}}">
+    <swiper circular autoplay="{{d}}" bindchange="{{g}}" class="st-carousel-track data-v-b4274907" current="{{c}}" duration="{{f}}" interval="{{e}}">
+        <swiper-item class="data-v-b4274907" wx:for="{{a}}" wx:key="c">
+            <view bindtap="{{item.b}}" class="st-carousel-item data-v-b4274907">
+                <image class="carousel-image data-v-b4274907" mode="{{b}}" src="{{item.a}}"></image>
+            </view>
+        </swiper-item>
+    </swiper>
+    <view class="st-carousel-arrows data-v-b4274907" wx:if="{{h}}">
+        <view bindtap="{{i}}" class="prev btn data-v-b4274907" hoverClass="none">
+            <view class="iconfont icon-arrow-left-line data-v-b4274907"></view>
+        </view>
+        <view bindtap="{{j}}" class="next btn data-v-b4274907" hoverClass="none">
+            <view class="iconfont icon-a-12_youlajiantou_hui data-v-b4274907"></view>
+        </view>
+    </view>
+    <view class="{{['st-carousel-dots','data-v-b4274907',m]}}" wx:if="{{k}}">
+        <view class="{{['dot','data-v-b4274907',idx.b&&'active']}}" wx:for="{{l}}" wx:for-item="idx" wx:key="a"></view>
+    </view>
+</view>

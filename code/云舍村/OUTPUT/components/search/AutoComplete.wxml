@@ -1,0 +1,8 @@
+<view class="auto-complete data-v-6c526cf7" style="{{b}}">
+    <view class="data-v-6c526cf7" wx:for="{{a}}" wx:key="e">
+        <view bindtap="{{item.d}}" class="option data-v-6c526cf7">
+            <view class="{{['iconfont','option-icon','data-v-6c526cf7',item.b]}}" wx:if="{{item.a}}"></view>
+            <view class="option-content data-v-6c526cf7">{{item.c}}</view>
+        </view>
+    </view>
+</view>

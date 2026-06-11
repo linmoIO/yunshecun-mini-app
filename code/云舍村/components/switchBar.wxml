@@ -1,0 +1,7 @@
+<view class="ui_switchBar data-v-fac072d1" style="{{f}}">
+    <scroll-view enableFlex scrollWithAnimation scrollX class="data-v-fac072d1" scrollIntoView="{{e}}" showScrollbar="{{false}}" style="{{'display:'+'flex'}}">
+        <view bindtap="{{switchItem.e}}" class="{{['switchItem','data-v-fac072d1',switchItem.d&&'active',b&&'more']}}" id="{{switchItem.b}}" style="{{'color:'+c+';'+'font-weight:'+d}}" wx:for="{{a}}" wx:for-item="switchItem" wx:key="c">
+            <view class="switchItemName data-v-fac072d1">{{switchItem.a}}</view>
+        </view>
+    </scroll-view>
+</view>

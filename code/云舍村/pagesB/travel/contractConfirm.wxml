@@ -1,0 +1,11 @@
+<view class="contract-confirm data-v-e6efc577">
+    <image class="illustrations data-v-e6efc577" src="{{a}}"></image>
+    <view class="title data-v-e6efc577">等待签约完成 <block wx:if="{{b}}"> （{{c}}） </block>
+    </view>
+    <view class="message data-v-e6efc577">请耐心等待签约完成<view class="data-v-e6efc577"></view>若3秒后未自动跳转，请手动点击下方按钮跳转</view>
+    <view class="actions data-v-e6efc577">
+        <st-button bind:__l="__l" bindclick="{{d}}" class="data-v-e6efc577" uI="e6efc577-0" uP="{{e}}" uS="{{['d']}}" wx:if="{{e}}">跳转订单详情页</st-button>
+        <safe-area bind:__l="__l" class="data-v-e6efc577" uI="e6efc577-1"></safe-area>
+    </view>
+    <safe-area bind:__l="__l" class="data-v-e6efc577" uI="e6efc577-2" uP="{{f}}" wx:if="{{f}}"></safe-area>
+</view>

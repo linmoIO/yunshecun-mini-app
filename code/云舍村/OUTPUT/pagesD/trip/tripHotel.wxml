@@ -1,0 +1,23 @@
+<view class="ui_tripHotel data-v-47a734be">
+    <coustom-head bind:__l="__l" class="data-v-47a734be" uI="47a734be-0" uP="{{a}}" wx:if="{{a}}"></coustom-head>
+    <view class="hotel-list data-v-47a734be">
+        <view class="hotel-item data-v-47a734be" wx:if="{{item.a}}" wx:for="{{b}}" wx:key="f">
+            <view class="day data-v-47a734be"> DAY{{item.b}}<block wx:if="{{item.c}}"> - DAY{{item.d}}</block>
+            </view>
+            <view bindtap="{{hotel.h}}" class="hotel data-v-47a734be" wx:if="{{hotel.a}}" wx:for="{{item.e}}" wx:for-item="hotel" wx:key="i">
+                <view class="left-part data-v-47a734be">
+                    <image class="img data-v-47a734be" src="{{hotel.b}}"></image>
+                </view>
+                <view class="right-part data-v-47a734be">
+                    <view class="info data-v-47a734be">
+                        <view class="time data-v-47a734be">{{hotel.c}}入住 - {{hotel.d}}退房 </view>
+                        <view class="name data-v-47a734be">{{hotel.e}}</view>
+                        <view class="desc data-v-47a734be">{{hotel.f}}</view>
+                    </view>
+                    <view catchtap="{{hotel.g}}" class="iconfont icon-a-28_dianhua data-v-47a734be"></view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<float-button-kf bind:__l="__l" class="data-v-47a734be" uI="47a734be-1"></float-button-kf>

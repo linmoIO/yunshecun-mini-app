@@ -1,0 +1,45 @@
+<view class="coupons data-v-84dd9d4c" style="{{l}}" wx:if="{{a}}">
+    <view class="coupons__item data-v-84dd9d4c" wx:for="{{b}}" wx:key="p">
+        <view class="coupons__container data-v-84dd9d4c">
+            <view class="coupons__tag-wrapper data-v-84dd9d4c">
+                <label class="coupons__tag coupons__tag--yh data-v-84dd9d4c" wx:if="{{item.a}}">{{item.b}}</label>
+                <label class="coupons__tag coupons__tag--xj data-v-84dd9d4c" wx:if="{{item.c}}">{{item.d}}</label>
+                <label class="coupons__tag coupons__tag--fwq data-v-84dd9d4c" wx:if="{{item.e}}">{{item.f}}</label>
+            </view>
+            <view class="coupons__content data-v-84dd9d4c">
+                <view class="coupons__info data-v-84dd9d4c">
+                    <view class="coupons__title data-v-84dd9d4c">{{item.g}}</view>
+                    <view class="coupons__subtitle data-v-84dd9d4c">{{item.h}}</view>
+                    <view class="coupons__price data-v-84dd9d4c" wx:if="{{item.i}}">{{item.j}}</view>
+                </view>
+                <view class="coupons__action data-v-84dd9d4c">
+                    <st-button bind:__l="__l" bindclick="{{item.m}}" class="data-v-84dd9d4c" uI="{{item.n}}" uP="{{item.o}}" uS="{{['d']}}" wx:if="{{item.o}}">
+                        <block wx:if="{{item.k}}">{{item.l}}</block>
+                        <block wx:else> 不可领取 </block>
+                    </st-button>
+                </view>
+            </view>
+        </view>
+    </view>
+    <bottom-dialog bind:__l="__l" bindopenState="{{g}}" class="data-v-84dd9d4c" uI="84dd9d4c-1" uP="{{h}}" uS="{{['d']}}" wx:if="{{h}}">
+        <view class="select_layer data-v-84dd9d4c" wx:if="{{c}}">
+            <view class="select_box data-v-84dd9d4c">
+                <view class="select_content data-v-84dd9d4c">
+                    <view bindtap="{{item.k}}" class="select_item data-v-84dd9d4c" wx:for="{{d}}" wx:key="j">
+                        <label class="data-v-84dd9d4c" wx:if="{{item.a}}">{{item.b}}</label>
+                        <label class="data-v-84dd9d4c" wx:if="{{item.c}}">{{item.d}}</label>
+                        <label class="data-v-84dd9d4c" wx:if="{{item.e}}">{{item.f}}</label>
+                        <view class="main_right data-v-84dd9d4c" wx:if="{{item.g}}">
+                            <label class="icon-uncheck data-v-84dd9d4c" wx:if="{{item.h}}"></label>
+                            <label class="icon-checked data-v-84dd9d4c" style="color:#a43127" wx:if="{{item.i}}">
+                                <view class="iconfont icongouhao data-v-84dd9d4c"></view>
+                            </label>
+                        </view>
+                    </view>
+                </view>
+                <st-button bind:__l="__l" bindclick="{{e}}" class="data-v-84dd9d4c" uI="84dd9d4c-2,84dd9d4c-1" uP="{{f}}" uS="{{['d']}}" wx:if="{{f}}"> 立即领取 </st-button>
+            </view>
+        </view>
+    </bottom-dialog>
+    <limiting-retry-dialog bind:__l="__l" bindretry="{{i}}" bindupdateShow="{{j}}" class="data-v-84dd9d4c" uI="84dd9d4c-3" uP="{{k}}" wx:if="{{k}}"></limiting-retry-dialog>
+</view>

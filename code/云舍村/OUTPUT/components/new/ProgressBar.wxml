@@ -1,0 +1,13 @@
+<view class="process data-v-22331b5d">
+    <view class="progress-step data-v-22331b5d" wx:for="{{a}}" wx:for-item="step" wx:key="j">
+        <view class="progress-step__head data-v-22331b5d">
+            <view class="progress-step__head__line data-v-22331b5d" style="{{'background-color:'+step.a}}"></view>
+            <view class="progress-step__head__icon data-v-22331b5d" style="{{'background-color:'+step.b}}"></view>
+            <view class="progress-step__head__line data-v-22331b5d" style="{{'background-color:'+step.c}}"></view>
+        </view>
+        <view class="progress-step__main data-v-22331b5d">
+            <view class="progress-step__main__title data-v-22331b5d" style="{{'color:'+step.f}}" wx:if="{{step.d}}">{{step.e}}</view>
+            <view class="progress-step__main__description data-v-22331b5d" style="{{'color:'+step.i}}" wx:if="{{step.g}}">{{step.h}}</view>
+        </view>
+    </view>
+</view>

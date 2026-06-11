@@ -1,0 +1,10 @@
+{
+    "navigationBarTitleText":  "全部服务",
+    "navigationStyle":  "custom",
+    "usingComponents":  {
+                            "bottom-dialog":  "../../components/bottomDialog",
+                            "center-dialog":  "../../components/centerDialog",
+                            "kf-dialog":  "../../components/kfDialog",
+                            "coustom-head":  "../../components/coustomHead"
+                        }
+}

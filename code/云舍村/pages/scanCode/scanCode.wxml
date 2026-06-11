@@ -1,0 +1,82 @@
+<!--pages/scanCode/scanCode.wxml-->
+<navigation-bar title="我的订单" back="{{false}}" color="black" background="#D9CDB3"></navigation-bar>
+<view class="bg-color2">
+  <scroll-view type="custom" scroll-y>
+    <view class="page-content">
+      <view class="page-content-all">
+        <!-- 0-订单不存在，1-核销成功，11-重复核销，2-未到预定时间，3-已过期 -->
+        <view wx:if="{{detail.checkStatus == 0}}" class="page-time">订单不存在</view>
+        <view wx:elif="{{detail.checkStatus == 1}}"  class="page-time">核销成功</view>
+        <view wx:elif="{{detail.checkStatus == 11}}"  class="page-time">重复核销</view>
+        <view wx:elif="{{detail.checkStatus == 2}}"  class="page-time">未到预定时间</view>
+        <view wx:elif="{{detail.checkStatus == 3}}"  class="page-time">已过期</view>
+
+        <view class="page-list">
+          <view class="page-list-title">
+            <view class="page-list-subtitle">订单详情</view>
+            <!-- <view class="page-list-orderstatus">已核销</view> -->
+
+            <view wx:if="{{detail.checkStatus == 0}}" class="page-list-orderstatus">订单不存在</view>
+            <view wx:elif="{{detail.checkStatus == 1}}"  class="page-list-orderstatus">已核销</view>
+            <view wx:elif="{{detail.checkStatus == 11}}"  class="page-list-orderstatus">重复核销</view>
+            <view wx:elif="{{detail.checkStatus == 2}}"  class="page-list-orderstatus">未到预定时间</view>
+            <view wx:elif="{{detail.checkStatus == 3}}"  class="page-list-orderstatus">已过期</view>
+            
+          </view>
+          <view class="page-list-ordertime">
+            <text>订单日期</text>
+            <text>{{detail.orderTime}}</text>
+          </view>
+          <view class="page-list-subtitles">游历票</view>
+          <view class="page-list-ordernum">
+            <text>游历日期</text>
+            <text>{{detail.ticketDate}}</text>
+          </view>
+
+          <view class="page-list-ordernum" wx:for="{{detail.ticketDataList}}" wx:key="index">
+            <view>{{item.name}}</view>
+            <view>x {{item.num}}</view>
+          </view>
+          
+          <view class="page-list-price">
+            <view class="page-list-priceall">
+              <view class="page-list-priceall-text">
+                实付金额：
+              </view>
+              <view class="page-list-priceall-num">
+                ￥ {{detail.payableAmount}}
+              </view>
+            </view>
+            
+          </view>
+        </view>
+        <view class="page-order-detail">
+          <view class="page-order-detail-list" wx:for="{{detail.idCardList}}" wx:key="index">
+            <view wx:if="{{index == 0}}">身份证号：</view>
+            <view wx:else=""></view>
+            <view>{{item}}</view>
+          </view>
+        
+          <view class="page-order-detail-list">
+            <view>联系方式：</view><view>{{detail.phoneNo}}</view>
+          </view>
+          <view class="page-order-detail-list">
+            <view>订单日期：</view><text>{{detail.orderTime}}</text>
+          </view>
+          <view class="page-order-detail-list">
+            <view>订单编号：</view><text>{{detail.orderNo}}</text>
+          </view>
+          <view class="page-order-detail-list">
+            <view>核销时间：</view><view>{{detail.ticketDate}}</view>
+          </view>
+        </view>
+        <navigator wx:if="{{detail.checkStatus == 0}}" url="/pages/scan-code/scan-code" class="return-home" target="self" hover-class="navigator-hover" open-type="reLaunch"> 订单不存在 </navigator>
+        <navigator wx:elif="{{detail.checkStatus == 1}}" url="/pages/scan-code/scan-code" class="return-home" target="self" hover-class="navigator-hover" open-type="reLaunch"> 已核销 </navigator>
+        <navigator wx:elif="{{detail.checkStatus == 11}}" url="/pages/scan-code/scan-code" class="return-home" target="self" hover-class="navigator-hover" open-type="reLaunch"> 重复核销 </navigator>
+        <navigator wx:elif="{{detail.checkStatus == 2}}" url="/pages/scan-code/scan-code" class="return-home" target="self" hover-class="navigator-hover" open-type="reLaunch"> 未到预定时间 </navigator>
+        <navigator wx:elif="{{detail.checkStatus == 3}}" url="/pages/scan-code/scan-code" class="return-home" target="self" hover-class="navigator-hover" open-type="reLaunch"> 已过期 </navigator>
+        
+      </view>
+    </view>
+  </scroll-view>
+</view>

@@ -1,0 +1,36 @@
+<view class="page data-v-7406a8a5">
+    <view class="header-title data-v-7406a8a5" wx:if="{{a}}"> 当前订单规格：{{b}} 成人 <block wx:if="{{c}}">{{d}} 大童 </block>
+        <block wx:if="{{e}}">{{f}} {{g}}</block>
+        <block wx:if="{{h}}">{{i}} 幼童 </block>
+    </view>
+    <view class="header-desc data-v-7406a8a5">请确认所填写信息与出行人所持证件信息一致，大于2周岁的儿童请使用身份证或户口本，不可使用出生证明。因信息不正确造成的额外损失，我司不承担相应责任。 如需修改出行人数、分房意向，或有人无法出行，请联系顾问。</view>
+    <view bindtap="{{j}}" class="contact-btn contact-btn__add data-v-7406a8a5">
+        <view class="iconfont icon-a-20_guanbi data-v-7406a8a5"></view> 新增 </view>
+    <view bindtap="{{item.l}}" class="contact-btn contact-item data-v-7406a8a5" wx:for="{{k}}" wx:key="k">
+        <view class="contact-item-content data-v-7406a8a5">
+            <view catchtap="{{item.a}}" class="iconfont icon-a-16_bianji contact-item__icon data-v-7406a8a5"></view>
+            <view class="data-v-7406a8a5">
+                <view class="contact-item__title data-v-7406a8a5">
+                    <text class="data-v-7406a8a5">{{item.b}}</text>
+                    <text class="contact-item__title-tag data-v-7406a8a5" wx:if="{{item.c}}">{{item.d}}</text>
+                </view>
+                <view class="contact-item__desc data-v-7406a8a5">{{item.e}} {{item.f}}</view>
+            </view>
+        </view>
+        <view class="contact-item-checkbox data-v-7406a8a5">
+            <st-checkbox bind:__l="__l" class="data-v-7406a8a5" uI="{{item.g}}" uP="{{item.h}}" wx:if="{{l}}"></st-checkbox>
+            <st-radio bind:__l="__l" class="data-v-7406a8a5" uI="{{item.i}}" uP="{{item.j||''}}" wx:else></st-radio>
+        </view>
+    </view>
+    <safe-area bind:__l="__l" class="data-v-7406a8a5" uI="7406a8a5-2" uP="{{m}}" wx:if="{{m}}"></safe-area>
+    <st-dialog bind:__l="__l" bindcancel="{{n}}" bindconfirm="{{o}}" bindupdateShow="{{p}}" class="data-v-7406a8a5" uI="7406a8a5-3" uP="{{q}}" wx:if="{{q}}"></st-dialog>
+    <fixed-bottom-view bind:__l="__l" class="data-v-7406a8a5" uI="7406a8a5-4" uP="{{B}}" uS="{{['d']}}" wx:if="{{B}}">
+        <st-button bind:__l="__l" bindclick="{{z}}" class="data-v-7406a8a5" uI="7406a8a5-5,7406a8a5-4" uP="{{A}}" uS="{{['d']}}" wx:if="{{A}}">
+            <block wx:if="{{r}}"> 还需选 {{s}} <block wx:if="{{t}}">{{v}} {{w}} {{x}}</block>
+                <block wx:else>{{y}}</block>
+            </block>
+            <block wx:else>提交</block>
+        </st-button>
+    </fixed-bottom-view>
+</view>
+<float-button-kf bind:__l="__l" class="data-v-7406a8a5" uI="7406a8a5-6"></float-button-kf>

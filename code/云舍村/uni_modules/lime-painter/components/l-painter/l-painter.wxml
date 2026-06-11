@@ -1,0 +1,9 @@
+<view class="lime-painter" ref="limepainter">
+    <view style="{{j}}" wx:if="{{a}}">
+        <canvas class="lime-painter__canvas" id="{{c}}" style="{{d}}" type="2d" wx:if="{{b}}"></canvas>
+        <block wx:else>
+            <canvas canvasId="{{e}}" class="lime-painter__canvas" height="{{i}}" id="{{g}}" style="{{f}}" width="{{h}}" wx:if="{{r0}}"></canvas>
+        </block>
+    </view>
+    <slot></slot>
+</view>

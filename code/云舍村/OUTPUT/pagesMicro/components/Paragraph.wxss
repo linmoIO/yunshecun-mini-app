@@ -1,0 +1,9 @@
+.paragraph.data-v-772662fd {
+    color: #333;
+    font-size: 28rpx;
+    line-height: 1.6
+}
+
+.paragraph__text.data-v-772662fd {
+    white-space: pre-wrap
+}

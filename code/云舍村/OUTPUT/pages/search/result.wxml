@@ -1,0 +1,15 @@
+<view class="search data-v-94b5ea67" style="{{'background-color:'+l}}">
+    <custom-navigator bind:__l="__l" class="data-v-94b5ea67" uI="94b5ea67-0" uP="{{e}}" uS="{{['d']}}" wx:if="{{e}}">
+        <view class="navbar-header data-v-94b5ea67" style="{{'height:'+d}}">
+            <search-bar bind:__l="__l" bindconfirm="{{b}}" bindinput="{{a}}" class="data-v-94b5ea67" uI="94b5ea67-1,94b5ea67-0" uP="{{c}}" wx:if="{{c}}"></search-bar>
+        </view>
+    </custom-navigator>
+    <view class="loading data-v-94b5ea67" style="{{g}}">
+        <spin bind:__l="__l" class="data-v-94b5ea67" uI="94b5ea67-2" uP="{{f}}" wx:if="{{f}}"></spin>
+    </view>
+    <view class="data-v-94b5ea67" style="{{j}}">
+        <auto-complete bind:__l="__l" class="data-v-94b5ea67" uI="94b5ea67-3" uP="{{h}}" wx:if="{{h}}"></auto-complete>
+        <search-result bind:__l="__l" class="data-v-94b5ea67" uI="94b5ea67-4" uP="{{i}}" wx:if="{{i}}"></search-result>
+    </view>
+    <safe-area bind:__l="__l" class="data-v-94b5ea67" uI="94b5ea67-5" uP="{{k}}" wx:if="{{k}}"></safe-area>
+</view>

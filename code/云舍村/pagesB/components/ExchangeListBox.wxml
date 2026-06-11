@@ -1,0 +1,16 @@
+<view class="exchange-list data-v-cbb87eff">
+    <view bindtap="{{item.k}}" class="item data-v-cbb87eff" wx:for="{{a}}" wx:key="j">
+        <view class="img-box data-v-cbb87eff">
+            <view class="lab data-v-cbb87eff" wx:if="{{item.a}}"> 套餐{{item.b}}</view>
+            <view class="lab data-v-cbb87eff" wx:else>路线{{item.c}}</view>
+            <image class="img data-v-cbb87eff" mode="aspectFill" src="{{item.e}}" wx:if="{{item.d}}"></image>
+        </view>
+        <view class="info data-v-cbb87eff">
+            <view class="name data-v-cbb87eff">{{item.f}}</view>
+            <view class="product-price data-v-cbb87eff">
+                <view class="number data-v-cbb87eff">¥{{item.g}}</view>
+                <view class="unit data-v-cbb87eff" wx:if="{{item.h}}"> /{{item.i}}起 </view>
+            </view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,76 @@
+<!-- pages/toBePaid/toBePaid.wxml -->
+<navigation-bar title="我的订单" back="{{true}}" color="black" background="#D9CDB3"></navigation-bar>
+<view class="bg-color1">
+  <scroll-view type="list" scroll-y>
+    <view class="page-content">
+      <block wx:if="{{detail.orderStatus == 0}}">
+        <view class="page-time0">等待您支付 {{insertTime[0]}}</view>
+        <view class="page-intro">
+          <view>您已提交订单，但尚未付款</view>
+          <view>请尽快支付，超时订单将会被关闭</view>
+        </view>
+      </block>
+      <block wx:elif="{{detail.orderStatus == 1}}">
+        <view class="page-time10">您的订单已支付</view>
+        <view class="page-intro">
+          <view>您的订单已支付，祝您玩的开心</view>
+        </view>
+        <image class="page-rqcode" src="{{detail.qrCodeUrl}}" mode="" />
+      </block>
+      <block wx:elif="{{detail.orderStatus == 10}}">
+        <view class="page-time10">您的订单已取消</view>
+        <view class="page-intro">
+          <view>您的订单已取消，期待下次与您相遇</view>
+        </view>
+      </block>
+      <view class="page-order">
+        <view class="page-order-title">游历票</view>
+        <view class="page-order-text">
+          <view>游历日期</view>
+          <view>{{detail.ticketDate}}</view>
+        </view>
+        <view class="page-order-text" wx:for="{{detail.ticketDataList}}" wx:key="index">
+          <view>{{item.name}}</view>
+          <view>x {{item.num}}</view>
+        </view>
+        <view class="page-order-price">
+          <view>实付金额：</view>
+          <view>￥ {{detail.payableAmount}}</view>
+        </view>
+        <view class="page-order-detail">
+          <view class="page-order-detail-list">
+            <view>联系方式：</view>
+            <view>{{detail.phoneNo}}</view>
+          </view>
+          <view class="page-order-detail-list">
+            <view>订单日期：</view>
+            <view>{{detail.orderTime}}</view>
+          </view>
+          <view class="page-order-detail-list">
+            <view>订单编号：</view>
+            <view>{{detail.orderNo}}</view>
+          </view>
+          <view class="page-order-detail-list">
+            <view>合计金额：</view>
+            <view>￥ {{detail.orderAmount}}</view>
+          </view>
+          <view class="page-order-detail-list">
+            <view>实付金额：</view>
+            <view>￥ {{detail.payAmount != null ? detail.payAmount : 0}}</view>
+          </view>
+          <view class="page-order-detail-list" wx:for="{{detail.idCardList}}" wx:key="index">
+            <view wx:if="{{index == 0}}">身份证号：</view>
+            <view wx:else=""></view>
+            <view>{{item}}</view>
+          </view>
+        </view>
+      </view>
+      <block wx:if="{{detail.orderStatus == 0}}">
+        <view class="now-pay" bindtap="toPay">继续支付</view>
+      </block>
+      <navigator url="/pages/home/home" class="old-pay" target="self" hover-class="navigator-hover" open-type="reLaunch">
+        返回首页
+      </navigator>
+    </view>
+  </scroll-view>
+</view>

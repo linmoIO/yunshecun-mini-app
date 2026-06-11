@@ -1,0 +1,8 @@
+{
+    "navigationBarTitleText":  "行程酒店",
+    "navigationStyle":  "custom",
+    "usingComponents":  {
+                            "coustom-head":  "../../components/coustomHead",
+                            "float-button-kf":  "/components/new/FloatButtonKf"
+                        }
+}

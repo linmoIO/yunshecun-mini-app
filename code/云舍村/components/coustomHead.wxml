@@ -1,0 +1,10 @@
+<view class="{{['ui_coustomHead','data-v-491f35ff',k]}}" style="{{'color:'+g+';'+'background:'+h+';'+'position:'+i+';'+'backdrop-filter:'+j}}">
+    <view class="topBox data-v-491f35ff" style="{{'height:'+a}}"></view>
+    <view class="innerBox data-v-491f35ff">
+        <view bindtap="{{c}}" class="icon iconfont icon-fanhuishouye data-v-491f35ff" wx:if="{{b}}"></view>
+        <view bindtap="{{d}}" class="icon iconfont icon-a-20_fanhuianniu data-v-491f35ff" wx:else></view>
+        <view class="title data-v-491f35ff" wx:if="{{e}}">{{f}}</view>
+        <slot name="title"></slot>
+    </view>
+</view>
+<view class="data-v-491f35ff" style="{{'height:'+m}}" wx:if="{{l}}"></view>

@@ -1,0 +1,160 @@
+/* pages/scanCode/scanCode.wxss */
+page{
+  height: 100vh;
+  padding-top: 0!important;
+}
+.bg-color2{
+  background: #7D7D7D;
+  width: 100vw;
+  height: 100vh;
+  padding-bottom: 0;
+}
+scroll-view{
+}
+.page-content{
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  width: 100vw;
+  height: 100vh;
+}
+.page-content-all{
+  width: 100%;
+  border-radius: 60rpx 60rpx 0 0;
+  background: #F0ECDF;
+  padding: 40rpx 40rpx 100rpx;
+}
+.page-time{
+  color: #000;
+  font-size: 42rpx;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 40rpx;
+}
+.page-intro{
+  color: #666;
+  text-align: center;
+}
+.page-rqcode{
+  display: block;
+  width: 200rpx;
+  height: 200rpx;
+  margin: 40rpx auto;
+}
+.page-list{
+  border: 1px #b09d73 solid;
+  padding: 20px;
+  border-radius: 20rpx;
+  margin-bottom: 20rpx;
+}
+.page-list-title{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.page-list-subtitles,
+.page-list-subtitle{
+  font-size: 32rpx;
+  color: #000;
+  font-weight: bold;
+  text-align: left;
+}
+
+.page-list-orderstatus{
+  color: #666;
+}
+.page-list-ordertime{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #666;
+  margin-bottom: 20rpx;
+  overflow: hidden;
+}
+.page-list-ordernum{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #666;
+}
+.page-list-price{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px #d3ccbd solid;
+  margin-top: 40rpx;
+  padding-top: 40rpx;
+  color: #666;
+}
+.page-list-priceall{
+  display: flex;
+  align-items: center;
+}
+.page-list-priceall-num{
+  font-size: 36rpx;
+  color: #666;
+}
+.page-pay-name{
+  font-size: 36rpx;
+  text-align: center;
+  font-weight: bold;
+  color: #000;
+  padding: 70rpx 0;
+}
+.page-pay-list{
+  margin-bottom: 420rpx;
+}
+.page-pay-list-type{
+  color: #5b5b5a;
+}
+.page-pay-list-wechat{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px #dfd5bf solid;
+  padding: 20rpx 25rpx;
+  border-radius: 10rpx;
+  margin-top: 20rpx;
+}
+.page-pay-list-wechat-icon {
+  color: #5b5b5a;
+  display: flex;
+  align-items: center;
+}
+.page-pay-list-wechat-icon image{
+  display: block;
+  width: 61rpx;
+  height: 50rpx;
+  margin-right: 20rpx;
+}
+.return-home{
+  background: #E9E3D2;
+  display: block;
+  border: 1px #A8A59D solid;
+  padding: 30rpx 0;
+  font-size: 32rpx;
+  color: #665952;
+  border-radius: 10rpx;
+  text-align: center;
+}
+.page-order-detail-list{
+  color: #666;
+  line-height: 1.8;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.page-order-price{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px #d3ccbd solid;
+  border-bottom: 1px #d3ccbd solid;
+  padding: 40rpx 0;
+  margin: 40rpx 0;
+  color: #666;
+}
+.page-order-detail{
+  margin-top: 40rpx;
+  margin-bottom: 40rpx;
+}

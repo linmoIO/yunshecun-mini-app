@@ -1,0 +1,6 @@
+<view class="st-image data-v-69d0f93e" style="{{i}}" wx:if="{{a}}">
+    <image showMenuByLongpress binderror="{{f}}" bindload="{{e}}" class="st-image__image data-v-69d0f93e" mode="{{c}}" src="{{b}}" style="{{'opacity:'+d}}"></image>
+    <view class="st-image__hot-area data-v-69d0f93e" wx:if="{{g}}">
+        <view bindtap="{{item.f}}" class="st-image__hot-area-item data-v-69d0f93e" style="{{'left:'+item.b+';'+'top:'+item.c+';'+'width:'+item.d+';'+'height:'+item.e}}" wx:for="{{h}}" wx:key="a"></view>
+    </view>
+</view>

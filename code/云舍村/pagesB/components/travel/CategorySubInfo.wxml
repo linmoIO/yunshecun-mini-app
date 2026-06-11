@@ -1,0 +1,14 @@
+<view bindtap="{{b}}" class="info click_auto_control data-v-8ad38c1e" data-button-name="类型说明" data-qt-auto-clk="true" style="{{a}}">
+    <label class="data-v-8ad38c1e">类型说明</label>
+    <view class="iconfont icon-a-12_youlajiantou_hui icon data-v-8ad38c1e"></view>
+</view>
+<bottom-dialog bind:__l="__l" class="r data-v-8ad38c1e" uI="8ad38c1e-0" uP="{{e}}" uR="categorySubInfoLayer" uS="{{['d']}}" wx:if="{{e}}">
+    <view class="category-sub-info-layer data-v-8ad38c1e">
+        <view class="category-sub-infos data-v-8ad38c1e">
+            <view class="item data-v-8ad38c1e" wx:for="{{c}}" wx:key="c">
+                <view class="item-title data-v-8ad38c1e">{{item.a}}</view>
+                <view class="item-value data-v-8ad38c1e">{{item.b}}</view>
+            </view>
+        </view>
+    </view>
+</bottom-dialog>

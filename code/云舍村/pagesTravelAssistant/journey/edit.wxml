@@ -1,0 +1,169 @@
+<view class="page">
+  <view class="hero">
+    <image class="hero-bg" mode="aspectFill" src="{{headerImage}}"></image>
+    <view class="hero-mask"></view>
+    <view class="hero-nav">
+      <view class="back-btn" bindtap="onBack">‹</view>
+      <view class="capsule"></view>
+    </view>
+    <view class="hero-content">
+      <view class="hero-title">{{title}}</view>
+      <view class="hero-subtitle">{{subtitle}}</view>
+    </view>
+  </view>
+
+  <view class="section form-section">
+    <view class="form-row">
+      <view class="label">姓名</view>
+      <input class="input" placeholder="请输入您的姓名" value="{{name}}" bindinput="onNameInput" />
+    </view>
+    <view class="form-row">
+      <view class="label">手机号</view>
+      <input class="input" type="number" maxlength="11" placeholder="请输入手机号" value="{{phone}}" bindinput="onPhoneInput" />
+    </view>
+    <view class="form-row">
+      <view class="label">出行时间</view>
+      <view class="date-wrap">
+        <picker mode="date" value="{{startDate}}" start="{{minDate}}" bindchange="onStartDateChange">
+          <text>{{startDate}}</text>
+        </picker>
+        <text class="split">-</text>
+        <picker mode="date" value="{{endDate}}" start="{{startDate}}" bindchange="onEndDateChange">
+          <text>{{endDate}}</text>
+        </picker>
+      </view>
+    </view>
+  </view>
+
+  <view class="tip">以下为选填信息，填写有助于顾问更快了解您的需求。</view>
+
+  <view class="section">
+    <view class="section-title">心仪目的地</view>
+    <block wx:for="{{routeGroups}}" wx:key="title" wx:for-index="groupIndex">
+      <view class="group-title">{{item.title}}</view>
+      <view class="tag-grid">
+        <view
+          wx:for="{{item.options}}"
+          wx:key="name"
+          wx:for-index="optionIndex"
+          class="tag-item {{item.selected ? 'active' : ''}}"
+          data-group-index="{{groupIndex}}"
+          data-option-index="{{optionIndex}}"
+          bindtap="onToggleDestination"
+        >
+          {{item.name}}
+        </view>
+      </view>
+    </block>
+  </view>
+
+  <view class="section">
+    <view class="section-title">行程偏好</view>
+    <view class="tag-grid">
+      <view
+        wx:for="{{preferences}}"
+        wx:key="name"
+        class="tag-item {{item.selected ? 'active' : ''}}"
+        data-index="{{index}}"
+        bindtap="onTogglePreference"
+      >
+        {{item.name}}
+      </view>
+    </view>
+    <view class="group-title more-title">更多需求</view>
+    <textarea
+      class="remark"
+      maxlength="400"
+      value="{{remark}}"
+      bindinput="onRemarkInput"
+      placeholder="请输入其他行程需求"
+    ></textarea>
+  </view>
+
+  <view class="section">
+    <view class="section-title">出行人数</view>
+    <view class="people-row">
+      <view class="person-name">成人</view>
+      <view class="person-tip">18岁及以上</view>
+      <view class="counter">
+        <view class="op" data-field="adult" data-delta="-1" bindtap="onChangeCount">−</view>
+        <view class="num">{{people.adult}}</view>
+        <view class="op active" data-field="adult" data-delta="1" bindtap="onChangeCount">+</view>
+      </view>
+    </view>
+    <view class="people-row">
+      <view class="person-name">大童</view>
+      <view class="person-tip">12岁（含）-18岁</view>
+      <view class="counter">
+        <view class="op" data-field="bigChild" data-delta="-1" bindtap="onChangeCount">−</view>
+        <view class="num">{{people.bigChild}}</view>
+        <view class="op active" data-field="bigChild" data-delta="1" bindtap="onChangeCount">+</view>
+      </view>
+    </view>
+    <view class="people-row">
+      <view class="person-name">中童</view>
+      <view class="person-tip">6岁（含）-12岁</view>
+      <view class="counter">
+        <view class="op" data-field="midChild" data-delta="-1" bindtap="onChangeCount">−</view>
+        <view class="num">{{people.midChild}}</view>
+        <view class="op active" data-field="midChild" data-delta="1" bindtap="onChangeCount">+</view>
+      </view>
+    </view>
+    <view class="people-row">
+      <view class="person-name">幼童</view>
+      <view class="person-tip">未满6岁</view>
+      <view class="counter">
+        <view class="op" data-field="baby" data-delta="-1" bindtap="onChangeCount">−</view>
+        <view class="num">{{people.baby}}</view>
+        <view class="op active" data-field="baby" data-delta="1" bindtap="onChangeCount">+</view>
+      </view>
+    </view>
+    <view class="people-row">
+      <view class="person-name">含老人</view>
+      <view class="person-tip">60岁及以上</view>
+      <view class="counter">
+        <view class="op" data-field="senior" data-delta="-1" bindtap="onChangeCount">−</view>
+        <view class="num">{{people.senior}}</view>
+        <view class="op active" data-field="senior" data-delta="1" bindtap="onChangeCount">+</view>
+      </view>
+    </view>
+    <view class="people-row">
+      <view class="person-name">含港澳台人士</view>
+      <view class="person-tip"></view>
+      <view class="counter">
+        <view class="op" data-field="hkmo" data-delta="-1" bindtap="onChangeCount">−</view>
+        <view class="num">{{people.hkmo}}</view>
+        <view class="op active" data-field="hkmo" data-delta="1" bindtap="onChangeCount">+</view>
+      </view>
+    </view>
+    <view class="people-row no-border">
+      <view class="person-name">含外籍人士</view>
+      <view class="person-tip"></view>
+      <view class="counter">
+        <view class="op" data-field="foreigner" data-delta="-1" bindtap="onChangeCount">−</view>
+        <view class="num">{{people.foreigner}}</view>
+        <view class="op active" data-field="foreigner" data-delta="1" bindtap="onChangeCount">+</view>
+      </view>
+    </view>
+
+    <picker mode="selector" range="{{cityOptions}}" value="{{departureCityIndex}}" bindchange="onDepartureChange">
+      <view class="city-row">
+        <view class="city-label">出发地</view>
+        <view class="city-value">{{cityOptions[departureCityIndex]}}</view>
+      </view>
+    </picker>
+    <picker mode="selector" range="{{cityOptions}}" value="{{returnCityIndex}}" bindchange="onReturnChange">
+      <view class="city-row">
+        <view class="city-label">返程地</view>
+        <view class="city-value">{{cityOptions[returnCityIndex]}}</view>
+      </view>
+    </picker>
+  </view>
+
+  <view class="bottom-space"></view>
+
+  <view class="bottom-bar">
+    <view class="btn ghost" bindtap="onQuickConsult">一键咨询</view>
+    <view class="btn primary" bindtap="onSubmitDemand">提交需求</view>
+  </view>
+</view>

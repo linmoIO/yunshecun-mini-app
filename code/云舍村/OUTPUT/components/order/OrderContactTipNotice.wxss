@@ -1,0 +1,17 @@
+.contact-tip-notice.data-v-8c1159a5 {
+    align-items: center;
+    background-color: rgba(219,137,0,.12);
+    color: #db8900;
+    display: flex;
+    font-size: 28rpx;
+    height: 84rpx;
+    line-height: 36rpx;
+    padding: 0 32rpx
+}
+
+.contact-tip-notice .link.data-v-8c1159a5 {
+    font-weight: 700;
+    height: 84rpx;
+    line-height: 84rpx;
+    margin-left: 1em
+}

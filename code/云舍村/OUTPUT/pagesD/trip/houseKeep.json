@@ -1,0 +1,9 @@
+{
+    "navigationBarTitleText":  "管家简历",
+    "navigationStyle":  "custom",
+    "usingComponents":  {
+                            "coustom-head":  "../../components/coustomHead",
+                            "swiper-box":  "../../components/swiperBox",
+                            "more-text":  "../../components/moreText"
+                        }
+}

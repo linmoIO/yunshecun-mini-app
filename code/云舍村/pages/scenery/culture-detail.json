@@ -1,0 +1,8 @@
+{
+    "navigationStyle":  "custom",
+    "navigationBarTitleText":  "什么是云舍村",
+    "usingComponents":  {
+                            "coustom-head":  "../../components/coustomHead",
+                            "float-button-kf":  "/components/new/FloatButtonKf"
+                        }
+}

@@ -1,0 +1,12 @@
+{
+    "navigationBarTitleText":  "订单详情",
+    "navigationStyle":  "custom",
+    "usingComponents":  {
+                            "mp-html":  "../../uni_modules/mp-html/components/mp-html/mp-html",
+                            "bottom-dialog":  "../../components/bottomDialog",
+                            "coustom-head":  "../../components/coustomHead",
+                            "kf-dialog":  "../../components/kfDialog",
+                            "link-item":  "../../components/linkItem",
+                            "order-cancel-dialog":  "../../components/order/OrderCancelDialog"
+                        }
+}

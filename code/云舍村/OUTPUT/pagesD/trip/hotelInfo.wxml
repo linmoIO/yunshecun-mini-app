@@ -1,0 +1,46 @@
+<view class="ui_hotelInfo data-v-4599335a">
+    <coustom-head bind:__l="__l" class="data-v-4599335a" uI="4599335a-0" uP="{{a}}" wx:if="{{a}}"></coustom-head>
+    <view class="header data-v-4599335a">
+        <image alt="" class="img data-v-4599335a" src="{{b}}"></image>
+        <view class="welcome data-v-4599335a">欢迎来到</view>
+        <view class="name data-v-4599335a">{{c}}</view>
+    </view>
+    <view class="nav-warp data-v-4599335a" wx:if="{{d}}">
+        <trip-nav bind:__l="__l" class="data-v-4599335a" uI="4599335a-1" uP="{{e}}" wx:if="{{e}}"></trip-nav>
+    </view>
+    <view class="hotel-info data-v-4599335a">
+        <view class="name data-v-4599335a">{{f}}</view>
+        <view class="hotel-info-list data-v-4599335a">
+            <view class="hotel-info-item data-v-4599335a">
+                <view class="label data-v-4599335a">入住房型</view>
+                <view class="val data-v-4599335a">{{g}}</view>
+            </view>
+            <view class="hotel-info-item inline data-v-4599335a">
+                <view class="label data-v-4599335a">入住时间</view>
+                <view class="val data-v-4599335a">{{h}} {{i}}</view>
+            </view>
+            <view class="hotel-info-item inline data-v-4599335a">
+                <view class="label data-v-4599335a">退房时间</view>
+                <view class="val data-v-4599335a">{{j}} 12:00</view>
+            </view>
+        </view>
+        <view class="moreText data-v-4599335a" wx:if="{{k}}">
+            <more-text bind:__l="__l" class="data-v-4599335a" uI="4599335a-2" uP="{{l}}" wx:if="{{l}}"></more-text>
+        </view>
+        <view class="hotel-icon-list data-v-4599335a" wx:for="{{m}}" wx:for-item="picType" wx:key="f">
+            <view class="title data-v-4599335a">{{picType.a}}</view>
+            <view class="icon-list data-v-4599335a" style="{{'height:'+picType.e}}">
+                <swiper-box bind:__l="__l" class="data-v-4599335a" uI="{{picType.c}}" uP="{{picType.d}}" uS="{{['item']}}" wx:if="{{picType.d}}">
+                    <view slot="{{v1.c}}" wx:for="{{picType.b}}" wx:for-item="v1" wx:key="b">
+                        <view class="icons data-v-4599335a">
+                            <view class="icon data-v-4599335a" wx:for="{{v1.a}}" wx:for-item="icon" wx:key="c">
+                                <image class="img data-v-4599335a" src="{{icon.a}}"></image>
+                                <view class="name data-v-4599335a">{{icon.b}}</view>
+                            </view>
+                        </view>
+                    </view>
+                </swiper-box>
+            </view>
+        </view>
+    </view>
+</view>

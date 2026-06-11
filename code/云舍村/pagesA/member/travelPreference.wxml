@@ -1,0 +1,38 @@
+<scroll-view class="tp-wrap" scroll-y>
+  <view wx:if="{{loading}}" class="tp-loading">加载中...</view>
+  <block wx:else>
+    <!-- 历史数据分析 -->
+    <view class="tp-section" wx:if="{{orderCount > 0}}">
+      <view class="tp-section-title">根据你的 {{orderCount}} 次出行记录分析</view>
+      <view class="tp-tags" wx:if="{{topDest.length}}">
+        <text class="tp-tag-label">偏好目的地：</text>
+        <view class="tp-tag" wx:for="{{topDest}}" wx:key="index">{{item}}</view>
+      </view>
+      <view class="tp-tags" wx:if="{{topCat.length}}">
+        <text class="tp-tag-label">偏好类型：</text>
+        <view class="tp-tag" wx:for="{{topCat}}" wx:key="index">{{item}}</view>
+      </view>
+    </view>
+    <view class="tp-section" wx:else>
+      <view class="tp-empty">还没有出行记录，预订后会自动分析你的出行偏好</view>
+    </view>
+
+    <!-- 手动设置偏好 -->
+    <view class="tp-section">
+      <view class="tp-section-title">自定义偏好</view>
+      <view class="tp-label">出行季节偏好</view>
+      <view class="tp-options">
+        <view class="tp-option {{editSeason===item?'active':''}}" wx:for="{{seasons}}" wx:key="index"
+          bindtap="selectSeason" data-val="{{item}}">{{item}}季</view>
+      </view>
+      <view class="tp-label" style="margin-top:24rpx">出行风格偏好</view>
+      <view class="tp-options">
+        <view class="tp-option {{editStyle===item?'active':''}}" wx:for="{{styles}}" wx:key="index"
+          bindtap="selectStyle" data-val="{{item}}">{{item}}</view>
+      </view>
+    </view>
+
+    <view class="tp-save {{saving?'dis':''}}" bindtap="savePref">{{saving?'保存中...':'保存偏好'}}</view>
+  </block>
+  <view style="height:60rpx"></view>
+</scroll-view>

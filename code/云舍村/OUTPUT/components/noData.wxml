@@ -1,0 +1,6 @@
+<view class="noData_ui data-v-d9640da5">
+    <image class="noData_img data-v-d9640da5" src="https://dsplatweb.oss-cn-chengdu.aliyuncs.com/songzan/images/xiajia.png"></image>
+    <view class="text data-v-d9640da5">商品已下架啦</view>
+    <view class="tips data-v-d9640da5">看看其他产品吧，松赞期待与您相遇</view>
+    <view bindtap="{{a}}" class="btn baseBtn data-v-d9640da5">返回</view>
+</view>

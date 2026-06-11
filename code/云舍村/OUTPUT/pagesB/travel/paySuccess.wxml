@@ -1,0 +1,43 @@
+<view class="paySuccess_ui data-v-c46c5bd0">
+    <view class="pay-sta data-v-c46c5bd0">
+        <view class="icon iconfont icon-a-120_tijiaochenggong data-v-c46c5bd0"></view>
+        <view class="tl data-v-c46c5bd0">{{a}}</view>
+        <view class="progress data-v-c46c5bd0"></view>
+        <view class="tips data-v-c46c5bd0" wx:if="{{b}}"> 请尽快支付剩余款项，如需帮助请联系松赞顾问 </view>
+        <view class="data-v-c46c5bd0" wx:else>
+            <view class="tips data-v-c46c5bd0" wx:if="{{c}}">
+                <block wx:if="{{d}}"> 请尽快<block wx:if="{{e}}"> 补充出行人信息 </block>
+                    <block wx:if="{{f}}"> 并 </block>
+                    <block wx:if="{{g}}"> 完成签约 </block>，以免影响出行<view class="data-v-c46c5bd0"></view>
+                </block>如需帮助请联系松赞顾问 </view>
+        </view>
+        <image class="bg data-v-c46c5bd0" mode="widthFix" src="https://dsplatweb.oss-cn-chengdu.aliyuncs.com/songzan/images/authBg.png"></image>
+        <view class="progress-bar data-v-c46c5bd0" wx:if="{{h}}">
+            <progress-bar bind:__l="__l" class="data-v-c46c5bd0" uI="c46c5bd0-0" uP="{{i}}" wx:if="{{i}}"></progress-bar>
+        </view>
+        <view class="pay-actions data-v-c46c5bd0">
+            <view class="pay-action--block data-v-c46c5bd0" wx:if="{{j}}">
+                <st-button bind:__l="__l" bindclick="{{k}}" class="data-v-c46c5bd0" uI="c46c5bd0-1" uP="{{l}}" uS="{{['d']}}" wx:if="{{l}}"> 继续支付 </st-button>
+            </view>
+            <view class="data-v-c46c5bd0" wx:else>
+                <view class="pay-action--block data-v-c46c5bd0">
+                    <st-button bind:__l="__l" bindclick="{{n}}" class="data-v-c46c5bd0" uI="c46c5bd0-2" uP="{{o}}" uS="{{['d']}}" wx:if="{{m}}"> 完善出行人信息 </st-button>
+                    <st-button bind:__l="__l" bindclick="{{q}}" class="data-v-c46c5bd0" uI="c46c5bd0-3" uP="{{r}}" uS="{{['d']}}" wx:elif="{{p}}"> 立即签约 </st-button>
+                    <st-button bind:__l="__l" bindclick="{{s}}" class="data-v-c46c5bd0" uI="c46c5bd0-4" uP="{{t||''}}" uS="{{['d']}}" wx:else> 联系客服 </st-button>
+                </view>
+            </view>
+            <view class="pay-action-row data-v-c46c5bd0">
+                <view class="pay-second-action data-v-c46c5bd0">
+                    <st-button bind:__l="__l" bindclick="{{v}}" class="data-v-c46c5bd0" style="{{'width:'+'100%'+';'+'border:'+'none'+';'+'padding-left:'+'40%'}}" uI="c46c5bd0-5" uP="{{w}}" uS="{{['d']}}" wx:if="{{w}}"> 订单详情 </st-button>
+                </view>
+                <view class="separate-line data-v-c46c5bd0"></view>
+                <view class="pay-second-action data-v-c46c5bd0">
+                    <st-button bind:__l="__l" bindclick="{{x}}" class="data-v-c46c5bd0" style="{{'width:'+'100%'+';'+'border:'+'none'+';'+'padding-right:'+'40%'}}" uI="c46c5bd0-6" uP="{{y}}" uS="{{['d']}}" wx:if="{{y}}"> 返回首页 </st-button>
+                </view>
+            </view>
+        </view>
+    </view>
+    <recommend-products bind:__l="__l" class="data-v-c46c5bd0" uI="c46c5bd0-7" uP="{{z}}" wx:if="{{z}}"></recommend-products>
+</view>
+<float-button-kf bind:__l="__l" class="data-v-c46c5bd0" data-c-h="{{!A}}" uI="c46c5bd0-8"></float-button-kf>
+<kf-dialog bind:__l="__l" bindopenState="{{C}}" class="r data-v-c46c5bd0" uI="c46c5bd0-9" uP="{{D}}" uR="kf" wx:if="{{D}}"></kf-dialog>

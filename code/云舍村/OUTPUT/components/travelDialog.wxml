@@ -1,0 +1,52 @@
+<view class="travelDialog_ui data-v-b835ce78">
+    <bottom-dialog bind:__l="__l" class="r data-v-b835ce78" uI="b835ce78-0" uP="{{g}}" uR="travel" uS="{{['d']}}" wx:if="{{g}}">
+        <view class="product-info-box data-v-b835ce78" wx:if="{{a}}">
+            <view class="routes data-v-b835ce78">
+                <view bindtap="{{item.e}}" class="{{['route','data-v-b835ce78',item.d&&'active']}}" wx:for="{{b}}" wx:key="c">
+                    <view class="label data-v-b835ce78">{{item.a}}</view>
+                    <view class="val data-v-b835ce78">{{item.b}}</view>
+                </view>
+            </view>
+            <view class="dates-box data-v-b835ce78">
+                <view class="dates data-v-b835ce78">
+                    <view bindtap="{{item.f}}" class="{{['date','data-v-b835ce78',item.e&&'active']}}" wx:if="{{item.a}}" wx:for="{{c}}" wx:key="g">
+                        <view class="label data-v-b835ce78">{{item.b}}</view>
+                        <view class="val data-v-b835ce78">{{item.c}}</view>
+                        <view class="price data-v-b835ce78"> ¥{{item.d}}</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="travel-dates data-v-b835ce78" wx:if="{{d}}">
+            <view class="{{['travel-date-item','data-v-b835ce78',item.i&&'open']}}" wx:for="{{e}}" wx:key="h">
+                <view class="travel-date data-v-b835ce78">
+                    <view class="travel-date-lf data-v-b835ce78">
+                        <view class="label data-v-b835ce78"> DAY </view>
+                        <view class="val data-v-b835ce78">{{item.a}}</view>
+                    </view>
+                    <view class="travel-date-rt data-v-b835ce78">
+                        <view class="head data-v-b835ce78">{{item.b}} > {{item.c}}</view>
+                        <view bindtap="{{item.e}}" class="tl data-v-b835ce78">{{item.d}} <view class="icon-a-16_xialajiantou_hei iconfont data-v-b835ce78"></view>
+                        </view>
+                        <view class="desc data-v-b835ce78">{{item.f}}</view>
+                    </view>
+                </view>
+                <view class="day-travel-list data-v-b835ce78">
+                    <view class="day-travel data-v-b835ce78" wx:for="{{item.g}}" wx:for-item="dayDetail" wx:key="g">
+                        <view class="icon data-v-b835ce78">
+                            <image class="iconfont data-v-b835ce78" src="{{dayDetail.a}}"></image>
+                        </view>
+                        <view class="day-travel-info data-v-b835ce78">
+                            <view class="day-travel-tl data-v-b835ce78">{{dayDetail.b}}</view>
+                            <view class="day-travel-desc data-v-b835ce78">{{dayDetail.c}}</view>
+                            <view class="day-travel-img-box data-v-b835ce78">
+                                <image class="day-travel-img data-v-b835ce78" mode="widthFix" src="{{dayDetail.e}}" wx:if="{{dayDetail.d}}"></image>
+                                <view class="day-travel-name data-v-b835ce78">{{dayDetail.f}}</view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </bottom-dialog>
+</view>

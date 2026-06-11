@@ -1,0 +1,25 @@
+<view class="guide data-v-438fed38">
+    <coustom-head bind:__l="__l" class="data-v-438fed38" uI="438fed38-0" uP="{{a}}" wx:if="{{a}}"></coustom-head>
+    <view class="guide-wrap data-v-438fed38">
+        <view class="guide-wrap-head data-v-438fed38">
+            <view class="bg_box data-v-438fed38"></view>
+            <view class="head-box data-v-438fed38">
+                <view class="head-label data-v-438fed38"> 找到你想要的旅行 </view>
+                <view class="head-content data-v-438fed38">
+                    <view class="head-content-title data-v-438fed38">松赞行程助手使用指南</view>
+                    <view class="head-content-text data-v-438fed38">行程助手是松赞推出的旅行规划工具，可根据您的个性化需求定制专属旅程，自由选择松赞各目的地，智能推荐最优行程</view>
+                    <view class="head-content-text data-v-438fed38">更可灵活选择松赞自由行、私人管家订制多种出行方式，寺院探访、山野徒步、手作体验……多样活动可供选择。</view>
+                    <view class="head-content-text data-v-438fed38">支持行程一键分享同行人，快速提交咨询单联系顾问。</view>
+                </view>
+            </view>
+        </view>
+        <view class="step-one data-v-438fed38"></view>
+        <view class="step-two data-v-438fed38"></view>
+        <view class="step-three data-v-438fed38"></view>
+        <view class="step-four data-v-438fed38"></view>
+    </view>
+    <view class="footer data-v-438fed38">
+        <view bindtap="{{b}}" class="kefu_wrap data-v-438fed38">体验行中服务</view>
+        <view bindtap="{{c}}" class="order-btn data-v-438fed38">创建行程计划</view>
+    </view>
+</view>

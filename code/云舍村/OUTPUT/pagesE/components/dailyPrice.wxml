@@ -1,0 +1,56 @@
+<view class="activity_dailyPrice">
+    <view class="daily_top">
+        <view class="dailyPriceBox" style="{{'height:'+c}}">
+            <view class="{{['monthList',b&&'dateScroll']}}">
+                <view class="monthItem active" wx:for="{{a}}" wx:for-item="month" wx:key="c">
+                    <view class="timeTitle">{{month.a}}</view>
+                    <view class="calendar">
+                        <view class="weeks">
+                            <view class="weekDay weekend">日</view>
+                            <view class="weekDay">一</view>
+                            <view class="weekDay">二</view>
+                            <view class="weekDay">三</view>
+                            <view class="weekDay">四</view>
+                            <view class="weekDay">五</view>
+                            <view class="weekDay weekend">六</view>
+                        </view>
+                        <view class="monthBoxWrapper">
+                            <view class="monthBox">
+                                <view class="monthDay">
+                                    <view bindtap="{{day.l}}" class="{{['day',day.m&&'unActive',day.n&&'active']}}" wx:for="{{month.b}}" wx:for-item="day" wx:key="o">
+                                        <sapn bind:__l="__l" class="{{['number_text','number_color',day.c&&'hidden_content']}}" uI="{{day.d}}" uS="{{['d']}}" wx:if="{{day.a}}">余{{day.b}}份</sapn>
+                                        <sapn bind:__l="__l" class="number_text number_full" uI="{{day.f}}" uS="{{['d']}}" wx:if="{{day.e}}">已满</sapn>
+                                        <sapn bind:__l="__l" class="number" uI="{{day.g}}" wx:else></sapn>
+                                        <label class="currentDay">{{day.h}}</label>
+                                        <view>
+                                            <view class="currentPrice" wx:if="{{day.i}}"> 免费 </view>
+                                            <view wx:else>
+                                                <label class="currentPrice" wx:if="{{day.j}}">¥{{day.k}}起</label>
+                                                <label class="currentPrice" wx:else></label>
+                                            </view>
+                                        </view>
+                                    </view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view bindtap="{{e}}" class="open-btn" wx:if="{{d}}">
+            <view class="iconfont icon-a-16_xialajiantou_hei"></view>
+        </view>
+        <view bindtap="{{g}}" class="open-btn" wx:if="{{f}}">
+            <view class="iconfont icon-a-16_shanglajiantou_hei"></view>
+        </view>
+        <view class="open-btn-border"></view>
+    </view>
+    <view class="time_wrap">
+        <view class="dates">
+            <view bindtap="{{citem.e}}" class="{{['date_time',citem.f&&'active',citem.g&&'unActive']}}" wx:for="{{h}}" wx:for-item="citem" wx:key="h">
+                <view class="time_val">{{citem.a}}-{{citem.b}}</view>
+                <view class="time_num" wx:if="{{citem.c}}"> 余{{citem.d}}份 </view>
+            </view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,1 @@
+<st-dialog bind:__l="__l" bindconfirm="{{a}}" uI="d425b21e-0" uP="{{b}}" wx:if="{{b}}"></st-dialog>

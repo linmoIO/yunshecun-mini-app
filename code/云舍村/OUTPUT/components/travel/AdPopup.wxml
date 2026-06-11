@@ -1,0 +1,18 @@
+<view catchtouchmove="{{m}}" class="{{['popup','data-v-ddb07ca7',k]}}" style="{{'padding-top:'+l}}" wx:if="{{a}}">
+    <scroll-view scrollY class="main data-v-ddb07ca7">
+        <view class="data-v-ddb07ca7" style="{{'height:'+b}}"></view>
+        <swiper bindchange="{{g}}" class="st-ad-group data-v-ddb07ca7" current="{{f}}" nextMargin="{{e}}" previousMargin="{{d}}">
+            <swiper-item class="data-v-ddb07ca7" wx:for="{{c}}" wx:key="c">
+                <view bindtap="{{item.b}}" class="item data-v-ddb07ca7">
+                    <view class="item-wrap data-v-ddb07ca7">
+                        <image lazyLoad class="item-image data-v-ddb07ca7" mode="aspectFill" src="{{item.a}}"></image>
+                    </view>
+                </view>
+            </swiper-item>
+        </swiper>
+        <view bindtap="{{i}}" class="close data-v-ddb07ca7">
+            <image class="icon data-v-ddb07ca7" src="{{h}}"></image>
+        </view>
+        <view class="data-v-ddb07ca7" style="{{'height:'+j}}"></view>
+    </scroll-view>
+</view>

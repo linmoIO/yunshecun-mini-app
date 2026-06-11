@@ -1,0 +1,13 @@
+<view bindtap="{{j}}" class="{{['checkbox','data-v-b38a3921',h&&'checkbox--block']}}" style="{{i}}">
+    <view class="checkbox-icon data-v-b38a3921">
+        <image class="icon active data-v-b38a3921" src="{{b}}" wx:if="{{a}}"></image>
+        <block wx:else>
+            <image class="{{['icon','data-v-b38a3921',d]}}" src="{{c}}"></image>
+            <image class="{{['icon','data-v-b38a3921',f]}}" src="{{e}}"></image>
+        </block>
+    </view>
+    <view class="checkbox-label data-v-b38a3921">
+        <slot wx:if="{{$slots.d}}"></slot>
+        <block wx:else>{{g}}</block>
+    </view>
+</view>

@@ -1,0 +1,48 @@
+<view class="notice_ui data-v-2fd5f372" wx:if="{{a}}">
+    <swiper autoplay circular vertical class="swiper data-v-2fd5f372">
+        <block wx:if="{{b}}">
+            <swiper-item class="data-v-2fd5f372" wx:for="{{c}}" wx:key="d">
+                <view bindtap="{{item.c}}" class="notice_warp data-v-2fd5f372">
+                    <view class="info data-v-2fd5f372">
+                        <view class="icon-a-20_hangchengbiangeng iconfont data-v-2fd5f372"></view>
+                        <view class="content data-v-2fd5f372">{{item.a}}</view>
+                    </view>
+                    <view class="icon-a-12_youlajiantou_hei iconfont data-v-2fd5f372" wx:if="{{item.b}}"></view>
+                </view>
+            </swiper-item>
+        </block>
+        <block wx:if="{{d}}">
+            <swiper-item class="data-v-2fd5f372" wx:for="{{e}}" wx:key="c">
+                <view bindtap="{{item.b}}" class="notice_warp data-v-2fd5f372">
+                    <view class="info data-v-2fd5f372">
+                        <view class="icon-a-16_gonggao iconfont data-v-2fd5f372"></view>
+                        <view class="content data-v-2fd5f372">{{item.a}}</view>
+                    </view>
+                    <view class="icon-a-12_youlajiantou_hei iconfont data-v-2fd5f372"></view>
+                </view>
+            </swiper-item>
+        </block>
+        <block wx:if="{{f}}">
+            <swiper-item class="data-v-2fd5f372" wx:for="{{g}}" wx:key="c">
+                <view bindtap="{{item.b}}" class="notice_warp data-v-2fd5f372">
+                    <view class="info data-v-2fd5f372">
+                        <view class="icon-a-16_gonggao iconfont data-v-2fd5f372"></view>
+                        <view class="content data-v-2fd5f372">{{item.a}}</view>
+                    </view>
+                    <view class="icon-a-12_youlajiantou_hei iconfont data-v-2fd5f372"></view>
+                </view>
+            </swiper-item>
+        </block>
+        <block wx:if="{{h}}">
+            <swiper-item class="data-v-2fd5f372" wx:for="{{i}}" wx:key="d">
+                <view bindtap="{{item.c}}" class="notice_warp data-v-2fd5f372">
+                    <view class="info data-v-2fd5f372">
+                        <view class="icon-a-16_gonggao iconfont data-v-2fd5f372"></view>
+                        <view class="content data-v-2fd5f372">{{item.a}}</view>
+                    </view>
+                    <view class="icon-a-12_youlajiantou_hei iconfont data-v-2fd5f372" wx:if="{{item.b}}"></view>
+                </view>
+            </swiper-item>
+        </block>
+    </swiper>
+</view>

@@ -1,0 +1,10 @@
+{
+    "navigationBarTitleText":  "酒店详情",
+    "navigationStyle":  "custom",
+    "usingComponents":  {
+                            "swiper-box":  "../../components/swiperBox",
+                            "more-text":  "../../components/moreText",
+                            "coustom-head":  "../../components/coustomHead",
+                            "trip-nav":  "../../components/tripNav"
+                        }
+}

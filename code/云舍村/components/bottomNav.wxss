@@ -1,0 +1,229 @@
+.baseBtn.data-v-73de3d25 {
+    background-color: #000;
+    background-image: url(https://dsplatweb.oss-cn-chengdu.aliyuncs.com/songzan/images/btnBlack.png);
+    color: #fff
+}
+
+.baseBtn.data-v-73de3d25,.w-baseBtn.data-v-73de3d25 {
+    background-repeat: repeat;
+    background-size: 80rpx 75rpx;
+    border-radius: 8rpx;
+    text-align: center
+}
+
+.w-baseBtn.data-v-73de3d25 {
+    background-color: #fff;
+    background-image: url(https://dsplatweb.oss-cn-chengdu.aliyuncs.com/songzan/images/btnWhite.png);
+    color: #000
+}
+
+.w-baseBtn[disabled].data-v-73de3d25 {
+    color: #000!important;
+    opacity: .8
+}
+
+.textHidden.data-v-73de3d25 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}
+
+.expandClick.data-v-73de3d25 {
+    position: relative
+}
+
+.expandClick.data-v-73de3d25:after {
+    bottom: -60rpx;
+    content: "";
+    left: -60rpx;
+    position: absolute;
+    right: -60rpx;
+    top: -60rpx;
+    z-index: 9
+}
+
+.line-clamp-1.data-v-73de3d25 {
+    -webkit-line-clamp: 1;
+    line-clamp: 1
+}
+
+.line-clamp-1.data-v-73de3d25,.line-clamp-2.data-v-73de3d25 {
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    overflow: hidden;
+    white-space: normal
+}
+
+.line-clamp-2.data-v-73de3d25 {
+    -webkit-line-clamp: 2;
+    line-clamp: 2
+}
+
+.line-clamp-3.data-v-73de3d25 {
+    -webkit-line-clamp: 3;
+    line-clamp: 3
+}
+
+.line-clamp-3.data-v-73de3d25,.line-clamp-4.data-v-73de3d25 {
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    overflow: hidden;
+    white-space: normal
+}
+
+.line-clamp-4.data-v-73de3d25 {
+    -webkit-line-clamp: 4;
+    line-clamp: 4
+}
+
+.line-clamp-5.data-v-73de3d25 {
+    -webkit-line-clamp: 5;
+    line-clamp: 5
+}
+
+.line-clamp-5.data-v-73de3d25,.line-clamp-6.data-v-73de3d25 {
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    overflow: hidden;
+    white-space: normal
+}
+
+.line-clamp-6.data-v-73de3d25 {
+    -webkit-line-clamp: 6;
+    line-clamp: 6
+}
+
+.line-clamp-7.data-v-73de3d25 {
+    -webkit-line-clamp: 7;
+    line-clamp: 7
+}
+
+.line-clamp-7.data-v-73de3d25,.line-clamp-8.data-v-73de3d25 {
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    overflow: hidden;
+    white-space: normal
+}
+
+.line-clamp-8.data-v-73de3d25 {
+    -webkit-line-clamp: 8;
+    line-clamp: 8
+}
+
+.line-clamp-9.data-v-73de3d25 {
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 9;
+    line-clamp: 9;
+    display: -webkit-box;
+    overflow: hidden;
+    white-space: normal
+}
+
+.bottomNav.data-v-73de3d25 {
+    background: #fff;
+    bottom: 0;
+    display: flex;
+    left: 0;
+    padding-bottom: env(safe-area-inset-bottom);
+    position: fixed;
+    width: 100%;
+    z-index: 100
+}
+
+.bottomNav .nav-box.data-v-73de3d25 {
+    box-sizing: border-box;
+    display: flex;
+    height: 100rpx;
+    width: 100%
+}
+
+.bottomNav .nav-item.data-v-73de3d25 {
+    align-items: center;
+    color: gray;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    font-family: PingFangSC-Medium;
+    font-size: 22rpx;
+    font-weight: 500;
+    justify-content: center;
+    text-align: center
+}
+
+.bottomNav .nav-item .iconfont.data-v-73de3d25 {
+    color: gray;
+    font-size: 48rpx
+}
+
+.bottomNav .nav-item .desc.data-v-73de3d25 {
+    font-family: PingFangSC-Medium;
+    font-size: 20rpx;
+    font-weight: 600;
+    margin-top: 6rpx
+}
+
+.bottomNav .nav-item .logo.data-v-73de3d25 {
+    height: 48rpx;
+    width: 48rpx
+}
+
+.bottomNav .nav-item .logo.large.data-v-73de3d25 {
+    height: 88rpx;
+    position: relative;
+    top: -30rpx;
+    width: 88rpx
+}
+
+.bottomNav .nav-item .largeTxt.data-v-73de3d25 {
+    position: relative
+}
+
+.bottomNav .nav-item .icon-active.data-v-73de3d25 {
+    display: none
+}
+
+.bottomNav .nav-item.active .iconfont.data-v-73de3d25,.bottomNav .nav-item.active.data-v-73de3d25 {
+    color: #000
+}
+
+.bottomNav .nav-item.active .icon-noActive.data-v-73de3d25 {
+    display: none
+}
+
+.bottomNav .nav-item.active .icon-active.data-v-73de3d25 {
+    display: block
+}
+
+.bottomNav .bgWrapper.data-v-73de3d25 {
+    bottom: 0;
+    display: flex;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    width: 100%;
+    z-index: -1
+}
+
+.bottomNav .bgWrapper .bgBox.data-v-73de3d25 {
+    align-items: center;
+    color: #999;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    font-size: 22rpx;
+    justify-content: center;
+    position: relative
+}
+
+.bottomNav .bgWrapper .bgBox .bg.data-v-73de3d25 {
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 4rpx 16rpx rgba(0,0,0,.4);
+    height: 132rpx;
+    left: 50%;
+    position: absolute;
+    top: -50rpx;
+    transform: translate(-50%);
+    width: 132rpx;
+    z-index: -1
+}

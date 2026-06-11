@@ -1,0 +1,138 @@
+<view class="page">
+  <view class="hero">
+    <image class="hero-bg" mode="aspectFill" src="{{heroImage}}"></image>
+    <view class="hero-mask"></view>
+    <view class="hero-nav">
+      <view class="back-btn" bindtap="onBack">‹</view>
+      <view class="capsule"></view>
+    </view>
+    <view class="hero-title">{{title}}</view>
+    <view class="map-btn" bindtap="onGoMap">地图</view>
+  </view>
+
+  <view class="content">
+    <view class="meta-row">
+      <view class="meta-left" bindtap="onToggleButler">
+        <view class="dot {{needButler ? 'active' : ''}}"></view>
+        <text>需要管家</text>
+      </view>
+      <view class="divider"></view>
+      <view class="meta-right" bindtap="onOpenPicker">{{subInfo}} ></view>
+    </view>
+
+    <scroll-view scroll-x class="tab-scroll">
+      <view class="tab-row">
+        <view
+          wx:for="{{tabs}}"
+          wx:key="key"
+          class="tab-item {{tabIndex === index ? 'active' : ''}}"
+          data-index="{{index}}"
+          bindtap="onSwitchTab"
+        >
+          {{item.label}}
+        </view>
+      </view>
+    </scroll-view>
+
+    <view class="tip" wx:if="{{showTip}}">
+      <text>长按卡片标题移动，左滑卡片删除</text>
+      <text class="tip-close" bindtap="onHideTip">×</text>
+    </view>
+
+    <view class="day-list">
+      <view wx:for="{{displayList}}" wx:key="date" class="day-card">
+        <view class="day-date">{{item.date}}</view>
+        <view class="day-main">
+          <view class="day-title">{{item.title}}</view>
+          <view class="day-sub">{{item.subTitle}}</view>
+          <image class="day-img" mode="aspectFill" src="{{item.image}}"></image>
+          <view class="day-desc">{{item.desc}}</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="bottom-space"></view>
+  </view>
+
+  <view class="bottom-fixed">
+    <view class="price-wrap">
+      <view class="price-label">预估人均价格</view>
+      <view class="price">¥{{price}} <text>/人起</text></view>
+    </view>
+    <view class="next-btn" bindtap="onNextStep">{{isDetailMode ? "提交咨询" : "下一步"}}</view>
+  </view>
+
+  <view class="mask" wx:if="{{showPicker}}" bindtap="onClosePicker"></view>
+  <view class="picker-panel" wx:if="{{showPicker}}">
+    <view class="picker-header">
+      <view class="picker-close" bindtap="onClosePicker">×</view>
+      <view class="picker-title">选择人数和日期</view>
+    </view>
+    <view class="picker-content">
+      <view class="picker-group-title">选择人数</view>
+      <view class="people-card">
+        <view class="people-row">
+          <view>成人 18岁及以上</view>
+          <view class="counter">
+            <view class="op" data-field="adult" data-delta="-1" bindtap="onChangeCount">−</view>
+            <view class="num">{{people.adult}}</view>
+            <view class="op active" data-field="adult" data-delta="1" bindtap="onChangeCount">+</view>
+          </view>
+        </view>
+        <view class="people-row">
+          <view>大童 12岁（含）-18岁</view>
+          <view class="counter">
+            <view class="op" data-field="bigChild" data-delta="-1" bindtap="onChangeCount">−</view>
+            <view class="num">{{people.bigChild}}</view>
+            <view class="op active" data-field="bigChild" data-delta="1" bindtap="onChangeCount">+</view>
+          </view>
+        </view>
+        <view class="people-row">
+          <view>中童 6岁（含）-12岁</view>
+          <view class="counter">
+            <view class="op" data-field="midChild" data-delta="-1" bindtap="onChangeCount">−</view>
+            <view class="num">{{people.midChild}}</view>
+            <view class="op active" data-field="midChild" data-delta="1" bindtap="onChangeCount">+</view>
+          </view>
+        </view>
+        <view class="people-row">
+          <view>幼童 未满6岁</view>
+          <view class="counter">
+            <view class="op" data-field="baby" data-delta="-1" bindtap="onChangeCount">−</view>
+            <view class="num">{{people.baby}}</view>
+            <view class="op active" data-field="baby" data-delta="1" bindtap="onChangeCount">+</view>
+          </view>
+        </view>
+      </view>
+
+      <view class="picker-group-title">选择日期与城市</view>
+      <picker mode="date" value="{{arrivalDate}}" bindchange="onArrivalDateChange">
+        <view class="picker-row">
+          <text>抵达日期</text>
+          <text>{{arrivalDate}} ></text>
+        </view>
+      </picker>
+      <picker mode="selector" range="{{cityOptions}}" value="{{departureCityIndex}}" bindchange="onDepartureChange">
+        <view class="picker-row">
+          <text>出发地</text>
+          <text>{{departureCity}} ></text>
+        </view>
+      </picker>
+      <picker mode="selector" range="{{cityOptions}}" value="{{returnCityIndex}}" bindchange="onReturnChange">
+        <view class="picker-row">
+          <text>返程地</text>
+          <text>{{returnCity}} ></text>
+        </view>
+      </picker>
+    </view>
+    <view class="picker-done" bindtap="onPickerDone">完成</view>
+  </view>
+
+  <view class="mask" wx:if="{{showSuccessDialog}}"></view>
+  <view class="success-dialog" wx:if="{{showSuccessDialog}}">
+    <view class="success-icon">✓</view>
+    <view class="success-title">咨询单下单成功，待顾问联系</view>
+    <view class="success-desc">云舍村顾问将在3天内联系您确认具体旅行方案，请保持联系。</view>
+    <view class="success-btn" bindtap="onCloseSuccess">我知道了</view>
+  </view>
+</view>

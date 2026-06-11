@@ -1,0 +1,87 @@
+<!-- <image src="https://yunshecun.oss-cn-guangzhou.aliyuncs.com/applet/img/7.png" class="top-bar" /> -->
+<navigation-bar title="借宿列表" back="{{true}}" color="black" background="#D9CDB3"></navigation-bar>
+<view style="background: #E6DFCB;">
+  
+  <view class="wrap">
+    <swiper 
+    bindchange="swiperChange" 
+    class="swiper" 
+    indicator-dots="{{true}}" 
+    indicator-active-color="#fff" 
+    autoplay="{{true}}" 
+    interval="{{4000}}" 
+    duration="{{500}}" 
+    circular="{{true}}">
+      <swiper-item>
+        <image class="homeDetailListBg" src="https://yunshecun.oss-cn-guangzhou.aliyuncs.com/applet/img/homeDetailList-bg.png" mode="aspectFill" />
+      </swiper-item>
+      <swiper-item>
+        <image class="homeDetailListBg" src="https://yunshecun.oss-cn-guangzhou.aliyuncs.com/applet/img/homeDetailList-bg-1.jpg" mode="aspectFill" />
+      </swiper-item>
+      <swiper-item>
+        <image class="homeDetailListBg" src="https://yunshecun.oss-cn-guangzhou.aliyuncs.com/applet/img/homeDetailList-bg-2.jpg" mode="aspectFill" />
+      </swiper-item>
+      <swiper-item>
+        <image class="homeDetailListBg" src="https://yunshecun.oss-cn-guangzhou.aliyuncs.com/applet/img/homeDetailList-bg-3.jpg" mode="aspectFill" />
+      </swiper-item>
+      <swiper-item>
+        <image class="homeDetailListBg" src="https://yunshecun.oss-cn-guangzhou.aliyuncs.com/applet/img/homeDetailList-bg-4.jpg" mode="aspectFill" />
+      </swiper-item>
+      <swiper-item>
+        <image class="homeDetailListBg" src="https://yunshecun.oss-cn-guangzhou.aliyuncs.com/applet/img/homeDetailList-bg-5.jpg" mode="aspectFill" />
+      </swiper-item>
+    </swiper>
+    <view class="content">
+      <view class="order-overview">
+        <view class="entering_and_leaving">
+          <view class="time" bind:tap="openCalendar">
+            <view style="font-size: 25rpx;">入村</view>
+            <view style="font-size: 30rpx; color:#977730;">{{startDay}}</view>
+          </view> 
+          
+          <view class="total">共{{days}}晚</view>
+          <view class="time" bind:tap="openCalendar">
+            <view style="font-size: 25rpx;">离村</view>
+            <view style="font-size: 30rpx; color:#977730;">{{endDay}}</view>
+          </view>
+        </view>
+        <view class="number_of_people_and_rooms">
+          <view style="display: flex;" bind:tap="showDialog">
+            <text style="width: 110rpx;font-family: '微软雅黑';">客房 <text style="color: #977730;">{{homeNumber}}</text></text>
+            <text style="width: 110rpx;font-family: '微软雅黑';">成人 <text style="color: #977730;">{{adultNumber}}</text></text>
+            <text style="width: 110rpx;font-family: '微软雅黑';">儿童 <text style="color: #977730;">{{childrenNumber}}</text></text>
+          </view>
+        </view>
+        <!-- <view style="display: flex; position: absolute;top: 120rpx; right: 50rpx;">
+          <image bindtap="nav" style="width:30rpx; height: 30rpx;margin-right: 60rpx;" src="../../images/Vector.png" alt="" />
+          <image bindtap="makePhoneCall" style="width:30rpx; height: 30rpx;" src="../../images/Vector (1).png" alt="" />
+        </view> -->
+      </view>
+      <!-- <view class="explain">
+        借宿費含：
+        <text>宿．茶．餐．歷</text>
+      </view> -->
+
+    </view>
+    <view class="yunshe_village">
+      <!-- <text style="width: 90%; font-family: '微软雅黑';color:#977730; font-size:24rpx;">云舍村没有消费，只有按时间和空间缴纳的村落维护费。</text> -->
+      <text style=" width: 90%;font-family: '微软雅黑'; font-size:24rpx; color: #838383; line-height: 40rpx;">云舍村没有消费，只有按时间和空间缴纳的村落维护费。村落维护费包括村内提供的住宿、餐食、茶饮、体验式农耕、传统手工、文艺欣赏、艺术品鉴等诸多项目。</text>
+    </view>
+    <!-- <view style="height: 20rpx;"></view> -->
+    <homeList4Room  ListInfo="{{orderList}}" bind:subscribe="subscribe" bind:check="showImages" />
+  </view>  
+</view>
+<bottomDialog wx:if="{{ bottomDialogVisible }}" style="font-family:'微软雅黑';" home="{{homeNumber}}" adult="{{adultNumber}}" children="{{childrenNumber}}" visible="{{dialogVisible}}" bind:getNumber="getNumber"></bottomDialog>
+<t-calendar style="font-family:'微软雅黑';" value="{{defaultValue}}" title="请选择日期" confirm-btn="确认" visible="{{calendarVisible}}" format="{{format}}" bind:confirm="handleConfirm" type="range" />
+<!-- <t-popup style="font-family:'微软雅黑';" placement="center" visible="{{showImages}}" bind:visible-change="onVisibleChange" style="background: transparent">
+  <swiper class="previewSwiper" current="{{current}}" indicator-dots="{{true}}" indicator-color="rgba(255,255,255,0.5)" indicator-active-color="#fff" autoplay="{{true}}" duration="{{500}}" style=" font-family:'微软雅黑'; width: 88vw;height: 560rpx;" bindchange="handleSwiperChange">
+    <block wx:for="{{images}}" wx:key="index" style="font-family:'微软雅黑';">
+      <swiper-item style="font-family:'微软雅黑';" class="previewSwiperItem">
+        <image class="swiper-image" src="{{item}}" mode="aspectFill" style="font-family:'微软雅黑';width: 100%; height: 100%; " />
+      </swiper-item>
+    </block>
+  </swiper>
+  <div class="previewSwiperCloseBtn" bind:tap="previewSwiperClose">
+    <image src="https://yunshecun.oss-cn-guangzhou.aliyuncs.com/applet/img/close_white.png" />
+  </div>
+</t-popup> -->

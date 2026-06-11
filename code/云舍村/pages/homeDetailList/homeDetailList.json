@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "",
+  "usingComponents": {
+    "navbar": "../../components/navBar/navBar",
+    "homeList4Room": "../../components/homeList4Room/homeList4Room",
+    "bottomDialog": "../../components/bottomDialog/bottomDialog",
+    "t-popup": "tdesign-miniprogram/popup/popup",
+    "navigation-bar": "/components/navigation-bar/navigation-bar"
+  },
+  "disableScroll": true
+}

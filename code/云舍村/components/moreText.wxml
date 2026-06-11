@@ -1,0 +1,16 @@
+<view class="container data-v-b7c28bbc" ref="container">
+    <view class="{{['text','data-v-b7c28bbc',i&&'open']}}" ref="text" style="{{h}}">
+        <block wx:if="{{a}}">
+            <view bindtap="{{c}}" class="more-btn retract data-v-b7c28bbc" wx:if="{{b}}">收起<view class="icon-a-12_xialajiantou_hei iconfont data-v-b7c28bbc"></view>
+            </view>
+            <view bindtap="{{e}}" class="more-btn data-v-b7c28bbc" wx:else>{{d}}<view class="icon-a-12_xialajiantou_hei iconfont data-v-b7c28bbc"></view>
+            </view>
+        </block>
+        <view class="data-v-b7c28bbc">
+            <rich-text class="data-v-b7c28bbc" nodes="{{f}}"></rich-text>
+        </view>
+        <view class="content-hide data-v-b7c28bbc">
+            <rich-text class="data-v-b7c28bbc" nodes="{{g}}"></rich-text>
+        </view>
+    </view>
+</view>

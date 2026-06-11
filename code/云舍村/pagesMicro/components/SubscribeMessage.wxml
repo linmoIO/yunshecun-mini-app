@@ -1,0 +1,13 @@
+<view class="subscribe-message-wrapper data-v-e17ccabf" wx:if="{{a}}">
+    <view class="subscribe-message data-v-e17ccabf">
+        <view class="subscribe-message-text data-v-e17ccabf">
+            <view class="subscribe-message-text__title data-v-e17ccabf">
+                <image class="icon-message-bell data-v-e17ccabf" src="{{b}}"></image> {{c}}</view>
+            <view class="subscribe-message-text__sub-title data-v-e17ccabf">{{d}}</view>
+        </view>
+        <view class="subscribe-message-buttons data-v-e17ccabf">
+            <st-button bind:__l="__l" bindclick="{{f}}" class="data-v-e17ccabf" uI="e17ccabf-0" uP="{{g}}" uS="{{['d']}}" wx:if="{{g}}">{{e}}</st-button>
+            <st-button bind:__l="__l" bindclick="{{i}}" class="data-v-e17ccabf" uI="e17ccabf-1" uP="{{j}}" uS="{{['d']}}" wx:if="{{j}}">{{h}}</st-button>
+        </view>
+    </view>
+</view>

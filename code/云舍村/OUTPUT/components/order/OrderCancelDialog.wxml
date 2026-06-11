@@ -1,0 +1,22 @@
+<bottom-dialog bind:__l="__l" bindopenState="{{k}}" class="r data-v-8cbce24b" uI="8cbce24b-0" uP="{{l}}" uR="bottomDialogRef" uS="{{['d']}}" wx:if="{{l}}">
+    <view class="cancel-dialog-wrapper data-v-8cbce24b" style="{{i}}">
+        <view class="cancel-dialog-wrapper__content data-v-8cbce24b">
+            <view bindtap="{{reason.d}}" class="cancel-dialog-wrapper__content__reason data-v-8cbce24b" wx:for="{{a}}" wx:for-item="reason" wx:key="c">
+                <label class="data-v-8cbce24b">{{reason.a}}</label>
+                <view class="iconfont icon-a-16_gou data-v-8cbce24b" wx:if="{{reason.b}}"></view>
+            </view>
+            <view class="cancel-dialog-wrapper__content__textarea data-v-8cbce24b" wx:if="{{b}}">
+                <textarea bindinput="{{c}}" class="otherReasons data-v-8cbce24b" cursorSpacing="{{130}}" placeholder="请输入您的取消原因，以便松赞为您提供更好的体验" placeholderClass="otherReasonsPlaceholder" rows="2" type="text" value="{{d}}" wx:if="{{r0}}"></textarea>
+                <view class="cancel-dialog-wrapper__content__textarea__count data-v-8cbce24b">{{e}}/{{f}}</view>
+            </view>
+        </view>
+        <view class="cancel-dialog-wrapper__footer data-v-8cbce24b">
+            <view class="cancel-dialog-wrapper__footer__btn data-v-8cbce24b">
+                <st-button bind:__l="__l" bindclick="{{g}}" class="data-v-8cbce24b" uI="8cbce24b-1,8cbce24b-0" uP="{{h}}" uS="{{['d']}}" wx:if="{{h}}">
+                    <view class="data-v-8cbce24b">确认取消</view>
+                </st-button>
+            </view>
+        </view>
+    </view>
+</bottom-dialog>
+<kf-dialog bind:__l="__l" bindopenState="{{n}}" class="r data-v-8cbce24b" uI="8cbce24b-2" uP="{{o}}" uR="kf" wx:if="{{o}}"></kf-dialog>

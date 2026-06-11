@@ -1,0 +1,126 @@
+<scroll-view class="setting-wrap" scroll-y>
+  <!-- 账号信息 -->
+  <view class="setting-section">
+    <view class="setting-group-title">账号</view>
+    <view class="setting-item" bindtap="goPage" data-url="/pagesA/member/memberInfo">
+      <view class="setting-item-left">
+        <text class="setting-icon">👤</text>
+        <text class="setting-label">个人资料</text>
+      </view>
+      <text class="setting-arrow">›</text>
+    </view>
+  </view>
+
+  <!-- 出行管理 -->
+  <view class="setting-section">
+    <view class="setting-group-title">出行管理</view>
+    <view class="setting-item" bindtap="goPage" data-url="/pagesA/member/travelersList">
+      <view class="setting-item-left">
+        <text class="setting-icon">🧳</text>
+        <text class="setting-label">出行人</text>
+      </view>
+      <text class="setting-arrow">›</text>
+    </view>
+    <view class="setting-item" bindtap="goPage" data-url="/pagesA/member/travelPreference">
+      <view class="setting-item-left">
+        <text class="setting-icon">🗺</text>
+        <text class="setting-label">出行偏好</text>
+      </view>
+      <text class="setting-arrow">›</text>
+    </view>
+    <view class="setting-item" bindtap="goPage" data-url="/pagesA/member/address">
+      <view class="setting-item-left">
+        <text class="setting-icon">📍</text>
+        <text class="setting-label">收货地址</text>
+      </view>
+      <text class="setting-arrow">›</text>
+    </view>
+  </view>
+
+  <!-- 权益与资产 -->
+  <view class="setting-section">
+    <view class="setting-group-title">权益与资产</view>
+    <view class="setting-item" bindtap="goPage" data-url="/pagesA/member/beneficiaryPage">
+      <view class="setting-item-left">
+        <text class="setting-icon">🤝</text>
+        <text class="setting-label">权益关联人</text>
+      </view>
+      <text class="setting-arrow">›</text>
+    </view>
+    <view class="setting-item" bindtap="goPage" data-url="/pagesA/member/sendPoints">
+      <view class="setting-item-left">
+        <text class="setting-icon">🎁</text>
+        <text class="setting-label">积分转赠</text>
+      </view>
+      <text class="setting-arrow">›</text>
+    </view>
+    <view class="setting-item" bindtap="goPage" data-url="/pagesA/member/myCollection">
+      <view class="setting-item-left">
+        <text class="setting-icon">❤️</text>
+        <text class="setting-label">我的收藏</text>
+      </view>
+      <text class="setting-arrow">›</text>
+    </view>
+    <view class="setting-item" bindtap="goPage" data-url="/pagesA/member/invoicePage">
+      <view class="setting-item-left">
+        <text class="setting-icon">🧾</text>
+        <text class="setting-label">开票信息</text>
+      </view>
+      <text class="setting-arrow">›</text>
+    </view>
+  </view>
+
+  <!-- 订单与服务 -->
+  <view class="setting-section">
+    <view class="setting-group-title">订单与服务</view>
+    <view class="setting-item" bindtap="goPage" data-url="/pagesE/consultationForm/consultList">
+      <view class="setting-item-left">
+        <text class="setting-icon">📋</text>
+        <text class="setting-label">我的咨询单</text>
+      </view>
+      <text class="setting-arrow">›</text>
+    </view>
+    <view class="setting-item" bindtap="goPage" data-url="/pagesA/other/chat">
+      <view class="setting-item-left">
+        <text class="setting-icon">💬</text>
+        <text class="setting-label">在线客服</text>
+      </view>
+      <text class="setting-arrow">›</text>
+    </view>
+  </view>
+
+  <!-- 关于 -->
+  <view class="setting-section">
+    <view class="setting-group-title">关于</view>
+    <view class="setting-item" bindtap="goPage" data-url="/pagesA/member/policy">
+      <view class="setting-item-left">
+        <text class="setting-icon">📄</text>
+        <text class="setting-label">会员政策</text>
+      </view>
+      <text class="setting-arrow">›</text>
+    </view>
+    <view class="setting-item" bindtap="goPage" data-url="/pagesA/member/memberRight">
+      <view class="setting-item-left">
+        <text class="setting-icon">👑</text>
+        <text class="setting-label">会员权益</text>
+      </view>
+      <text class="setting-arrow">›</text>
+    </view>
+    <view class="setting-item" bindtap="goPage" data-url="/pagesA/member/faqPage">
+      <view class="setting-item-left">
+        <text class="setting-icon">❓</text>
+        <text class="setting-label">常见问题</text>
+      </view>
+      <text class="setting-arrow">›</text>
+    </view>
+    <view class="setting-item" bindtap="goPage" data-url="/pagesA/member/aboutPage">
+      <view class="setting-item-left">
+        <text class="setting-icon">🏡</text>
+        <text class="setting-label">关于云舍村</text>
+      </view>
+      <text class="setting-arrow">›</text>
+    </view>
+  </view>
+
+  <view style="height:60rpx"></view>
+</scroll-view>

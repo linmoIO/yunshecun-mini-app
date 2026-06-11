@@ -1,0 +1,39 @@
+<view class="ui_share data-v-9e6a9aba">
+    <view class="poster data-v-9e6a9aba">
+        <image class="poster-img data-v-9e6a9aba" mode="widthFix" src="{{a}}"></image>
+        <l-painter bind:__l="__l" bindsuccess="{{o}}" class="r data-v-9e6a9aba" uI="9e6a9aba-0" uP="{{p}}" uR="painter" uS="{{['d']}}" wx:if="{{p}}">
+            <l-painter-image bind:__l="__l" class="data-v-9e6a9aba" uI="9e6a9aba-1,9e6a9aba-0" uP="{{c}}" wx:if="{{b}}"></l-painter-image>
+            <l-painter-view bind:__l="__l" class="data-v-9e6a9aba" uI="9e6a9aba-2,9e6a9aba-0" uP="{{d||''}}" wx:else></l-painter-view>
+            <l-painter-view bind:__l="__l" class="data-v-9e6a9aba" uI="9e6a9aba-3,9e6a9aba-0" uP="{{m}}" uS="{{['d']}}" wx:if="{{m}}">
+                <l-painter-view bind:__l="__l" class="data-v-9e6a9aba" uI="9e6a9aba-4,9e6a9aba-3" uP="{{k}}" uS="{{['d']}}" wx:if="{{k}}">
+                    <l-painter-view bind:__l="__l" class="data-v-9e6a9aba" uI="9e6a9aba-5,9e6a9aba-4" uP="{{i}}" uS="{{['d']}}" wx:if="{{i}}">
+                        <l-painter-image bind:__l="__l" class="data-v-9e6a9aba" uI="9e6a9aba-6,9e6a9aba-5" uP="{{e}}" wx:if="{{e}}"></l-painter-image>
+                        <l-painter-view bind:__l="__l" class="data-v-9e6a9aba" uI="9e6a9aba-7,9e6a9aba-5" uP="{{h}}" uS="{{['d']}}" wx:if="{{h}}">
+                            <l-painter-text bind:__l="__l" class="data-v-9e6a9aba" uI="9e6a9aba-8,9e6a9aba-7" uP="{{f}}" wx:if="{{f}}"></l-painter-text>
+                            <l-painter-text bind:__l="__l" class="data-v-9e6a9aba" uI="9e6a9aba-9,9e6a9aba-7" uP="{{g}}" wx:if="{{g}}"></l-painter-text>
+                        </l-painter-view>
+                    </l-painter-view>
+                    <l-painter-text bind:__l="__l" class="data-v-9e6a9aba" uI="9e6a9aba-10,9e6a9aba-4" uP="{{j}}" wx:if="{{j}}"></l-painter-text>
+                </l-painter-view>
+                <l-painter-view bind:__l="__l" class="data-v-9e6a9aba" uI="9e6a9aba-11,9e6a9aba-3" uS="{{['d']}}">
+                    <l-painter-image bind:__l="__l" class="data-v-9e6a9aba" uI="9e6a9aba-12,9e6a9aba-11" uP="{{l}}" wx:if="{{l}}"></l-painter-image>
+                </l-painter-view>
+            </l-painter-view>
+        </l-painter>
+    </view>
+    <view class="bottom-btns data-v-9e6a9aba">
+        <view class="control-btn-wrap data-v-9e6a9aba">
+            <view bindtap="{{q}}" class="control-btn data-v-9e6a9aba">
+                <view class="iconfont icon-a-24_baocuntupian data-v-9e6a9aba"></view>
+                <view class="btn-text data-v-9e6a9aba">保存图片</view>
+            </view>
+            <button class="control-btn share-btn data-v-9e6a9aba" openType="share">
+                <view class="share-btn-content data-v-9e6a9aba">
+                    <label class="iconfont icon-a-24_fenxianglianjie data-v-9e6a9aba"></label>
+                    <view class="btn-text data-v-9e6a9aba">分享链接</view>
+                </view>
+            </button>
+        </view>
+        <view bindtap="{{r}}" class="share-close-btn data-v-9e6a9aba"> 取消 </view>
+    </view>
+</view>

@@ -1,0 +1,795 @@
+.baseBtn.data-v-be6650ff {
+    background-color: #000;
+    background-image: url(https://dsplatweb.oss-cn-chengdu.aliyuncs.com/songzan/images/btnBlack.png);
+    color: #fff
+}
+
+.baseBtn.data-v-be6650ff,.w-baseBtn.data-v-be6650ff {
+    background-repeat: repeat;
+    background-size: 80rpx 75rpx;
+    border-radius: 8rpx;
+    text-align: center
+}
+
+.w-baseBtn.data-v-be6650ff {
+    background-color: #fff;
+    background-image: url(https://dsplatweb.oss-cn-chengdu.aliyuncs.com/songzan/images/btnWhite.png);
+    color: #000
+}
+
+.w-baseBtn[disabled].data-v-be6650ff {
+    color: #000!important;
+    opacity: .8
+}
+
+.textHidden.data-v-be6650ff {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}
+
+.expandClick.data-v-be6650ff {
+    position: relative
+}
+
+.expandClick.data-v-be6650ff:after {
+    bottom: -60rpx;
+    content: "";
+    left: -60rpx;
+    position: absolute;
+    right: -60rpx;
+    top: -60rpx;
+    z-index: 9
+}
+
+.line-clamp-1.data-v-be6650ff {
+    -webkit-line-clamp: 1;
+    line-clamp: 1
+}
+
+.line-clamp-1.data-v-be6650ff,.line-clamp-2.data-v-be6650ff {
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    overflow: hidden;
+    white-space: normal
+}
+
+.line-clamp-2.data-v-be6650ff {
+    -webkit-line-clamp: 2;
+    line-clamp: 2
+}
+
+.line-clamp-3.data-v-be6650ff {
+    -webkit-line-clamp: 3;
+    line-clamp: 3
+}
+
+.line-clamp-3.data-v-be6650ff,.line-clamp-4.data-v-be6650ff {
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    overflow: hidden;
+    white-space: normal
+}
+
+.line-clamp-4.data-v-be6650ff {
+    -webkit-line-clamp: 4;
+    line-clamp: 4
+}
+
+.line-clamp-5.data-v-be6650ff {
+    -webkit-line-clamp: 5;
+    line-clamp: 5
+}
+
+.line-clamp-5.data-v-be6650ff,.line-clamp-6.data-v-be6650ff {
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    overflow: hidden;
+    white-space: normal
+}
+
+.line-clamp-6.data-v-be6650ff {
+    -webkit-line-clamp: 6;
+    line-clamp: 6
+}
+
+.line-clamp-7.data-v-be6650ff {
+    -webkit-line-clamp: 7;
+    line-clamp: 7
+}
+
+.line-clamp-7.data-v-be6650ff,.line-clamp-8.data-v-be6650ff {
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    overflow: hidden;
+    white-space: normal
+}
+
+.line-clamp-8.data-v-be6650ff {
+    -webkit-line-clamp: 8;
+    line-clamp: 8
+}
+
+.line-clamp-9.data-v-be6650ff {
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 9;
+    line-clamp: 9;
+    display: -webkit-box;
+    overflow: hidden;
+    white-space: normal
+}
+
+.data-v-be6650ff::-webkit-scrollbar {
+    color: transparent;
+    display: none;
+    height: 0;
+    width: 0
+}
+
+.loadingImg.data-v-be6650ff {
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100vw
+}
+
+.tripDetail_ui.data-v-be6650ff {
+    padding-bottom: 80rpx
+}
+
+.tripDetail_ui .header.data-v-be6650ff {
+    height: 564rpx;
+    padding: 216rpx 32rpx 0;
+    position: relative
+}
+
+.tripDetail_ui .header .bg.data-v-be6650ff {
+    bottom: 0;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+    z-index: 0
+}
+
+.tripDetail_ui .header .welcome.data-v-be6650ff {
+    color: #fff;
+    font-size: 28rpx;
+    line-height: 28rpx;
+    opacity: .8;
+    position: relative;
+    z-index: 1
+}
+
+.tripDetail_ui .header .name.data-v-be6650ff {
+    color: #fff;
+    font-family: "Source Han Serif CN";
+    font-size: 48rpx;
+    font-style: normal;
+    font-weight: 900;
+    line-height: 72rpx;
+    margin-top: 24rpx;
+    position: relative;
+    z-index: 1
+}
+
+.tripDetail_ui .header .time.data-v-be6650ff {
+    color: #fff;
+    font-size: 28rpx;
+    line-height: 28rpx;
+    margin-top: 24rpx;
+    position: relative;
+    z-index: 1
+}
+
+.tripDetail_ui .nav-warp.data-v-be6650ff {
+    background: #fff;
+    border-radius: 16rpx;
+    margin: -80rpx 32rpx 0;
+    position: relative
+}
+
+.tripDetail_ui .nav-warp .nav-list.data-v-be6650ff {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 16rpx 24rpx
+}
+
+.tripDetail_ui .nav-warp .nav-list .nav.data-v-be6650ff {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    min-width: 25%;
+    padding: 32rpx 0
+}
+
+.tripDetail_ui .nav-warp .nav-list .iconfont.data-v-be6650ff {
+    font-size: 40rpx;
+    height: 48rpx;
+    width: 48rpx
+}
+
+.tripDetail_ui .nav-warp .nav-list .txt.data-v-be6650ff {
+    color: #000;
+    font-size: 24rpx;
+    font-weight: 400;
+    line-height: 1;
+    margin-top: 12rpx
+}
+
+.tripDetail_ui .title.data-v-be6650ff {
+    align-items: center;
+    display: flex;
+    font-size: 36rpx;
+    font-weight: 700;
+    justify-content: space-between;
+    margin: 64rpx 32rpx 0
+}
+
+.tripDetail_ui .title .icon-a-16_youlajiantou_hei.data-v-be6650ff {
+    font-size: 32rpx;
+    font-weight: 400
+}
+
+.tripDetail_ui .room-box.data-v-be6650ff {
+    height: 300rpx;
+    padding: 48rpx 0 28rpx;
+    position: relative
+}
+
+.tripDetail_ui .room-box .room-item.data-v-be6650ff {
+    padding: 0 32rpx
+}
+
+.tripDetail_ui .room-box .room.data-v-be6650ff {
+    background: #fff;
+    border-radius: 16rpx;
+    display: flex;
+    padding: 32rpx;
+    position: relative
+}
+
+.tripDetail_ui .room-box .room .left-part.data-v-be6650ff {
+    height: 160rpx;
+    width: 214rpx
+}
+
+.tripDetail_ui .room-box .room .left-part .img.data-v-be6650ff {
+    border-radius: 8rpx;
+    height: 100%;
+    width: 100%
+}
+
+.tripDetail_ui .room-box .room .right-part.data-v-be6650ff {
+    align-items: center;
+    display: flex;
+    flex: 1
+}
+
+.tripDetail_ui .room-box .room .right-part .info.data-v-be6650ff {
+    flex: 1;
+    line-height: 1;
+    margin-left: 30rpx
+}
+
+.tripDetail_ui .room-box .room .right-part .info .time.data-v-be6650ff {
+    color: gray;
+    font-size: 24rpx;
+    overflow: hidden
+}
+
+.tripDetail_ui .room-box .room .right-part .info .name.data-v-be6650ff {
+    font-size: 36rpx;
+    font-weight: 700;
+    margin-top: 24rpx;
+    overflow: hidden
+}
+
+.tripDetail_ui .room-box .room .right-part .info .desc.data-v-be6650ff {
+    font-size: 28rpx;
+    margin-top: 16rpx;
+    overflow: hidden
+}
+
+.tripDetail_ui .room-box .room .right-part .icon-a-28_dianhua.data-v-be6650ff {
+    color: #000;
+    font-size: 56rpx
+}
+
+.tripDetail_ui .routes-list.data-v-be6650ff {
+    margin-top: 48rpx;
+    padding-bottom: 24rpx;
+    position: relative
+}
+
+.tripDetail_ui .routes-list .all.data-v-be6650ff {
+    align-items: center;
+    background: #fff;
+    border: 1px solid #fff;
+    border-radius: 16rpx;
+    display: flex;
+    flex-direction: column;
+    font-size: 28rpx;
+    font-weight: 700;
+    height: 128rpx;
+    justify-content: center;
+    left: 0;
+    padding: 28rpx 38rpx;
+    position: absolute;
+    white-space: nowrap
+}
+
+.tripDetail_ui .routes-list .all.active.data-v-be6650ff {
+    border: 1px solid #a43127
+}
+
+.tripDetail_ui .routes-list .routes.data-v-be6650ff {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-right: 32rpx
+}
+
+.tripDetail_ui .routes-list .routes .route.data-v-be6650ff {
+    align-items: center;
+    background: #fff;
+    border: 1px solid #fff;
+    border-radius: 16rpx;
+    display: flex;
+    flex-direction: column;
+    height: 120rpx;
+    justify-content: center;
+    margin-left: 16rpx;
+    padding: 0 48rpx 0 24rpx
+}
+
+.tripDetail_ui .routes-list .routes .route.all-route.data-v-be6650ff {
+    padding: 0 24rpx
+}
+
+.tripDetail_ui .routes-list .routes .route.active.data-v-be6650ff {
+    border: 1px solid #a43127
+}
+
+.tripDetail_ui .routes-list .routes .route .all-txt.data-v-be6650ff {
+    font-size: 28rpx;
+    font-weight: 700;
+    word-break: keep-all
+}
+
+.tripDetail_ui .routes-list .routes .route .label.data-v-be6650ff {
+    font-size: 32rpx;
+    font-weight: 700;
+    line-height: 1;
+    white-space: nowrap
+}
+
+.tripDetail_ui .routes-list .routes .route .val.data-v-be6650ff {
+    color: #000;
+    font-size: 24rpx;
+    line-height: 1;
+    margin-top: 16rpx;
+    white-space: nowrap
+}
+
+.tripDetail_ui .routes-list .routes .route.data-v-be6650ff:first-child {
+    margin-left: 32rpx
+}
+
+.tripDetail_ui .pick-up.data-v-be6650ff {
+    background: #fff;
+    border-radius: 16rpx;
+    margin: 48rpx 32rpx 0;
+    padding: 32rpx 24rpx 40rpx
+}
+
+.tripDetail_ui .pick-up .pick-up-tl.data-v-be6650ff {
+    align-items: center;
+    display: flex;
+    font-size: 28rpx;
+    font-weight: 700;
+    line-height: 1
+}
+
+.tripDetail_ui .pick-up .pick-up-tl .icon-a-20_jiesonganpai.data-v-be6650ff {
+    font-size: 40rpx;
+    font-weight: 400;
+    margin-right: 10rpx
+}
+
+.tripDetail_ui .pick-up .pick-up-info.data-v-be6650ff {
+    display: flex;
+    line-height: 1
+}
+
+.tripDetail_ui .pick-up .pick-up-info .no-carNo.data-v-be6650ff {
+    color: #ccc;
+    font-size: 28rpx;
+    margin-top: 32rpx
+}
+
+.tripDetail_ui .pick-up .pick-up-info .left-part.data-v-be6650ff,.tripDetail_ui .pick-up .pick-up-info .right-part.data-v-be6650ff {
+    margin-top: 38rpx;
+    width: 50%
+}
+
+.tripDetail_ui .pick-up .pick-up-info .left-part .pick-up-label.data-v-be6650ff,.tripDetail_ui .pick-up .pick-up-info .right-part .pick-up-label.data-v-be6650ff {
+    color: gray;
+    font-size: 28rpx
+}
+
+.tripDetail_ui .pick-up .pick-up-info .left-part .pick-up-keynote.data-v-be6650ff,.tripDetail_ui .pick-up .pick-up-info .right-part .pick-up-keynote.data-v-be6650ff {
+    font-size: 40rpx;
+    font-weight: 700;
+    margin-top: 24rpx
+}
+
+.tripDetail_ui .pick-up .pick-up-info .left-part .pick-up-desc.data-v-be6650ff,.tripDetail_ui .pick-up .pick-up-info .right-part .pick-up-desc.data-v-be6650ff {
+    color: #000;
+    font-size: 28rpx;
+    margin-top: 16rpx
+}
+
+.tripDetail_ui .pick-up .pick-up-info .left-part.data-v-be6650ff {
+    position: relative
+}
+
+.tripDetail_ui .pick-up .pick-up-info .left-part.data-v-be6650ff:after {
+    border-right: .5px solid #eee;
+    bottom: 0;
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0
+}
+
+.tripDetail_ui .pick-up .pick-up-info .right-part.data-v-be6650ff {
+    text-align: right
+}
+
+.tripDetail_ui .pick-up .pick-up-info-list.data-v-be6650ff {
+    padding-top: 16rpx
+}
+
+.tripDetail_ui .pick-up .pick-up-info-list .pick-up-item.data-v-be6650ff {
+    align-items: center;
+    display: flex;
+    margin-top: 32rpx
+}
+
+.tripDetail_ui .pick-up .pick-up-info-list .pick-up-item .pick-up-item-label.data-v-be6650ff {
+    color: gray;
+    font-size: 28rpx;
+    width: 136rpx
+}
+
+.tripDetail_ui .pick-up .pick-up-info-list .pick-up-item .pick-up-item-val.data-v-be6650ff {
+    align-items: center;
+    display: flex;
+    flex: 1;
+    flex-wrap: wrap;
+    font-size: 28rpx;
+    position: relative
+}
+
+.tripDetail_ui .pick-up .pick-up-info-list .pick-up-item .pick-up-item-val.pick-up-item-phone-val.data-v-be6650ff {
+    padding-right: 60rpx
+}
+
+.tripDetail_ui .pick-up .pick-up-info-list .pick-up-item .pick-up-item-val .guest.data-v-be6650ff {
+    margin-right: 32rpx
+}
+
+.tripDetail_ui .pick-up .pick-up-info-list .pick-up-item .pick-up-item-val .icon-a-12_fuzhi.data-v-be6650ff {
+    display: inline-block;
+    font-size: 26rpx;
+    margin-left: 10rpx
+}
+
+.tripDetail_ui .pick-up .pick-up-info-list .pick-up-item .pick-up-item-val .icon-a-28_dianhua.data-v-be6650ff {
+    font-size: 56rpx;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%)
+}
+
+.tripDetail_ui .tips.data-v-be6650ff {
+    align-items: center;
+    color: gray;
+    display: flex;
+    font-size: 24rpx;
+    margin-top: 24rpx;
+    padding: 0 32rpx
+}
+
+.tripDetail_ui .tips .icon-a-12_tishi.data-v-be6650ff {
+    color: gray;
+    font-size: 24rpx;
+    margin-right: 10rpx
+}
+
+.tripDetail_ui .trip-date.data-v-be6650ff {
+    margin: 40rpx 32rpx 0
+}
+
+.tripDetail_ui .trip-date .trip-date-item.data-v-be6650ff {
+    align-items: center;
+    background: #fff;
+    border-radius: 16rpx;
+    display: flex;
+    margin-top: 24rpx;
+    padding: 32rpx 24rpx 26rpx
+}
+
+.tripDetail_ui .trip-date .trip-date-item.data-v-be6650ff:first-child {
+    margin-top: 0
+}
+
+.tripDetail_ui .trip-date .trip-date-item .left-part.data-v-be6650ff {
+    display: flex;
+    width: 68rpx
+}
+
+.tripDetail_ui .trip-date .trip-date-item .left-part .left-part-box.data-v-be6650ff {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center
+}
+
+.tripDetail_ui .trip-date .trip-date-item .left-part .moon.data-v-be6650ff {
+    font-size: 24rpx;
+    line-height: 24rpx
+}
+
+.tripDetail_ui .trip-date .trip-date-item .left-part .day.data-v-be6650ff {
+    font-size: 40rpx;
+    font-weight: 600;
+    line-height: 1;
+    margin-top: 8rpx
+}
+
+.tripDetail_ui .trip-date .trip-date-item .right-part.data-v-be6650ff {
+    border-left: .5px solid #eee;
+    flex: 1;
+    line-height: 1;
+    padding-left: 24rpx
+}
+
+.tripDetail_ui .trip-date .trip-date-item .right-part .head.data-v-be6650ff {
+    color: #000;
+    font-size: 32rpx;
+    font-weight: 700
+}
+
+.tripDetail_ui .trip-date .trip-date-item .right-part .center.data-v-be6650ff {
+    color: #000;
+    font-size: 28rpx;
+    margin-top: 16rpx
+}
+
+.tripDetail_ui .trip-date .trip-date-item .right-part .footer.data-v-be6650ff {
+    color: gray;
+    font-size: 24rpx;
+    line-height: 36rpx;
+    margin-top: 16rpx
+}
+
+.tripDetail_ui .trip-detail.data-v-be6650ff {
+    padding: 8rpx 32rpx 0
+}
+
+.tripDetail_ui .trip-detail .trip-detail-item.data-v-be6650ff {
+    margin-top: 32rpx
+}
+
+.tripDetail_ui .trip-detail .trip-detail-item .trip-detail-time.data-v-be6650ff {
+    align-items: center;
+    color: gray;
+    display: flex;
+    font-size: 28rpx
+}
+
+.tripDetail_ui .trip-detail .trip-detail-item .trip-detail-time .iconfont.data-v-be6650ff {
+    color: gray;
+    font-size: 24rpx;
+    margin-right: 8rpx
+}
+
+.tripDetail_ui .trip-detail .trip-detail-item .trip-detail-info.data-v-be6650ff {
+    background: #fff;
+    border-radius: 16rpx;
+    display: flex;
+    margin-top: 24rpx;
+    padding: 24rpx 32rpx
+}
+
+.tripDetail_ui .trip-detail .trip-detail-item .trip-detail-info .iconfont.data-v-be6650ff {
+    color: #000;
+    font-size: 40rpx;
+    margin-right: 32rpx;
+    margin-top: 32rpx
+}
+
+.tripDetail_ui .trip-detail .trip-detail-item .trip-detail-info .rt-part.data-v-be6650ff {
+    border-radius: 8rpx;
+    flex: 1;
+    overflow: hidden;
+    position: relative
+}
+
+.tripDetail_ui .trip-detail .trip-detail-item .trip-detail-info .rt-part .active-img.data-v-be6650ff {
+    display: block;
+    height: 54.93vw;
+    width: 100%
+}
+
+.tripDetail_ui .trip-detail .trip-detail-item .trip-detail-info .rt-part .rt-part-info.data-v-be6650ff {
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 3
+}
+
+.tripDetail_ui .trip-detail .trip-detail-item .trip-detail-info .rt-part .bg.data-v-be6650ff {
+    background: linear-gradient(180deg,rgba(0,0,0,.75),transparent);
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 2
+}
+
+.tripDetail_ui .trip-detail .trip-detail-item .trip-detail-info .rt-part .activeName.data-v-be6650ff {
+    color: #fff;
+    font-size: 32rpx;
+    font-weight: 700;
+    margin-left: 32rpx;
+    margin-top: 32rpx
+}
+
+.tripDetail_ui .trip-detail .trip-detail-item .trip-detail-info .rt-part .activeTime.data-v-be6650ff {
+    color: #fff;
+    font-size: 28rpx;
+    margin-left: 32rpx;
+    margin-top: 24rpx;
+    opacity: .8
+}
+
+.tripDetail_ui .journey-form.data-v-be6650ff {
+    background: #fff;
+    border-radius: 16rpx;
+    margin: 24rpx 32rpx 0;
+    padding: 32rpx 24rpx
+}
+
+.tripDetail_ui .journey-form .journey-hd.data-v-be6650ff {
+    align-items: center;
+    display: flex;
+    font-size: 28rpx;
+    font-weight: 700
+}
+
+.tripDetail_ui .journey-form .journey-hd .icon-a-20_jiesonganpai.data-v-be6650ff {
+    font-size: 40rpx;
+    font-weight: 400;
+    margin-right: 10rpx
+}
+
+.tripDetail_ui .journey-form .info.data-v-be6650ff {
+    align-items: center;
+    color: #000;
+    display: flex;
+    font-size: 28rpx;
+    line-height: 36rpx;
+    margin-top: 24rpx
+}
+
+.tripDetail_ui .journey-form .info .info-lf.data-v-be6650ff {
+    flex: 1;
+    line-height: 36rpx
+}
+
+.tripDetail_ui .journey-form .info .btn.data-v-be6650ff {
+    height: 60rpx;
+    line-height: 60rpx;
+    margin-left: 52rpx;
+    padding: 0 24rpx
+}
+
+.tripDetail_ui .album.data-v-be6650ff {
+    margin-top: 64rpx
+}
+
+.tripDetail_ui .album .album-head.data-v-be6650ff {
+    margin: 0 32rpx
+}
+
+.tripDetail_ui .album .album-head .album-tl.data-v-be6650ff {
+    align-items: center;
+    display: flex;
+    font-size: 36rpx;
+    font-weight: 700;
+    justify-content: space-between;
+    line-height: 1
+}
+
+.tripDetail_ui .album .album-head .desc.data-v-be6650ff {
+    color: gray;
+    font-size: 24rpx;
+    margin-top: 16rpx
+}
+
+.tripDetail_ui .album .album-list.data-v-be6650ff {
+    margin-top: 48rpx;
+    overflow-x: auto;
+    padding: 0 32rpx;
+    white-space: nowrap
+}
+
+.tripDetail_ui .album .album-list .img.data-v-be6650ff {
+    border-radius: 16rpx;
+    height: 248rpx;
+    margin-left: 16rpx;
+    width: 332rpx
+}
+
+.tripDetail_ui .album .album-list .img.data-v-be6650ff:first-child {
+    margin-left: 0
+}
+
+.tripDetail_ui .albumDetail.data-v-be6650ff {
+    padding-bottom: 60rpx
+}
+
+.tripDetail_ui .albumDetail.data-v-be6650ff:after {
+    background: #000;
+    height: 20rpx;
+    position: absolute;
+    top: 0;
+    transform: scaleY(.5);
+    width: 100%
+}
+
+.tripDetail_ui .albumDetail .album-title.data-v-be6650ff {
+    color: #000;
+    font-size: 40rpx;
+    font-weight: 700;
+    line-height: 40rpx;
+    padding: 48rpx 32rpx 0
+}
+
+.tripDetail_ui .albumDetail .moreText.data-v-be6650ff {
+    margin-top: 48rpx;
+    padding: 0 32rpx
+}
+
+.tripDetail_ui .albumDetail .img-list.data-v-be6650ff {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 32rpx
+}
+
+.tripDetail_ui .albumDetail .img-list .img-item.data-v-be6650ff {
+    display: flex;
+    margin-top: 16rpx;
+    width: 33.3%
+}
+
+.tripDetail_ui .albumDetail .img-list .img-item.data-v-be6650ff:nth-child(3n-1) {
+    justify-content: center
+}
+
+.tripDetail_ui .albumDetail .img-list .img-item.data-v-be6650ff:nth-child(3n) {
+    justify-content: flex-end
+}
+
+.tripDetail_ui .albumDetail .img-list .album-item.data-v-be6650ff {
+    height: 21.9vw;
+    width: 29vw
+}

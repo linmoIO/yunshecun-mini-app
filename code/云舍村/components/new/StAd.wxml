@@ -1,0 +1,9 @@
+<view bindtap="{{y}}" class="{{['st-ad','data-v-01b76427',w]}}" style="{{x}}" wx:if="{{a}}">
+    <video showPlayBtn autoplay="{{k}}" bindended="{{r}}" bindfullscreenchange="{{s}}" bindpause="{{q}}" bindplay="{{p}}" class="st-ad__video data-v-01b76427" controls="{{l}}" enableProgressGesture="{{m}}" id="{{h}}" muted="{{j}}" objectFit="contain" showCenterPlayBtn="{{n}}" showMuteBtn="{{o}}" src="{{i}}" wx:if="{{b}}">
+        <view class="{{['control-play','data-v-01b76427',c,d,e]}}">
+            <view class="iconfont icon-play icon data-v-01b76427"></view>
+        </view>
+        <image class="st-ad__cover data-v-01b76427" hidden="{{!f}}" mode="aspectFill" src="{{g}}"></image>
+    </video>
+    <image class="st-ad__cover data-v-01b76427" mode="aspectFill" src="{{v}}" wx:elif="{{t}}"></image>
+</view>

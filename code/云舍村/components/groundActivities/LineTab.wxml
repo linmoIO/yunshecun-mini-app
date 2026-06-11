@@ -1,0 +1,8 @@
+<view class="tabs-container data-v-e90d1019" style="{{g+';'+h}}">
+    <scroll-view scrollWithAnimation scrollX class="scroll-view data-v-e90d1019" scrollLeft="{{f}}" showScrollbar="{{false}}">
+        <view class="tabs-main data-v-e90d1019" style="{{'padding-bottom:'+d+';'+'justify-content:'+e}}">
+            <view class="tabs-line data-v-e90d1019" style="{{b}}" wx:if="{{a}}"></view>
+            <view bindtap="{{item.d}}" class="tabs-item data-v-e90d1019" style="{{item.c}}" wx:for="{{c}}" wx:key="b">{{item.a}}</view>
+        </view>
+    </scroll-view>
+</view>

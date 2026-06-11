@@ -1,0 +1,45 @@
+<view class="{{['login-page','safe-area--bottom','data-v-6ada9f64',B&&'login-page--disabled']}}" style="{{'--background-url:'+C}}">
+    <navigation bind:__l="__l" class="data-v-6ada9f64" uI="6ada9f64-0" uP="{{a}}" wx:if="{{a}}"></navigation>
+    <view class="login-content data-v-6ada9f64">
+        <view class="login-content-btns data-v-6ada9f64">
+            <view class="btn-item data-v-6ada9f64">
+                <st-button bind:__l="__l" bindclick="{{b}}" bindgetPhoneNumber="{{c}}" class="data-v-6ada9f64" uI="6ada9f64-1" uP="{{d}}" uS="{{['d']}}" wx:if="{{d}}"> 一键登录 </st-button>
+            </view>
+            <view bindtap="{{e}}" class="btn-item btn-phone data-v-6ada9f64"> 输入手机号登录 <view class="icon iconfont icon-a-16_youlajiantou_hei data-v-6ada9f64"></view>
+            </view>
+        </view>
+        <view class="login-content-footer data-v-6ada9f64">
+            <agreement-checkbox bind:__l="__l" bindupdateModelValue="{{f}}" class="data-v-6ada9f64" uI="6ada9f64-2" uP="{{g}}" wx:if="{{g}}"></agreement-checkbox>
+            <safe-area bind:__l="__l" class="data-v-6ada9f64" uI="6ada9f64-3" uP="{{h}}" wx:if="{{h}}"></safe-area>
+        </view>
+    </view>
+    <bottom-dialog bind:__l="__l" class="r data-v-6ada9f64" uI="6ada9f64-4" uP="{{y}}" uR="phoneLoginPopupRef" uS="{{['d']}}" wx:if="{{y}}">
+        <alert bind:__l="__l" class="data-v-6ada9f64" uI="6ada9f64-5,6ada9f64-4" uP="{{i}}" wx:if="{{i}}"></alert>
+        <view class="phone-login-popup data-v-6ada9f64">
+            <view class="login-form data-v-6ada9f64">
+                <view class="login-form__item data-v-6ada9f64">
+                    <view class="login-form__item-label data-v-6ada9f64">
+                        <view class="icon iconfont icon-a-16_shouji data-v-6ada9f64"></view> 手机号 </view>
+                    <view class="login-form__item-value login-form__item-value--suffix data-v-6ada9f64">
+                        <input bindinput="{{l}}" class="login-form__item-input data-v-6ada9f64" maxlength="{{11}}" placeholder="请输入手机号" placeholderStyle="{{j}}" type="number" value="{{k}}"></input>
+                        <view class="login-form__item-suffix data-v-6ada9f64">
+                            <st-button bind:__l="__l" bindclick="{{n}}" class="data-v-6ada9f64" uI="6ada9f64-6,6ada9f64-4" uP="{{o}}" uS="{{['d']}}" wx:if="{{o}}">{{m}}</st-button>
+                        </view>
+                    </view>
+                </view>
+                <view class="login-form__item data-v-6ada9f64">
+                    <view class="login-form__item-label data-v-6ada9f64">
+                        <view class="icon iconfont icon-a-16_yanzhengma data-v-6ada9f64"></view> 验证码 </view>
+                    <view class="login-form__item-value data-v-6ada9f64">
+                        <input bindinput="{{r}}" class="login-form__item-input data-v-6ada9f64" maxlength="{{6}}" placeholder="请输入收到的验证码" placeholderStyle="{{p}}" type="number" value="{{q}}"></input>
+                    </view>
+                </view>
+            </view>
+            <view class="login-form-footer data-v-6ada9f64">
+                <st-button bind:__l="__l" bindclick="{{s}}" class="data-v-6ada9f64" uI="6ada9f64-7,6ada9f64-4" uP="{{t}}" uS="{{['d']}}" wx:if="{{t}}"> 登录 </st-button>
+                <agreement-checkbox bind:__l="__l" bindupdateModelValue="{{v}}" class="data-v-6ada9f64" uI="6ada9f64-8,6ada9f64-4" uP="{{w}}" wx:if="{{w}}"></agreement-checkbox>
+            </view>
+        </view>
+    </bottom-dialog>
+    <graph-captcha-dialog bind:__l="__l" bindupdateShow="{{z}}" class="data-v-6ada9f64" uI="6ada9f64-9" uP="{{A}}" wx:if="{{A}}"></graph-captcha-dialog>
+</view>

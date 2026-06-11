@@ -1,0 +1,8 @@
+{
+    "navigationBarTitleText":  "行程变更确认书",
+    "enablePullDownRefresh":  false,
+    "navigationStyle":  "custom",
+    "usingComponents":  {
+                            "coustom-head":  "../../components/coustomHead"
+                        }
+}

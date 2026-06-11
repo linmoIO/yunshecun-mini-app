@@ -1,0 +1,115 @@
+.line-clamp-1.data-v-fe6d7eeb {
+    -webkit-line-clamp: 1;
+    line-clamp: 1
+}
+
+.line-clamp-1.data-v-fe6d7eeb,.line-clamp-2.data-v-fe6d7eeb {
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    overflow: hidden;
+    white-space: normal
+}
+
+.line-clamp-2.data-v-fe6d7eeb {
+    -webkit-line-clamp: 2;
+    line-clamp: 2
+}
+
+.line-clamp-3.data-v-fe6d7eeb {
+    -webkit-line-clamp: 3;
+    line-clamp: 3
+}
+
+.line-clamp-3.data-v-fe6d7eeb,.line-clamp-4.data-v-fe6d7eeb {
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    overflow: hidden;
+    white-space: normal
+}
+
+.line-clamp-4.data-v-fe6d7eeb {
+    -webkit-line-clamp: 4;
+    line-clamp: 4
+}
+
+.line-clamp-5.data-v-fe6d7eeb {
+    -webkit-line-clamp: 5;
+    line-clamp: 5
+}
+
+.line-clamp-5.data-v-fe6d7eeb,.line-clamp-6.data-v-fe6d7eeb {
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    overflow: hidden;
+    white-space: normal
+}
+
+.line-clamp-6.data-v-fe6d7eeb {
+    -webkit-line-clamp: 6;
+    line-clamp: 6
+}
+
+.line-clamp-7.data-v-fe6d7eeb {
+    -webkit-line-clamp: 7;
+    line-clamp: 7
+}
+
+.line-clamp-7.data-v-fe6d7eeb,.line-clamp-8.data-v-fe6d7eeb {
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    overflow: hidden;
+    white-space: normal
+}
+
+.line-clamp-8.data-v-fe6d7eeb {
+    -webkit-line-clamp: 8;
+    line-clamp: 8
+}
+
+.line-clamp-9.data-v-fe6d7eeb {
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 9;
+    line-clamp: 9;
+    display: -webkit-box;
+    overflow: hidden;
+    white-space: normal
+}
+
+.ui_bottomBtn.data-v-fe6d7eeb {
+    background: #fff;
+    border-top: 1px solid #f8f8f8;
+    bottom: 0;
+    height: 144rpx;
+    height: calc(144rpx + constant(safe-area-inset-bottom));
+    height: calc(144rpx + env(safe-area-inset-bottom));
+    left: 0;
+    padding: 24rpx 32rpx;
+    position: fixed;
+    width: 100vw;
+    z-index: 9
+}
+
+.ui_bottomBtn.layout.data-v-fe6d7eeb {
+    height: auto;
+    padding: 0;
+    position: static;
+    width: auto
+}
+
+.ui_bottomBtn .bottomBtn.data-v-fe6d7eeb {
+    background-color: #000;
+    background-image: url(https://dsplatweb.oss-cn-chengdu.aliyuncs.com/songzan/images/btnBlack.png);
+    background-repeat: repeat;
+    background-size: 80rpx 75rpx;
+    border-radius: 8rpx;
+    color: #fff;
+    height: 96rpx;
+    line-height: 96rpx;
+    text-align: center;
+    width: 100%
+}
+
+.ui_bottomBtn .bottomBtn.disabled.data-v-fe6d7eeb {
+    background: #eee;
+    color: #ccc
+}

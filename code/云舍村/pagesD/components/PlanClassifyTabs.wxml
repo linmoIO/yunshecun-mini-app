@@ -1,0 +1,13 @@
+<view class="plan-classify_tabs__wrapper data-v-57803ef6">
+    <view class="tabs__wrapper data-v-57803ef6">
+        <view class="tabs_ui canShow data-v-57803ef6">
+            <scroll-view scrollWithAnimation scrollX bindscroll="scroll" class="scroll-view data-v-57803ef6" scrollLeft="{{b}}">
+                <view class="tabs flex data-v-57803ef6">
+                    <view bindtap="{{item.d}}" class="{{['tab','data-v-57803ef6',item.c&&'active']}}" wx:for="{{a}}" wx:key="b">
+                        <view class="tab_view data-v-57803ef6">{{item.a}}</view>
+                    </view>
+                </view>
+            </scroll-view>
+        </view>
+    </view>
+</view>

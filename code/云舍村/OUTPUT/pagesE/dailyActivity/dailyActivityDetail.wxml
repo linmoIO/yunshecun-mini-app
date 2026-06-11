@@ -1,0 +1,209 @@
+<view class="data-v-0fa8995e" wx:if="{{a}}">
+    <coustom-head bind:__l="__l" class="data-v-0fa8995e" uI="0fa8995e-0" uP="{{b}}" wx:if="{{b}}"></coustom-head>
+    <error-limiting bind:__l="__l" bindretry="{{c}}" class="data-v-0fa8995e" uI="0fa8995e-1" uP="{{d}}" wx:if="{{d}}"></error-limiting>
+</view>
+<view class="dailyDetail_ui data-v-0fa8995e" wx:elif="{{e}}">
+    <view class="topContent data-v-0fa8995e">
+        <view class="coustom-head data-v-0fa8995e">
+            <coustom-head bind:__l="__l" class="data-v-0fa8995e" uI="0fa8995e-2" uP="{{k}}" uS="{{['title']}}" wx:if="{{k}}">
+                <view class="head-box data-v-0fa8995e" slot="title">
+                    <view class="head data-v-0fa8995e" wx:if="{{f}}">
+                        <view bindtap="{{h}}" class="{{['head-item','data-v-0fa8995e',g&&'active']}}"> 视频 </view>
+                        <view bindtap="{{j}}" class="{{['head-item','data-v-0fa8995e',i&&'active']}}"> 照片集 </view>
+                    </view>
+                </view>
+            </coustom-head>
+        </view>
+        <view class="swiper-box data-v-0fa8995e">
+            <swiper-box bind:__l="__l" bindchange="{{m}}" class="r data-v-0fa8995e" uI="0fa8995e-3" uP="{{n}}" uR="swiperRef" wx:if="{{n}}"></swiper-box>
+        </view>
+        <view class="product-info data-v-0fa8995e">
+            <view class="product-name data-v-0fa8995e">{{o}} <view bindtap="{{s}}" class="{{['iconfont','data-v-0fa8995e',p&&'active',q&&'icon-a-20_shoucang_yishoucang',r&&'icon-a-20_shoucang_weishoucang']}}"></view>
+            </view>
+            <view class="product-sub-tl data-v-0fa8995e">
+                <rich-text class="data-v-0fa8995e" nodes="{{t}}"></rich-text>
+            </view>
+            <view class="product-price data-v-0fa8995e" wx:if="{{v}}"> ¥{{w}}起 </view>
+            <view class="product-price data-v-0fa8995e" wx:else> 免费 </view>
+            <view class="other-price data-v-0fa8995e" wx:if="{{x}}"> 现金+积分价： <label class="data-v-0fa8995e" wx:if="{{y}}">¥{{z}}</label> + <label class="data-v-0fa8995e">{{A}}积分</label> /份起 </view>
+            <view class="themes data-v-0fa8995e" wx:if="{{B}}">
+                <view class="theme data-v-0fa8995e" wx:for="{{C}}" wx:for-item="tag" wx:key="b">{{tag.a}}</view>
+            </view>
+        </view>
+        <view class="intro_wrap data-v-0fa8995e">
+            <view class="intro_item data-v-0fa8995e">
+                <view class="intro_left data-v-0fa8995e"> 适用人数 </view>
+                <view class="intro_right data-v-0fa8995e">
+                    <view class="data-v-0fa8995e" wx:if="{{D}}">
+                        <label class="data-v-0fa8995e">{{E}}</label>
+                        <label class="data-v-0fa8995e" wx:if="{{F}}">-</label>
+                        <label class="data-v-0fa8995e">{{G}}</label>
+                        <label class="data-v-0fa8995e" wx:if="{{H}}">名儿童</label>
+                        <label class="data-v-0fa8995e" wx:if="{{I}}">名成人</label>
+                        <label class="data-v-0fa8995e" wx:if="{{J}}"></label>
+                    </view>
+                    <view class="data-v-0fa8995e" wx:else> 不限 </view>
+                </view>
+            </view>
+            <view class="intro_item data-v-0fa8995e">
+                <view class="intro_left data-v-0fa8995e"> 预约规则 </view>
+                <view class="intro_right data-v-0fa8995e" wx:if="{{K}}">
+                    <label class="data-v-0fa8995e">提前</label>
+                    <label class="data-v-0fa8995e">{{L}}</label>
+                    <label class="data-v-0fa8995e">{{M}}</label>
+                    <label class="data-v-0fa8995e">预约</label>
+                </view>
+                <view class="intro_right data-v-0fa8995e" wx:else> 无需预约 </view>
+            </view>
+            <view class="intro_item data-v-0fa8995e">
+                <view class="intro_left data-v-0fa8995e"> 联系电话 </view>
+                <view class="intro_right data-v-0fa8995e">{{N}}</view>
+            </view>
+            <view class="intro_item data-v-0fa8995e">
+                <view class="intro_left data-v-0fa8995e"> 接待时间 </view>
+                <view class="intro_right data-v-0fa8995e">{{O}}-{{P}}</view>
+            </view>
+            <view class="intro_item data-v-0fa8995e" wx:if="{{Q}}">
+                <view class="intro_left data-v-0fa8995e"> 规则说明 </view>
+                <view class="intro_right data-v-0fa8995e">
+                    <rich-text class="data-v-0fa8995e" nodes="{{R}}"></rich-text>
+                </view>
+            </view>
+            <view class="intro_item data-v-0fa8995e" wx:if="{{S}}">
+                <view class="intro_left data-v-0fa8995e"> 产品亮点 </view>
+                <view class="intro_right data-v-0fa8995e">
+                    <rich-text class="data-v-0fa8995e" nodes="{{T}}"></rich-text>
+                </view>
+            </view>
+        </view>
+        <view class="product-info-box data-v-0fa8995e">
+            <view class="title data-v-0fa8995e"> 适用酒店 </view>
+            <view class="hotel_list data-v-0fa8995e">
+                <view class="address_wrap data-v-0fa8995e" wx:for="{{U}}" wx:for-item="hItem" wx:key="f">
+                    <view bindtap="{{hItem.c}}" class="address_left data-v-0fa8995e">
+                        <view class="address_title data-v-0fa8995e">
+                            <view class="data-v-0fa8995e">{{hItem.a}}</view>
+                            <view class="icon-a-12_youlajiantou_hei iconfont data-v-0fa8995e"></view>
+                        </view>
+                        <view class="address_text data-v-0fa8995e">{{hItem.b}}</view>
+                    </view>
+                    <view class="address_right data-v-0fa8995e">
+                        <view bindtap="{{hItem.d}}" class="position data-v-0fa8995e">
+                            <view class="icon-a-28_ditu iconfont pos_icon data-v-0fa8995e"></view>
+                        </view>
+                        <view bindtap="{{hItem.e}}" class="tel data-v-0fa8995e">
+                            <view class="icon-a-28_dianhua iconfont pos_icon data-v-0fa8995e"></view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="product-info-box data-v-0fa8995e">
+            <view class="title data-v-0fa8995e"> 可订班期 </view>
+            <view class="dates-box data-v-0fa8995e" wx:if="{{V}}">
+                <view class="dates data-v-0fa8995e">
+                    <view bindtap="{{item.g}}" class="{{['date','data-v-0fa8995e',item.f&&'active']}}" wx:if="{{item.a}}" wx:for="{{W}}" wx:key="h">
+                        <view class="label data-v-0fa8995e">{{item.b}}</view>
+                        <view class="val data-v-0fa8995e">{{item.c}}</view>
+                        <view class="price data-v-0fa8995e" wx:if="{{item.d}}"> 免费 </view>
+                        <view class="price data-v-0fa8995e" wx:else> ¥{{item.e}}起 </view>
+                    </view>
+                    <view bindtap="{{Y}}" class="all-date data-v-0fa8995e" wx:if="{{X}}">
+                        <view class="icon-a-12_riqi iconfont data-v-0fa8995e"></view> 全部 </view>
+                </view>
+            </view>
+            <view class="dates timeRange_wrap data-v-0fa8995e">
+                <view bindtap="{{citem.i}}" class="{{['date_time','data-v-0fa8995e',citem.g&&'unActive',citem.h&&'active']}}" wx:for="{{Z}}" wx:for-item="citem" wx:key="f">
+                    <view class="{{['time_val','data-v-0fa8995e',citem.c&&'fontActive']}}">{{citem.a}}-{{citem.b}}</view>
+                    <view class="time_num data-v-0fa8995e" wx:if="{{citem.d}}"> 余{{citem.e}}份 </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="tabs-warp data-v-0fa8995e">
+        <view class="{{['tabs','data-v-0fa8995e',ae&&'fixed']}}" style="{{'top:'+af}}">
+            <view bindtap="{{ab}}" class="{{['tab','data-v-0fa8995e',aa&&'active']}}"> 须知 </view>
+            <view bindtap="{{ad}}" class="{{['tab','data-v-0fa8995e',ac&&'active']}}"> 问答 </view>
+        </view>
+    </view>
+    <view class="product-info-box contentHight data-v-0fa8995e" wx:if="{{ag}}">
+        <view class="title data-v-0fa8995e"> 费用说明及预订须知 </view>
+        <view class="explain-box data-v-0fa8995e">
+            <view class="explain-list data-v-0fa8995e">
+                <view class="explain-item data-v-0fa8995e">
+                    <collapse bind:__l="__l" class="data-v-0fa8995e" uI="0fa8995e-4" uP="{{ai}}" uS="{{['content']}}" wx:if="{{ai}}">
+                        <view class="explain-item data-v-0fa8995e" slot="content">
+                            <view class="tl data-v-0fa8995e"> 费用说明 </view>
+                            <view class="desc data-v-0fa8995e">
+                                <view class="data-v-0fa8995e">
+                                    <rich-text class="data-v-0fa8995e" nodes="{{ah}}"></rich-text>
+                                </view>
+                            </view>
+                        </view>
+                    </collapse>
+                </view>
+            </view>
+            <view class="explain-list data-v-0fa8995e">
+                <view class="explain-item data-v-0fa8995e">
+                    <collapse bind:__l="__l" class="data-v-0fa8995e" uI="0fa8995e-5" uP="{{ak}}" uS="{{['content']}}" wx:if="{{ak}}">
+                        <view class="explain-item data-v-0fa8995e" slot="content">
+                            <view class="tl data-v-0fa8995e"> 温馨提示 </view>
+                            <view class="desc data-v-0fa8995e">
+                                <view class="data-v-0fa8995e">
+                                    <rich-text class="data-v-0fa8995e" nodes="{{aj}}"></rich-text>
+                                </view>
+                            </view>
+                        </view>
+                    </collapse>
+                </view>
+            </view>
+            <view class="explain-list data-v-0fa8995e">
+                <view class="explain-item data-v-0fa8995e">
+                    <collapse bind:__l="__l" class="data-v-0fa8995e" uI="0fa8995e-6" uP="{{am}}" uS="{{['content']}}" wx:if="{{am}}">
+                        <view class="explain-item data-v-0fa8995e" slot="content">
+                            <view class="tl data-v-0fa8995e"> 预订条款及取消政策 </view>
+                            <view class="desc data-v-0fa8995e">
+                                <view class="data-v-0fa8995e">
+                                    <rich-text class="data-v-0fa8995e" nodes="{{al}}"></rich-text>
+                                </view>
+                            </view>
+                        </view>
+                    </collapse>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="product-info-box contentHight data-v-0fa8995e">
+        <view class="title data-v-0fa8995e"> 常见问题 </view>
+        <view class="problems data-v-0fa8995e">
+            <view class="problem data-v-0fa8995e" wx:for="{{an}}" wx:key="c">
+                <view class="question data-v-0fa8995e"> Q：{{item.a}}</view>
+                <view class="answer data-v-0fa8995e"> A：{{item.b}}</view>
+            </view>
+        </view>
+        <view bindtap="{{ao}}" class="more-box data-v-0fa8995e">
+            <view class="more-btn data-v-0fa8995e"> 更多问题 </view>
+        </view>
+    </view>
+    <view class="footer data-v-0fa8995e">
+        <view bindtap="{{ap}}" class="kefu_wrap data-v-0fa8995e">
+            <view class="iconfont icon-a-20_kefu ke_icon data-v-0fa8995e"></view>
+            <view class="ke_text data-v-0fa8995e"> 客服 </view>
+        </view>
+        <view bindtap="{{at}}" class="{{['data-v-0fa8995e',ar&&'order-btn',as&&'order-noBtn']}}">{{aq}}</view>
+    </view>
+    <bottom-dialog bind:__l="__l" class="r data-v-0fa8995e" uI="0fa8995e-7" uP="{{az}}" uR="orderLayer" uS="{{['d']}}" wx:if="{{az}}">
+        <view class="order-layer data-v-0fa8995e">
+            <view class="order-box data-v-0fa8995e">
+                <view class="booking-date data-v-0fa8995e">
+                    <daily-price bind:__l="__l" bindchangeDailyPrice="{{aw}}" class="r data-v-0fa8995e" uI="0fa8995e-8,0fa8995e-7" uR="dailyPrices"></daily-price>
+                </view>
+                <view class="next-btn data-v-0fa8995e">
+                    <view bindtap="{{ax}}" class="btn baseBtn data-v-0fa8995e"> 下一步 </view>
+                </view>
+            </view>
+        </view>
+    </bottom-dialog>
+    <back-to-top bind:__l="__l" class="data-v-0fa8995e" uI="0fa8995e-9"></back-to-top>
+    <kf-dialog bind:__l="__l" class="r data-v-0fa8995e" uI="0fa8995e-10" uP="{{aB}}" uR="kf" wx:if="{{aB}}"></kf-dialog>
+</view>

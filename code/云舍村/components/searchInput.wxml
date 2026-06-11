@@ -1,0 +1,7 @@
+<view class="ui_searchInput data-v-b648dd5b">
+    <view class="{{['icon','iconfont','icon-a-16_sousuo_hui','data-v-b648dd5b',b&&'active']}}" style="{{a}}"></view>
+    <input bindblur="{{j}}" bindconfirm="{{g}}" bindfocus="{{k}}" bindinput="{{d}}" bindtap="{{h}}" class="data-v-b648dd5b" confirmType="done" focus="{{i}}" placeholder="{{c}}" placeholderStyle="color:#ccc;" value="{{f}}"></input>
+    <view bindtap="{{m}}" class="clear data-v-b648dd5b" wx:if="{{l}}">
+        <view class="icon iconfont icon-a-20_guanbi data-v-b648dd5b"></view>
+    </view>
+</view>

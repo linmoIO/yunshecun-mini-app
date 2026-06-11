@@ -1,0 +1,109 @@
+<view class="pay_ui data-v-bf26b57e">
+    <coustom-head bind:__l="__l" bindnavigateBackGuard="{{b}}" class="r data-v-bf26b57e" uI="bf26b57e-0" uP="{{c}}" uR="coustomHeadRef" wx:if="{{c}}"></coustom-head>
+    <view class="boxHolder data-v-bf26b57e"></view>
+    <view class="top-box data-v-bf26b57e">
+        <view class="remainder data-v-bf26b57e" wx:if="{{d}}"> 支付剩余时间 {{e}}</view>
+        <view class="price data-v-bf26b57e"> ¥{{f}}</view>
+        <view class="rateSum data-v-bf26b57e" wx:if="{{g}}"> ¥{{h}}</view>
+        <view class="name data-v-bf26b57e">{{i}}</view>
+    </view>
+    <view bindtap="{{p}}" class="balance-ded data-v-bf26b57e" wx:if="{{j}}">
+        <view class="info data-v-bf26b57e">
+            <view class="label data-v-bf26b57e"> 余额抵扣 </view>
+            <view class="val data-v-bf26b57e" wx:if="{{k}}">{{l}}</view>
+            <view class="val red data-v-bf26b57e" wx:else> -¥{{m}}</view>
+        </view>
+        <view class="select-box data-v-bf26b57e">
+            <st-radio bind:__l="__l" bindupdateModelValue="{{n}}" class="data-v-bf26b57e" uI="bf26b57e-1" uP="{{o}}" wx:if="{{o}}"></st-radio>
+        </view>
+    </view>
+    <view class="payment-mode-tips data-v-bf26b57e" wx:if="{{q}}"> 可用余额不足，请在下方选择一种方式组合支付 </view>
+    <view class="payment-mode-tips data-v-bf26b57e" wx:else> 支付方式 </view>
+    <view class="payment-mode-box data-v-bf26b57e">
+        <view bindtap="{{mode.k}}" class="{{['data-v-bf26b57e',mode.j]}}" wx:for="{{r}}" wx:for-item="mode" wx:key="l">
+            <view class="left data-v-bf26b57e">
+                <image class="left-icon data-v-bf26b57e" src="{{mode.a}}"></image>
+                <view class="text data-v-bf26b57e">
+                    <view class="text-title data-v-bf26b57e">
+                        <label class="data-v-bf26b57e">{{mode.b}}</label>
+                        <image catchtap="{{mode.e}}" class="icon-question-gary data-v-bf26b57e" src="{{mode.d}}" wx:if="{{mode.c}}"></image>
+                    </view>
+                    <label class="text-subTitle data-v-bf26b57e" wx:if="{{mode.f}}">{{mode.g}}</label>
+                </view>
+            </view>
+            <view class="select-box data-v-bf26b57e">
+                <st-radio bind:__l="__l" class="data-v-bf26b57e" uI="{{mode.h}}" uP="{{mode.i}}" wx:if="{{mode.i}}"></st-radio>
+            </view>
+        </view>
+        <view bindtap="{{t}}" class="open-btn data-v-bf26b57e" wx:if="{{s}}"> 其他支付方式<view class="iconfont icon-a-12_xialajiantou_hei data-v-bf26b57e"></view>
+        </view>
+    </view>
+    <view class="pay-btn-box data-v-bf26b57e">
+        <view bindtap="{{v}}" class="baseBtn pay-btn data-v-bf26b57e"> 确认支付 </view>
+        <view class="part-pay-tips data-v-bf26b57e"> 支付遇到困难？可尝试联系客服 </view>
+    </view>
+    <bottom-dialog bind:__l="__l" bindopenState="{{H}}" class="r data-v-bf26b57e" uI="bf26b57e-3" uP="{{I}}" uR="partPayLayer" uS="{{['d']}}" wx:if="{{I}}">
+        <view class="pay-warp data-v-bf26b57e">
+            <view class="pay-box data-v-bf26b57e">
+                <view class="title data-v-bf26b57e"> 本笔支付金额 </view>
+                <view class="pay-price data-v-bf26b57e">
+                    <view class="rmb data-v-bf26b57e"> ¥ </view>
+                    <view class="placeholder data-v-bf26b57e" wx:if="{{w}}"> 请输入金额，最少输入{{x}}</view>
+                    <view class="pay-input data-v-bf26b57e" wx:else>{{y}}</view>
+                    <view bindtap="{{z}}" class="all data-v-bf26b57e"> 全部 </view>
+                </view>
+                <view class="toBePay data-v-bf26b57e"> 剩余待支付¥{{A}}</view>
+            </view>
+            <view class="keyboard data-v-bf26b57e">
+                <view class="left data-v-bf26b57e">
+                    <view bindtap="{{num.c}}" class="key data-v-bf26b57e" wx:for="{{B}}" wx:for-item="num" wx:key="b">{{num.a}}</view>
+                    <view bindtap="{{C}}" class="key big-key data-v-bf26b57e"> 0 </view>
+                    <view bindtap="{{D}}" class="key data-v-bf26b57e"> . </view>
+                </view>
+                <view class="right data-v-bf26b57e">
+                    <view bindtap="{{E}}" class="key data-v-bf26b57e">
+                        <view class="iconfont icon-a-20_jianpanhuishan data-v-bf26b57e"></view>
+                    </view>
+                    <view bindtap="{{F}}" class="rt-key data-v-bf26b57e"> 确认支付 </view>
+                </view>
+            </view>
+        </view>
+    </bottom-dialog>
+    <center-dialog bind:__l="__l" class="r data-v-bf26b57e" uI="bf26b57e-4" uP="{{O}}" uR="partPayDialog" uS="{{['d']}}" wx:if="{{O}}">
+        <view class="content-wrapper data-v-bf26b57e">
+            <view class="header data-v-bf26b57e">
+                <view class="header-item data-v-bf26b57e">
+                    <view class="iconfont icon-wallet-line data-v-bf26b57e"></view>
+                    <label class="header-item-title data-v-bf26b57e">支付定金</label>
+                    <label class="header-item-subTitle data-v-bf26b57e">保留行程</label>
+                </view>
+                <view class="iconfont icon-a-16_youlajiantou_hei data-v-bf26b57e"></view>
+                <view class="header-item data-v-bf26b57e">
+                    <view class="iconfont icon-money-line-round data-v-bf26b57e"></view>
+                    <label class="header-item-title data-v-bf26b57e">支付尾款</label>
+                    <label class="header-item-subTitle data-v-bf26b57e">可多笔支付</label>
+                </view>
+                <view class="iconfont icon-a-16_youlajiantou_hei data-v-bf26b57e"></view>
+                <view class="header-item data-v-bf26b57e">
+                    <view class="iconfont icon-success-line data-v-bf26b57e"></view>
+                    <label class="header-item-title data-v-bf26b57e">支付完成</label>
+                    <label class="header-item-subTitle data-v-bf26b57e">享受旅程</label>
+                </view>
+            </view>
+            <view class="content data-v-bf26b57e">
+                <view class="text data-v-bf26b57e">
+                    <view class="iconfont icon-danxuan_bukexuan data-v-bf26b57e"></view>定金支付至少¥{{J}}； </view>
+                <view class="text data-v-bf26b57e">
+                    <view class="iconfont icon-danxuan_bukexuan data-v-bf26b57e"></view>若剩余待支付金额不足 ¥{{K}} 时，第二次支付则必须支付完； </view>
+                <view class="text data-v-bf26b57e">
+                    <view class="iconfont icon-danxuan_bukexuan data-v-bf26b57e"></view>若剩余待支付金额超过 ¥{{L}} 时，第二次支付可多笔支付直至支付完成 </view>
+            </view>
+            <view class="dialog-footer data-v-bf26b57e">
+                <view bindtap="{{M}}" class="cancel-btn data-v-bf26b57e"> 我知道了 </view>
+            </view>
+        </view>
+    </center-dialog>
+    <customer-retention-dialog bind:__l="__l" bindcancel="{{P}}" bindconfirm="{{Q}}" bindupdateShow="{{R}}" class="data-v-bf26b57e" uI="bf26b57e-5" uP="{{S}}" wx:if="{{S}}"></customer-retention-dialog>
+    <retry-modal bind:__l="__l" bindretry="{{T}}" bindupdateVisible="{{U}}" class="data-v-bf26b57e" uI="bf26b57e-6" uP="{{V}}" wx:if="{{V}}"></retry-modal>
+</view>
+<float-button-kf bind:__l="__l" class="data-v-bf26b57e" data-c-h="{{!W}}" uI="bf26b57e-7"></float-button-kf>

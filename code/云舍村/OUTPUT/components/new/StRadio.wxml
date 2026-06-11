@@ -1,0 +1,7 @@
+<view bindtap="{{e}}" class="radio data-v-0776e303" style="{{f}}">
+    <image class="icon active data-v-0776e303" src="{{b}}" wx:if="{{a}}"></image>
+    <block wx:else>
+        <image class="{{['icon','data-v-0776e303',c]}}" src="https://dsplatweb.oss-cn-chengdu.aliyuncs.com/songzan/images/select.png"></image>
+        <image class="{{['icon','data-v-0776e303',d]}}" src="https://dsplatweb.oss-cn-chengdu.aliyuncs.com/songzan/images/unSelect.png"></image>
+    </block>
+</view>

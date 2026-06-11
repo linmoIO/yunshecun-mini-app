@@ -1,0 +1,9 @@
+{
+    "navigationBarTitleText":  "松赞旅行",
+    "navigationStyle":  "custom",
+    "enablePullDownRefresh":  true,
+    "onReachBottomDistance":  50,
+    "usingComponents":  {
+
+                        }
+}

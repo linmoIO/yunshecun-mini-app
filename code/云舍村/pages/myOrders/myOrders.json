@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "订单",
+  "usingComponents": {
+    "navbar": "../../components/navBar/navBar",
+    "bottomDialog": "../../components/bottomDialog/bottomDialog",
+    "homeList": "../../components/homeList/homeList",
+    "navigation-bar": "/components/navigation-bar/navigation-bar"
+  }
+}

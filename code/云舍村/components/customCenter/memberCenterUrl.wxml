@@ -1,0 +1,14 @@
+<view class="tapList data-v-03ba02eb">
+    <view catchtap="{{d}}" class="{{['tapListTitle','data-v-03ba02eb',c&&'arrow']}}" wx:if="{{a}}">{{b}}</view>
+    <view class="{{[h,'list','data-v-03ba02eb']}}">
+        <button catchtap="{{urlItem.i}}" class="{{[g&&'rows','listItem','data-v-03ba02eb']}}" wx:for="{{e}}" wx:for-item="urlItem" wx:key="h">
+            <image alt="" class="logo data-v-03ba02eb" src="{{urlItem.b}}" wx:if="{{urlItem.a}}"></image>
+            <view class="itemDesc data-v-03ba02eb">{{urlItem.c}}</view>
+            <view class="moreDesc data-v-03ba02eb" wx:if="{{f}}">
+                <image alt="" class="logo data-v-03ba02eb" src="{{urlItem.e}}" wx:if="{{urlItem.d}}"></image>
+                <label class="moreText data-v-03ba02eb" wx:if="{{urlItem.f}}">{{urlItem.g}}</label>
+            </view>
+            <view class="icon iconfont icon-a-16_youlajiantou_hei data-v-03ba02eb"></view>
+        </button>
+    </view>
+</view>

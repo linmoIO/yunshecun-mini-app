@@ -1,0 +1,43 @@
+<scroll-view class="rv-wrap" scroll-y>
+  <!-- 商品信息 -->
+  <view class="rv-product-card">
+    <view class="rv-product-name">{{productName}}</view>
+    <view class="rv-order-no" wx:if="{{orderNo}}">订单：{{orderNo}}</view>
+  </view>
+
+  <!-- 星级评分 -->
+  <view class="rv-section">
+    <view class="rv-section-title">评分</view>
+    <view class="rv-stars">
+      <view class="rv-star {{rating>=item?'active':''}}" wx:for="{{stars}}" wx:key="index"
+        bindtap="setStar" data-star="{{item}}">★</view>
+      <text class="rv-rating-label">{{ratingLabels[rating]}}</text>
+    </view>
+  </view>
+
+  <!-- 评价内容 -->
+  <view class="rv-section">
+    <view class="rv-section-title">评价内容</view>
+    <textarea class="rv-textarea" value="{{content}}" placeholder="分享你的使用感受，帮助更多人了解这个商品..."
+      bindinput="onContentInput" maxlength="500"/>
+    <view class="rv-word-count">{{content.length}}/500</view>
+  </view>
+
+  <!-- 上传图片 -->
+  <view class="rv-section">
+    <view class="rv-section-title">上传图片（最多9张）</view>
+    <view class="rv-imgs">
+      <view class="rv-img-item" wx:for="{{images}}" wx:key="index">
+        <image src="{{item}}" mode="aspectFill" class="rv-img" bindtap="previewImg" data-src="{{item}}"></image>
+        <view class="rv-img-del" catchtap="removeImage" data-idx="{{index}}">✕</view>
+      </view>
+      <view class="rv-add-img" bindtap="addImage" wx:if="{{images.length<9}}">
+        <text class="rv-add-icon">＋</text>
+        <text class="rv-add-text">添加图片</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="rv-submit {{submitting?'dis':''}}" bindtap="submit">{{submitting?'提交中...':'提交评价'}}</view>
+  <view style="height:60rpx"></view>
+</scroll-view>

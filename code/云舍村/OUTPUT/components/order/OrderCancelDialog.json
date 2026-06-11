@@ -1,0 +1,8 @@
+{
+    "component":  true,
+    "usingComponents":  {
+                            "kf-dialog":  "../kfDialog",
+                            "st-button":  "../new/StButton",
+                            "bottom-dialog":  "../bottomDialog"
+                        }
+}

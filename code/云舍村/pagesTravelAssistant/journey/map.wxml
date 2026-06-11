@@ -1,0 +1,29 @@
+<view class="page">
+  <map
+    class="map"
+    latitude="{{latitude}}"
+    longitude="{{longitude}}"
+    scale="{{scale}}"
+    markers="{{markers}}"
+    polyline="{{polyline}}"
+  ></map>
+  <view class="overlay">
+    <view class="top-nav">
+      <view class="back" bindtap="onBack">‹</view>
+      <view class="capsule"></view>
+    </view>
+    <scroll-view scroll-x class="tab-scroll">
+      <view class="tab-row">
+        <view
+          wx:for="{{tabs}}"
+          wx:key="*this"
+          class="tab {{tabIndex === index ? 'active' : ''}}"
+          data-index="{{index}}"
+          bindtap="onSwitchTab"
+        >
+          {{item}}
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+</view>

@@ -1,0 +1,1 @@
+<float-button bind:__l="__l" bindclick="{{a}}" uI="6cff7f5c-0" uP="{{b}}" uS="{{['d']}}" wx:if="{{b}}"> 收藏 </float-button>

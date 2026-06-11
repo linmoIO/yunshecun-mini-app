@@ -1,0 +1,10 @@
+{
+    "component":  true,
+    "usingComponents":  {
+                            "product-card-list":  "../new/ProductCardList",
+                            "new-st-ad":  "../new/StAd",
+                            "water":  "../water",
+                            "line-tab":  "LineTab",
+                            "tabs":  "Tabs"
+                        }
+}

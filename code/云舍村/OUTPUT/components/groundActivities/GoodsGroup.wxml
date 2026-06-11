@@ -1,0 +1,58 @@
+<view class="goods-group_main data-v-feebbd27">
+    <view class="goods-group-anchor data-v-feebbd27"></view>
+    <block wx:if="{{a}}">
+        <view class="group-container data-v-feebbd27" style="{{'top:'+q}}">
+            <view class="data-v-feebbd27" style="{{'height:'+c}}" wx:if="{{b}}"></view>
+            <view class="{{['fade-slide','data-v-feebbd27',k&&'fade-show',l&&'fade-hide']}}">
+                <scroll-view scrollWithAnimation scrollX class="scroll-view_h data-v-feebbd27" scrollIntoView="{{j}}" showScrollbar="{{false}}" wx:if="{{d}}">
+                    <view class="first-group data-v-feebbd27" style="{{'padding-right:'+i}}">
+                        <view bindtap="{{item.f}}" class="first-group_item data-v-feebbd27" id="{{item.c}}" style="{{'background-image:'+item.e+';'+'width:'+f+';'+'flex:'+g}}" wx:for="{{e}}" wx:key="d">
+                            <view class="select-mask data-v-feebbd27" hidden="{{!item.a}}"></view>
+                            <view class="first-group_item_name data-v-feebbd27">{{item.b}}</view>
+                        </view>
+                        <view class="right-placeholder data-v-feebbd27" wx:if="{{h}}"></view>
+                    </view>
+                </scroll-view>
+            </view>
+            <view class="first-group_sticky data-v-feebbd27" wx:if="{{m}}">
+                <line-tab bind:__l="__l" bindchange="{{o}}" class="r data-v-feebbd27" uI="feebbd27-0" uP="{{p}}" uR="lineTabRef" wx:if="{{p}}"></line-tab>
+            </view>
+        </view>
+        <view class="sticky-tabs data-v-feebbd27" style="{{'top:'+B+';'+'position:'+C}}">
+            <tabs bind:__l="__l" bindchange="{{t}}" class="r data-v-feebbd27" data-c-h="{{!s}}" uI="feebbd27-1" uP="{{v}}" uR="secondGroupRef" wx:if="{{v}}"></tabs>
+            <view class="tab-placeholder data-v-feebbd27" hidden="{{!w}}"></view>
+            <tabs bind:__l="__l" bindchange="{{z}}" class="r data-v-feebbd27" data-c-h="{{!y}}" uI="feebbd27-2" uP="{{A}}" uR="thirdGroupRef" wx:if="{{A}}"></tabs>
+        </view>
+    </block>
+    <view class="product-list data-v-feebbd27">
+        <view class="first-group_banner data-v-feebbd27" wx:if="{{D}}">
+            <image bindtap="{{F}}" class="first-group_banner_image data-v-feebbd27" src="{{E}}"></image>
+        </view>
+        <view class="data-v-feebbd27" hidden="{{!H}}">
+            <product-card-list bind:__l="__l" class="data-v-feebbd27" uI="feebbd27-3" uP="{{G}}" wx:if="{{G}}"></product-card-list>
+        </view>
+        <view class="data-v-feebbd27" hidden="{{!J}}">
+            <view class="recommendation-list data-v-feebbd27">
+                <view class="recommendation-item data-v-feebbd27" wx:for="{{I}}" wx:key="b">
+                    <view class="data-v-feebbd27" wx:for="{{item.a}}" wx:for-item="node" wx:key="d">
+                        <water bind:__l="__l" bindimageLoad="{{node.a}}" class="data-v-feebbd27" uI="{{node.b}}" uP="{{node.c}}" wx:if="{{node.c}}"></water>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="data-v-feebbd27" wx:if="{{K}}">
+            <view class="ad-container data-v-feebbd27" wx:for="{{L}}" wx:key="d">
+                <new-st-ad bind:__l="__l" class="data-v-feebbd27" id="{{item.a}}" uI="{{item.b}}" uP="{{item.c}}" wx:if="{{item.c}}"></new-st-ad>
+            </view>
+        </view>
+        <view class="ad-custom-travel data-v-feebbd27" wx:if="{{M}}">
+            <swiper autoplay circular class="data-v-feebbd27">
+                <swiper-item class="data-v-feebbd27" wx:for="{{N}}" wx:key="d">
+                    <view class="ad-custom-travel__item data-v-feebbd27">
+                        <new-st-ad bind:__l="__l" class="data-v-feebbd27" id="{{item.a}}" uI="{{item.b}}" uP="{{item.c}}" wx:if="{{item.c}}"></new-st-ad>
+                    </view>
+                </swiper-item>
+            </swiper>
+        </view>
+    </view>
+</view>

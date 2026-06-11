@@ -1,0 +1,43 @@
+<view class="moreTrip_ui data-v-8b4aa604">
+    <view class="tabs data-v-8b4aa604">
+        <tabs bind:__l="__l" class="data-v-8b4aa604" uI="8b4aa604-0" uP="{{a}}" wx:if="{{a}}"></tabs>
+    </view>
+    <view class="product-list data-v-8b4aa604">
+        <view class="product-item data-v-8b4aa604">
+            <view class="product-img data-v-8b4aa604">
+                <image class="img data-v-8b4aa604" src="https://website-10065452.cos.ap-shanghai.myqcloud.com/58fa7492-01ef-437f-a0a1-09754e8e06f1"></image>
+            </view>
+            <view class="product-info data-v-8b4aa604">
+                <view class="product-name data-v-8b4aa604"> 藏式红铜阔口圆身花瓶 </view>
+                <view class="product-bt data-v-8b4aa604">
+                    <view class="product-price data-v-8b4aa604">¥92</view>
+                    <view class="product-btn data-v-8b4aa604">详情</view>
+                </view>
+            </view>
+        </view>
+        <view class="product-item data-v-8b4aa604">
+            <view class="product-img data-v-8b4aa604">
+                <image class="img data-v-8b4aa604" src="https://website-10065452.cos.ap-shanghai.myqcloud.com/58fa7492-01ef-437f-a0a1-09754e8e06f1"></image>
+            </view>
+            <view class="product-info data-v-8b4aa604">
+                <view class="product-name data-v-8b4aa604"> 藏式红铜阔口圆身花瓶 </view>
+                <view class="product-bt data-v-8b4aa604">
+                    <view class="product-price data-v-8b4aa604">¥92</view>
+                    <view class="product-btn data-v-8b4aa604">详情</view>
+                </view>
+            </view>
+        </view>
+        <view class="product-item data-v-8b4aa604">
+            <view class="product-img data-v-8b4aa604">
+                <image class="img data-v-8b4aa604" src="https://website-10065452.cos.ap-shanghai.myqcloud.com/58fa7492-01ef-437f-a0a1-09754e8e06f1"></image>
+            </view>
+            <view class="product-info data-v-8b4aa604">
+                <view class="product-name data-v-8b4aa604"> 藏式红铜阔口圆身花瓶 </view>
+                <view class="product-bt data-v-8b4aa604">
+                    <view class="product-price data-v-8b4aa604">¥92</view>
+                    <view class="product-btn data-v-8b4aa604">详情</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

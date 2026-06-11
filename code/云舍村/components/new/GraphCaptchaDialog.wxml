@@ -1,0 +1,19 @@
+<st-dialog bind:__l="__l" bindupdateShow="{{l}}" class="data-v-f0b9b977" uI="f0b9b977-0" uP="{{m}}" uS="{{['body']}}" wx:if="{{m}}">
+    <view class="{{['code-dialog','data-v-f0b9b977',k&&'pointer-events-none']}}" slot="body">
+        <view class="code-dialog__title data-v-f0b9b977"> 输入图形验证码 </view>
+        <view class="code-dialog__content data-v-f0b9b977">
+            <view class="code-dialog__form data-v-f0b9b977">
+                <view class="code-dialog__form-item data-v-f0b9b977">
+                    <input bindinput="{{b}}" class="code-dialog__form-input data-v-f0b9b977" placeholder="输入验证码" value="{{a}}"></input>
+                    <view class="code-dialog__form-img-wrapper data-v-f0b9b977">
+                        <spin bind:__l="__l" class="data-v-f0b9b977" uI="f0b9b977-1,f0b9b977-0" uP="{{c}}" wx:if="{{c}}"></spin>
+                        <image binderror="{{g}}" bindload="{{f}}" bindtap="{{h}}" class="{{['code-dialog__form-img','data-v-f0b9b977',e&&'hidden']}}" mode="aspectFit" src="{{d}}"></image>
+                    </view>
+                </view>
+            </view>
+            <view class="code-dialog__btns data-v-f0b9b977">
+                <st-button bind:__l="__l" bindclick="{{i}}" class="data-v-f0b9b977" uI="f0b9b977-2,f0b9b977-0" uP="{{j}}" uS="{{['d']}}" wx:if="{{j}}"> 提交 </st-button>
+            </view>
+        </view>
+    </view>
+</st-dialog>

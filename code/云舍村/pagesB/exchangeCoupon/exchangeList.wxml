@@ -1,0 +1,6 @@
+<view class="exchangeList_ui data-v-b849307b">
+    <coustom-head bind:__l="__l" class="data-v-b849307b" uI="b849307b-0" uP="{{a}}" wx:if="{{a}}"></coustom-head>
+    <view class="product-info-box data-v-b849307b">
+        <exchange-list-box bind:__l="__l" bindclickItem="{{b}}" class="data-v-b849307b" uI="b849307b-1" uP="{{c}}" wx:if="{{c}}"></exchange-list-box>
+    </view>
+</view>

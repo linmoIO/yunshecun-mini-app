@@ -1,0 +1,53 @@
+<view class="ui_tripChangeLetter data-v-14418009">
+    <coustom-head bind:__l="__l" class="data-v-14418009" uI="14418009-0" uP="{{a}}" wx:if="{{a}}"></coustom-head>
+    <view class="tripChangeLetter data-v-14418009">
+        <view class="text data-v-14418009"> 感谢您选择和松赞一起旅行，我们一直以来致力于为每位远道而来的客人提供超出预期的旅行体验。因协商一致，本人同意就以下行程做出调整： </view>
+        <view class="tripChange_list data-v-14418009">
+            <view class="item data-v-14418009" wx:for="{{b}}" wx:key="h">
+                <view class="no data-v-14418009">{{item.a}}.</view>
+                <block wx:if="{{item.b}}">新增</block>
+                <block wx:if="{{item.c}}">调整</block>
+                <block wx:if="{{item.d}}">取消</block>{{item.e}}，活动时间：{{item.f}} {{item.g}}</view>
+        </view>
+        <view class="text data-v-14418009"> 如您对以上行程变更无异议，烦请操作确认。 感谢您的理解与支持。 </view>
+        <view class="text marginTop data-v-14418009"> 松赞旅行<view class="data-v-14418009"></view> 团号：{{c}}<view class="data-v-14418009"></view> 管家：{{d}}</view>
+    </view>
+    <view class="tripChangePeople data-v-14418009" wx:if="{{e}}">
+        <view class="all-People data-v-14418009">
+            <view class="all-People-tl data-v-14418009"> 确认人 </view>
+        </view>
+        <view class="people-list data-v-14418009">
+            <view class="people-item data-v-14418009">
+                <view class="data-v-14418009">{{f}}</view>
+                <view class="people-state data-v-14418009">
+                    <view class="people-state-val data-v-14418009" wx:if="{{g}}"> 已线上确认·{{h}}</view>
+                    <view class="people-state-val data-v-14418009" wx:elif="{{i}}"> 已线下确认·{{j}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="tripChangePeople data-v-14418009" wx:elif="{{k}}">
+        <view class="all-People data-v-14418009">
+            <view class="all-People-tl data-v-14418009"> 确认人 </view>
+            <view bindtap="{{m}}" class="all-people-state data-v-14418009"> 全选 <view class="iconfont icon-duoxuan_yixuan data-v-14418009" wx:if="{{l}}"></view>
+                <view class="iconfont icon-duoxuan_weixuan data-v-14418009" wx:else></view>
+            </view>
+        </view>
+        <view class="people-list data-v-14418009">
+            <view bindtap="{{item.j}}" class="people-item data-v-14418009" wx:if="{{item.a}}" wx:for="{{n}}" wx:key="k">
+                <view class="data-v-14418009">{{item.b}}</view>
+                <view class="people-state data-v-14418009">
+                    <view class="people-state-val weight data-v-14418009" wx:if="{{item.c}}">待确认</view>
+                    <view class="people-state-val data-v-14418009" wx:elif="{{item.d}}"> 已线上确认·{{item.e}}</view>
+                    <view class="people-state-val data-v-14418009" wx:elif="{{item.f}}"> 已线下确认·{{item.g}}</view>
+                    <view class="iconfont duoxuan_bukexuan data-v-14418009" wx:if="{{item.h}}"></view>
+                    <view class="iconfont icon-duoxuan_yixuan data-v-14418009" wx:elif="{{item.i}}"></view>
+                    <view class="iconfont icon-duoxuan_weixuan data-v-14418009" wx:else></view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="footer data-v-14418009" wx:if="{{o}}">
+        <view bindtap="{{p}}" class="baseBtn data-v-14418009"> 我已知晓，并同意以上变更 </view>
+    </view>
+</view>

@@ -1,0 +1,40 @@
+.profilePart {
+  position: absolute;
+  top: 231rpx;
+  left: calc(50% - 91rpx);
+}
+
+.profile-icon {
+  margin-bottom: 25rpx;
+  width: 182rpx;
+  height: 182rpx;
+}
+
+.title {
+  text-align: center;
+  font-size: 36rpx;
+  line-height: 44rpx;
+  color: rgba(102, 89, 82, 1)
+}
+
+.camp {
+  position: relative;
+  top: 564rpx;
+  left: calc(50% - 60.5rpx);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100rpx;
+  height: 242rpx;
+  font-size: 55rpx;
+  color: #665952;
+  font-family: "I.PenCrane-B";
+}
+
+.index_camp {
+  position: absolute;
+  width: 100rpx;
+  height: 242rpx;
+  z-index: -1;
+}

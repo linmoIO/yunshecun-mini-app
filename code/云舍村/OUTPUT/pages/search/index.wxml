@@ -1,0 +1,60 @@
+<view class="search data-v-2cc5369c">
+    <view class="top--fixed data-v-2cc5369c">
+        <custom-navigator bind:__l="__l" class="data-v-2cc5369c" uI="2cc5369c-0" uP="{{b}}" uS="{{['d']}}" wx:if="{{b}}">
+            <view class="navbar-header data-v-2cc5369c">
+                <view bindtap="{{item.d}}" class="{{['tab','data-v-2cc5369c',item.c]}}" role="button" wx:for="{{a}}" wx:key="b">{{item.a}}</view>
+            </view>
+        </custom-navigator>
+        <view class="search-input-wrap data-v-2cc5369c">
+            <search-bar bind:__l="__l" bindchangeDate="{{e}}" bindconfirm="{{d}}" bindinput="{{c}}" class="data-v-2cc5369c" uI="2cc5369c-1" uP="{{f}}" wx:if="{{f}}"></search-bar>
+        </view>
+    </view>
+    <view class="tabs-content data-v-2cc5369c" hidden="{{!q}}">
+        <view class="data-v-2cc5369c" hidden="{{!m}}">
+            <view class="group data-v-2cc5369c" wx:if="{{g}}">
+                <view class="group-title data-v-2cc5369c">
+                    <text class="data-v-2cc5369c">历史搜索</text>
+                    <view bindtap="{{h}}" class="group-title__extra data-v-2cc5369c">
+                        <view class="iconfont icon-a-16_shanchulishijilu icon data-v-2cc5369c"></view>
+                    </view>
+                </view>
+                <view class="group-content--list line-clamp-4 data-v-2cc5369c">
+                    <view bindtap="{{item.d}}" class="item hairline--surround data-v-2cc5369c" style="{{j}}" wx:for="{{i}}" wx:key="c">{{item.a}}{{item.b}}</view>
+                </view>
+            </view>
+            <view class="group data-v-2cc5369c">
+                <view class="group-title data-v-2cc5369c">热门搜索</view>
+                <view class="group-content--grid data-v-2cc5369c">
+                    <view bindtap="{{item.e}}" class="item hairline--surround data-v-2cc5369c" style="{{l}}" wx:for="{{k}}" wx:key="d">
+                        <image class="item-icon data-v-2cc5369c" mode="aspectFill" src="{{item.b}}" wx:if="{{item.a}}"></image>
+                        <view class="item-content data-v-2cc5369c">
+                            <text class="item-content__text line-clamp-1 data-v-2cc5369c">{{item.c}}</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="data-v-2cc5369c" hidden="{{!p}}">
+            <view class="group data-v-2cc5369c" wx:for="{{n}}" wx:for-item="area" wx:key="c">
+                <view class="group-title data-v-2cc5369c">{{area.a}}</view>
+                <view class="group-content--grid data-v-2cc5369c">
+                    <view bindtap="{{item.c}}" class="item hairline--surround data-v-2cc5369c" style="{{o}}" wx:for="{{area.b}}" wx:key="b">
+                        <view class="item-iconfont iconfont icon-a-12_jiudian_hei data-v-2cc5369c"></view>
+                        <view class="item-content data-v-2cc5369c">
+                            <text class="item-content__text line-clamp-1 data-v-2cc5369c">{{item.a}}</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="data-v-2cc5369c" hidden="{{!w}}">
+        <view class="loading data-v-2cc5369c" style="{{s}}">
+            <spin bind:__l="__l" class="data-v-2cc5369c" uI="2cc5369c-2" uP="{{r}}" wx:if="{{r}}"></spin>
+        </view>
+        <view class="data-v-2cc5369c" style="{{v}}">
+            <auto-complete bind:__l="__l" class="data-v-2cc5369c" uI="2cc5369c-3" uP="{{t}}" wx:if="{{t}}"></auto-complete>
+        </view>
+    </view>
+    <safe-area bind:__l="__l" class="data-v-2cc5369c" uI="2cc5369c-4" uP="{{x}}" wx:if="{{x}}"></safe-area>
+</view>

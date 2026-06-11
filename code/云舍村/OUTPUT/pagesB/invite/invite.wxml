@@ -1,0 +1,30 @@
+<view class="ui_invite data-v-ccedb2bb" style="{{'background-image:'+k+';'+'background-size:'+'100% 100%'}}">
+    <coustom-head bind:__l="__l" class="data-v-ccedb2bb" style="z-index:1001" uI="ccedb2bb-0" uP="{{a}}" wx:if="{{a}}"></coustom-head>
+    <view class="wrap data-v-ccedb2bb">
+        <view class="data-v-ccedb2bb">
+            <view class="title1 data-v-ccedb2bb">{{b}}</view>
+            <view class="title2 data-v-ccedb2bb">{{c}}</view>
+        </view>
+        <view class="container data-v-ccedb2bb">
+            <view class="progress data-v-ccedb2bb">
+                <view class="progress-item data-v-ccedb2bb" wx:for="{{d}}" wx:key="d">
+                    <image alt="" class="icon-img data-v-ccedb2bb" src="{{item.a}}"></image>
+                    <view class="item-name data-v-ccedb2bb">{{item.b}}</view>
+                    <image alt="arrow-down" class="arrow-down data-v-ccedb2bb" src="https://website-10049437.cos.ap-shanghai.myqcloud.com/92297851-0600-439c-8ab1-d55cf402faf3" style="width:12px;height:12px" wx:if="{{item.c}}"></image>
+                </view>
+            </view>
+            <view bindtap="{{e}}" class="bt data-v-ccedb2bb"> 立即邀请 </view>
+            <view class="bottom data-v-ccedb2bb">
+                <view class="bottom-item data-v-ccedb2bb">
+                    <label class="title data-v-ccedb2bb">可邀请好友</label>
+                    <label class="text data-v-ccedb2bb">{{f}}人</label>
+                </view>
+                <view class="bottom-item data-v-ccedb2bb" style="border-top:0.5px solid #eee">
+                    <label class="title data-v-ccedb2bb">累计积分奖励</label>
+                    <label class="text data-v-ccedb2bb">{{g}}分</label>
+                </view>
+            </view>
+        </view>
+    </view>
+    <invite-share-img bind:__l="__l" bindclose="{{i}}" class="data-v-ccedb2bb" uI="ccedb2bb-1" uP="{{j}}" wx:if="{{h}}"></invite-share-img>
+</view>

@@ -1,0 +1,9 @@
+<view class="question_ui data-v-7a04867b">
+    <coustom-head bind:__l="__l" class="data-v-7a04867b" uI="7a04867b-0" uP="{{a}}" wx:if="{{a}}"></coustom-head>
+    <view class="problems data-v-7a04867b">
+        <view class="problem data-v-7a04867b">
+            <view class="question data-v-7a04867b">Q：{{b}}</view>
+            <view class="answer data-v-7a04867b">A：{{c}}</view>
+        </view>
+    </view>
+</view>

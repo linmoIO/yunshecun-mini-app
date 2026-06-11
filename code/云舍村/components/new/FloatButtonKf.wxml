@@ -1,0 +1,14 @@
+<view class="container data-v-5b07848a">
+    <view class="container__area data-v-5b07848a" style="{{f}}">
+        <movable-area class="data-v-5b07848a" style="height:100%;width:100%">
+            <movable-view inertia bindchange="{{e}}" class="movable-view data-v-5b07848a" damping="{{100}}" direction="all" friction="{{5}}" x="{{c}}" y="{{d}}">
+                <view class="container__area__button data-v-5b07848a" wx:if="{{a}}">
+                    <float-button bind:__l="__l" bindclick="{{b}}" class="data-v-5b07848a" uI="5b07848a-0" uS="{{['d']}}">
+                        <view class="iconfont icon-a-20_kefu icon-kf data-v-5b07848a"></view>
+                    </float-button>
+                </view>
+            </movable-view>
+        </movable-area>
+    </view>
+    <kf-dialog bind:__l="__l" bindopenState="{{h}}" class="r data-v-5b07848a" uI="5b07848a-1" uP="{{i}}" uR="kf" wx:if="{{i}}"></kf-dialog>
+</view>

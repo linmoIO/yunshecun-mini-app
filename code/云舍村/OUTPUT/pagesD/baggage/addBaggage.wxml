@@ -1,0 +1,20 @@
+<view class="ui_addBaggage data-v-3a77aafa">
+    <coustom-head bind:__l="__l" class="data-v-3a77aafa" uI="3a77aafa-0" uP="{{a}}" wx:if="{{a}}"></coustom-head>
+    <view class="empty data-v-3a77aafa" wx:if="{{b}}">
+        <empty bind:__l="__l" class="data-v-3a77aafa" uI="3a77aafa-1" uP="{{c}}" wx:if="{{c}}"></empty>
+        <view class="tips data-v-3a77aafa"> 联系管家或在酒店前台领取并<view class="data-v-3a77aafa"></view> 扫码添加属于您的行李牌 </view>
+    </view>
+    <view class="baggageList data-v-3a77aafa" wx:if="{{d}}">
+        <view class="item data-v-3a77aafa" wx:for="{{e}}" wx:key="d">
+            <image class="baggage-img data-v-3a77aafa" src="https://dsplatweb.oss-cn-chengdu.aliyuncs.com/songzan/images/baggage.jpg"></image>
+            <view class="baggage-rt data-v-3a77aafa">
+                <view class="no_desc data-v-3a77aafa">行李牌编号</view>
+                <view class="no data-v-3a77aafa">{{item.a}}</view>
+                <view class="desc data-v-3a77aafa">{{item.b}}</view>
+                <view bindtap="{{item.c}}" class="btn data-v-3a77aafa">申请作废</view>
+            </view>
+        </view>
+    </view>
+    <view bindtap="{{f}}" class="historyBtn data-v-3a77aafa">查看历史行李牌</view>
+    <bottom-btn bind:__l="__l" bindclick="{{g}}" class="data-v-3a77aafa" uI="3a77aafa-2" uS="{{['d']}}">扫码添加行李牌</bottom-btn>
+</view>

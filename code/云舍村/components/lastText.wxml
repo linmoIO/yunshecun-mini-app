@@ -1,0 +1,5 @@
+<view class="ui_lastText data-v-949ca873">
+    <view class="line data-v-949ca873"></view>
+    <view class="tips data-v-949ca873">{{a}}</view>
+    <view class="line data-v-949ca873"></view>
+</view>

@@ -1,0 +1,146 @@
+<!--pages/orderConfirm/orderConfirm.wxml-->
+<navigation-bar title="订单确认" back="{{true}}" color="black" background="#D9CDB3"></navigation-bar>
+<view class="bg-color1">
+  <view type="list" scroll-y>
+    <view class="page-content">
+      <view class="page-list" style="background-color: #e7dfc7;">
+        <view class="page-list-subtitles">游历票</view>
+        <view class="page-list-ordertime">{{date}}</view>
+
+        <view class="page-list-ordernum" wx:for="{{priceList}}" wx:key="" wx:if="{{item.count > 0}}">
+          <text>{{item.name}}</text>
+          <text>X{{item.count}}</text>
+        </view>
+
+        <view class="page-list-price">
+          <view class="page-list-priceall">
+            <view class="page-list-priceall-text">
+              总计：
+            </view>
+            <view class="page-list-priceall-num">
+              ￥ {{totalPrice}}
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="page-fangke mt-30">
+        <view class="page-order-fkname">
+          输入访客信息
+        </view>
+        <view class="page-fangke-btn" bindtap="openPopup" data-index="1">证件说明</view>
+      </view>
+      <view class="popup-box" wx:if="{{showIndex=='1'}}" bindtap="closePopup"></view> 
+      <view class="info-center" wx:if="{{showIndex=='1'}}">
+        <view class="info-content">
+          <view class="row-info">
+            <view class="info-close">
+              <text>证件说明</text>
+              <image bindtap="closePopup" src="/pages/images/close.png" mode=""/>
+            </view>
+            <view class="info-contents">
+              <view class="info-content-list">请在下方选择访客类型并根据不同类型提供有效的身份证件号码。该证件号码将与您所购买的门票绑定。</view>
+              <view class="info-content-list">中国内地访客，请提供《中华人民共和国居民身份证》号码。</view>
+              <view class="info-content-list">中国香港、澳门地区访客，请提供《港澳居民来往内地通行证》《中华人民共和国旅行证》或《中华人民共和国港澳居民居住证》 号码。</view>
+              <view class="info-content-list">中国台湾地区访客请提供《台湾居民来往大陆通行证》《中华人民共和国旅行证》 或《中华人民共和国台湾居民居住证》 号码。</view>
+              <view class="info-content-list">其他国家及地区访客，请提供有效护照或《中华人民共和国外国人永久居留身份证》 号码。</view>
+              <view class="info-content-list" style="color: #977730;">入村时，所有访客必须携带相应的身份证明原件。</view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="page-pay-name-intro">
+        我们需要收集您的官方身份证件号码，用于完成购票流程、在入村时核验访客身份。身份证件号码将与您购买的门票进行关联此身份证件将作为您入村时的门票使用凭证，请务必准确填写确认后不可更改。
+      </view>
+      <view class="page-fangke mt-60">
+        <view class="page-order-fkname">
+          内地访客
+        </view>
+        <view class="page-fangke-btn"></view>
+      </view>
+      <view class="page-form">
+        <block wx:for="{{inputList}}" wx:key="index">
+          <input value="{{item}}" placeholder="身份证号码*" bindinput="handleInput" data-index="{{index}}"/>
+        </block>
+      </view>
+      <view class="page-add" bindtap="addInput">
+        + 新增
+      </view>
+      <view class="page-haiwai">
+        如果您是海外访客，请拨打客服热线进行预约：0736-7070666
+      </view>
+      <view class="page-jieshou">
+        订单确认信息接收方式
+      </view>
+      <view class="page-mobile">
+        <input type="text" placeholder="手机号码 *" bindinput="bindmobile" value="{{mobile}}" />
+      </view>
+      <view class="page-tiaokuan">
+        <radio-group bind:tap="radioChange">
+            <!-- <radio value="{{item.name}}" >{{item.value}}</radio> -->
+            <radio color="#F0ECE0" checked="{{checked}}" value=""/>
+        </radio-group>
+        
+        <view class="page-tiaokuans">
+          <view class="page-tiaokuan-text">
+            <view bind:tap="radioChange">我已阅读并同意桃花源-云舍村的</view>
+            <view class="page-notice" bindtap="openPopup" data-index="2">订票须知</view>
+            <view bind:tap="radioChange">，包括相关退款及取消政策。</view>
+          </view>
+          <view class="agree" style="color: #BD3435;">
+            请确认您已同意接受条款与细则。
+          </view>
+        </view>
+      </view>
+
+      <view class="popup-box" wx:if="{{showIndex=='2'}}" bindtap="closePopup"></view> 
+      <view class="info-center" wx:if="{{showIndex=='2'}}">
+        <view class="info-content">
+          <view class="row-info">
+            <view class="info-close">
+              <text>订票须知</text>
+              <image bindtap="closePopup" src="/pages/images/close.png" mode=""/>
+            </view>
+            <view class="info-contents">
+              <view class="info-content-list">致归居村民：</view>
+              <view class="info-content-list">感谢您探访光临桃花源云舍村，为了确保您拥有一个美好的旅行体验，请您在购票前仔细阅读以下须知：</view>
+              <view class="info-content-list">一、预订方式：</view>
+              <view class="info-content-list">您可通过我们的官方小程序进行在线预订。</view>
+              <view class="info-content-list">二、票价说明：</view>
+              <view class="info-content-list">• 游历票正常价格：498元/张。</view>
+              <view class="info-content-list">• 1.2米以下儿童：可以享受半价优惠，需要成人陪同入村。</view>
+              <view class="info-content-list">• 70岁以上老人：凭身份证可以享受半价优惠，需要成人陪同入村。</view>
+              <view class="info-content-list">• 学生：可以凭学生证享受半价优惠。</view>
+              <view class="info-content-list">三、预订须知：</view>
+              <view class="info-content-list">• 请提前规划您的行程，并选择合适的游玩日期和时间进行预订。</view>
+              <view class="info-content-list">• 每张门票仅限一次入村，途中离村需重新购票。</view>
+              <view class="info-content-list">• 门票一经售出，恕不退换，请您谅解。</view>
+              <view class="info-content-list">四、入村须知：</view>
+              <view class="info-content-list">• 请携带有效身份证件及预订确认信息以便核验您的身份。</view>
+              <view class="info-content-list">• 禁止携荒违禁物品如易燃易爆物品、刀具等入村。</view>
+              <view class="info-content-list">• 请爱护云舍村环境，不随地乱扔垃圾，共同保持村庄的清洁。</view>
+              <view class="info-content-list">• 在村内请遵守相关规定并听从管理人员的指示，以确保您的安全和良好的游览体验。</view>
+              <view class="info-content-list">五、其他注意事项：</view>
+              <view class="info-content-list">• 部分区域可能因维护、改造等原因暂时关闭，敬请谅解。</view>
+              <view class="info-content-list">• 特殊天气情况下(如恶劣天气、台风等），可能会暂时关闭或调整开放时间，请留意公告信息。</view>
+              <view class="info-content-list">• 如有任何疑问或需要帮助，请随时联系我们的村民，我们将竭诚为您服务。(电话：0736-7070666)</view>
+              <view class="info-content-list" style="text-align: right;">桃花源•云舍村</view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="page-shopping">
+        <view class="page-shopping__price">
+          <view class="price-text">
+          实付：
+          </view>
+          <view class="price-num">
+          ￥ {{totalPrice}}
+          </view>
+        </view>
+        <view class="price-btn" bind:tap="toBuy">
+          立即购买
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

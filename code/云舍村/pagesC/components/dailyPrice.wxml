@@ -1,0 +1,35 @@
+<view class="ui_dailyPrice">
+    <view class="dailyPriceBox">
+        <view class="monthList">
+            <view bindtap="{{month.d}}" class="{{['monthItem',month.c&&'active']}}" wx:for="{{a}}" wx:for-item="month" wx:key="b">
+                <view class="timeTitle">{{month.a}}</view>
+            </view>
+        </view>
+        <view class="calendar">
+            <view class="weeks">
+                <view class="weekDay weekend">日</view>
+                <view class="weekDay">一</view>
+                <view class="weekDay">二</view>
+                <view class="weekDay">三</view>
+                <view class="weekDay">四</view>
+                <view class="weekDay">五</view>
+                <view class="weekDay weekend">六</view>
+            </view>
+            <view class="monthBoxWrapper">
+                <view class="monthBox">
+                    <view class="monthDay">
+                        <view bindtap="{{day.g}}" class="{{['day',day.h&&'unActive',day.i&&'active']}}" wx:for="{{b}}" wx:for-item="day" wx:key="j">
+                            <label class="number" wx:if="{{day.a}}">满员</label>
+                            <label class="number" wx:elif="{{day.b}}">余{{day.c}}</label>
+                            <label class="number" wx:else>   </label>
+                            <label class="currentDay">{{day.d}}</label>
+                            <label class="currentPrice" wx:if="{{day.e}}">¥{{day.f}}</label>
+                            <label class="currentPrice" wx:else>   </label>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <slot name="footer"></slot>
+    </view>
+</view>

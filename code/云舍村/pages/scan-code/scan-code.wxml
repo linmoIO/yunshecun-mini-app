@@ -1,0 +1,17 @@
+<!--pages/scan-code/scan-code.wxml-->
+<view class="bg-color1">
+  <navigation-bar title="核销扫码" back="{{true}}" color="black" background="#D9CDB3"></navigation-bar>
+  <navigator url="/pages/writeOffHistory/writeOffHistory" class="scan-history" target="self" hover-class="navigator-hover" open-type="navigate">
+    <view class="scan-img"></view>
+    <view class="scan-text">核销历史</view>
+  </navigator>
+  <view>
+    <button bindtap="scanCode" class="scanCode">
+      <view class="scanCode-img"></view>
+      <view class="scanCode-text">点击图标核销门票</view>
+    </button>
+    <navigator url="/pages/index/index" class="scan-home" target="self" hover-class="navigator-hover" open-type="reLaunch">
+      返回首页
+    </navigator>
+  </view>
+</view>

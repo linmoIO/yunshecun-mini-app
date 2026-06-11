@@ -1,0 +1,14 @@
+<view class="net-error data-v-4a7c5756" style="{{d}}">
+    <image class="net-error__image data-v-4a7c5756" src="{{a}}"></image>
+    <view class="net-error__title data-v-4a7c5756">
+        <slot name="title" wx:if="{{$slots.title}}"></slot>
+        <block wx:else>{{b}}</block>
+    </view>
+    <view class="net-error__description data-v-4a7c5756">
+        <slot name="description" wx:if="{{$slots.description}}"></slot>
+        <block wx:else>{{c}}</block>
+    </view>
+    <view class="net-error__footer data-v-4a7c5756">
+        <slot name="bottom"></slot>
+    </view>
+</view>

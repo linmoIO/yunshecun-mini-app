@@ -1,0 +1,22 @@
+page{background:#f5f5f5}
+.tl-wrap{padding:20rpx}
+.tl-tip{background:#fffbe6;padding:16rpx 24rpx;border-radius:10rpx;font-size:24rpx;color:#8a6d00;margin-bottom:16rpx}
+.tl-card{background:#fff;border-radius:16rpx;padding:24rpx 28rpx;margin-bottom:16rpx}
+.tl-row{display:flex;align-items:center;gap:16rpx;margin-bottom:6rpx}
+.tl-name{font-size:30rpx;font-weight:700;color:#1a1a1a}
+.tl-phone{font-size:26rpx;color:#555}
+.tl-row2{font-size:24rpx;color:#888;margin-bottom:4rpx}
+.tl-actions{display:flex;gap:16rpx;margin-top:14rpx;padding-top:14rpx;border-top:1rpx solid #f5f5f5;justify-content:flex-end}
+.tl-btn{font-size:24rpx;padding:6rpx 20rpx;border:1rpx solid #ddd;border-radius:20rpx;color:#555}
+.tl-btn.red{color:#e05d44;border-color:#e05d44}
+.tl-empty{text-align:center;padding:60rpx;color:#bbb;font-size:28rpx}
+.tl-form-card{background:#fff;border-radius:16rpx;padding:28rpx;margin-bottom:16rpx}
+.tl-form-title{font-size:28rpx;font-weight:700;margin-bottom:20rpx}
+.tl-field{display:flex;align-items:center;padding:14rpx 0;border-bottom:1rpx solid #f5f5f5}
+.tl-lbl{width:140rpx;font-size:26rpx;color:#555;flex-shrink:0}
+.tl-inp{flex:1;font-size:26rpx;color:#1a1a1a}
+.tl-btns{display:flex;gap:16rpx;margin-top:20rpx}
+.tl-cancel{flex:1;border:1.5rpx solid #ddd;text-align:center;padding:20rpx;border-radius:50rpx;font-size:28rpx;color:#666}
+.tl-save{flex:2;background:#1a1a1a;color:#fff;text-align:center;padding:20rpx;border-radius:50rpx;font-size:28rpx;font-weight:600}
+.tl-save.dis{background:#aaa}
+.tl-add-btn{background:#fff;border:1.5rpx dashed #ddd;text-align:center;padding:28rpx;border-radius:16rpx;font-size:28rpx;color:#888}

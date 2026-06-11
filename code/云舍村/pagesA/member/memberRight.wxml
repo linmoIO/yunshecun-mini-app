@@ -1,0 +1,10 @@
+<view class="page-container">
+  <view wx:if="{{loading}}" style="text-align:center;padding:40px;color:#aaa">加载中...</view>
+  <view wx:elif="{{content}}" style="padding:16px">
+    <rich-text nodes="{{content}}"></rich-text>
+  </view>
+  <view wx:else style="text-align:center;padding:40px;color:#aaa">
+    <image src="https://dsplatweb.oss-cn-chengdu.aliyuncs.com/songzan/images/empty.png" style="width:80px;height:80px;display:block;margin:0 auto 12px"></image>
+    <text>暂无内容</text>
+  </view>
+</view>

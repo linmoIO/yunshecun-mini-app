@@ -1,0 +1,41 @@
+<view class="bottomDialogBoxCalendar" hidden="{{!i}}">
+    <view class="{{['bottomDialogMask',a&&'fadeIn',b&&'animated']}}"></view>
+    <view class="{{['bottomDialog',g&&'slideInUp',h&&'animated']}}">
+        <view class="title">{{c}} <view bindtap="{{d}}" class="icon iconfont icon iconfont icon-a-16_guanbi_ciji"></view>
+        </view>
+        <view class="dialogBox calendarChoose">
+            <view class="calendar">
+                <view class="weeks">
+                    <view class="weekDay red">日</view>
+                    <view class="weekDay">一</view>
+                    <view class="weekDay">二</view>
+                    <view class="weekDay">三</view>
+                    <view class="weekDay">四</view>
+                    <view class="weekDay">五</view>
+                    <view class="weekDay red">六</view>
+                </view>
+                <view class="monthBoxWrapper" style="{{'max-height:'+f}}">
+                    <view class="monthBox" wx:for="{{e}}" wx:for-item="month" wx:key="c">
+                        <view class="monthTitle">
+                            <label class="theMonthTitle">{{month.a}}</label>
+                        </view>
+                        <view class="monthDay">
+                            <view bindtap="{{day.j}}" class="{{['day',day.k&&'unActive',day.l&&'start',day.m&&'end',day.n&&'between',day.o&&'oneDay']}}" style="{{day.q}}" wx:for="{{month.b}}" wx:for-item="day" wx:key="p">
+                                <view class="currentDay">
+                                    <view class="day2" wx:if="{{day.a}}">{{day.b}}</view>
+                                    <view class="day2" wx:elif="{{day.c}}">{{day.d}}</view>
+                                    <block wx:else>
+                                        <view class="day2" wx:if="{{day.e}}">{{day.f}}</view>
+                                        <view class="day2" wx:else> </view>
+                                    </block>
+                                    <view class="day1">{{day.g}}</view>
+                                    <view class="price" wx:if="{{day.h}}">¥{{day.i}}</view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

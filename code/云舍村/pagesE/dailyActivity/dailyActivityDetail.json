@@ -1,0 +1,13 @@
+{
+    "navigationStyle":  "custom",
+    "usingComponents":  {
+                            "back-to-top":  "../../components/backToTop",
+                            "bottom-dialog":  "../../components/bottomDialog",
+                            "collapse":  "../../components/collapse",
+                            "coustom-head":  "../../components/coustomHead",
+                            "kf-dialog":  "../../components/kfDialog",
+                            "error-limiting":  "../../components/new/ErrorLimiting",
+                            "swiper-box":  "../../components/swiperBox",
+                            "daily-price":  "../components/dailyPrice"
+                        }
+}

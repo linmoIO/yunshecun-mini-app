@@ -1,0 +1,20 @@
+/* pages/clander.wxss */
+.calendar-page {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.calendar-container {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.close-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 10000;
+  padding: 20rpx;
+}

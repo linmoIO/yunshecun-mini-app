@@ -1,0 +1,19 @@
+<scroll-view class="faq-wrap" scroll-y>
+  <view wx:if="{{loading}}" class="faq-loading">加载中...</view>
+  <view wx:elif="{{!items.length}}" class="faq-empty">暂无常见问题</view>
+  <view class="faq-item" wx:for="{{items}}" wx:key="id" bindtap="toggle" data-idx="{{index}}">
+    <view class="faq-q">
+      <text class="faq-icon">Q</text>
+      <text class="faq-qtext">{{item.question}}</text>
+      <text class="faq-arrow">{{item.open?'∧':'∨'}}</text>
+    </view>
+    <view class="faq-a" wx:if="{{item.open}}">
+      <text class="faq-aicon">A</text>
+      <rich-text nodes="{{item.answer}}" class="faq-atext"></rich-text>
+    </view>
+  </view>
+  <view class="faq-contact" bindtap="goChat">
+    <text>还有疑问？</text><text class="faq-contact-btn">联系在线客服 →</text>
+  </view>
+  <view style="height:40rpx"></view>
+</scroll-view>

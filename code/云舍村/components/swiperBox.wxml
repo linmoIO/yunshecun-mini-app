@@ -1,0 +1,19 @@
+<swiper autoplay="{{g}}" bindchange="{{i}}" circular="{{f}}" class="swiper data-v-561f75ec" current="{{j}}" duration="{{k}}" indicatorDots="{{e}}" interval="{{h}}">
+    <swiper-item class="data-v-561f75ec" wx:if="{{a}}">
+        <video autoplay class="myVideo data-v-561f75ec" id="myVideo" muted="true" objectFit="contain" showMuteBtn="true" src="{{b}}"></video>
+    </swiper-item>
+    <swiper-item class="data-v-561f75ec" wx:for="{{c}}" wx:key="k">
+        <slot name="{{item.a}}" wx:if="{{d}}"></slot>
+        <view bindtap="{{item.i}}" class="slider-item data-v-561f75ec" style="{{item.j}}" wx:else>
+            <view class="info data-v-561f75ec" wx:if="{{item.c}}">
+                <view class="title data-v-561f75ec" wx:if="{{item.d}}">{{item.e}}</view>
+                <view class="subTitle data-v-561f75ec" wx:if="{{item.f}}">{{item.g}}<view class="iconfont icon-a-12_youlajiantou_hei data-v-561f75ec"></view>
+                </view>
+            </view>
+            <image class="slider-img data-v-561f75ec" mode="aspectFill" src="{{item.h}}"></image>
+        </view>
+    </swiper-item>
+</swiper>
+<view class="swiper-dots data-v-561f75ec" style="{{n}}" wx:if="{{l}}">
+    <view class="swiper-dot data-v-561f75ec" style="{{m}}"></view>
+</view>

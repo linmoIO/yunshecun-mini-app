@@ -1,0 +1,42 @@
+<view class="ui_hotelList data-v-166db48e">
+    <coustom-head bind:__l="__l" class="data-v-166db48e" uI="166db48e-0" uP="{{a}}" wx:if="{{a}}"></coustom-head>
+    <view class="top-warp data-v-166db48e">
+        <view class="topBox data-v-166db48e">
+            <view class="searchBox data-v-166db48e">
+                <view bindtap="{{c}}" class="searchItem data-v-166db48e">
+                    <view class="icon iconfont icon-a-12_dingwei data-v-166db48e"></view>
+                    <view class="searchDesc data-v-166db48e">{{b}}</view>
+                </view>
+                <view bindtap="{{g}}" class="searchItem data-v-166db48e">
+                    <view class="icon iconfont icon-a-12_riqi data-v-166db48e"></view>
+                    <view class="searchDesc data-v-166db48e">{{d}}-{{e}} 住{{f}}晚 </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="hotelListBoxWrapper data-v-166db48e">
+        <view class="hotelListBox data-v-166db48e" wx:if="{{h}}">
+            <view class="listTitle data-v-166db48e">酒店套餐</view>
+            <view class="hotelList data-v-166db48e">
+                <product-card-list bind:__l="__l" class="data-v-166db48e" uI="166db48e-1" uP="{{i}}" wx:if="{{i}}"></product-card-list>
+            </view>
+            <view bindtap="{{l}}" class="{{['seeMore','data-v-166db48e',m&&'moreSta']}}" wx:if="{{j}}">{{k}}更多套餐 <view class="icon iconfont icon-a-16_xialajiantou_hei data-v-166db48e"></view>
+            </view>
+        </view>
+    </view>
+    <view class="hotelListBoxWrapper data-v-166db48e">
+        <view class="hotelListBox data-v-166db48e">
+            <view class="listTitle data-v-166db48e">酒店列表</view>
+            <product-card-list bind:__l="__l" class="data-v-166db48e" uI="166db48e-2" uP="{{o}}" wx:if="{{n}}"></product-card-list>
+            <empty bind:__l="__l" class="data-v-166db48e" uI="166db48e-3" uP="{{q}}" wx:if="{{p}}"></empty>
+            <view class="moreHotel data-v-166db48e" wx:if="{{r}}"> 更多产品敬请期待 </view>
+            <banner-swiper bind:__l="__l" class="data-v-166db48e" uI="166db48e-4" uP="{{s}}" wx:if="{{s}}"></banner-swiper>
+        </view>
+    </view>
+    <calendar bind:__l="__l" bindchangeDate="{{v}}" class="r data-v-166db48e" uI="166db48e-5" uP="{{w}}" uR="calendarCompent" wx:if="{{w}}"></calendar>
+    <bottom-dialog bind:__l="__l" class="r data-v-166db48e" uI="166db48e-6" uP="{{B}}" uR="destination" uS="{{['d']}}" wx:if="{{B}}">
+        <view class="destination data-v-166db48e">
+            <destination-box bind:__l="__l" bindsearch="{{y}}" class="r data-v-166db48e" uI="166db48e-7,166db48e-6" uP="{{z}}" uR="dictionaryBox" wx:if="{{z}}"></destination-box>
+        </view>
+    </bottom-dialog>
+</view>

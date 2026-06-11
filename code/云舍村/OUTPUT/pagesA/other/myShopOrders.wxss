@@ -1,0 +1,24 @@
+page { background: #f5f5f5; }
+.mso-wrap { padding: 20rpx; }
+.mso-loading, .mso-empty { text-align: center; padding: 80rpx; color: #bbb; font-size: 28rpx; }
+.mso-card { background: #fff; border-radius: 16rpx; margin-bottom: 20rpx; overflow: hidden; }
+.mso-card-header { display: flex; justify-content: space-between; align-items: center; padding: 24rpx 28rpx 16rpx; border-bottom: 1rpx solid #f5f5f5; }
+.mso-order-no { font-size: 22rpx; color: #888; }
+.mso-status { font-size: 22rpx; padding: 4rpx 16rpx; border-radius: 20rpx; background: #f5f5f5; color: #666; }
+.mso-status.paid, .mso-status.completed { background: #e8f5e9; color: #27ae60; }
+.mso-status.shipped { background: #e3f2fd; color: #2196f3; }
+.mso-status.pending { background: #fff8e1; color: #f39c12; }
+.mso-status.cancelled { background: #fce4ec; color: #e91e63; }
+.mso-items { padding: 16rpx 28rpx; }
+.mso-item { display: flex; align-items: center; gap: 16rpx; margin-bottom: 12rpx; }
+.mso-item-img { width: 80rpx; height: 80rpx; border-radius: 8rpx; flex-shrink: 0; background: #eee; }
+.mso-item-info { flex: 1; }
+.mso-item-name { font-size: 26rpx; color: #333; }
+.mso-item-price { font-size: 22rpx; color: #888; margin-top: 4rpx; }
+.mso-meta { padding: 0 28rpx 16rpx; font-size: 22rpx; color: #888; line-height: 1.6; }
+.mso-tracking { display: flex; align-items: center; justify-content: space-between; padding: 16rpx 28rpx; background: #e3f2fd; font-size: 24rpx; }
+.mso-tracking-empty { padding: 16rpx 28rpx; font-size: 24rpx; }
+.mso-copy-btn { color: #2196f3; font-size: 22rpx; padding: 4rpx 16rpx; border: 1rpx solid #2196f3; border-radius: 20rpx; flex-shrink: 0; }
+.mso-card-footer { display: flex; justify-content: space-between; align-items: center; padding: 16rpx 28rpx 24rpx; border-top: 1rpx solid #f5f5f5; }
+.mso-date { font-size: 22rpx; color: #aaa; }
+.mso-total { font-size: 26rpx; color: #555; }

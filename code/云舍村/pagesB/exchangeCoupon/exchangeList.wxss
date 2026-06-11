@@ -1,0 +1,3 @@
+.product-info-box.data-v-b849307b {
+    padding-bottom: calc(24rpx + env(safe-area-inset-bottom))
+}

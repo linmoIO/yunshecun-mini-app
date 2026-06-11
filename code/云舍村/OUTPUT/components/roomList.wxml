@@ -1,0 +1,87 @@
+<view class="ui_roomList">
+    <view class="room" wx:for="{{a}}" wx:for-item="room" wx:key="m">
+        <view class="roomTopBox">
+            <image alt="" bindtap="{{room.b}}" class="logo" mode="aspectFill" src="{{room.a}}"></image>
+            <view class="roomPicCount">{{room.c}}</view>
+        </view>
+        <view class="roomTypeBox">
+            <view class="roomTypeTitle">
+                <view class="roomName">{{room.d}}</view>
+                <view class="aboutDes">
+                    <label class="aboutItem">{{room.e}}</label>
+                    <label class="aboutItem">{{room.f}}</label>
+                </view>
+            </view>
+            <view class="{{['theRoom',room.h&&'gray']}}" wx:for="{{room.g}}" wx:for-item="roomType" wx:key="q">
+                <view catchtap="{{roomType.c}}" class="leftPart">
+                    <view class="roomTitleDesc">
+                        <view class="icon iconfont icon-a-12_fangjian"></view>{{roomType.a}}</view>
+                    <view class="priceItem">
+                        <label class="money">¥{{roomType.b}}</label>/晚<block wx:if="{{b}}"> 起 </block>
+                    </view>
+                </view>
+                <view class="rightPart">
+                    <view class="{{['goBtn',roomType.p&&'disabled']}}">
+                        <block wx:if="{{roomType.d}}">
+                            <view class="ydBtn ydBtn2" wx:if="{{roomType.e}}">
+                                <view class="ydDes2"> 满房 </view>
+                            </view>
+                            <block wx:else>
+                                <view catchtap="{{roomType.g}}" class="ydBtn" wx:if="{{roomType.f}}">
+                                    <view class="ydDes"> 预订 </view>
+                                </view>
+                                <block wx:else>
+                                    <block wx:if="{{roomType.h}}">
+                                        <view catchtap="{{roomType.j}}" class="ydBtn" wx:if="{{roomType.i}}">
+                                            <view class="ydDes"> 兑换 </view>
+                                        </view>
+                                        <view class="ydBtn ydBtn2" wx:else>
+                                            <view class="ydDes2"> 兑换 </view>
+                                        </view>
+                                    </block>
+                                    <view catchtap="{{roomType.l}}" class="ydBtn" wx:elif="{{roomType.k}}">
+                                        <view class="ydDes"> 券兑换 </view>
+                                    </view>
+                                    <block wx:else>
+                                        <view catchtap="{{roomType.n}}" class="ydBtn" wx:if="{{roomType.m}}">
+                                            <view class="ydDes"> 预订 </view>
+                                        </view>
+                                        <view catchtap="{{roomType.o}}" class="ydBtn" wx:else>
+                                            <view class="ydDes"> 预订 </view>
+                                        </view>
+                                    </block>
+                                </block>
+                            </block>
+                        </block>
+                        <view class="ydBtn ydBtn2" wx:else>
+                            <view class="ydDes2"> 不可订 </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="packageBox" wx:if="{{room.i}}">
+                <view class="packageTopTitle"> 推荐套餐 </view>
+                <view class="theRoom" wx:for="{{room.j}}" wx:for-item="packageItem" wx:key="h">
+                    <view catchtap="{{packageItem.f}}" class="leftPart">
+                        <view class="roomTitleDesc">
+                            <view class="icon iconfont icon-a-12_jiudiantaocan_hui"></view>{{packageItem.a}}</view>
+                        <view class="priceItem">
+                            <view>
+                                <label class="money">¥{{packageItem.b}}</label>/{{packageItem.c}}</view>
+                            <view class="money2" wx:if="{{packageItem.d}}">{{packageItem.e}}</view>
+                        </view>
+                    </view>
+                    <view class="rightPart">
+                        <view class="goBtn">
+                            <view class="ydBtn">
+                                <view bindtap="{{packageItem.g}}" class="ydDes"> 预订 </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+                <view bindtap="{{room.l}}" class="seeMore" wx:if="{{room.k}}"> 查看其他套餐<view class="icon iconfont icon-a-16_xialajiantou_hei"></view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

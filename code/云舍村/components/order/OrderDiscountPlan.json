@@ -1,0 +1,11 @@
+{
+    "component":  true,
+    "usingComponents":  {
+                            "bottom-dialog":  "../bottomDialog",
+                            "coupon-item":  "../couponItem",
+                            "error-block":  "../new/ErrorBlock",
+                            "safe-area":  "../new/SafeArea",
+                            "st-dialog":  "../new/StDialog",
+                            "st-radio":  "../new/StRadio"
+                        }
+}

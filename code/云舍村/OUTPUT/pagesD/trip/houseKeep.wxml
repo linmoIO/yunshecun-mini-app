@@ -1,0 +1,38 @@
+<view class="ui_houseKeep data-v-70b82410">
+    <view class="coustom-head data-v-70b82410">
+        <coustom-head bind:__l="__l" class="data-v-70b82410" uI="70b82410-0" uP="{{a}}" uS="{{['title']}}" wx:if="{{a}}">
+            <view class="head data-v-70b82410" slot="title">
+                <view class="head-item active data-v-70b82410">管家形象</view>
+            </view>
+        </coustom-head>
+    </view>
+    <view class="swiper-box data-v-70b82410" wx:if="{{b}}">
+        <swiper-box bind:__l="__l" class="data-v-70b82410" uI="70b82410-1" uP="{{c}}" wx:if="{{c}}"></swiper-box>
+        <view class="houseKeep-info data-v-70b82410">
+            <view class="name data-v-70b82410">{{d}}</view>
+        </view>
+        <view bindtap="{{e}}" class="iconfont icon-a-20_dianhua data-v-70b82410"></view>
+    </view>
+    <view class="about-me data-v-70b82410">
+        <view class="title data-v-70b82410">关于我</view>
+        <view class="about-item data-v-70b82410"> 民族： <view class="about-val data-v-70b82410">{{f}}</view>
+        </view>
+        <view class="about-item data-v-70b82410"> 特长： <view class="about-val data-v-70b82410">{{g}}</view>
+        </view>
+        <view class="about-item data-v-70b82410" wx:if="{{h}}">
+            <more-text bind:__l="__l" class="data-v-70b82410" uI="70b82410-2" uP="{{i}}" wx:if="{{i}}"></more-text>
+        </view>
+    </view>
+    <view class="comment data-v-70b82410">
+        <view class="title data-v-70b82410">客户评价</view>
+        <view class="comment-list data-v-70b82410">
+            <view class="comment-item data-v-70b82410" wx:for="{{j}}" wx:key="e">
+                <view class="user-info data-v-70b82410">
+                    <image class="head-img data-v-70b82410" src="{{item.a}}"></image> {{item.b}}</view>
+                <view class="moreText data-v-70b82410">
+                    <more-text bind:__l="__l" class="data-v-70b82410" uI="{{item.c}}" uP="{{item.d}}" wx:if="{{item.d}}"></more-text>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

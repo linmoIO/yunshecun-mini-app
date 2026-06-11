@@ -1,0 +1,35 @@
+<view bindtap="{{x}}" class="card" style="{{w}}">
+    <view class="card-media">
+        <image class="card-media__cover" mode="aspectFill" src="{{b}}" wx:if="{{a}}"></image>
+        <view class="card-media__tags">
+            <view class="tag tag--primary" wx:if="{{c}}">
+                <image class="icon" src="{{d}}"></image>
+                <text>{{e}}</text>
+            </view>
+            <view class="tag" style="{{'background-color:'+'rgba(164, 49, 39, 0.9)'}}" wx:if="{{f}}">
+                <image class="icon" src="{{g}}"></image>
+                <text>新店</text>
+            </view>
+            <block wx:if="{{h}}">
+                <view class="tag" style="{{'background-color:'+'rgba(51, 103, 53, 0.9)'}}" wx:for="{{i}}" wx:key="b">{{item.a}}</view>
+            </block>
+        </view>
+    </view>
+    <view class="card-content">
+        <view class="card-title">{{j}}</view>
+        <view class="card-subtitle" wx:if="{{k}}">{{l}}</view>
+        <view class="card-desc" wx:if="{{m}}">{{n}}</view>
+        <view class="card-content__tags" wx:if="{{o}}">
+            <view class="tag" wx:for="{{p}}" wx:key="b">{{item.a}}</view>
+        </view>
+        <view class="card-content__pf-tags" wx:for="{{q}}" wx:key="c">
+            <view class="tag"> 单{{item.a}}待拼： <label wx:for="{{item.b}}" wx:for-item="date" wx:key="c">{{date.a}}{{date.b}}</label>
+            </view>
+        </view>
+        <view class="card-price">
+            <view class="card-price__number" wx:if="{{r}}">
+                <text class="symbol"> ¥ </text>{{s}}</view>
+            <text wx:if="{{t}}">{{v}}</text>
+        </view>
+    </view>
+</view>

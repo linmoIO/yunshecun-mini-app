@@ -1,0 +1,3 @@
+<view bindtap="{{c}}" class="{{['float-button','data-v-6be2dd14',a]}}" style="{{b}}">
+    <slot></slot>
+</view>

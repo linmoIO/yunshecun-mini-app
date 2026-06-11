@@ -1,0 +1,7 @@
+<!-- pages/clander.wxml -->
+<view class="calendar-page">
+  <t-icon class="close-icon" name="close" size="48rpx" bind:click="onIconTap" />
+  <view class="calendar-container">
+    <t-calendar use-popup="{{false}}" bind:select="handleChange" type="range" style="height: 100%" />
+  </view>
+</view>

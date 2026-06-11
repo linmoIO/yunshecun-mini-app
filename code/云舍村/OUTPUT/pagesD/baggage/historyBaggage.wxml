@@ -1,0 +1,15 @@
+<view class="ui_historyBaggage data-v-0a84e6d4">
+    <coustom-head bind:__l="__l" class="data-v-0a84e6d4" uI="0a84e6d4-0" uP="{{a}}" wx:if="{{a}}"></coustom-head>
+    <view class="empty data-v-0a84e6d4" wx:if="{{b}}">
+        <empty bind:__l="__l" class="data-v-0a84e6d4" uI="0a84e6d4-1" uP="{{c}}" wx:if="{{c}}"></empty>
+    </view>
+    <view class="baggageList data-v-0a84e6d4">
+        <view class="item data-v-0a84e6d4" wx:for="{{d}}" wx:key="b">
+            <image class="baggage-img data-v-0a84e6d4" src="https://dsplatweb.oss-cn-chengdu.aliyuncs.com/songzan/images/baggage.jpg"></image>
+            <view class="no-info data-v-0a84e6d4">
+                <view class="no_desc data-v-0a84e6d4">行李牌编号</view>
+                <view class="no data-v-0a84e6d4">{{item.a}}</view>
+            </view>
+        </view>
+    </view>
+</view>

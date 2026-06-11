@@ -1,0 +1,23 @@
+<view class="home-banner data-v-1a32bab8">
+    <swiper circular autoplay="{{c}}" bindanimationfinish="{{e}}" bindchange="{{d}}" class="home-swiper data-v-1a32bab8" current="{{b}}">
+        <swiper-item catchtap="{{item.r}}" class="data-v-1a32bab8" wx:for="{{a}}" wx:key="q">
+            <view class="swiper-item data-v-1a32bab8" wx:if="{{item.a}}">
+                <video showMuteBtn showPlayBtn bindended="{{item.m}}" bindfullscreenchange="{{item.n}}" bindpause="{{item.l}}" bindplay="{{item.k}}" class="swiper-item__video data-v-1a32bab8" controls="{{item.j}}" data-index="{{item.h}}" enableProgressGesture="{{false}}" id="{{item.g}}" objectFit="contain" showCenterPlayBtn="{{false}}" src="{{item.i}}">
+                    <view class="{{['control-play','data-v-1a32bab8',item.c]}}" style="{{'transform:'+item.d}}">
+                        <view class="control-play__icons data-v-1a32bab8">
+                            <view class="iconfont icon-pause icon data-v-1a32bab8" wx:if="{{item.b}}"></view>
+                            <view class="iconfont icon-play icon data-v-1a32bab8" wx:else></view>
+                        </view>
+                    </view>
+                    <image class="swiper-item swiper-item__video-cover data-v-1a32bab8" hidden="{{!item.e}}" mode="aspectFill" src="{{item.f}}"></image>
+                </video>
+            </view>
+            <view class="swiper-item data-v-1a32bab8" wx:elif="{{item.o}}">
+                <image class="swiper-item__image data-v-1a32bab8" mode="aspectFill" src="{{item.p}}"></image>
+            </view>
+        </swiper-item>
+    </swiper>
+    <view class="{{['indicator-dots','data-v-1a32bab8',h]}}" wx:if="{{f}}">
+        <view class="indicator-dot data-v-1a32bab8" style="{{g}}"></view>
+    </view>
+</view>

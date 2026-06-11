@@ -1,0 +1,27 @@
+<view class="bottomDialogBox data-v-d0919d32" hidden="{{!s}}">
+    <view catchtap="{{d}}" class="{{['bottomDialogMask','data-v-d0919d32',a&&'fadeIn',b&&'animated',c&&'disabled']}}"></view>
+    <view class="{{['bottomDialog','data-v-d0919d32',o&&'slideInUp',p&&'slideInRight',q&&'animated']}}" style="{{'max-height:'+r}}">
+        <slot name="title" wx:if="{{$slots.title}}"></slot>
+        <view class="title data-v-d0919d32" wx:else>
+            <view class="theTitle data-v-d0919d32">{{e}}</view>
+            <view class="titleBorder data-v-d0919d32" wx:if="{{f}}"></view>
+            <block wx:if="{{g}}">
+                <view bindtap="{{i}}" class="icon iconfont icon-a-20_fanhuianniu data-v-d0919d32" wx:if="{{h}}"></view>
+            </block>
+            <block wx:else>
+                <view bindtap="{{k}}" class="icon iconfont icon-a-16_guanbi_ciji data-v-d0919d32" wx:if="{{j}}"></view>
+            </block>
+        </view>
+        <view class="dialogWarp data-v-d0919d32" style="{{m}}" wx:if="{{l}}">
+            <view class="dialogBox data-v-d0919d32">
+                <slot></slot>
+            </view>
+        </view>
+        <block wx:if="{{n}}">
+            <view class="dialogBox data-v-d0919d32">
+                <slot></slot>
+            </view>
+            <view class="bottomFooter data-v-d0919d32"></view>
+        </block>
+    </view>
+</view>

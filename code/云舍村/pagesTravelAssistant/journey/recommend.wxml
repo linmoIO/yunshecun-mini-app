@@ -1,0 +1,31 @@
+<view class="page">
+  <view class="top-nav">
+    <view class="back" bindtap="onBack">‹</view>
+    <view class="capsule"></view>
+  </view>
+  <view class="title">为您推荐</view>
+  <view class="sub" wx:if="{{routeTitle}}">根据 {{routeTitle}} 与已选目的地生成</view>
+
+  <view class="list">
+    <view wx:for="{{recommendList}}" wx:key="id" class="card">
+      <image class="cover" mode="aspectFill" src="{{item.image}}"></image>
+      <view class="info">
+        <view class="tag-row">
+          <view wx:for="{{item.tags}}" wx:key="*this" class="tag">{{item}}</view>
+        </view>
+        <view class="name">{{item.title}}</view>
+        <view class="sub-name">{{item.subTitle}}</view>
+        <view class="desc">{{item.desc}}</view>
+        <view class="bottom-row">
+          <view class="price">{{item.price}}</view>
+          <view class="detail-btn" data-index="{{index}}" bindtap="onOpenPlan">查看详情</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="bottom-space"></view>
+  <view class="bottom-fixed">
+    <view class="skip-btn" bindtap="onSkip">跳过推荐，继续创建</view>
+  </view>
+</view>

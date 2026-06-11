@@ -1,0 +1,13 @@
+<view class="sp-wrap">
+  <view class="sp-balance-card">
+    <view class="sp-balance-label">当前积分余额</view>
+    <view class="sp-balance-val">{{myPoints}} <text style="font-size:24rpx">积分</text></view>
+  </view>
+  <view class="sp-form-card">
+    <view class="sp-tip">输入对方手机号即可完成积分转赠，对方需已注册云舍村账号</view>
+    <view class="sp-field"><text class="sp-lbl">收方手机号 *</text><input class="sp-inp" type="number" value="{{phone}}" placeholder="请输入手机号" bindinput="onInput" data-key="phone" maxlength="11"/></view>
+    <view class="sp-field"><text class="sp-lbl">转赠积分数 *</text><input class="sp-inp" type="number" value="{{points}}" placeholder="请输入积分数量" bindinput="onInput" data-key="points"/></view>
+  </view>
+  <view class="sp-submit {{submitting?'dis':''}}" bindtap="submit">{{submitting?'转赠中...':'确认转赠'}}</view>
+  <view class="sp-note">注意：积分转赠后不可撤回，请确认对方手机号后再操作</view>
+</view>

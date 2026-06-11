@@ -1,0 +1,35 @@
+.tab-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 110rpx;
+  background: #efe8dc;
+  border-top: 1rpx solid #e1d5c4;
+  display: flex;
+  z-index: 180;
+}
+
+.tab-bar-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.tab-icon {
+  width: 38rpx;
+  height: 38rpx;
+}
+
+.tab-text {
+  margin-top: 8rpx;
+  color: #8b7b69;
+  font-size: 22rpx;
+}
+
+.tab-text-active {
+  color: #2f80bf;
+  font-weight: 600;
+}

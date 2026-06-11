@@ -1,0 +1,527 @@
+.baseBtn.data-v-9e1edb21 {
+    background-color: #000;
+    background-image: url(https://dsplatweb.oss-cn-chengdu.aliyuncs.com/songzan/images/btnBlack.png);
+    color: #fff
+}
+
+.baseBtn.data-v-9e1edb21,.w-baseBtn.data-v-9e1edb21 {
+    background-repeat: repeat;
+    background-size: 80rpx 75rpx;
+    border-radius: 8rpx;
+    text-align: center
+}
+
+.w-baseBtn.data-v-9e1edb21 {
+    background-color: #fff;
+    background-image: url(https://dsplatweb.oss-cn-chengdu.aliyuncs.com/songzan/images/btnWhite.png);
+    color: #000
+}
+
+.w-baseBtn[disabled].data-v-9e1edb21 {
+    color: #000!important;
+    opacity: .8
+}
+
+.textHidden.data-v-9e1edb21 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}
+
+.expandClick.data-v-9e1edb21 {
+    position: relative
+}
+
+.expandClick.data-v-9e1edb21:after {
+    bottom: -60rpx;
+    content: "";
+    left: -60rpx;
+    position: absolute;
+    right: -60rpx;
+    top: -60rpx;
+    z-index: 9
+}
+
+.line-clamp-1.data-v-9e1edb21 {
+    -webkit-line-clamp: 1;
+    line-clamp: 1
+}
+
+.line-clamp-1.data-v-9e1edb21,.line-clamp-2.data-v-9e1edb21 {
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    overflow: hidden;
+    white-space: normal
+}
+
+.line-clamp-2.data-v-9e1edb21 {
+    -webkit-line-clamp: 2;
+    line-clamp: 2
+}
+
+.line-clamp-3.data-v-9e1edb21 {
+    -webkit-line-clamp: 3;
+    line-clamp: 3
+}
+
+.line-clamp-3.data-v-9e1edb21,.line-clamp-4.data-v-9e1edb21 {
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    overflow: hidden;
+    white-space: normal
+}
+
+.line-clamp-4.data-v-9e1edb21 {
+    -webkit-line-clamp: 4;
+    line-clamp: 4
+}
+
+.line-clamp-5.data-v-9e1edb21 {
+    -webkit-line-clamp: 5;
+    line-clamp: 5
+}
+
+.line-clamp-5.data-v-9e1edb21,.line-clamp-6.data-v-9e1edb21 {
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    overflow: hidden;
+    white-space: normal
+}
+
+.line-clamp-6.data-v-9e1edb21 {
+    -webkit-line-clamp: 6;
+    line-clamp: 6
+}
+
+.line-clamp-7.data-v-9e1edb21 {
+    -webkit-line-clamp: 7;
+    line-clamp: 7
+}
+
+.line-clamp-7.data-v-9e1edb21,.line-clamp-8.data-v-9e1edb21 {
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    overflow: hidden;
+    white-space: normal
+}
+
+.line-clamp-8.data-v-9e1edb21 {
+    -webkit-line-clamp: 8;
+    line-clamp: 8
+}
+
+.line-clamp-9.data-v-9e1edb21 {
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 9;
+    line-clamp: 9;
+    display: -webkit-box;
+    overflow: hidden;
+    white-space: normal
+}
+
+.consultationForm_ui.data-v-9e1edb21 {
+    background: #f8f8f8;
+    padding-bottom: 140rpx
+}
+
+.consultationForm_ui.data-v-9e1edb21 .ui_coustomHead {
+    background: linear-gradient(#244a63,#5e93b7)
+}
+
+.consultationForm_ui .swiper-box.data-v-9e1edb21 {
+    height: 560rpx;
+    min-height: 560rpx;
+    position: relative;
+    width: 100%
+}
+
+.consultationForm_ui .header_wrap.data-v-9e1edb21 {
+    background-repeat: no-repeat;
+    background-size: contain;
+    padding-top: 176rpx
+}
+
+.consultationForm_ui .header_wrap .title.data-v-9e1edb21 {
+    color: #fff;
+    font-family: PingFang SC;
+    font-size: 40rpx;
+    font-weight: 500;
+    line-height: 1;
+    margin-top: 24rpx;
+    min-height: 40rpx;
+    padding: 0 32rpx
+}
+
+.consultationForm_ui .header_wrap .subTitle.data-v-9e1edb21 {
+    color: #fff;
+    font-family: PingFang SC;
+    font-size: 28rpx;
+    line-height: 44rpx;
+    margin-top: 24rpx;
+    max-width: 400rpx;
+    min-height: 88rpx;
+    opacity: .8;
+    padding: 0 32rpx
+}
+
+.consultationForm_ui .hotel-box.data-v-9e1edb21 {
+    border-radius: 16rpx;
+    margin: 76rpx 32rpx 0;
+    overflow: hidden;
+    position: relative
+}
+
+.consultationForm_ui .hotel-box .userInfoList.data-v-9e1edb21 {
+    background: #fff;
+    border-radius: 16rpx;
+    margin-bottom: 24rpx;
+    padding: 0 24rpx
+}
+
+.consultationForm_ui .hotel-box .userInfoList .userInfoItem.data-v-9e1edb21 {
+    align-items: center;
+    display: flex;
+    font-family: PingFang SC;
+    height: 96rpx;
+    position: relative
+}
+
+.consultationForm_ui .hotel-box .userInfoList .userInfoItem.big.data-v-9e1edb21 {
+    height: 160rpx
+}
+
+.consultationForm_ui .hotel-box .userInfoList .userInfoItem .userInfoTitle.data-v-9e1edb21 {
+    color: #000;
+    font-family: PingFang SC;
+    font-size: 28rpx;
+    width: 176rpx
+}
+
+.consultationForm_ui .hotel-box .userInfoList .userInfoItem .userInfoDesc.data-v-9e1edb21 {
+    align-items: center;
+    color: #000;
+    display: flex;
+    flex: 1;
+    font-family: PingFang SC;
+    font-size: 28rpx;
+    height: 100%
+}
+
+.consultationForm_ui .hotel-box .userInfoList .userInfoItem .userInfoDesc wx-input.data-v-9e1edb21 {
+    flex: 1
+}
+
+.consultationForm_ui .hotel-box .userInfoList .userInfoItem .userInfoDesc .btn_yanzheng.data-v-9e1edb21 {
+    border: 1px solid #000;
+    border-radius: 8rpx;
+    color: #000;
+    font-family: PingFang SC;
+    font-size: 24rpx;
+    padding: 16rpx 24rpx
+}
+
+.consultationForm_ui .hotel-box .userInfoList .userInfoItem .userInfoDesc .btn_yanzheng.disabled.data-v-9e1edb21 {
+    border: 1px solid #ccc;
+    color: #ccc
+}
+
+.consultationForm_ui .hotel-box .userInfoList .userInfoItem .userInfoDesc.tofill.data-v-9e1edb21 {
+    color: #ccc
+}
+
+.consultationForm_ui .hotel-box .userInfoList .userInfoItem .userInfoDesc .avatar.data-v-9e1edb21 {
+    border: 1px solid #eee;
+    border-radius: 50%;
+    height: 96rpx;
+    width: 96rpx
+}
+
+.consultationForm_ui .hotel-box .userInfoList .userInfoItem .icon_more.data-v-9e1edb21 {
+    font-size: 40rpx;
+    margin-left: auto
+}
+
+.consultationForm_ui .hotel-box .form_tip.data-v-9e1edb21 {
+    color: gray;
+    font-family: PingFang SC;
+    font-size: 28rpx;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 28rpx;
+    margin: 48rpx auto 32rpx;
+    text-align: justified
+}
+
+.consultationForm_ui .destination_wrap.data-v-9e1edb21 {
+    background: #fff;
+    border-radius: 16rpx;
+    margin: auto 32rpx 24rpx
+}
+
+.consultationForm_ui .destination_wrap .des_main.data-v-9e1edb21 {
+    margin: auto 24rpx
+}
+
+.consultationForm_ui .destination_wrap .des_title.data-v-9e1edb21 {
+    border-bottom: 1px solid #eee;
+    color: #000;
+    font-family: PingFang SC;
+    font-size: 28rpx;
+    font-weight: 700;
+    letter-spacing: 0;
+    line-height: 28rpx;
+    padding: 32rpx 0;
+    text-align: left
+}
+
+.consultationForm_ui .destination_wrap .place_wrap.data-v-9e1edb21 {
+    padding-bottom: 16rpx
+}
+
+.consultationForm_ui .destination_wrap .place_wrap .des_name.data-v-9e1edb21 {
+    color: #000;
+    font-family: PingFang SC;
+    font-size: 28rpx;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 28rpx;
+    padding: 16rpx 0 32rpx;
+    text-align: left
+}
+
+.consultationForm_ui .destination_wrap .place_wrap .checkbox_warp.data-v-9e1edb21 {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap
+}
+
+.consultationForm_ui .destination_wrap .place_wrap .checkbox_warp .item.data-v-9e1edb21 {
+    align-items: center;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8rpx;
+    color: #000;
+    display: flex;
+    flex-basis: calc((100% - 64rpx)/4);
+    font-family: PingFang SC;
+    font-size: 28rpx;
+    height: 62rpx;
+    justify-content: center;
+    margin-bottom: 16rpx;
+    margin-right: 16rpx;
+    position: relative
+}
+
+.consultationForm_ui .destination_wrap .place_wrap .checkbox_warp .item.data-v-9e1edb21:nth-child(4n+4) {
+    margin-right: 0
+}
+
+.consultationForm_ui .destination_wrap .place_wrap .checkbox_warp .name_wrap.data-v-9e1edb21 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}
+
+.consultationForm_ui .destination_wrap .place_wrap .checkbox_warp .icon_select.data-v-9e1edb21 {
+    bottom: -8rpx;
+    color: gray;
+    color: #a43127;
+    font-size: 44rpx;
+    position: absolute;
+    right: -4rpx
+}
+
+.consultationForm_ui .destination_wrap .place_wrap .checkbox_warp .show_icon.data-v-9e1edb21 {
+    display: block
+}
+
+.consultationForm_ui .destination_wrap .place_wrap .checkbox_warp .hide_icon.data-v-9e1edb21 {
+    display: none
+}
+
+.consultationForm_ui .destination_wrap .place_wrap .checkbox_warp .option_active.data-v-9e1edb21 {
+    border: 1px solid #a43127
+}
+
+.consultationForm_ui .destination_wrap .place_wrap .checkbox_warp .option_default.data-v-9e1edb21 {
+    background: #fff
+}
+
+.consultationForm_ui .destination_wrap .place_wrap .checkbox_warp .checkboxHidden.data-v-9e1edb21 {
+    display: none
+}
+
+.consultationForm_ui .destination_wrap .place_wrap .textarea-text.data-v-9e1edb21 {
+    color: #000;
+    font-family: PingFang SC;
+    font-size: 28rpx;
+    height: 100%;
+    line-height: 44rpx;
+    margin-bottom: 24rpx;
+    width: 100%
+}
+
+.consultationForm_ui .destination_wrap .rowNum.data-v-9e1edb21 {
+    align-items: center;
+    display: flex;
+    height: 104rpx;
+    justify-content: space-between
+}
+
+.consultationForm_ui .destination_wrap .tip.data-v-9e1edb21 {
+    color: #000;
+    font-family: PingFang SC;
+    font-size: 28rpx;
+    font-weight: 500;
+    letter-spacing: 0
+}
+
+.consultationForm_ui .destination_wrap .tip_text.data-v-9e1edb21 {
+    color: #ccc;
+    font-family: PingFang SC;
+    font-size: 24rpx;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 24rpx;
+    padding-left: 16rpx;
+    text-align: left
+}
+
+.consultationForm_ui .destination_wrap .productAddress.data-v-9e1edb21,.consultationForm_ui .destination_wrap .productNum.data-v-9e1edb21 {
+    display: flex
+}
+
+.consultationForm_ui .destination_wrap .productAddress .number.data-v-9e1edb21,.consultationForm_ui .destination_wrap .productNum .number.data-v-9e1edb21 {
+    color: #333;
+    display: inline-block;
+    font-family: PingFang SC;
+    font-size: 32rpx;
+    font-weight: 500;
+    height: 40rpx;
+    letter-spacing: 0;
+    line-height: 40rpx;
+    margin: 0 32rpx;
+    text-align: center;
+    width: 40rpx
+}
+
+.consultationForm_ui .destination_wrap .productAddress .icon.data-v-9e1edb21,.consultationForm_ui .destination_wrap .productNum .icon.data-v-9e1edb21 {
+    border-radius: 50%;
+    color: gray;
+    display: inline-block;
+    font-family: PingFang SC;
+    font-size: 44rpx;
+    letter-spacing: 0;
+    line-height: 40rpx;
+    text-align: center
+}
+
+.consultationForm_ui .destination_wrap .productAddress .icon_disAble.data-v-9e1edb21,.consultationForm_ui .destination_wrap .productNum .icon_disAble.data-v-9e1edb21 {
+    border-radius: 50%;
+    color: #ccc;
+    display: inline-block;
+    font-family: PingFang SC;
+    font-size: 44rpx;
+    letter-spacing: 0;
+    line-height: 40rpx;
+    text-align: center
+}
+
+.consultationForm_ui .destination_wrap .productAddress .icon_more.data-v-9e1edb21,.consultationForm_ui .destination_wrap .productNum .icon_more.data-v-9e1edb21 {
+    font-size: 40rpx
+}
+
+.consultationForm_ui .destination_wrap .productAddress .agree_wrap.data-v-9e1edb21,.consultationForm_ui .destination_wrap .productNum .agree_wrap.data-v-9e1edb21 {
+    align-items: center;
+    display: flex
+}
+
+.consultationForm_ui .destination_wrap .productAddress .agree_wrap .iconfont.data-v-9e1edb21,.consultationForm_ui .destination_wrap .productNum .agree_wrap .iconfont.data-v-9e1edb21 {
+    color: gray;
+    font-size: 44rpx
+}
+
+.consultationForm_ui .destination_wrap .productAddress .agree_wrap .icon-danxuan_yixuan.data-v-9e1edb21,.consultationForm_ui .destination_wrap .productNum .agree_wrap .icon-danxuan_yixuan.data-v-9e1edb21 {
+    color: #a43127
+}
+
+.consultationForm_ui .destination_wrap .productAddress .address_text.data-v-9e1edb21,.consultationForm_ui .destination_wrap .productNum .address_text.data-v-9e1edb21 {
+    flex-basis: 100%;
+    font-family: PingFang SC;
+    font-size: 28rpx;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 28rpx;
+    text-align: left
+}
+
+.consultationForm_ui .destination_wrap .productAddress .textColor.data-v-9e1edb21,.consultationForm_ui .destination_wrap .productNum .textColor.data-v-9e1edb21 {
+    color: #ccc
+}
+
+.consultationForm_ui .destination_wrap .rowAddress.data-v-9e1edb21 {
+    align-items: center;
+    display: flex;
+    height: 104rpx;
+    width: 100%
+}
+
+.consultationForm_ui .destination_wrap .productAddress.data-v-9e1edb21 {
+    width: 100%
+}
+
+.consultationForm_ui .destination_wrap .goAddress.data-v-9e1edb21 {
+    margin-left: auto
+}
+
+.consultationForm_ui .bottom_dis.data-v-9e1edb21 {
+    height: 200rpx
+}
+
+.consultationForm_ui .footer.data-v-9e1edb21 {
+    align-items: center;
+    background: #fff;
+    border-top: .5px solid #eee;
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    left: 0;
+    padding: 24rpx 32rpx;
+    position: fixed;
+    right: 0;
+    z-index: 99
+}
+
+.consultationForm_ui .footer .kefu_wrap.data-v-9e1edb21 {
+    border: 1px solid #000;
+    border-radius: 8rpx;
+    color: #000;
+    margin-right: 24rpx
+}
+
+.consultationForm_ui .footer .kefu_wrap.data-v-9e1edb21,.consultationForm_ui .footer .order-btn.data-v-9e1edb21 {
+    align-items: center;
+    display: flex;
+    flex: 1;
+    font-family: PingFang SC;
+    font-size: 32rpx;
+    height: 96rpx;
+    justify-content: center;
+    margin-bottom: 64rpx
+}
+
+.consultationForm_ui .footer .order-btn.data-v-9e1edb21 {
+    background-color: #000;
+    background-image: url(https://dsplatweb.oss-cn-chengdu.aliyuncs.com/songzan/images/btnBlack.png);
+    background-repeat: repeat;
+    background-size: 80rpx 75rpx;
+    border-radius: 8rpx;
+    color: #fff;
+    text-align: center
+}
+
+.consultationForm_ui .address_wrap.data-v-9e1edb21 {
+    align-items: center;
+    display: flex;
+    width: 100%
+}

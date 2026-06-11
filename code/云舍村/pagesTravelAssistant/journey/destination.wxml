@@ -1,0 +1,58 @@
+<view class="page">
+  <view class="top-nav">
+    <view class="back" bindtap="onBack">‹</view>
+    <view class="capsule"></view>
+  </view>
+  <view class="page-title">您想去哪里？</view>
+
+  <scroll-view scroll-x class="route-scroll">
+    <view class="route-row">
+      <view
+        wx:for="{{routeCards}}"
+        wx:key="code"
+        class="route-card {{routeIndex === index ? 'active' : ''}}"
+        data-index="{{index}}"
+        bindtap="onSwitchRoute"
+      >
+        <image class="route-bg" mode="aspectFill" src="{{item.image}}"></image>
+        <view class="route-mask"></view>
+        <view class="route-name">{{item.title}}</view>
+        <view class="route-desc">{{item.desc}}</view>
+        <view class="route-arrow" wx:if="{{routeIndex === index}}"></view>
+      </view>
+    </view>
+  </scroll-view>
+
+  <view class="list">
+    <view
+      wx:for="{{destinationList}}"
+      wx:key="name"
+      class="item-card"
+      data-index="{{index}}"
+      bindtap="onToggleDestination"
+    >
+      <image class="item-image" mode="aspectFill" src="{{item.image}}"></image>
+      <view class="item-main">
+        <view class="item-title">{{item.name}}</view>
+        <view class="item-desc">{{item.desc}}</view>
+      </view>
+      <view class="radio {{item.selected ? 'checked' : ''}}">
+        <view class="dot" wx:if="{{item.selected}}"></view>
+      </view>
+    </view>
+  </view>
+
+  <view class="bottom-space"></view>
+  <view class="bottom-fixed">
+    <view class="selected-label">已选目的地</view>
+    <scroll-view scroll-x class="selected-scroll">
+      <view class="selected-row">
+        <view wx:for="{{selectedDestinations}}" wx:key="name" class="chip">
+          <text>{{item.name}}</text>
+          <text class="chip-close" data-index="{{index}}" bindtap="onRemoveSelected">×</text>
+        </view>
+      </view>
+    </scroll-view>
+    <view class="submit-btn" bindtap="onCreatePlan">创建行程</view>
+  </view>
+</view>

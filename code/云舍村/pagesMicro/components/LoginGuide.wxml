@@ -1,0 +1,16 @@
+<view class="login-guide data-v-a8f8f7b4" wx:if="{{a}}">
+    <view class="login-guide__mask data-v-a8f8f7b4"></view>
+    <view class="{{['login-guide__panel','animated','data-v-a8f8f7b4',i]}}">
+        <view class="login-guide__title-bar data-v-a8f8f7b4">
+            <label class="login-guide__title-text data-v-a8f8f7b4">{{b}}</label>
+        </view>
+        <view class="login-guide__body data-v-a8f8f7b4">
+            <view class="login-guide__desc data-v-a8f8f7b4">{{c}}</view>
+            <image class="login-guide__image data-v-a8f8f7b4" mode="aspectFill" src="{{e}}" wx:if="{{d}}"></image>
+            <view class="login-guide__actions data-v-a8f8f7b4">
+                <st-button bind:__l="__l" bindclick="{{f}}" class="data-v-a8f8f7b4" uI="a8f8f7b4-0" uP="{{g}}" uS="{{['d']}}" wx:if="{{g}}"> 去登录 </st-button>
+                <view bindtap="{{h}}" class="login-guide__cancel data-v-a8f8f7b4"> 暂不登录 </view>
+            </view>
+        </view>
+    </view>
+</view>

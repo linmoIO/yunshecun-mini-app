@@ -1,0 +1,27 @@
+<view class="success data-v-88c0df89">
+    <navigator bind:__l="__l" class="data-v-88c0df89" uI="88c0df89-0" uP="{{a}}" wx:if="{{a}}"></navigator>
+    <view class="success__header data-v-88c0df89" style="{{'padding-top:'+i}}">
+        <view class="success-icon iconfont icon-a-120_tijiaochenggong data-v-88c0df89"></view>
+        <view class="success-title data-v-88c0df89">出行人信息已提交</view>
+        <view class="success-message data-v-88c0df89">
+            <block wx:if="{{b}}"> 请尽快完成签约，以免影响出行。<view class="data-v-88c0df89"></view>如需帮助请联系松赞顾问。 </block>
+            <block wx:else> 如需帮助请联系松赞顾问。 </block>
+        </view>
+        <view class="success-progress data-v-88c0df89">
+            <progress-bar bind:__l="__l" class="data-v-88c0df89" uI="88c0df89-1" uP="{{c}}" wx:if="{{c}}"></progress-bar>
+        </view>
+        <view class="success-actions data-v-88c0df89">
+            <st-button bind:__l="__l" bindclick="{{e}}" class="data-v-88c0df89" uI="88c0df89-2" uP="{{f}}" uS="{{['d']}}" wx:if="{{d}}">立即签约</st-button>
+            <view class="success-actions-row data-v-88c0df89">
+                <view bindtap="{{g}}" class="action-item data-v-88c0df89">订单详情</view>
+                <view class="action-divider data-v-88c0df89"></view>
+                <view bindtap="{{h}}" class="action-item data-v-88c0df89">返回首页</view>
+            </view>
+        </view>
+    </view>
+    <view class="recommend data-v-88c0df89">
+        <recommend-products bind:__l="__l" class="data-v-88c0df89" uI="88c0df89-3" uP="{{j}}" wx:if="{{j}}"></recommend-products>
+    </view>
+    <safe-area bind:__l="__l" class="data-v-88c0df89" uI="88c0df89-4"></safe-area>
+</view>
+<float-button-kf bind:__l="__l" class="data-v-88c0df89" uI="88c0df89-5"></float-button-kf>

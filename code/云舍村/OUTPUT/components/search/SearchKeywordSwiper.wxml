@@ -1,0 +1,5 @@
+<swiper circular vertical autoplay="{{c}}" bindanimationfinish="{{e}}" catchtouchmove="{{d}}" class="keyword-list data-v-083a73ba" current="{{b}}" duration="{{200}}" interval="{{3000}}">
+    <swiper-item catchtouchmove="{{item.c}}" class="keyword line-clamp-1 data-v-083a73ba" wx:for="{{a}}" wx:key="b">
+        <text class="text line-clamp-1 data-v-083a73ba">{{item.a}}</text>
+    </swiper-item>
+</swiper>

@@ -1,0 +1,11 @@
+<view class="ground-activities data-v-3cd7f3c9">
+    <navigator bind:__l="__l" class="data-v-3cd7f3c9" uI="3cd7f3c9-0" uP="{{a}}" wx:if="{{a}}"></navigator>
+    <view class="ground-activities__banner data-v-3cd7f3c9" style="{{'padding-top:'+e+';'+'background-image:'+f+';'+'background-size:'+'cover'+';'+'background-repeat:'+'no-repeat'}}">
+        <banner bind:__l="__l" bindbannerBg="{{c}}" bindvideoPlay="{{b}}" class="data-v-3cd7f3c9" uI="3cd7f3c9-1" uP="{{d}}" wx:if="{{d}}"></banner>
+    </view>
+    <view class="ground-activities__content data-v-3cd7f3c9">
+        <view class="ground-activities__content__title data-v-3cd7f3c9">{{g}}</view>
+        <goods-group bind:__l="__l" bindfirstGroupFixed="{{j}}" bindgroupName="{{k}}" bindisReachSuccess="{{i}}" class="r data-v-3cd7f3c9" uI="3cd7f3c9-2" uP="{{l}}" uR="goodsGroupRef" wx:if="{{l}}"></goods-group>
+    </view>
+</view>
+<bottom-nav bind:__l="__l" class="data-v-3cd7f3c9" uI="3cd7f3c9-3"></bottom-nav>

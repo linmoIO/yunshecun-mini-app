@@ -1,0 +1,15 @@
+{
+    "navigationBarTitleText":  "订单列表",
+    "navigationStyle":  "custom",
+    "enablePullDownRefresh":  true,
+    "usingComponents":  {
+                            "coustom-head":  "../../components/coustomHead",
+                            "empty":  "../../components/empty",
+                            "exchange-dialog":  "../../components/exchangeDialog",
+                            "kf-dialog":  "../../components/kfDialog",
+                            "order-cancel-dialog":  "../../components/order/OrderCancelDialog",
+                            "search-input":  "../../components/searchInput",
+                            "switch-bar":  "../../components/switchBar",
+                            "float-button-kf":  "/components/new/FloatButtonKf"
+                        }
+}

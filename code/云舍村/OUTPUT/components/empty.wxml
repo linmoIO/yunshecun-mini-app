@@ -1,0 +1,12 @@
+<view class="{{['ui_empty','data-v-6f55fdd0',g]}}">
+    <view class="tipsBox data-v-6f55fdd0">
+        <view class="data-v-6f55fdd0" wx:if="{{a}}">
+            <image class="empty data-v-6f55fdd0" mode="" src="{{b}}"></image>
+            <view class="tips data-v-6f55fdd0">{{c}}</view>
+            <view class="subTips data-v-6f55fdd0">{{d}}</view>
+        </view>
+        <view class="textBox data-v-6f55fdd0" wx:if="{{e}}">
+            <view class="theTips data-v-6f55fdd0">{{f}}</view>
+        </view>
+    </view>
+</view>

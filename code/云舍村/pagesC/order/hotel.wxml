@@ -1,0 +1,205 @@
+<view class="data-v-acdc94be" wx:if="{{a}}">
+    <coustom-head bind:__l="__l" class="data-v-acdc94be" uI="acdc94be-0" uP="{{b}}" wx:if="{{b}}"></coustom-head>
+    <error-limiting bind:__l="__l" bindretry="{{c}}" class="data-v-acdc94be" uI="acdc94be-1" uP="{{d}}" wx:if="{{d}}"></error-limiting>
+</view>
+<view class="coustom-head data-v-acdc94be" wx:if="{{e}}">
+    <coustom-head bind:__l="__l" class="data-v-acdc94be" uI="acdc94be-2" uP="{{j}}" uS="{{['title']}}" wx:if="{{j}}">
+        <view class="share-icon data-v-acdc94be" slot="title">
+            <view class="title data-v-acdc94be">{{f}}</view>
+            <button bindtap="{{i}}" class="btn-default shareBtn data-v-acdc94be" openType="share" style="{{h}}">
+                <view class="iconfont icon-a-20_fenxianganniu_bai data-v-acdc94be" style="{{'color:'+g}}"></view>
+            </button>
+        </view>
+    </coustom-head>
+</view>
+<view class="ui_hotel data-v-acdc94be" id="hotelPage">
+    <image alt="" class="loadingImg data-v-acdc94be" mode="widthFix" src="https://dsplatweb.oss-cn-chengdu.aliyuncs.com/songzan/images/skeleton/hotel.png" wx:if="{{k}}"></image>
+    <view class="data-v-acdc94be" wx:if="{{l}}">
+        <view class="{{['bgItem','data-v-acdc94be',D&&'full']}}" style="{{'background-color:'+E+';'+'z-index:'+F+';'+'height:'+G}}">
+            <image alt="" class="bgImg data-v-acdc94be" mode="aspectFill" src="{{m}}" style="{{'height:'+n}}"></image>
+            <view class="hotelInfoBox data-v-acdc94be" style="{{'margin-top:'+v}}">
+                <view class="fadeBg data-v-acdc94be" style="{{'background-image:'+s}}">
+                    <view class="fadeInfoBox data-v-acdc94be" wx:if="{{o}}">
+                        <view class="hotelName data-v-acdc94be">{{p}}</view>
+                        <view class="subDesc data-v-acdc94be"> 海拔{{q}}m </view>
+                        <view bindtap="{{r}}" class="subName data-v-acdc94be"> 下拉查看酒店简介<view class="icon iconfont icon-a-12_changxialajiantou_bai data-v-acdc94be"></view>
+                        </view>
+                    </view>
+                </view>
+                <view class="bgInfoBox data-v-acdc94be" wx:if="{{t}}"></view>
+            </view>
+            <view class="{{['seeMoreBox','data-v-acdc94be',C&&'blur']}}" wx:if="{{w}}">
+                <scroll-view bindscroll="{{B}}" class="seeMoreInner data-v-acdc94be" scrollTop="{{A}}" scrollY="{{true}}">
+                    <view class="mockHeight data-v-acdc94be"></view>
+                    <view class="hotelName data-v-acdc94be">{{x}}</view>
+                    <view class="subDesc data-v-acdc94be"> 海拔{{y}}m </view>
+                    <mp-html bind:__l="__l" class="infoText data-v-acdc94be" uI="acdc94be-3" uP="{{z}}" wx:if="{{z}}"></mp-html>
+                    <view class="mockHeight2 data-v-acdc94be"></view>
+                </scroll-view>
+            </view>
+        </view>
+        <scroll-view bindscroll="{{az}}" bounces="false" class="{{['hotelItemWrapper','data-v-acdc94be',aw&&'full']}}" enhanced="true" id="hotelItemWrapper" scrollTop="{{ay}}" scrollWithAnimation="{{true}}" scrollY="{{ax}}">
+            <view bindtouchend="{{M}}" bindtouchmove="{{L}}" bindtouchstart="{{K}}" class="{{['placeholder','data-v-acdc94be',J&&'disabled']}}" style="{{'height:'+H+';'+'z-index:'+I}}"></view>
+            <view class="hotelItem data-v-acdc94be" style="{{'z-index:'+av}}">
+                <view bindtouchend="{{W}}" bindtouchmove="{{V}}" bindtouchstart="{{U}}" class="data-v-acdc94be">
+                    <view class="touchLine data-v-acdc94be">
+                        <view class="rect data-v-acdc94be"></view>
+                    </view>
+                    <view class="topBox data-v-acdc94be">
+                        <view class="priceItem data-v-acdc94be" wx:if="{{N}}">
+                            <label class="price data-v-acdc94be">¥{{O}}</label>/起 </view>
+                        <view class="priceItem data-v-acdc94be" wx:else>   </view>
+                        <view class="collect data-v-acdc94be">
+                            <view bindtap="{{S}}" class="{{['icon','iconfont','data-v-acdc94be',P&&'active',Q&&'icon-a-20_shoucang_yishoucang',R&&'icon-a-20_shoucang_weishoucang']}}"></view>
+                        </view>
+                    </view>
+                    <view class="tagList data-v-acdc94be">
+                        <view class="tagItem data-v-acdc94be" wx:for="{{T}}" wx:for-item="theme" wx:key="b">{{theme.a}}</view>
+                    </view>
+                </view>
+                <view class="mapBox data-v-acdc94be">
+                    <view class="leftPart data-v-acdc94be">{{X}}</view>
+                    <view class="rightPart data-v-acdc94be">
+                        <view bindtap="{{Y}}" class="icon iconfont icon-a-28_ditu data-v-acdc94be"></view>
+                        <view bindtap="{{Z}}" class="icon iconfont icon-a-28_dianhua data-v-acdc94be"></view>
+                    </view>
+                </view>
+                <view class="bigTitle data-v-acdc94be"> 酒店客房 </view>
+                <view class="calendarBoxHolder data-v-acdc94be" wx:if="{{aa}}"></view>
+                <view class="{{['calendarBoxWrapper','data-v-acdc94be',ah&&'fixed']}}">
+                    <view class="calendarBoxMock data-v-acdc94be" style="{{'height:'+ac}}" wx:if="{{ab}}"></view>
+                    <view bindtap="{{ag}}" class="calendarBox arrow data-v-acdc94be">
+                        <view class="timerBox data-v-acdc94be">
+                            <view class="timeDetails data-v-acdc94be">
+                                <view class="dayTime data-v-acdc94be">{{ad}}</view>
+                                <view class="weekTime data-v-acdc94be"> 入住 </view>
+                            </view>
+                        </view>
+                        <view class="timerMiddleBox data-v-acdc94be">
+                            <label class="days data-v-acdc94be">住{{ae}}晚</label>
+                        </view>
+                        <view class="timerBox data-v-acdc94be">
+                            <view class="timeDetails data-v-acdc94be">
+                                <view class="dayTime data-v-acdc94be">{{af}}</view>
+                                <view class="weekTime data-v-acdc94be"> 离店 </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+                <room-list bind:__l="__l" bindgoBook="{{aj}}" bindgoPackItem="{{al}}" bindshowCurrentRoom="{{ai}}" bindshowTravelAll="{{ak}}" class="data-v-acdc94be" uI="acdc94be-4" uP="{{am}}" wx:if="{{am}}"></room-list>
+                <empty bind:__l="__l" class="data-v-acdc94be" uI="acdc94be-5" uP="{{ao}}" wx:if="{{an}}"></empty>
+                <view class="wrapperBox data-v-acdc94be" wx:if="{{ap}}">
+                    <view class="bigTitle data-v-acdc94be"> 酒店设施 </view>
+                    <view class="equipBox data-v-acdc94be" wx:if="{{aq}}">
+                        <view class="iconWrapper data-v-acdc94be" wx:for="{{ar}}" wx:key="c">
+                            <image alt="" class="equipIcon data-v-acdc94be" src="{{item.a}}"></image>
+                            <label class="equipDesc data-v-acdc94be">{{item.b}}</label>
+                        </view>
+                    </view>
+                </view>
+                <view class="wrapperBox data-v-acdc94be" wx:if="{{as}}">
+                    <view class="bigTitle data-v-acdc94be"> 度假套餐 </view>
+                    <product-card-list bind:__l="__l" class="data-v-acdc94be" uI="acdc94be-6" uP="{{at}}" wx:if="{{at}}"></product-card-list>
+                </view>
+                <view class="heightBox data-v-acdc94be"></view>
+            </view>
+        </scroll-view>
+    </view>
+    <view class="data-v-acdc94be" wx:if="{{aA}}">
+        <view class="footer data-v-acdc94be" wx:if="{{aB}}">
+            <view bindtap="{{aC}}" class="kefu data-v-acdc94be">
+                <view class="icon-a-20_kefu iconfont data-v-acdc94be"></view> 客服 </view>
+            <view bindtap="{{aD}}" class="order-btn data-v-acdc94be"> 预订 </view>
+        </view>
+        <view class="data-v-acdc94be" wx:if="{{aE}}">
+            <float-button-kf bind:__l="__l" class="data-v-acdc94be" uI="acdc94be-7" uP="{{aF}}" wx:if="{{aF}}"></float-button-kf>
+        </view>
+    </view>
+    <calendar bind:__l="__l" bindchangeDate="{{aH}}" class="r data-v-acdc94be" uI="acdc94be-8" uP="{{aI}}" uR="calendarCompent" wx:if="{{aI}}"></calendar>
+    <bottom-dialog bind:__l="__l" class="r data-v-acdc94be" uI="acdc94be-9" uP="{{bf}}" uR="roomCompent" uS="{{['d']}}" wx:if="{{bf}}">
+        <view class="roomInfo data-v-acdc94be">
+            <view class="swiperBox data-v-acdc94be">
+                <swiper-box bind:__l="__l" class="data-v-acdc94be" uI="acdc94be-10,acdc94be-9" uP="{{aJ}}" wx:if="{{aJ}}"></swiper-box>
+            </view>
+            <view class="subRoomInfo data-v-acdc94be">
+                <view class="rooomDes data-v-acdc94be">
+                    <view class="rooomDesItem data-v-acdc94be">
+                        <view class="icon iconfont icon-a-20_mianji data-v-acdc94be"></view>
+                        <view class="desc data-v-acdc94be">{{aK}}</view>
+                    </view>
+                    <view class="rooomDesItem data-v-acdc94be">
+                        <view class="icon iconfont icon-a-20_ruzhujiudian data-v-acdc94be"></view>
+                        <view class="desc data-v-acdc94be">{{aL}}</view>
+                    </view>
+                    <view class="rooomDesItem data-v-acdc94be">
+                        <view class="icon iconfont icon-a-20_louceng data-v-acdc94be"></view>
+                        <view class="desc data-v-acdc94be">{{aM}}</view>
+                    </view>
+                </view>
+                <view class="roomInfos data-v-acdc94be">
+                    <mp-html bind:__l="__l" class="data-v-acdc94be" uI="acdc94be-11,acdc94be-9" uP="{{aN}}" wx:if="{{aN}}"></mp-html>
+                    <mp-html bind:__l="__l" class="data-v-acdc94be" uI="acdc94be-12,acdc94be-9" uP="{{aO}}" wx:if="{{aO}}"></mp-html>
+                </view>
+                <view class="hotel-icon-list data-v-acdc94be" wx:if="{{picType.a}}" wx:for="{{aP}}" wx:for-item="picType" wx:key="d">
+                    <view class="title data-v-acdc94be">{{picType.b}}</view>
+                    <view class="icon-list data-v-acdc94be">
+                        <view class="icons data-v-acdc94be" wx:for="{{picType.c}}" wx:key="b">
+                            <view class="icon data-v-acdc94be" wx:for="{{item.a}}" wx:for-item="icon" wx:key="c">
+                                <image class="img data-v-acdc94be" src="{{icon.a}}"></image>
+                                <view class="name data-v-acdc94be">{{icon.b}}</view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+                <view class="hotelAboutItem data-v-acdc94be">
+                    <view class="hotelAboutTitle data-v-acdc94be"> 预订政策 </view>
+                    <view class="hotelAboutdesc data-v-acdc94be">
+                        <view class="hotelAboutRichText data-v-acdc94be">
+                            <mp-html bind:__l="__l" class="data-v-acdc94be" uI="acdc94be-13,acdc94be-9" uP="{{aQ}}" wx:if="{{aQ}}"></mp-html>
+                            <mp-html bind:__l="__l" class="data-v-acdc94be" uI="acdc94be-14,acdc94be-9" uP="{{aR}}" wx:if="{{aR}}"></mp-html>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="fixedBottom bookFooter data-v-acdc94be" wx:if="{{aS}}">
+                <view class="leftPart data-v-acdc94be">
+                    <view class="priceItem data-v-acdc94be">
+                        <label class="price data-v-acdc94be">¥{{aT}}</label>/晚<block wx:if="{{aU}}"> 起 </block>
+                    </view>
+                </view>
+                <view class="rightPart data-v-acdc94be">
+                    <block wx:if="{{aV}}">
+                        <view class="bookBtn disabled data-v-acdc94be" wx:if="{{aW}}"> 满房 </view>
+                        <block wx:else>
+                            <view catchtap="{{aY}}" class="bookBtn data-v-acdc94be" wx:if="{{aX}}"> 预订 </view>
+                            <view catchtap="{{aZ}}" class="bookBtn data-v-acdc94be" wx:else> 预订 </view>
+                        </block>
+                    </block>
+                    <view class="bookBtn data-v-acdc94be" wx:else> 不可订 </view>
+                </view>
+            </view>
+            <view class="fixedBottom bookFooter data-v-acdc94be" wx:if="{{ba}}">
+                <view class="leftPart data-v-acdc94be">
+                    <view class="priceItem data-v-acdc94be">
+                        <label class="price data-v-acdc94be">¥{{bb}}</label>/套 </view>
+                    <view class="priceItem2 data-v-acdc94be">{{bc}}</view>
+                </view>
+                <view class="rightPart data-v-acdc94be">
+                    <view bindtap="{{bd}}" class="bookBtn data-v-acdc94be"> 预订 </view>
+                </view>
+            </view>
+        </view>
+    </bottom-dialog>
+    <bottom-dialog bind:__l="__l" bindopenState="{{bn}}" class="r data-v-acdc94be" uI="acdc94be-15" uP="{{bo}}" uR="chooseDate" uS="{{['d']}}" wx:if="{{bo}}">
+        <daily-price bind:__l="__l" bindchangeDailyPrice="{{bl}}" class="r data-v-acdc94be" uI="acdc94be-16,acdc94be-15" uR="dailyPrices" uS="{{['footer']}}">
+            <view slot="footer">
+                <view class="next-btn data-v-acdc94be" wx:if="{{bg}}">
+                    <view class="choose-item data-v-acdc94be">{{bh}}入住 - {{bi}}离店 </view>
+                    <view bindtap="{{bj}}" class="btn baseBtn data-v-acdc94be"> 下一步 </view>
+                </view>
+            </view>
+        </daily-price>
+    </bottom-dialog>
+    <back-to-top bind:__l="__l" class="data-v-acdc94be" uI="acdc94be-17" uP="{{bq}}" wx:if="{{bp}}"></back-to-top>
+    <kf-dialog bind:__l="__l" class="r data-v-acdc94be" uI="acdc94be-18" uP="{{bs}}" uR="kf" wx:if="{{bs}}"></kf-dialog>
+</view>

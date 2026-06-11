@@ -1,0 +1,21 @@
+<view class="banner-container data-v-e1ddc033">
+    <swiper circular autoplay="{{c}}" bindanimationfinish="{{e}}" bindchange="{{d}}" class="image-container data-v-e1ddc033" current="{{b}}" nextMargin="95rpx" previousMargin="95rpx">
+        <swiper-item catchtap="{{item.w}}" class="{{['data-v-e1ddc033',item.v]}}" wx:for="{{a}}" wx:key="t">
+            <view class="{{['data-v-e1ddc033',item.o]}}" style="{{item.p}}" wx:if="{{item.a}}">
+                <video showMuteBtn showPlayBtns bindended="{{item.l}}" bindfullscreenchange="{{item.m}}" bindpause="{{item.k}}" bindplay="{{item.j}}" bindtimeupdate="{{item.n}}" class="image-container__video data-v-e1ddc033" controls="{{item.i}}" data-index="{{item.g}}" enableProgressGesture="{{false}}" id="{{item.f}}" objectFit="contain" showCenterPlayBtn="{{false}}" src="{{item.h}}">
+                    <view class="{{['control-play','data-v-e1ddc033',item.c]}}">
+                        <view class="control-play__icons data-v-e1ddc033">
+                            <view class="iconfont icon-pause icon data-v-e1ddc033" wx:if="{{item.b}}"></view>
+                            <view class="iconfont icon-play icon data-v-e1ddc033" wx:else></view>
+                        </view>
+                    </view>
+                    <image class="swiper-item swiper-item__video-cover data-v-e1ddc033" hidden="{{!item.d}}" mode="aspectFill" src="{{item.e}}"></image>
+                </video>
+            </view>
+            <image lazyLoad class="{{['data-v-e1ddc033',item.q]}}" mode="aspectFill" src="{{item.r}}" style="{{item.s}}" wx:else></image>
+        </swiper-item>
+    </swiper>
+    <view class="indicator-dots show data-v-e1ddc033" wx:if="{{f}}">
+        <view class="indicator-dot data-v-e1ddc033" style="{{g}}"></view>
+    </view>
+</view>

@@ -1,0 +1,17 @@
+<view class="ui_bannerSwiper data-v-7c671b43" style="{{h}}" wx:if="{{a}}">
+    <view class="swiper data-v-7c671b43">
+        <block wx:if="{{b}}">
+            <swiper bindchange="{{d}}" class="swiper data-v-7c671b43">
+                <swiper-item class="swiperItem data-v-7c671b43" wx:for="{{c}}" wx:for-item="ad" wx:key="c">
+                    <image alt="" bindtap="{{ad.b}}" class="adLogo data-v-7c671b43" mode="aspectFill" src="{{ad.a}}"></image>
+                </swiper-item>
+            </swiper>
+            <view class="swiper-dots data-v-7c671b43">
+                <view class="{{['swiper-dot','data-v-7c671b43',ad.a&&'active']}}" wx:for="{{e}}" wx:for-item="ad" wx:key="b"></view>
+            </view>
+        </block>
+        <block wx:if="{{f}}">
+            <image alt="" bindtap="{{ad.b}}" class="adLogo data-v-7c671b43" mode="aspectFill" src="{{ad.a}}" wx:for="{{g}}" wx:for-item="ad" wx:key="c"></image>
+        </block>
+    </view>
+</view>

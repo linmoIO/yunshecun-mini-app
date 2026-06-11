@@ -1,0 +1,35 @@
+<view class="destinations data-v-c4667504">
+    <view class="loading data-v-c4667504" wx:if="{{a}}">
+        <spin bind:__l="__l" class="data-v-c4667504" uI="c4667504-0" uP="{{b}}" wx:if="{{b}}"></spin>
+    </view>
+    <block wx:else>
+        <view class="top--fixed data-v-c4667504">
+            <view class="tabs data-v-c4667504">
+                <view bindtap="{{c}}" class="tabs-search data-v-c4667504">
+                    <view class="iconfont icon-a-16_sousuo icon data-v-c4667504"></view>
+                </view>
+                <scroll-view enablePassive enhanced scrollWithAnimation scrollX class="tabs-scroll data-v-c4667504" scrollIntoView="{{e}}" showScrollbar="{{false}}">
+                    <view bindtap="{{item.e}}" class="{{['tab','data-v-c4667504',item.d]}}" id="{{item.b}}" wx:for="{{d}}" wx:key="c">{{item.a}}</view>
+                </scroll-view>
+            </view>
+            <scroll-view enablePassive enhanced scrollWithAnimation scrollX class="second-tabs data-v-c4667504" scrollIntoView="{{h}}" showScrollbar="{{false}}" wx:if="{{f}}">
+                <view bindtap="{{item.e}}" class="tab hairline--surround data-v-c4667504" id="{{item.b}}" style="{{item.d}}" wx:for="{{g}}" wx:key="c">{{item.a}}</view>
+            </scroll-view>
+        </view>
+        <view class="{{['loading','data-v-c4667504',j&&'hidden']}}">
+            <spin bind:__l="__l" class="data-v-c4667504" uI="c4667504-1" uP="{{i}}" wx:if="{{i}}"></spin>
+        </view>
+        <view class="{{['data-v-c4667504',n&&'hidden']}}">
+            <product-card-list bind:__l="__l" class="data-v-c4667504" uI="c4667504-2" uP="{{k}}" wx:if="{{k}}"></product-card-list>
+            <view class="ad-custom-travel data-v-c4667504">
+                <image bindtap="{{m}}" class="ad-custom-travel__image data-v-c4667504" mode="widthFix" src="{{l}}"></image>
+            </view>
+        </view>
+        <view class="{{['data-v-c4667504',p&&'hidden']}}">
+            <error-block bind:__l="__l" class="data-v-c4667504" uI="c4667504-3" uP="{{o}}" wx:if="{{o}}"></error-block>
+        </view>
+        <safe-area bind:__l="__l" class="data-v-c4667504" uI="c4667504-4" uP="{{q}}" wx:if="{{q}}"></safe-area>
+    </block>
+    <limiting-retry bind:__l="__l" bindretry="{{r}}" class="data-v-c4667504" uI="c4667504-5" uP="{{s}}" wx:if="{{s}}"></limiting-retry>
+    <float-button-kf bind:__l="__l" class="data-v-c4667504" uI="c4667504-6"></float-button-kf>
+</view>

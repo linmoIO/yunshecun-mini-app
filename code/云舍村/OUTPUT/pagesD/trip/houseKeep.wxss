@@ -1,0 +1,158 @@
+.ui_houseKeep.data-v-70b82410 {
+    background: #fff;
+    line-height: 1;
+    padding-bottom: 60rpx
+}
+
+.ui_houseKeep .coustom-head.data-v-70b82410 {
+    position: relative;
+    z-index: 5
+}
+
+.ui_houseKeep .head.data-v-70b82410 {
+    align-items: center;
+    display: flex;
+    font-size: 28rpx;
+    padding-left: 40rpx
+}
+
+.ui_houseKeep .head .head-item.data-v-70b82410 {
+    color: #fff;
+    margin-left: 24rpx;
+    opacity: .6;
+    position: relative
+}
+
+.ui_houseKeep .head .head-item.data-v-70b82410:after {
+    background: #fff;
+    content: "";
+    height: 100%;
+    position: absolute;
+    right: -12rpx;
+    top: 0;
+    width: 1px
+}
+
+.ui_houseKeep .head .head-item.data-v-70b82410:last-child:after {
+    display: none
+}
+
+.ui_houseKeep .head .head-item.active.data-v-70b82410 {
+    font-weight: 700;
+    opacity: 1
+}
+
+.ui_houseKeep .head .head-item.active.data-v-70b82410:after {
+    opacity: .6
+}
+
+.ui_houseKeep .swiper-box.data-v-70b82410 {
+    height: 133vw;
+    position: relative
+}
+
+.ui_houseKeep .swiper-box .houseKeep-info.data-v-70b82410 {
+    bottom: 76rpx;
+    display: flex;
+    flex-direction: column;
+    height: 80rpx;
+    justify-content: center;
+    left: 48rpx;
+    position: absolute
+}
+
+.ui_houseKeep .swiper-box .houseKeep-info .name.data-v-70b82410 {
+    color: #fff;
+    font-family: PingFang SC;
+    font-size: 40rpx;
+    font-style: normal;
+    font-weight: 700
+}
+
+.ui_houseKeep .swiper-box .houseKeep-info .levelDesc.data-v-70b82410 {
+    align-items: center;
+    background: rgba(219,137,0,.6);
+    border-radius: 48rpx;
+    color: #fff;
+    display: flex;
+    font-size: 24rpx;
+    margin-top: 16rpx;
+    min-height: 48rpx;
+    padding: 0 16rpx;
+    width: -moz-fit-content;
+    width: fit-content
+}
+
+.ui_houseKeep .swiper-box .houseKeep-info .levelDesc .levelIcon.data-v-70b82410 {
+    height: 30rpx;
+    margin-right: 8rpx;
+    width: 30rpx
+}
+
+.ui_houseKeep .swiper-box .icon-a-20_dianhua.data-v-70b82410 {
+    align-items: center;
+    background: #fff;
+    border-radius: 50%;
+    bottom: 76rpx;
+    display: flex;
+    font-size: 40rpx;
+    height: 80rpx;
+    justify-content: center;
+    position: absolute;
+    right: 48rpx;
+    width: 80rpx
+}
+
+.ui_houseKeep .title.data-v-70b82410 {
+    font-size: 36rpx;
+    font-weight: 700
+}
+
+.ui_houseKeep .about-me.data-v-70b82410 {
+    padding: 48rpx 32rpx 0
+}
+
+.ui_houseKeep .about-me .about-item.data-v-70b82410 {
+    color: gray;
+    display: flex;
+    font-size: 28rpx;
+    line-height: 40rpx;
+    margin-top: 26rpx
+}
+
+.ui_houseKeep .about-me .about-item .about-val.data-v-70b82410 {
+    color: #000;
+    flex: 1;
+    line-height: 40rpx
+}
+
+.ui_houseKeep .comment.data-v-70b82410 {
+    padding: 64rpx 32rpx 0
+}
+
+.ui_houseKeep .comment .comment-list .comment-item.data-v-70b82410 {
+    background: #f8f8f8;
+    border-radius: 16rpx;
+    margin-top: 24rpx;
+    padding: 32rpx 24rpx
+}
+
+.ui_houseKeep .comment .comment-list .comment-item.data-v-70b82410:first-child {
+    margin-top: 48rpx
+}
+
+.ui_houseKeep .comment .comment-list .comment-item .user-info.data-v-70b82410 {
+    align-items: center;
+    display: flex;
+    font-size: 28rpx
+}
+
+.ui_houseKeep .comment .comment-list .comment-item .user-info .head-img.data-v-70b82410 {
+    height: 40rpx;
+    margin-right: 12rpx;
+    width: 40rpx
+}
+
+.ui_houseKeep .comment .comment-list .comment-item .moreText.data-v-70b82410 {
+    margin-top: 24rpx
+}

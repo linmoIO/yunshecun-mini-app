@@ -1,0 +1,20 @@
+<view class="bp-wrap">
+  <view class="bp-tip">绑定关联人后，可共享对方账号的积分余额和优惠券</view>
+  <view class="bp-card" wx:for="{{list}}" wx:key="id">
+    <view class="bp-row">
+      <image wx:if="{{item.avatar}}" src="{{item.avatar}}" class="bp-avatar" mode="aspectFill"/>
+      <view class="bp-info">
+        <view class="bp-name">{{item.nickname||'未设置昵称'}}</view>
+        <view class="bp-phone">{{item.phone||''}}</view>
+      </view>
+      <view class="bp-del" catchtap="unlink" data-id="{{item.id}}">解除</view>
+    </view>
+  </view>
+  <view wx:if="{{!loading&&!list.length}}" class="bp-empty">暂无关联人，添加后可共享积分和优惠券</view>
+  <view class="bp-add-card">
+    <view class="bp-add-title">添加关联人</view>
+    <view class="bp-field"><text class="bp-lbl">手机号 *</text><input class="bp-inp" type="number" value="{{phone}}" placeholder="对方云舍村注册手机号" bindinput="onInput" data-key="phone" maxlength="11"/></view>
+    <view class="bp-add-btn {{adding?'dis':''}}" bindtap="addLink">{{adding?'添加中...':'添加关联人'}}</view>
+  </view>
+  <view class="bp-note">注：权益关联人最多绑定3人，被关联方需同意后方可生效</view>
+</view>

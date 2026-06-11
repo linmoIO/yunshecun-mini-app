@@ -1,0 +1,3 @@
+<view class="products data-v-e8e82a80" style="{{c}}" wx:if="{{a}}">
+    <product-card bind:__l="__l" class="data-v-e8e82a80" uI="{{item.b}}" uP="{{item.c}}" wx:for="{{b}}" wx:key="a"></product-card>
+</view>

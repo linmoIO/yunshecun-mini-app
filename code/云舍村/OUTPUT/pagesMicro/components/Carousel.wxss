@@ -1,0 +1,100 @@
+.st-carousel.data-v-b4274907 {
+    -webkit-tap-highlight-color: transparent;
+    background: hsla(0,0%,100%,.3);
+    overflow: hidden;
+    position: relative;
+    width: 100%
+}
+
+.st-carousel--rounded.data-v-b4274907 {
+    border-radius: 16rpx;
+    overflow: hidden
+}
+
+.st-carousel-track.data-v-b4274907 {
+    height: 100%
+}
+
+.st-carousel-item.data-v-b4274907 {
+    height: 100%;
+    position: relative;
+    width: 100%
+}
+
+.st-carousel-item .carousel-image.data-v-b4274907 {
+    display: block;
+    height: 100%;
+    width: 100%
+}
+
+.st-carousel-arrows.data-v-b4274907 {
+    display: flex;
+    justify-content: space-between;
+    left: 0;
+    padding: 0 32rpx;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%)
+}
+
+.st-carousel-arrows .btn.data-v-b4274907 {
+    -webkit-tap-highlight-color: transparent;
+    align-items: center;
+    background: rgba(0,0,0,.2);
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    height: 64rpx;
+    justify-content: center;
+    overflow: hidden;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    width: 64rpx
+}
+
+.st-carousel-arrows .btn.data-v-b4274907:active {
+    background: rgba(0,0,0,.3);
+    opacity: .8
+}
+
+.st-carousel-dots.data-v-b4274907 {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%);
+    width: 100%;
+    z-index: 99
+}
+
+.st-carousel-dots.position-bottom.data-v-b4274907 {
+    bottom: 24rpx
+}
+
+.st-carousel-dots.position-top.data-v-b4274907 {
+    top: 24rpx
+}
+
+.st-carousel-dots .dot.data-v-b4274907 {
+    -webkit-tap-highlight-color: transparent;
+    background: hsla(0,0%,100%,.4);
+    border-radius: 50%;
+    height: 12rpx;
+    margin: 0 8rpx;
+    transition: all .3s;
+    width: 12rpx
+}
+
+.st-carousel-dots .dot.active.data-v-b4274907 {
+    background: #fff;
+    border-radius: 6rpx;
+    width: 28rpx
+}
+
+.st-carousel .iconfont.data-v-b4274907 {
+    color: hsla(0,0%,100%,.5);
+    font-size: 32rpx
+}

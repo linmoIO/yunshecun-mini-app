@@ -1,0 +1,5 @@
+<view class="ui_radioGroup data-v-6afb3b7c">
+    <view class="radio-box data-v-6afb3b7c">
+        <view bindtap="{{item.c}}" class="{{['radio-item','data-v-6afb3b7c',item.d&&'active',item.e&&'invalid',b&&'auto']}}" wx:for="{{a}}" wx:key="b">{{item.a}}</view>
+    </view>
+</view>

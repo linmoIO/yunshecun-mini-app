@@ -1,0 +1,6 @@
+<view class="{{['ui_alert','data-v-9c0ea3b1',e]}}" wx:if="{{a}}">
+    <slot name="prefix" wx:if="{{$slots.prefix}}"></slot>
+    <view class="iconfont icon icon-a-16_jinggao_hong data-v-9c0ea3b1" wx:else></view>
+    <view class="tips data-v-9c0ea3b1">{{b}}</view>
+    <view bindtap="{{d}}" class="iconfont icon-a-16_guanbi_ciji data-v-9c0ea3b1" wx:if="{{c}}"></view>
+</view>

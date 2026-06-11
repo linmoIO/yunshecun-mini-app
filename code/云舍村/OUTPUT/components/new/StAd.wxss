@@ -1,0 +1,89 @@
+.st-ad.data-v-01b76427 {
+    background-color: #f0f0f0;
+    height: 100%;
+    position: relative;
+    width: 100%
+}
+
+.st-ad.rounded.data-v-01b76427 {
+    border-radius: 16rpx;
+    overflow: hidden
+}
+
+.st-ad__cover.data-v-01b76427,.st-ad__video.data-v-01b76427 {
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+    width: 100%
+}
+
+.st-ad__cover.data-v-01b76427 {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 10
+}
+
+.st-ad .control-play.data-v-01b76427 {
+    align-items: center;
+    border: 1px solid #fff;
+    border-radius: 100%;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    opacity: 0;
+    padding: var(--play-btn-padding);
+    position: absolute;
+    transform: scale(1.5);
+    transition: all .15s ease-in;
+    z-index: 20
+}
+
+.st-ad .control-play .icon.data-v-01b76427 {
+    line-height: 1;
+    position: relative;
+    right: -4rpx
+}
+
+.st-ad .control-play.show.data-v-01b76427 {
+    opacity: 1;
+    transform: scale(1)
+}
+
+.st-ad .control-play--center.data-v-01b76427 {
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%,-50%) scale(1.5)
+}
+
+.st-ad .control-play--center.show.data-v-01b76427 {
+    transform: translate(-50%,-50%) scale(1)
+}
+
+.st-ad .control-play--rb.data-v-01b76427 {
+    bottom: 52rpx;
+    right: 32rpx
+}
+
+.st-ad .control-play--default.data-v-01b76427 {
+    padding: 16rpx
+}
+
+.st-ad .control-play--default .icon.data-v-01b76427 {
+    font-size: 24rpx;
+    height: 24rpx;
+    width: 24rpx
+}
+
+.st-ad .control-play--large.data-v-01b76427 {
+    padding: 24rpx
+}
+
+.st-ad .control-play--large .icon.data-v-01b76427 {
+    font-size: 36rpx;
+    height: 36rpx;
+    width: 36rpx
+}

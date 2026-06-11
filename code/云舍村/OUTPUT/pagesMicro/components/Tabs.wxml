@@ -1,0 +1,15 @@
+<view class="tabs data-v-63d1b8a8" id="{{h}}" style="{{i+';'+j}}">
+    <view class="{{['data-v-63d1b8a8',f]}}">
+        <scroll-view enablePassive enhanced scrollWithAnimation class="{{['tabs-nav-bar','data-v-63d1b8a8',b]}}" enableFlex="{{d}}" scrollIntoView="{{c}}" scrollX="{{e}}" showScrollbar="{{false}}">
+            <view bindtap="{{tab.h}}" class="{{['tabs-nav','data-v-63d1b8a8',tab.g&&'tabs-nav--active']}}" id="{{tab.e}}" wx:for="{{a}}" wx:for-item="tab" wx:key="f">
+                <st-icon bind:__l="__l" class="data-v-63d1b8a8" uI="{{tab.b}}" uP="{{tab.c}}" wx:if="{{tab.a}}"></st-icon>
+                <label class="tabs-nav-label data-v-63d1b8a8">{{tab.d}}</label>
+            </view>
+        </scroll-view>
+    </view>
+    <view class="tabs-panels data-v-63d1b8a8">
+        <view class="tabs-panel data-v-63d1b8a8" id="{{tab.c}}" style="{{'display:'+tab.e}}" wx:for="{{g}}" wx:for-item="tab" wx:key="d">
+            <comp-list bind:__l="__l" class="data-v-63d1b8a8" uI="{{tab.a}}" uP="{{tab.b}}" wx:if="{{tab.b}}"></comp-list>
+        </view>
+    </view>
+</view>

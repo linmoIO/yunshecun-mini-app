@@ -1,0 +1,23 @@
+<view class="data-v-9970aad5">
+    <view class="{{['fixed-search-bar','data-v-9970aad5',g]}}" style="{{'padding:'+h}}">
+        <view class="fixed-search-bar__wrap data-v-9970aad5" style="{{'height:'+f}}">
+            <view bindtap="{{d}}" class="item item-all data-v-9970aad5">
+                <view class="iconfont icon-a-16_sousuo icon data-v-9970aad5"></view>
+                <search-keyword-swiper bind:__l="__l" bindchange="{{b}}" class="data-v-9970aad5" style="{{'flex:'+1+';'+'height:'+'100%'}}" uI="9970aad5-0" uP="{{c}}" wx:if="{{a}}"></search-keyword-swiper>
+            </view>
+            <view bindtap="{{e}}" class="item item-hotel data-v-9970aad5">
+                <view class="iconfont icon-a-12_jiudian_hei icon data-v-9970aad5"></view>
+            </view>
+        </view>
+    </view>
+    <view class="{{['search-bar','data-v-9970aad5',n]}}" style="{{'top:'+o}}">
+        <view bindtap="{{l}}" class="item item-all data-v-9970aad5">
+            <view class="iconfont icon-a-16_sousuo icon data-v-9970aad5"></view>
+            <search-keyword-swiper bind:__l="__l" bindchange="{{j}}" class="data-v-9970aad5" style="{{'flex:'+1+';'+'height:'+'100%'}}" uI="9970aad5-1" uP="{{k}}" wx:if="{{i}}"></search-keyword-swiper>
+        </view>
+        <view bindtap="{{m}}" class="item item-hotel data-v-9970aad5">
+            <view class="iconfont icon-a-12_jiudian_hei icon data-v-9970aad5"></view>
+            <label class="data-v-9970aad5">酒店</label>
+        </view>
+    </view>
+</view>

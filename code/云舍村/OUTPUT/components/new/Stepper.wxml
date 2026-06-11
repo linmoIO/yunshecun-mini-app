@@ -1,0 +1,5 @@
+<view class="stepper data-v-77a393cd">
+    <view bindtap="{{b}}" class="{{['iconfont','icon-a-20_jian','stepper-icon','data-v-77a393cd',a&&'stepper-icon--disabled']}}"></view>
+    <view class="stepper-value data-v-77a393cd">{{c}}</view>
+    <view bindtap="{{e}}" class="{{['iconfont','icon-a-20_jia','stepper-icon','data-v-77a393cd',d&&'stepper-icon--disabled']}}"></view>
+</view>

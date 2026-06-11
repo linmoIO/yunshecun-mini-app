@@ -1,0 +1,21 @@
+.ui_hotelAlbumDetail.data-v-18c46e82 {
+    padding-bottom: 60rpx
+}
+
+.ui_hotelAlbumDetail .img-list.data-v-18c46e82 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 4.27vw
+}
+
+.ui_hotelAlbumDetail .img-list .img-item.data-v-18c46e82 {
+    display: flex;
+    margin-top: 24rpx
+}
+
+.ui_hotelAlbumDetail .img-list .album-item.data-v-18c46e82 {
+    border-radius: 16rpx;
+    height: 44.27vw;
+    width: 44.27vw
+}

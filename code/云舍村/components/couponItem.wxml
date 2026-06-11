@@ -1,0 +1,43 @@
+<view catchtap="{{I}}" class="{{['ui_couponItem','data-v-69a10e74',H&&'isHistory']}}">
+    <view class="topBox data-v-69a10e74">
+        <view class="{{['couponType','data-v-69a10e74',c]}}" wx:if="{{a}}">{{b}}</view>
+        <view class="data-v-69a10e74" wx:else></view>
+        <view class="data-v-69a10e74" wx:if="{{d}}">
+            <view catchtap="{{g}}" class="couponInfo data-v-69a10e74" wx:if="{{e}}">
+                <label class="data-v-69a10e74" wx:if="{{f}}">不与会员折扣叠加</label>
+                <label class="data-v-69a10e74" wx:else>使用规则</label>
+                <view class="icon iconfont icon-a-12_youlajiantou_hei data-v-69a10e74"></view>
+            </view>
+            <view class="couponInfo data-v-69a10e74" wx:else>{{h}}</view>
+        </view>
+    </view>
+    <view class="couponName data-v-69a10e74">{{i}}</view>
+    <view class="couponVaildTime data-v-69a10e74" wx:if="{{j}}"> 有效期：{{k}} 至 {{l}}</view>
+    <block wx:if="{{m}}">
+        <view class="couponPrice data-v-69a10e74" wx:if="{{n}}">{{o}}折 </view>
+        <view class="couponPrice data-v-69a10e74" wx:elif="{{p}}">{{q}}折 </view>
+        <view class="couponPrice data-v-69a10e74" wx:else> ¥{{r}}</view>
+    </block>
+    <view class="useLimit data-v-69a10e74" wx:if="{{s}}"> 满 ¥{{t}} 使用 </view>
+    <view class="{{['selectBox','data-v-69a10e74',z&&'selectBox--disabled']}}" wx:if="{{v}}">
+        <block wx:if="{{w}}">
+            <view class="icon-duoxuan_yixuan iconfont data-v-69a10e74" wx:if="{{x}}"></view>
+            <view class="icon-duoxuan_weixuan iconfont data-v-69a10e74" wx:else></view>
+        </block>
+        <block wx:else>
+            <image class="iconfont data-v-69a10e74" src="https://dsplatweb.oss-cn-chengdu.aliyuncs.com/songzan/images/select.png" wx:if="{{y}}"></image>
+            <image class="iconfont data-v-69a10e74" src="https://dsplatweb.oss-cn-chengdu.aliyuncs.com/songzan/images/unSelect.png" wx:else></image>
+        </block>
+    </view>
+    <view catchtap="{{D}}" class="selectBox data-v-69a10e74" wx:if="{{A}}">
+        <st-button bind:__l="__l" class="data-v-69a10e74" uI="69a10e74-0" uP="{{C}}" uS="{{['d']}}" wx:if="{{C}}">{{B}}</st-button>
+    </view>
+    <view class="btn-row data-v-69a10e74">
+        <view catchtap="{{F}}" class="select data-v-69a10e74" wx:if="{{E}}">
+            <view class="exchangeBtn data-v-69a10e74"> 去兑换 </view>
+        </view>
+        <view class="select data-v-69a10e74" wx:if="{{G}}">
+            <view class="exchangeBtn data-v-69a10e74"> 转赠好友 </view>
+        </view>
+    </view>
+</view>

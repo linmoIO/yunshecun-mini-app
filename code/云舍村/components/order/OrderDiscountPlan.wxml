@@ -1,0 +1,128 @@
+<view class="order-discount-plan data-v-4a645e2c">
+    <view class="card data-v-4a645e2c">
+        <view class="card-header data-v-4a645e2c"> 优惠方案 </view>
+        <view class="card-content data-v-4a645e2c">
+            <view bindtap="{{i}}" class="form-inline data-v-4a645e2c" wx:if="{{a}}">
+                <view class="form-inline__label data-v-4a645e2c"> 券包 </view>
+                <view class="form-inline__value value-cell value-cell--arrow data-v-4a645e2c">
+                    <label class="value-cell__label data-v-4a645e2c">
+                        <block wx:if="{{b}}">已使用{{c}}张优惠券</block>
+                        <block wx:elif="{{d}}">请选择券包</block>
+                        <block wx:else>暂无可用</block>
+                    </label>
+                    <block wx:if="{{e}}">
+                        <label class="red data-v-4a645e2c" wx:if="{{f}}">减 ¥{{g}}</label>
+                        <label class="coupon-num data-v-4a645e2c" wx:else>{{h}}张可用</label>
+                    </block>
+                    <view class="iconfont icon-a-16_youlajiantou_hei value-cell__arrow data-v-4a645e2c"></view>
+                </view>
+            </view>
+            <bottom-dialog bind:__l="__l" class="r data-v-4a645e2c" uI="4a645e2c-0" uP="{{t}}" uR="couponListLayer" uS="{{['d']}}" wx:if="{{t}}">
+                <view class="coupon-container data-v-4a645e2c">
+                    <view class="couponList data-v-4a645e2c" wx:if="{{j}}">
+                        <view class="listItem data-v-4a645e2c" wx:for="{{k}}" wx:for-item="coupon" wx:key="d">
+                            <coupon-item bind:__l="__l" bindtoggleCoupon="{{coupon.a}}" class="data-v-4a645e2c" uI="{{coupon.b}}" uP="{{coupon.c}}" wx:if="{{coupon.c}}"></coupon-item>
+                        </view>
+                    </view>
+                    <view class="unavailable-coupon data-v-4a645e2c" wx:if="{{l}}">
+                        <view class="unavailable-coupon__title data-v-4a645e2c"> 以下为不可用券包 </view>
+                        <view class="couponList data-v-4a645e2c">
+                            <view class="listItem data-v-4a645e2c" wx:for="{{m}}" wx:for-item="coupon" wx:key="c">
+                                <coupon-item bind:__l="__l" class="data-v-4a645e2c" uI="{{coupon.a}}" uP="{{coupon.b}}" wx:if="{{coupon.b}}"></coupon-item>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="data-v-4a645e2c" wx:if="{{n}}">
+                        <error-block bind:__l="__l" class="data-v-4a645e2c" uI="4a645e2c-3,4a645e2c-0" uP="{{o}}" wx:if="{{o}}"></error-block>
+                    </view>
+                    <safe-area bind:__l="__l" class="data-v-4a645e2c" uI="4a645e2c-4,4a645e2c-0" uP="{{p}}" wx:if="{{p}}"></safe-area>
+                </view>
+                <view class="layer-footer data-v-4a645e2c" wx:if="{{q}}">
+                    <view bindtap="{{r}}" class="layer-btn baseBtn data-v-4a645e2c"> 完成 </view>
+                </view>
+            </bottom-dialog>
+            <view bindtap="{{A}}" class="form-inline data-v-4a645e2c" wx:if="{{v}}">
+                <view class="form-inline__label data-v-4a645e2c"> 积分抵扣 </view>
+                <view class="form-inline__value value-cell value-cell--arrow data-v-4a645e2c">
+                    <label class="value-cell__label data-v-4a645e2c">
+                        <block wx:if="{{w}}">请输入本次使用的积分</block>
+                        <block wx:else>已使用{{x}}积分</block>
+                    </label>
+                    <label class="red data-v-4a645e2c" wx:if="{{y}}">减 ¥{{z}}</label>
+                    <view class="iconfont icon-a-16_youlajiantou_hei value-cell__arrow data-v-4a645e2c"></view>
+                </view>
+            </view>
+            <bottom-dialog bind:__l="__l" class="r data-v-4a645e2c" uI="4a645e2c-5" uP="{{Q}}" uR="integralLayer" uS="{{['d']}}" wx:if="{{Q}}">
+                <view class="integral-container data-v-4a645e2c">
+                    <view class="integral-content data-v-4a645e2c">
+                        <view class="integral-row data-v-4a645e2c">
+                            <label class="integral-row__label data-v-4a645e2c">剩余可用积分</label>
+                            <label class="integral-row__value data-v-4a645e2c">{{B}}</label>
+                        </view>
+                        <view class="integral-row integral-row--block data-v-4a645e2c">
+                            <label class="integral-row__label data-v-4a645e2c">本次使用</label>
+                            <view class="integral-input-wrap data-v-4a645e2c">
+                                <input bindinput="{{F}}" class="{{['integral-input','data-v-4a645e2c',D&&'integral-input--error',E&&'integral-input--empty']}}" placeholder="请输入" placeholderClass="integral-input__placeholder" type="number" value="{{C}}"></input>
+                                <label bindtap="{{G}}" class="integral-fill-btn data-v-4a645e2c">全部输入</label>
+                            </view>
+                        </view>
+                        <view class="{{['integral-row','integral-hint','data-v-4a645e2c',L&&'integral-hint--error']}}">
+                            <label class="red data-v-4a645e2c" wx:if="{{H}}">{{I}}</label>
+                            <label class="data-v-4a645e2c" wx:elif="{{J}}">本次订单抵扣{{K}}元</label>
+                            <label class="data-v-4a645e2c" wx:else>1积分=1元人民币</label>
+                        </view>
+                    </view>
+                    <safe-area bind:__l="__l" class="data-v-4a645e2c" uI="4a645e2c-6,4a645e2c-5" uP="{{M}}" wx:if="{{M}}"></safe-area>
+                </view>
+                <view class="layer-footer data-v-4a645e2c">
+                    <view bindtap="{{O}}" class="{{['layer-btn','baseBtn','data-v-4a645e2c',N&&'layer-btn--disabled']}}"> 完成 </view>
+                </view>
+            </bottom-dialog>
+            <view bindtap="{{Y}}" class="form-inline data-v-4a645e2c">
+                <view class="form-inline__label data-v-4a645e2c"> 会员折扣 </view>
+                <view class="form-inline__value value-cell value-cell--arrow data-v-4a645e2c">
+                    <label class="value-cell__label data-v-4a645e2c">
+                        <block wx:if="{{R}}">请选择</block>
+                        <block wx:elif="{{S}}">{{T}}</block>
+                        <block wx:elif="{{U}}">不使用折扣，累计更多积分</block>
+                    </label>
+                    <label class="red data-v-4a645e2c" wx:if="{{V}}">减 ¥{{W}}</label>
+                    <view class="iconfont icon-a-16_youlajiantou_hei value-cell__arrow data-v-4a645e2c" wx:if="{{X}}"></view>
+                </view>
+            </view>
+            <bottom-dialog bind:__l="__l" class="r data-v-4a645e2c" uI="4a645e2c-7" uP="{{ao}}" uR="pointStrategyLayer" uS="{{['d']}}" wx:if="{{ao}}">
+                <view class="point-strategy-container data-v-4a645e2c">
+                    <view bindtap="{{ae}}" class="{{['point-strategy-item','data-v-4a645e2c',ad]}}">
+                        <view class="item__content data-v-4a645e2c">
+                            <view class="item-title data-v-4a645e2c"> 使用折扣，不累计积分 </view>
+                            <view class="item-desc data-v-4a645e2c">{{Z}} <block wx:if="{{aa}}"> ，本单预计再<label class="red data-v-4a645e2c">减 ¥{{ab}}</label>
+                                </block>
+                            </view>
+                        </view>
+                        <view class="item__radio data-v-4a645e2c">
+                            <st-radio bind:__l="__l" class="data-v-4a645e2c" uI="4a645e2c-8,4a645e2c-7" uP="{{ac}}" wx:if="{{ac}}"></st-radio>
+                        </view>
+                    </view>
+                    <view bindtap="{{aj}}" class="point-strategy-item data-v-4a645e2c" wx:if="{{af}}">
+                        <view class="item__content data-v-4a645e2c">
+                            <view class="item-title data-v-4a645e2c"> 不使用折扣，累计更多积分 </view>
+                            <view class="item-desc data-v-4a645e2c">
+                                <block wx:if="{{ag}}"> 预计获得<label class="red data-v-4a645e2c">{{ah}}</label>积分 </block>
+                            </view>
+                        </view>
+                        <view class="item__radio data-v-4a645e2c">
+                            <st-radio bind:__l="__l" class="data-v-4a645e2c" uI="4a645e2c-9,4a645e2c-7" uP="{{ai}}" wx:if="{{ai}}"></st-radio>
+                        </view>
+                    </view>
+                    <safe-area bind:__l="__l" class="data-v-4a645e2c" uI="4a645e2c-10,4a645e2c-7" uP="{{ak}}" wx:if="{{ak}}"></safe-area>
+                </view>
+                <view class="layer-footer data-v-4a645e2c">
+                    <view bindtap="{{am}}" class="{{['layer-btn','baseBtn','data-v-4a645e2c',al&&'layer-btn--disabled']}}"> 完成 </view>
+                </view>
+            </bottom-dialog>
+            <st-dialog bind:__l="__l" bindcancel="{{aq}}" bindconfirm="{{ar}}" class="data-v-4a645e2c" uI="4a645e2c-11" uP="{{as}}" uS="{{['message']}}" wx:if="{{as}}">
+                <view class="discount-plan-toggle-tip data-v-4a645e2c" slot="message"> 您使用的优惠券，有<label class="red data-v-4a645e2c">{{ap}}</label>张不可与会员折扣叠加 </view>
+            </st-dialog>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,31 @@
+<!-- <image src="https://yunshecun.oss-cn-guangzhou.aliyuncs.com/applet/img/7.png" class="top-bar" /> -->
+<navigation-bar title="村舍订单" back="{{true}}" color="black" background="#D9CDB3"></navigation-bar>
+<view>
+  <!-- <navbar></navbar> -->
+  <image src="https://yunshecun.oss-cn-guangzhou.aliyuncs.com/applet/img/bj3.png" mode="aspectFill" style="position: fixed; z-index: -1; top: 0;left: 0; right: 0;bottom: 0;width: 100vw; height: unset;" />
+  <view class="order_Continuation" wx:if="{{orderList[0].orderStatus == 0 && close == false}}">
+    <text style="font-family: '微软雅黑';color: #665952;">订单未完成支付</text>
+    <view class="payment_or_cancellation">
+      <button style="background-color:#D9CDB3;" bind:tap="go_ply">继续支付</button>
+      <button bind:tap="go_ply">取消订单</button>
+    </view>
+  </view>
+  <view class="wrapper" wx:else>
+    <homeList
+      hidShowStatus="true"
+      bind:subscribe="subscribe"
+      ListInfo="{{waitPayOrderList}}"
+      bind:check="checkOrder"
+      style="margin-bottom: 15rpx;display: block;"
+    />
+    <homeList
+      hidShowStatus="true"
+      bind:subscribe="subscribe"
+      ListInfo="{{orderList}}"
+      bind:check="checkOrder"
+      style="padding-bottom: 140rpx;display: block;"
+    />
+    <view class="[no-order,{{orderList == '' && waitPayOrderList == '' ? 'no-order-show' : ''}}]">当前没有订单</view>
+  </view>
+</view>
+<bottom-tabbar selected='2' />

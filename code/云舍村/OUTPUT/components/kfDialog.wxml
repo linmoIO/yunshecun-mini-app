@@ -1,0 +1,24 @@
+<view class="ui_kfDialog data-v-211bd79c">
+    <bottom-dialog bind:__l="__l" bindopenState="{{g}}" class="r data-v-211bd79c" uI="211bd79c-0" uP="{{h}}" uR="kfDialog" uS="{{['d']}}" wx:if="{{h}}">
+        <view class="receive_mian data-v-211bd79c">
+            <view bindtap="{{c}}" class="consult_list data-v-211bd79c" wx:if="{{a}}">
+                <view class="data-v-211bd79c">
+                    <view class="iconfont icon-a-20_kefu consult_icon data-v-211bd79c"></view>
+                </view>
+                <view class="data-v-211bd79c">
+                    <view class="consult_title data-v-211bd79c">在线客服</view>
+                    <view class="consult_text data-v-211bd79c">{{b}}</view>
+                </view>
+            </view>
+            <view bindtap="{{e}}" class="consult_list data-v-211bd79c">
+                <view class="data-v-211bd79c">
+                    <view class="iconfont icon-a-20_dianhua consult_icon data-v-211bd79c"></view>
+                </view>
+                <view class="data-v-211bd79c">
+                    <view class="consult_title data-v-211bd79c">电话客服</view>
+                    <view class="consult_text data-v-211bd79c">{{d}}</view>
+                </view>
+            </view>
+        </view>
+    </bottom-dialog>
+</view>

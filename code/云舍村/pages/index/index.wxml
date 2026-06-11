@@ -1,0 +1,149 @@
+<view class="home-page">
+  <scroll-view scroll-y class="home-scroll">
+    <view class="hero-block">
+      <swiper
+        class="hero-swiper"
+        indicator-dots="{{false}}"
+        autoplay="{{true}}"
+        interval="{{4500}}"
+        duration="{{500}}"
+        circular="{{true}}"
+        bindchange="handleBannerChange"
+      >
+        <swiper-item wx:for="{{heroBanners}}" wx:key="id">
+          <view class="hero-item">
+            <image class="hero-image" src="{{item.image}}" mode="aspectFill" />
+            <view class="hero-mask"></view>
+            <view class="hero-text">
+              <view class="hero-title">{{item.title}}</view>
+              <view class="hero-subtitle">{{item.subtitle}}</view>
+              <view class="hero-link" bindtap="openPromoActivity">{{item.cta}} ></view>
+            </view>
+          </view>
+        </swiper-item>
+      </swiper>
+
+      <view class="search-area">
+        <view class="hero-search-row">
+          <view class="search-box" data-key="travel" bindtap="switchQuickTab">
+            <input
+              class="search-input"
+              placeholder="全部目的地"
+              placeholder-style="color: rgba(255,255,255,0.88);"
+              value="{{searchKeyword}}"
+              bindinput="bindSearchInput"
+              confirm-type="search"
+              bindconfirm="submitSearch"
+            />
+          </view>
+          <view
+            class="hotel-pill {{activeQuickTab == 'hotel' ? 'hotel-pill-active' : ''}}"
+            data-key="hotel"
+            bindtap="switchQuickTab"
+          >酒店</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="notice-row">
+      <image src="/pages/images/bell.png" class="notice-icon" mode="aspectFit" />
+      <view class="notice-text" bindtap="openNotices">
+        {{notices.length ? notices[0].title : '订阅活动通知，获取最新团期与优惠信息'}}
+      </view>
+      <view class="notice-action" bindtap="subscribeActivities">立即订阅</view>
+    </view>
+
+    <view class="member-card">
+      <view class="member-title">加入云舍村会员，尊享专属礼遇</view>
+      <view class="member-subtitle">新客专享升级权益，活动优先订阅，套餐折扣提醒</view>
+      <view class="member-btn" bindtap="subscribeActivities">点击获取</view>
+    </view>
+
+    <view class="section">
+      <view class="section-header">
+        <view class="section-title">云舍目的地</view>
+        <view class="section-link" bindtap="openActivityGallery">全部 ></view>
+      </view>
+      <scroll-view scroll-x class="destination-tabs">
+        <view class="destination-tab-inner">
+          <view
+            wx:for="{{destinationTabs}}"
+            wx:key="key"
+            class="destination-tab {{activeDestinationKey == item.key ? 'destination-tab-active' : ''}}"
+            data-key="{{item.key}}"
+            bindtap="switchDestinationTab"
+          >{{item.name}}</view>
+        </view>
+      </scroll-view>
+      <view class="destination-grid">
+        <view
+          wx:for="{{destinationCards}}"
+          wx:key="id"
+          class="destination-card"
+          data-activity-id="{{item.activityId}}"
+          bindtap="openDestination"
+        >
+          <image class="destination-image" src="{{item.image}}" mode="aspectFill" />
+          <view class="destination-mask"></view>
+          <view class="destination-info">
+            <view class="destination-name">{{item.name}}</view>
+            <view class="destination-subtitle">{{item.subtitle}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="section">
+      <view class="section-header">
+        <view class="section-title">推荐套餐</view>
+        <view class="section-link" bindtap="openActivityGallery">活动画廊 ></view>
+      </view>
+      <scroll-view scroll-x class="package-scroll">
+        <view class="package-inner">
+          <view
+            wx:for="{{featuredPackages}}"
+            wx:key="id"
+            class="package-card"
+            data-id="{{item.id}}"
+            bindtap="openPackage"
+          >
+            <image class="package-image" src="{{item.image}}" mode="aspectFill" />
+            <view class="package-info">
+              <view class="package-title">{{item.title}}</view>
+              <view class="package-summary">{{item.summary}}</view>
+              <view class="package-price">¥{{item.priceFrom}} / 套起</view>
+            </view>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+
+    <view class="section feature-section">
+      <view class="section-title">首页交付模块</view>
+      <view class="feature-card" bindtap="openActivityGallery">
+        <view class="feature-name">活动画廊滑动动画</view>
+        <view class="feature-desc">含路线切换、卡片排布与详情页跳转</view>
+      </view>
+      <view class="feature-card" bindtap="openActivityGallery">
+        <view class="feature-name">产品亮点 / 行程团期 / 预订须知</view>
+        <view class="feature-desc">在活动详情页以 tab 形式展示完整信息</view>
+      </view>
+    </view>
+
+    <view class="bottom-safe-space"></view>
+  </scroll-view>
+
+  <view wx:if="{{promoVisible}}" class="promo-mask" catchtap="closePromo">
+    <view class="promo-card" catchtap="noop">
+      <image class="promo-image" src="{{promoBanner.image}}" mode="aspectFill" />
+      <view class="promo-content">
+        <view class="promo-title">桃花源·云舍村</view>
+        <view class="promo-subtitle">限时活动开放订阅，热门团期优先通知</view>
+        <view class="promo-btn" bindtap="openPromoActivity">点击查看</view>
+      </view>
+      <view class="promo-close" bindtap="closePromo">x</view>
+    </view>
+  </view>
+
+  <bottom-tab selected="{{0}}"></bottom-tab>
+</view>

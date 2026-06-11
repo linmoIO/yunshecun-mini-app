@@ -1,0 +1,79 @@
+.ui_consultList .time_wrap.data-v-51e00b20 {
+    color: gray;
+    font-size: 28rpx;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 28rpx;
+    margin: 48rpx auto 32rpx;
+    text-align: center
+}
+
+.ui_consultList .list_wrap.data-v-51e00b20 {
+    background: #fff;
+    border-radius: 16rpx;
+    margin: 32rpx
+}
+
+.ui_consultList .list_wrap .list_title.data-v-51e00b20 {
+    border-bottom: 1px solid #eee;
+    color: #000;
+    font-size: 28rpx;
+    font-weight: 700;
+    letter-spacing: 0;
+    line-height: 28rpx;
+    padding: 32rpx 24rpx;
+    text-align: left
+}
+
+.ui_consultList .list_wrap .list_item.data-v-51e00b20 {
+    padding: 32rpx 24rpx
+}
+
+.ui_consultList .list_wrap .list_item .item_in.data-v-51e00b20 {
+    align-items: center;
+    display: flex;
+    margin-bottom: 24rpx
+}
+
+.ui_consultList .list_wrap .list_item .item_in.data-v-51e00b20:last-child {
+    margin-bottom: 0
+}
+
+.ui_consultList .list_wrap .list_item .item_left.data-v-51e00b20 {
+    color: gray;
+    font-size: 28rpx;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 28rpx;
+    min-width: 116rpx;
+    text-align: left
+}
+
+.ui_consultList .list_wrap .list_item .item_right.data-v-51e00b20 {
+    color: #000;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 28rpx;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 36rpx;
+    margin-left: 24rpx;
+    max-width: 510rpx;
+    text-align: left;
+    width: 510rpx
+}
+
+.ui_consultList .list_wrap .list_item .item_right .consult_icon.data-v-51e00b20 {
+    margin-left: 8rpx
+}
+
+.ui_consultList .list_wrap .list_item .line.data-v-51e00b20 {
+    background: #eee;
+    height: 1px;
+    margin-bottom: 24rpx;
+    width: 100%
+}
+
+.ui_consultList .zhanwei.data-v-51e00b20 {
+    height: 160rpx
+}

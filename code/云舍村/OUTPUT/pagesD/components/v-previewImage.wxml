@@ -1,0 +1,24 @@
+<view class="previewImage_ui data-v-ee37603d" wx:if="{{a}}">
+    <view bindtap="{{n}}" class="previewImage data-v-ee37603d">
+        <view class="page-box data-v-ee37603d" style="{{'height:'+f+';'+'top:'+g}}">
+            <view bindtap="{{b}}" class="icon-a-20_guanbi iconfont data-v-ee37603d"></view>
+            <view class="page data-v-ee37603d" wx:if="{{c}}">
+                <text class="text data-v-ee37603d">{{d}} / {{e}}</text>
+            </view>
+        </view>
+        <swiper bindchange="{{k}}" bindtouchend="{{m}}" bindtouchstart="{{l}}" class="swiper data-v-ee37603d" current="{{j}}">
+            <swiper-item class="data-v-ee37603d" wx:for="{{h}}" wx:key="d">
+                <movable-area scaleArea class="movable-area data-v-ee37603d">
+                    <movable-view class="movable-view data-v-ee37603d" damping="100" direction="all" inertia="{{true}}" scale="true" scaleMax="4" scaleMin="1" scaleValue="{{i}}">
+                        <scroll-view class="uni-scroll-view data-v-ee37603d" scrollY="true">
+                            <view class="scroll-view data-v-ee37603d">
+                                <image bindlongpress="{{item.c}}" class="image data-v-ee37603d" key="{{item.a}}" mode="widthFix" src="{{item.b}}"></image>
+                            </view>
+                        </scroll-view>
+                    </movable-view>
+                </movable-area>
+            </swiper-item>
+        </swiper>
+    </view>
+    <v-download bind:__l="__l" class="download data-v-ee37603d" uI="ee37603d-0" uP="{{p}}" wx:if="{{o}}"></v-download>
+</view>

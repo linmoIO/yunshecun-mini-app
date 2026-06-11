@@ -1,0 +1,9 @@
+{
+    "navigationBarTitleText":  "云舍村",
+    "navigationStyle":  "custom",
+    "enablePullDownRefresh":  true,
+    "onReachBottomDistance":  50,
+    "usingComponents":  {
+
+                        }
+}

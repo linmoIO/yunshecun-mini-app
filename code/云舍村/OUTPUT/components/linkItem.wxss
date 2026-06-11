@@ -1,0 +1,17 @@
+.linkItem.data-v-2a11be81 {
+    align-items: center;
+    display: flex;
+    height: 96rpx;
+    justify-content: space-between;
+    padding: 0 24rpx;
+    position: relative
+}
+
+.linkItem.arrow.data-v-2a11be81:after {
+    left: calc(100% - 24rpx)
+}
+
+.linkItem .title.data-v-2a11be81 {
+    color: #000;
+    font-size: 28rpx
+}

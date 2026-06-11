@@ -1,0 +1,96 @@
+<!--pages/lodging/lodging.wxml-->
+<navigation-bar title="预约" back="{{true}}" color="black" background="#D9CDB3"></navigation-bar>
+<!-- <image src="https://yunshecun.oss-cn-guangzhou.aliyuncs.com/applet/img/7.png" class="top-bar" />
+<view>
+  <image src="https://yunshecun.oss-cn-guangzhou.aliyuncs.com/applet/img/bj1.png" mode="aspectFill" style="position: fixed; z-index: -1; top: 0;left: 0; right: 0;bottom: 0;width: 100vw; height: unset;" />
+  <view class="wrapper">
+    <image src="https://yunshecun.oss-cn-guangzhou.aliyuncs.com/applet/img/logo.png" mode="" class="logo" />
+    <view class="camp" bind:tap="runChooseDate">
+      <image src="https://yunshecun.oss-cn-guangzhou.aliyuncs.com/applet/img/20.png" mode="" class="index_camp" />
+      <view>借宿</view>
+</view>
+</view>
+</view> -->
+<!-- <image src="https://yunshecun.oss-cn-guangzhou.aliyuncs.com/applet/img/7.png" class="top-bar" /> -->
+<scroll-view type="list" scroll-y>
+  <image src="https://yunshecun.oss-cn-guangzhou.aliyuncs.com/applet/img/reservation.png" mode="aspectFill" style="position: fixed; z-index: -1; top: 0rpx ;left: 0; right: 0;bottom: 0;width: 100vw; height: 55%;" />
+  <view class="wrapper">
+    <view class="nav_top container" wx:if="{{official_announcement.length > 0}}">
+      <image src="https://yunshecun.oss-cn-guangzhou.aliyuncs.com/applet/img/navIcon.png" mode="aspectFill" style="width: 34rpx; height: 34rpx;" />
+      <view style="width: 80%;">
+        <swiper class="swiper_zi" vertical="true" autoplay="true" circular="true" interval="3000">
+          <block wx:for="{{official_announcement}}" wx:key="{{item.id}}">
+            <swiper-item style="width: 50%;">
+              <view class="zimubox">
+                <view class="swiper_item" bind:tap="openPopup" data-index="{{item}}">{{item.title}}</view>
+              </view>
+            </swiper-item>
+          </block>
+        </swiper>
+      </view>
+      <text style="text-decoration:underline;font-size: 26rpx; line-height: 26rpx;position: relative;top:-4rpx;color: #7E7E7E; opacity: 0;" bind:tap="openPopupCurrent">详情</text>
+    </view>
+    <view class="popup-box" wx:if="{{showIndex== true}}" bind:tap="closePopup"></view>
+    <view class="info-center" wx:for="{{official_announcement}}" wx:key="id" style="top: 20%;height:{{height*0.4}}px; background-color: #F4EFE2;" wx:if="{{item.title == convenient_data && showIndex== true}}">
+      <view style="background-color: #F4EFE2;width: 120%;height:500rpx;">
+        <view class="row-info">
+          <view class="left-btn" bind:tap="closePopup">
+            <image src="https://yunshecun.oss-cn-guangzhou.aliyuncs.com/dev/images/Vector.png"></image>
+          </view>
+          <text class="notification_title">{{item.title}}</text>
+          <text class="notification_content">{{item.content}}</text>
+          <text class="notification_bottom">{{item.remark}}<text style="color: #977730;" bind:tap="makePhoneCall" data-tel="{{item.remark2}}">{{item.remark2}}</text></text>
+        </view>
+      </view>
+    </view>
+    <view class="query_box">
+      <view bind:tap="openCalendar">
+        <view class="entering_and_leaving">
+          <view class="datePart">
+            <view class="picker">
+              <view style="display: flex; flex-direction: column;align-items: center;gap: 20rpx;">
+                <view class="datePart-text" style="font-family: 'Inter';">入村日期</view>
+                <view class="datePart-day" style="font-family: 'Inter'; ">{{enterDay}}</view>
+                <view class="datePart-yearMonth" style="font-family: 'Inter';color:#787878 ;">{{enterYearMonth}}</view>
+              </view>
+            </view>
+          </view>
+          <view class="few_nights">
+            <view class="line_left_right"></view>
+            <view class="totalDays" style="font-family: 'Inter';">共{{days}}晚</view>
+            <view class="line_left_left"></view>
+          </view>
+          <view class="datePart">
+            <view class="picker">
+              <view style="display: flex; flex-direction: column;align-items: center;gap: 20rpx;">
+                <view class="datePart-text" style="font-family: 'Inter';">离村日期</view>
+                <view class="datePart-day" style="font-family: 'Inter';">{{leaveDay}}</view>
+                <view class="datePart-yearMonth" style="font-family: 'Inter';color:#787878 ;">{{leaveYearMonth}}</view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="bottomPart" bind:tap="showDialog">
+        <view class="relative relative-item-first">
+          <view class="text" style="font-family: 'Inter';">客房</view>
+          <view class="text" style="font-family: 'Inter'; ">{{homeNumber}}</view>
+        </view>
+        <view class="relative">
+          <view class="text" style="font-family: 'Inter';">成人</view>
+          <view class="text" style="font-family: 'Inter'; ">{{ adultNumber}}</view>
+        </view>
+        <view class=" relative relative-item-last">
+          <view class="text" style="font-family: 'Inter';">儿童</view>
+          <view class="text" style="font-family: 'Inter';">{{ childrenNumber}}</view>
+        </view>
+      </view>
+      <view class="search" style="font-family: 'Inter'; color: #665952;" bindtap="check">
+        查询
+      </view>
+    </view>
+  </view>
+  <bottomDialog wx:if="{{ bottomDialogVisible }}" visible="{{dialogVisible}}" home="{{homeNumber}}" adult="{{adultNumber}}" children="{{childrenNumber}}" bind:getNumber="getNumber"></bottomDialog>
+  <t-calendar title="请选择日期" confirm-btn="确认" visible="{{calendarVisible}}" bind:confirm="handleConfirm" type="range" format="{{format}}" />
+  <bottom-tabbar selected='1' color='#f00'></bottom-tabbar>
+</scroll-view>

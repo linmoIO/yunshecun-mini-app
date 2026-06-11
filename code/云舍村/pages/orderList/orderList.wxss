@@ -1,0 +1,86 @@
+/* pages/orderList/orderList.wxss */
+.bg-color1{
+  padding-bottom: 0;
+}
+.page-content{
+  padding: 0 40rpx;
+}
+.tab {
+  width: 33.3333%;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  font-size: 32rpx;
+  color: #999;
+}
+.topTabSwiper {
+  display: flex;
+  justify-content: space-between;
+}
+.tabBorer {
+  color: #000;
+}
+.swiper_con {
+  text-align: center;
+  padding: 20rpx 0 80rpx;
+  overflow-y: scroll;
+}
+.page-list{
+  border: 1px #b09d73 solid;
+  padding: 20px;
+  border-radius: 20rpx;
+  margin-bottom: 20rpx;
+}
+.page-list-title{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.page-list-subtitles,
+.page-list-subtitle{
+  font-size: 36rpx;
+  color: #000;
+  font-weight: bold;
+  text-align: left;
+}
+
+.page-list-orderstatus{
+  color: #666;
+}
+.page-list-ordertime{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #666;
+  margin-bottom: 20rpx;
+  overflow: hidden;
+}
+.page-list-ordernum{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #666;
+}
+.page-list-price{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px #d3ccbd solid;
+  margin-top: 40rpx;
+  padding-top: 40rpx;
+  color: #666;
+}
+.page-list-priceall{
+  display: flex;
+  align-items: center;
+}
+.page-list-priceall-num{
+  font-size: 36rpx;
+  color: #666;
+}
+.price-btn{
+  background-color: #b09d73;
+  color: #fff;
+  padding: 5rpx 30rpx;
+  border-radius: 6rpx;
+}

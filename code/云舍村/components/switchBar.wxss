@@ -1,0 +1,55 @@
+.ui_switchBar.data-v-fac072d1 {
+    display: flex;
+    height: 88rpx;
+    width: 100%
+}
+
+.ui_switchBar.data-v-fac072d1::-webkit-scrollbar {
+    display: none
+}
+
+.ui_switchBar .switchItem.data-v-fac072d1 {
+    align-items: center;
+    display: flex;
+    flex: 1;
+    flex: 1 0 auto;
+    font-size: 32rpx;
+    justify-content: center;
+    min-width: 25%;
+    opacity: .6;
+    position: relative;
+    white-space: nowrap
+}
+
+.ui_switchBar .switchItem.more.data-v-fac072d1 {
+    margin-right: 32rpx;
+    min-width: auto
+}
+
+.ui_switchBar .switchItem .switchItemName.data-v-fac072d1 {
+    height: 88rpx;
+    line-height: 88rpx
+}
+
+.ui_switchBar .switchItem.active.data-v-fac072d1 {
+    opacity: 1
+}
+
+.ui_switchBar .switchItem.active .switchItemName.data-v-fac072d1 {
+    position: relative
+}
+
+.ui_switchBar .switchItem.active .switchItemName.data-v-fac072d1:after {
+    background: #a43127;
+    border: 4rpx;
+    bottom: 0;
+    content: "";
+    height: 4rpx;
+    left: calc((100% - 64rpx)/2);
+    position: absolute;
+    width: 64rpx
+}
+
+.ui_switchBar.data-v-fac072d1 .uni-scroll-view-content {
+    display: flex
+}

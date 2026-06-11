@@ -1,0 +1,20 @@
+<scroll-view class="as-wrap" scroll-y>
+  <view class="as-card">
+    <view class="as-title">订单号</view>
+    <view class="as-order-no">{{orderNo}}</view>
+  </view>
+  <view class="as-card">
+    <view class="as-title">售后原因（必选）</view>
+    <view class="as-reason {{selectedReason===index?'active':''}}" wx:for="{{reasons}}" wx:key="index"
+      bindtap="selectReason" data-idx="{{index}}">
+      <view class="as-check">{{selectedReason===index?'●':'○'}}</view>
+      <text>{{item}}</text>
+    </view>
+  </view>
+  <view class="as-card">
+    <view class="as-title">问题描述（选填）</view>
+    <textarea class="as-textarea" value="{{detail}}" placeholder="请详细描述问题，方便客服快速处理" bindinput="onDetailInput" maxlength="200"/>
+  </view>
+  <view class="as-submit {{submitting?'dis':''}}" bindtap="submit">{{submitting?'提交中...':'提交售后申请'}}</view>
+  <view style="height:60rpx"></view>
+</scroll-view>

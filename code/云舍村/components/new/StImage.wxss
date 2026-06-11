@@ -1,0 +1,22 @@
+.st-image.data-v-69d0f93e {
+    position: relative;
+    transition: opacity .15s ease-in
+}
+
+.st-image__image.data-v-69d0f93e {
+    display: block;
+    height: 100%;
+    width: 100%
+}
+
+.st-image__hot-area.data-v-69d0f93e {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0
+}
+
+.st-image__hot-area-item.data-v-69d0f93e {
+    position: absolute
+}

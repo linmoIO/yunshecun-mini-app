@@ -1,0 +1,11 @@
+<view class="{{['tabs_ui','data-v-b12f0bae',k&&'canShow']}}" style="{{'background:'+j}}">
+    <scroll-view bindscroll="scroll" class="{{['scroll-view','data-v-b12f0bae',i&&'noPadding']}}" scrollLeft="{{h}}" scrollWithAnimation="true" scrollX="true">
+        <view class="{{['tabs','data-v-b12f0bae',g]}}">
+            <view class="tabs_line data-v-b12f0bae" style="{{b}}" wx:if="{{a}}"></view>
+            <view bindtap="{{item.f}}" class="{{['tab','data-v-b12f0bae',item.e&&'active',f&&'full']}}" style="{{item.d}}" wx:for="{{c}}" wx:key="c">
+                <view class="tab_view data-v-b12f0bae" wx:if="{{d}}">{{item.a}}</view>
+                <view class="qp data-v-b12f0bae" style="{{'border-top-color:'+item.b}}" wx:if="{{e}}"></view>
+            </view>
+        </view>
+    </scroll-view>
+</view>

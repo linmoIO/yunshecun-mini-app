@@ -1,0 +1,512 @@
+.baseBtn.data-v-6f5255df {
+    background-color: #000;
+    background-image: url(https://dsplatweb.oss-cn-chengdu.aliyuncs.com/songzan/images/btnBlack.png);
+    color: #fff
+}
+
+.baseBtn.data-v-6f5255df,.w-baseBtn.data-v-6f5255df {
+    background-repeat: repeat;
+    background-size: 80rpx 75rpx;
+    border-radius: 8rpx;
+    text-align: center
+}
+
+.w-baseBtn.data-v-6f5255df {
+    background-color: #fff;
+    background-image: url(https://dsplatweb.oss-cn-chengdu.aliyuncs.com/songzan/images/btnWhite.png);
+    color: #000
+}
+
+.w-baseBtn[disabled].data-v-6f5255df {
+    color: #000!important;
+    opacity: .8
+}
+
+.textHidden.data-v-6f5255df {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}
+
+.expandClick.data-v-6f5255df {
+    position: relative
+}
+
+.expandClick.data-v-6f5255df:after {
+    bottom: -60rpx;
+    content: "";
+    left: -60rpx;
+    position: absolute;
+    right: -60rpx;
+    top: -60rpx;
+    z-index: 9
+}
+
+.line-clamp-1.data-v-6f5255df {
+    -webkit-line-clamp: 1;
+    line-clamp: 1
+}
+
+.line-clamp-1.data-v-6f5255df,.line-clamp-2.data-v-6f5255df {
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    overflow: hidden;
+    white-space: normal
+}
+
+.line-clamp-2.data-v-6f5255df {
+    -webkit-line-clamp: 2;
+    line-clamp: 2
+}
+
+.line-clamp-3.data-v-6f5255df {
+    -webkit-line-clamp: 3;
+    line-clamp: 3
+}
+
+.line-clamp-3.data-v-6f5255df,.line-clamp-4.data-v-6f5255df {
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    overflow: hidden;
+    white-space: normal
+}
+
+.line-clamp-4.data-v-6f5255df {
+    -webkit-line-clamp: 4;
+    line-clamp: 4
+}
+
+.line-clamp-5.data-v-6f5255df {
+    -webkit-line-clamp: 5;
+    line-clamp: 5
+}
+
+.line-clamp-5.data-v-6f5255df,.line-clamp-6.data-v-6f5255df {
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    overflow: hidden;
+    white-space: normal
+}
+
+.line-clamp-6.data-v-6f5255df {
+    -webkit-line-clamp: 6;
+    line-clamp: 6
+}
+
+.line-clamp-7.data-v-6f5255df {
+    -webkit-line-clamp: 7;
+    line-clamp: 7
+}
+
+.line-clamp-7.data-v-6f5255df,.line-clamp-8.data-v-6f5255df {
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    overflow: hidden;
+    white-space: normal
+}
+
+.line-clamp-8.data-v-6f5255df {
+    -webkit-line-clamp: 8;
+    line-clamp: 8
+}
+
+.line-clamp-9.data-v-6f5255df {
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 9;
+    line-clamp: 9;
+    display: -webkit-box;
+    overflow: hidden;
+    white-space: normal
+}
+
+.ui_tripChange.data-v-6f5255df {
+    padding-bottom: calc(200rpx + env(safe-area-inset-bottom))
+}
+
+.ui_tripChange .tripChange.data-v-6f5255df {
+    padding: 8rpx 32rpx 0
+}
+
+.ui_tripChange .tripChange .tripChangeBtn.data-v-6f5255df {
+    align-items: center;
+    background: #fff;
+    border-radius: 16rpx;
+    color: #000;
+    display: flex;
+    font-size: 28rpx;
+    height: 96rpx;
+    justify-content: space-between;
+    margin-top: 24rpx;
+    padding: 0 24rpx
+}
+
+.ui_tripChange .tripChange .info-box.data-v-6f5255df {
+    background: #fff;
+    border-radius: 16rpx;
+    margin-top: 32rpx;
+    padding: 32rpx 24rpx
+}
+
+.ui_tripChange .tripChange .info-box .tl.data-v-6f5255df {
+    color: #000;
+    font-size: 32rpx;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 48rpx
+}
+
+.ui_tripChange .tripChange .info-box .desc.data-v-6f5255df {
+    color: gray;
+    font-size: 28rpx;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 44rpx;
+    margin-top: 24rpx
+}
+
+.ui_tripChange .tripChange .info-box .step.data-v-6f5255df {
+    margin-bottom: 16rpx;
+    margin-top: 64rpx;
+    position: relative
+}
+
+.ui_tripChange .tripChange .info-box .step.data-v-6f5255df:after {
+    background: #ccc;
+    bottom: 0;
+    content: "";
+    left: 20rpx;
+    position: absolute;
+    top: 0;
+    transform: scaleX(.5);
+    width: 1px
+}
+
+.ui_tripChange .tripChange .info-box .step .step-item.data-v-6f5255df {
+    align-items: center;
+    display: flex;
+    font-size: 28rpx;
+    font-style: normal;
+    font-weight: 400;
+    margin-top: 56rpx
+}
+
+.ui_tripChange .tripChange .info-box .step .step-item.data-v-6f5255df:first-child {
+    margin-top: 0
+}
+
+.ui_tripChange .tripChange .info-box .step .step-item .step-item-no.data-v-6f5255df {
+    align-items: center;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    color: #000;
+    display: flex;
+    font-size: 24rpx;
+    height: 40rpx;
+    justify-content: center;
+    margin-right: 24rpx;
+    position: relative;
+    width: 40rpx;
+    z-index: 2
+}
+
+.ui_tripChange .tripChange .info-box .state-box .state.data-v-6f5255df {
+    align-items: center;
+    display: flex;
+    font-size: 32rpx;
+    font-style: normal;
+    font-weight: 500
+}
+
+.ui_tripChange .tripChange .info-box .state-box .state .iconfont.data-v-6f5255df {
+    font-size: 40rpx;
+    margin-right: 16rpx
+}
+
+.ui_tripChange .tripChange .info-box .state-box .countdown.data-v-6f5255df {
+    color: gray;
+    font-size: 24rpx;
+    margin-top: 16rpx;
+    padding-left: 48rpx
+}
+
+.ui_tripChange .tripChange .info-box .info-head.data-v-6f5255df {
+    font-size: 28rpx;
+    font-style: normal;
+    font-weight: 600;
+    padding-bottom: 32rpx;
+    position: relative
+}
+
+.ui_tripChange .tripChange .info-box .info-head.data-v-6f5255df:after {
+    background: #eee;
+    bottom: 0;
+    content: "";
+    height: 1px;
+    left: -24rpx;
+    position: absolute;
+    right: -24rpx;
+    transform: scaleY(.5)
+}
+
+.ui_tripChange .tripChange .info-box .change-info .change-info-item.data-v-6f5255df {
+    display: flex;
+    padding: 32rpx 0;
+    position: relative
+}
+
+.ui_tripChange .tripChange .info-box .change-info .change-info-item .lable.data-v-6f5255df {
+    color: gray;
+    font-size: 28rpx;
+    margin-right: 10rpx;
+    min-width: 146rpx
+}
+
+.ui_tripChange .tripChange .info-box .change-info .change-info-item .change-list.data-v-6f5255df {
+    flex: 1
+}
+
+.ui_tripChange .tripChange .info-box .change-info .change-info-item .change-list .change-item.data-v-6f5255df {
+    margin-top: 32rpx
+}
+
+.ui_tripChange .tripChange .info-box .change-info .change-info-item .change-list .change-item.data-v-6f5255df:first-child {
+    margin-top: 0
+}
+
+.ui_tripChange .tripChange .info-box .change-info .change-info-item .change-list .change-item .name.data-v-6f5255df {
+    color: #000;
+    font-size: 28rpx
+}
+
+.ui_tripChange .tripChange .info-box .change-info .change-info-item .change-list .change-item .time.data-v-6f5255df {
+    color: gray;
+    font-size: 24rpx;
+    margin-top: 16rpx
+}
+
+.ui_tripChange .tripChange .info-box .change-info .change-info-item.data-v-6f5255df:last-child {
+    padding: 32rpx 0 0
+}
+
+.ui_tripChange .tripChange .info-box .change-info .change-info-item.data-v-6f5255df:last-child:after {
+    display: none
+}
+
+.ui_tripChange .tripChange .info-box .info-list .info-item.data-v-6f5255df {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 32rpx
+}
+
+.ui_tripChange .tripChange .info-box .info-list .info-item .lable.data-v-6f5255df {
+    color: gray;
+    font-size: 28rpx
+}
+
+.ui_tripChange .tripChange .info-box .info-list .info-item .lable.black.data-v-6f5255df {
+    color: #000
+}
+
+.ui_tripChange .tripChange .info-box .info-list .info-item .val.data-v-6f5255df {
+    align-items: center;
+    color: #000;
+    display: flex;
+    font-size: 28rpx
+}
+
+.ui_tripChange .tripChange .info-box .info-list .info-item .val.weight.data-v-6f5255df {
+    font-family: Montserrat;
+    font-size: 28rpx;
+    font-style: normal;
+    font-weight: 600
+}
+
+.ui_tripChange .tripChange .info-box .info-list .info-item .val.orange.data-v-6f5255df {
+    color: #db8900
+}
+
+.ui_tripChange .tripChange .info-box .info-list .info-item .val.grey.data-v-6f5255df {
+    color: gray
+}
+
+.ui_tripChange .tripChange .info-box .info-list .info-item .val .icon-a-12_youlajiantou_hei.data-v-6f5255df {
+    font-size: 24rpx
+}
+
+.ui_tripChange .tripChange .info-box2.data-v-6f5255df {
+    background: #fff;
+    border-radius: 16rpx;
+    margin-top: 32rpx;
+    padding: 32rpx 24rpx
+}
+
+.ui_tripChange .tripChange .info-box2 .info-head.data-v-6f5255df {
+    align-items: center;
+    display: flex;
+    font-size: 28rpx;
+    font-style: normal;
+    font-weight: 600;
+    justify-content: space-between;
+    padding-bottom: 32rpx;
+    position: relative
+}
+
+.ui_tripChange .tripChange .info-box2 .info-head .tl.data-v-6f5255df {
+    align-items: center;
+    display: flex
+}
+
+.ui_tripChange .tripChange .info-box2 .info-head .icon-a-20_hangchengbiangeng.data-v-6f5255df {
+    font-size: 40rpx;
+    margin-right: 8rpx
+}
+
+.ui_tripChange .tripChange .info-box2 .info-head .info-head-state.data-v-6f5255df {
+    color: #a43127;
+    font-family: PingFang SC;
+    font-size: 28rpx;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 40rpx;
+    text-align: right
+}
+
+.ui_tripChange .tripChange .info-box2 .info-head .info-head-state.black.data-v-6f5255df {
+    color: #000
+}
+
+.ui_tripChange .tripChange .info-box2 .change-info .change-info-item.data-v-6f5255df {
+    display: flex;
+    line-height: 44rpx;
+    padding-top: 24rpx;
+    position: relative
+}
+
+.ui_tripChange .tripChange .info-box2 .change-info .change-info-item .lable.data-v-6f5255df {
+    color: gray;
+    font-size: 28rpx;
+    width: 210rpx
+}
+
+.ui_tripChange .tripChange .info-box2 .change-info .change-info-item .change-list.data-v-6f5255df {
+    flex: 1
+}
+
+.ui_tripChange .tripChange .info-box2 .change-info .change-info-item .change-list .change-item.data-v-6f5255df {
+    font-size: 28rpx;
+    margin-top: 32rpx;
+    text-align: right
+}
+
+.ui_tripChange .tripChange .info-box2 .change-info .change-info-item .change-list .change-item.data-v-6f5255df:first-child {
+    margin-top: 0
+}
+
+.ui_tripChange .tripChange .info-box2 .change-info .change-info-item .change-list .change-item .name.data-v-6f5255df {
+    color: #000;
+    font-size: 28rpx
+}
+
+.ui_tripChange .tripChange .info-box2 .change-info .change-info-item .change-list .change-item .time.data-v-6f5255df {
+    color: gray;
+    font-size: 24rpx;
+    margin-top: 16rpx
+}
+
+.ui_tripChange .tripChange .info-box2 .btns.data-v-6f5255df {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 32rpx
+}
+
+.ui_tripChange .tripChange .info-box2 .btns .btn.data-v-6f5255df {
+    border: .5px solid #000;
+    border-radius: 8rpx;
+    color: #000;
+    font-size: 28rpx;
+    font-style: normal;
+    font-weight: 400;
+    margin-left: 16rpx;
+    padding: 16rpx 24rpx
+}
+
+.ui_tripChange .tripChange .info-box2 .btns .baseBtn.data-v-6f5255df {
+    color: #fff
+}
+
+.ui_tripChange .tripChange .tips.data-v-6f5255df {
+    color: gray;
+    font-size: 28rpx;
+    margin-top: 24rpx
+}
+
+.ui_tripChange .tripChange .housekeepInfo.data-v-6f5255df {
+    display: flex
+}
+
+.ui_tripChange .tripChange .housekeepInfo .head-img.data-v-6f5255df {
+    border-radius: 50%;
+    height: 96rpx;
+    margin-right: 24rpx;
+    width: 96rpx
+}
+
+.ui_tripChange .tripChange .housekeepInfo .housekeepInfo-head.data-v-6f5255df {
+    align-items: center;
+    display: flex;
+    flex: 1;
+    height: 96rpx;
+    justify-content: space-between
+}
+
+.ui_tripChange .tripChange .housekeepInfo .housekeepInfo-head .left-part.data-v-6f5255df {
+    display: flex;
+    flex-direction: column;
+    justify-content: center
+}
+
+.ui_tripChange .tripChange .housekeepInfo .housekeepInfo-head .left-part .career.data-v-6f5255df {
+    color: gray;
+    font-size: 24rpx;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24rpx
+}
+
+.ui_tripChange .tripChange .housekeepInfo .housekeepInfo-head .left-part .name.data-v-6f5255df {
+    align-items: center;
+    display: flex;
+    font-size: 28rpx;
+    font-style: normal;
+    font-weight: 400;
+    margin-top: 16rpx
+}
+
+.ui_tripChange .tripChange .housekeepInfo .housekeepInfo-head .left-part .name .iconfont.data-v-6f5255df {
+    font-size: 24rpx;
+    margin-left: 8rpx
+}
+
+.ui_tripChange .tripChange .housekeepInfo .housekeepInfo-head .icon-a-28_dianhua.data-v-6f5255df {
+    color: #000;
+    font-size: 56rpx
+}
+
+.ui_tripChange .footer.data-v-6f5255df {
+    background: #fff;
+    bottom: 0;
+    left: 0;
+    padding: 24rpx 32rpx;
+    position: fixed;
+    right: 0;
+    z-index: 9
+}
+
+.ui_tripChange .footer .baseBtn.data-v-6f5255df {
+    align-items: center;
+    display: flex;
+    height: 96rpx;
+    justify-content: center
+}

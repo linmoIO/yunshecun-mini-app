@@ -1,0 +1,11 @@
+<view class="micro-comps" wx:if="{{a}}">
+    <view class="micro-comp" style="{{item.x}}" wx:for="{{b}}" wx:key="y">
+        <micro-tabs bind:__l="__l" bindclickTab="{{item.b}}" uI="{{item.c}}" uP="{{item.d}}" wx:if="{{item.a}}"></micro-tabs>
+        <paragraph bind:__l="__l" uI="{{item.f}}" uP="{{item.g}}" wx:if="{{item.e}}"></paragraph>
+        <st-image bind:__l="__l" uI="{{item.i}}" uP="{{item.j}}" wx:if="{{item.h}}"></st-image>
+        <st-products bind:__l="__l" uI="{{item.l}}" uP="{{item.m}}" wx:if="{{item.k}}"></st-products>
+        <coupons bind:__l="__l" uI="{{item.o}}" uP="{{item.p}}" wx:if="{{item.n}}"></coupons>
+        <carousel bind:__l="__l" uI="{{item.r}}" uP="{{item.s}}" wx:if="{{item.q}}"></carousel>
+        <micro-video bind:__l="__l" uI="{{item.v}}" uP="{{item.w}}" wx:if="{{item.t}}"></micro-video>
+    </view>
+</view>

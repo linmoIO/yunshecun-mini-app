@@ -1,0 +1,4 @@
+<view class="tips data-v-6c802b2f">
+    <image class="illustrations data-v-6c802b2f" src="{{a}}"></image>
+    <view class="title data-v-6c802b2f">合同生成中{{b}}</view>
+</view>

@@ -1,0 +1,8 @@
+{
+    "component":  true,
+    "usingComponents":  {
+                            "bottom-dialog":  "../../components/bottomDialog",
+                            "limiting-retry-dialog":  "../../components/new/LimitingRetry/LimitingRetryDialog",
+                            "st-button":  "../../components/new/StButton"
+                        }
+}

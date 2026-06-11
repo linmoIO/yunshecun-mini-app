@@ -1,0 +1,7 @@
+{
+    "navigationBarTitleText":  " ",
+    "usingComponents":  {
+                            "safe-area":  "../../components/new/SafeArea",
+                            "st-button":  "../../components/new/StButton"
+                        }
+}

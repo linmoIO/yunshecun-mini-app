@@ -1,0 +1,7 @@
+{
+    "component":  true,
+    "usingComponents":  {
+                            "error-block":  "../ErrorBlock",
+                            "st-button":  "../StButton"
+                        }
+}

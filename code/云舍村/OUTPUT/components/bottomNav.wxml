@@ -1,0 +1,14 @@
+<view class="bottomNav data-v-73de3d25" wx:if="{{a}}">
+    <view class="nav-box data-v-73de3d25">
+        <view bindtap="{{item.j}}" class="{{['nav-item','data-v-73de3d25',item.i&&'active']}}" wx:for="{{b}}" wx:key="k">
+            <image class="{{[item.c&&'large','logo','data-v-73de3d25']}}" mode="aspectFit" src="{{item.b}}" wx:if="{{item.a}}"></image>
+            <image class="{{[item.f&&'large','logo','data-v-73de3d25']}}" mode="aspectFit" src="{{item.e}}" wx:if="{{item.d}}"></image>
+            <view class="{{[item.h&&'largeTxt','desc','data-v-73de3d25']}}">{{item.g}}</view>
+        </view>
+        <view class="bgWrapper data-v-73de3d25">
+            <view class="bgBox data-v-73de3d25" wx:for="{{c}}" wx:key="b">
+                <view class="bg data-v-73de3d25" hidden="{{!item.a}}"></view>
+            </view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,21 @@
+<view class="col-wrap">
+  <view wx:if="{{loading}}" class="col-empty">加载中...</view>
+  <view wx:elif="{{!list.length}}" class="col-empty">
+    <text>暂无收藏内容</text>
+    <text style="font-size:24rpx;color:#bbb;margin-top:8rpx">浏览旅游套餐/酒店/活动时点击收藏即可显示</text>
+  </view>
+  <view class="col-grid">
+    <view class="col-card" wx:for="{{list}}" wx:key="id" bindtap="goDetail" data-idx="{{index}}">
+      <view class="col-img-wrap">
+        <image wx:if="{{item.image}}" src="{{item.image}}" mode="aspectFill" class="col-img"></image>
+        <view wx:else class="col-img-ph">{{item.name.slice(0,2)}}</view>
+        <view class="col-type-tag">{{item.type==='shop'?'风物':'旅游'}}</view>
+      </view>
+      <view class="col-info">
+        <view class="col-name">{{item.name}}</view>
+        <view class="col-price" wx:if="{{item.price}}">¥{{item.price}}</view>
+      </view>
+      <view class="col-del" catchtap="remove" data-id="{{item.goodsId||item.id}}">✕</view>
+    </view>
+  </view>
+</view>

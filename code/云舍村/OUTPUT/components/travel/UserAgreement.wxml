@@ -1,0 +1,42 @@
+<view class="user-agreement data-v-885b046c">
+    <st-dialog bind:__l="__l" class="data-v-885b046c" uI="885b046c-0" uP="{{m}}" uS="{{['body']}}" wx:if="{{m}}">
+        <view class="agreement-wrapper data-v-885b046c" slot="body">
+            <view class="agreement-header data-v-885b046c">
+                <view class="agreement-title data-v-885b046c"> 松赞用户协议及政策须知 </view>
+                <view class="agreement-tabs hairline--bottom data-v-885b046c">
+                    <view bindtap="{{tab.f}}" class="{{['tab-item','data-v-885b046c',tab.e&&'active']}}" wx:for="{{a}}" wx:for-item="tab" wx:key="d">
+                        <view class="tab-label data-v-885b046c">
+                            <text class="data-v-885b046c">{{tab.a}}</text>
+                            <label class="icon-checked data-v-885b046c" wx:if="{{tab.b}}">
+                                <icon class="data-v-885b046c" color="#a43127" size="14" type="success"></icon>
+                            </label>
+                        </view>
+                        <view class="tab-indicator data-v-885b046c" wx:if="{{tab.c}}"></view>
+                    </view>
+                </view>
+            </view>
+            <scroll-view scrollY bindscrolltolower="{{d}}" bindtouchend="{{e}}" class="scroll-content data-v-885b046c" lowerThreshold="{{50}}" scrollTop="{{c}}">
+                <view class="html-container data-v-885b046c">
+                    <mp-html bind:__l="__l" class="data-v-885b046c" uI="885b046c-1,885b046c-0" uP="{{b}}" wx:if="{{b}}"></mp-html>
+                </view>
+            </scroll-view>
+            <view class="agreement-footer data-v-885b046c">
+                <view class="progress-bar data-v-885b046c">
+                    <label class="progress-text data-v-885b046c">
+                        <block wx:if="{{f}}">已阅读全部协议</block>
+                        <block wx:else> 请滑动并阅读：<text class="highlight data-v-885b046c">{{g}}</text>
+                        </block>
+                    </label>
+                    <label class="{{['progress-badge','data-v-885b046c',i&&'all-read']}}">{{h}}/3</label>
+                </view>
+                <view class="actions data-v-885b046c">
+                    <button bindtap="{{j}}" class="btn-cancel data-v-885b046c"> 不同意 </button>
+                    <button bindtap="{{l}}" class="{{['btn-confirm','data-v-885b046c',k&&'disabled']}}"> 已阅读并同意 </button>
+                </view>
+            </view>
+        </view>
+    </st-dialog>
+    <st-dialog bind:__l="__l" bindcancel="{{n}}" bindconfirm="{{o}}" class="data-v-885b046c" uI="885b046c-2" uP="{{p}}" uS="{{['message']}}" wx:if="{{p}}">
+        <view class="user-agreement-content data-v-885b046c" slot="message" style="text-align:center"> 如需继续使用松赞小程序，请同意隐私政策 </view>
+    </st-dialog>
+</view>

@@ -1,0 +1,207 @@
+.wrap {
+  width: 100vw;
+  height: 100vh;
+  color: #515151;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.wrap .swiper {
+  display: block;
+  width: 100vw;
+  height: 526rpx;
+}
+
+.homeDetailListBg {
+  display: block;
+  width: 100vw;
+  height: 526rpx;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 150rpx;
+  margin-top: 20rpx;
+  background-color: #F0ECE0;
+  font-family: 'Inter';
+}
+
+.contentBg {
+  width: 100vw;
+  height: 100%;
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.datePart {
+  display: flex;
+  width: 655rpx;
+  margin: 26rpx auto;
+}
+
+.dateDetail {
+  font-size: 26rpx;
+}
+
+.font40 {
+  font-size: 40rpx;
+}
+
+.datePart .enterPart {
+  margin-right: 152rpx;
+}
+
+.datePart .leavePart {
+  margin-right: 60rpx;
+}
+
+.datePart .totalDateNumber {
+  padding-top: 10rpx;
+  margin-right: 40rpx;
+  font-size: 24rpx;
+  line-height: 40rpx;
+  color: 515151(102, 89, 82, 0.6);
+}
+
+.peopleNumber,
+.homeNumber {
+  padding-top: 10rpx;
+  line-height: 40rpx;
+  font-size: 24rpx;
+}
+
+.peopleNumber {
+  margin-right: 30rpx;
+}
+
+.content .explain {
+  margin-left: 47rpx;
+  font-size: 32.5rpx;
+  margin-bottom: 10rpx;
+}
+
+.explain text {
+  padding-left: 10rpx;
+}
+
+.order-overview {
+  width: 90%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.total {
+  color: #797575;
+  border: 1px solid #838383;
+  border-radius: 30rpx;
+  font-size: 20rpx;
+  width: 90rpx;
+  height: 30rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.yunshe_village {
+  width: 100%;
+  background: #F0ECE0;
+  margin-top: 20rpx;
+  padding-top: 40rpx;
+  padding-bottom: 40rpx;
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+  justify-content: center;
+  align-items: center;
+}
+
+.entering_and_leaving {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30rpx;
+}
+
+.time {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10rpx;
+  font-family: '微软雅黑';
+}
+
+.ipone {
+  font-size: 30rpx;
+}
+
+.navigation {
+  margin-right: 20rpx;
+  font-size: 30rpx;
+}
+
+.number_of_people_and_rooms {
+  display: flex;
+  font-size: 25rpx;
+  position: relative;
+  left: 40rpx;
+}
+
+.previewSwiper {
+  border-radius: 6rpx;
+  overflow: hidden;
+  margin-bottom: 107rpx;
+}
+
+.previewSwiperCloseBtn {
+  width: 34rpx;
+  height: 34rpx;
+  display: block;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.previewSwiperCloseBtn image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+swiper .wx-swiper-dot {
+  width: 8rpx;
+  height: 8rpx;
+  display: inline-flex;
+  /* 这里设置点点之间的距离 */
+  margin-left: 2rpx;
+  justify-content: space-between;
+}
+
+@media screen and (min-width:768px) {
+  .content .explain {
+    margin-left: 47rpx;
+    font-size: 26rpx;
+    margin-bottom: 10rpx;
+  }
+
+  .time {
+    display: flex;
+    flex-direction: column;
+    gap: 10rpx;
+    margin-right: 70rpx;
+    line-height: 45rpx;
+    font-size: 40rpx;
+  }
+
+  .number_of_people_and_rooms {
+    display: flex;
+    gap: 10rpx;
+    margin-top: 10rpx;
+    font-size: 30rpx;
+  }
+}

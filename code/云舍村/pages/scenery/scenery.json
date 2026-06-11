@@ -1,0 +1,15 @@
+{
+    "navigationBarTitleText":  "",
+    "navigationStyle":  "custom",
+    "enablePullDownRefresh":  true,
+    "onReachBottomDistance":  50,
+    "usingComponents":  {
+                            "notice":  "../../components/notice",
+                            "swiper-box":  "../../components/swiperBox",
+                            "tabs":  "../../components/tabs",
+                            "bottom-nav":  "../../components/bottomNav",
+                            "coustom-head":  "../../components/coustomHead",
+                            "empty":  "../../components/empty",
+                            "float-button-kf":  "/components/new/FloatButtonKf"
+                        }
+}

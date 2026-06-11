@@ -1,0 +1,14 @@
+{
+    "onReachBottomDistance":  30,
+    "navigationStyle":  "custom",
+    "navigationBarTitleText":  "搜索结果",
+    "usingComponents":  {
+                            "calendar":  "../../components/calendar",
+                            "destination-box":  "../../components/destinationBox",
+                            "bottom-dialog":  "../../components/bottomDialog",
+                            "empty":  "../../components/empty",
+                            "banner-swiper":  "../../components/bannerSwiper",
+                            "coustom-head":  "../../components/coustomHead",
+                            "product-card-list":  "../../components/new/ProductCardList"
+                        }
+}

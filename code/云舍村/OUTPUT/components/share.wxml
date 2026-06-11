@@ -1,0 +1,21 @@
+<view class="ui_share data-v-51e2d2be">
+    <view class="poster data-v-51e2d2be">
+        <image class="poster-img data-v-51e2d2be" mode="widthFix" src="{{a}}"></image>
+        <l-painter bind:__l="__l" bindsuccess="{{c}}" class="r data-v-51e2d2be" uI="51e2d2be-0" uP="{{d}}" uR="painter" wx:if="{{d}}"></l-painter>
+    </view>
+    <view class="bottom-btns data-v-51e2d2be">
+        <view class="control-btn-wrap data-v-51e2d2be">
+            <view bindtap="{{e}}" class="control-btn data-v-51e2d2be">
+                <view class="iconfont icon-a-24_baocuntupian data-v-51e2d2be"></view>
+                <view class="btn-text data-v-51e2d2be">保存图片</view>
+            </view>
+            <button class="control-btn share-btn data-v-51e2d2be" openType="share">
+                <view class="share-btn-content data-v-51e2d2be">
+                    <label class="iconfont icon-a-24_fenxianglianjie data-v-51e2d2be"></label>
+                    <view class="btn-text data-v-51e2d2be">分享链接</view>
+                </view>
+            </button>
+        </view>
+        <view bindtap="{{f}}" class="share-close-btn data-v-51e2d2be"> 取消 </view>
+    </view>
+</view>

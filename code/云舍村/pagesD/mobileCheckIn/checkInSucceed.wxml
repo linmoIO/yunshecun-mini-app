@@ -1,0 +1,21 @@
+<view class="ui_checkInSucceed data-v-cb3c7c01">
+    <coustom-head bind:__l="__l" class="data-v-cb3c7c01" uI="cb3c7c01-0" uP="{{a}}" wx:if="{{a}}"></coustom-head>
+    <view class="topBox data-v-cb3c7c01">
+        <view class="tipBox data-v-cb3c7c01">
+            <view class="hotel_wrap data-v-cb3c7c01">
+                <view class="data-v-cb3c7c01">
+                    <view class="hotel_tip data-v-cb3c7c01">
+                        <view class="icon iconfont icon-a-20_fangjianhao data-v-cb3c7c01"></view> 您即将入住 </view>
+                    <view class="hotel_name data-v-cb3c7c01">{{b}}</view>
+                </view>
+            </view>
+            <view class="subTips data-v-cb3c7c01"> 可直接前往酒店前台领取房卡，如需取消入住办理，请联系酒店人员 <label bindtap="{{c}}" class="phone-color data-v-cb3c7c01"> 400-0000-830 <view class="icon iconfont icon-a-12_youlajiantou_hui data-v-cb3c7c01"></view>
+                </label>
+            </view>
+        </view>
+        <image class="authBg data-v-cb3c7c01" mode="widthFix" src="https://dsplatweb.oss-cn-chengdu.aliyuncs.com/songzan/images/authBg.png"></image>
+    </view>
+    <view class="bottomBox data-v-cb3c7c01">
+        <view bindtap="{{d}}" class="back data-v-cb3c7c01">完成</view>
+    </view>
+</view>

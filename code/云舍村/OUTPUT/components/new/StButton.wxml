@@ -1,0 +1,4 @@
+<button bindgetphonenumber="{{i}}" bindtap="{{h}}" class="{{['button','data-v-ccf051cd',c,d,e]}}" openType="{{f}}" style="{{g}}">
+    <spin bind:__l="__l" class="button-loading data-v-ccf051cd" uI="ccf051cd-0" uP="{{b}}" wx:if="{{a}}"></spin>
+    <slot></slot>
+</button>

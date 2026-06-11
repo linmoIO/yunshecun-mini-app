@@ -1,0 +1,85 @@
+.button.data-v-ccf051cd {
+    --button-rounded: 8rpx;
+    --button-loading-size: 72rpx;
+    --button-simple-bg-color: #fff;
+    --button-simple-color: #000;
+    --button-simple-border-color: #000;
+    --button-white-color: #000;
+    --button-black-color: #fff;
+    --button-white-disabled-color: rgba(0,0,0,.25);
+    --button-black-disabled-color: #ccc;
+    --button-black-disabled-background-color: #eee;
+    --button-default-height: 96rpx;
+    --button-default-padding: 0 16rpx;
+    --button-default-font-size: 32rpx;
+    --button-small-height: 76rpx;
+    --button-small-padding: 0 32rpx;
+    --button-small-font-size: 28rpx;
+    --button-mini-height: 56rpx;
+    --button-mini-padding: 0 16rpx;
+    --button-mini-font-size: 24rpx;
+    align-items: center;
+    border-radius: var(--button-rounded);
+    display: inline-flex;
+    font-size: var(--button-default-font-size);
+    height: var(--button-default-height);
+    justify-content: center;
+    padding: var(--button-default-padding)
+}
+
+.button--small.data-v-ccf051cd {
+    font-size: var(--button-small-font-size);
+    height: var(--button-small-height);
+    padding: var(--button-small-padding)
+}
+
+.button--mini.data-v-ccf051cd {
+    font-size: var(--button-mini-font-size);
+    height: var(--button-mini-height);
+    padding: var(--button-mini-padding)
+}
+
+.button--white.data-v-ccf051cd {
+    background-color: #fff;
+    background-image: url(https://dsplatweb.oss-cn-chengdu.aliyuncs.com/songzan/images/btnWhite.png);
+    color: var(--button-white-color)
+}
+
+.button--black.data-v-ccf051cd,.button--white.data-v-ccf051cd {
+    background-repeat: repeat;
+    background-size: 80rpx 75rpx;
+    border: none
+}
+
+.button--black.data-v-ccf051cd {
+    background-color: #000;
+    background-image: url(https://dsplatweb.oss-cn-chengdu.aliyuncs.com/songzan/images/btnBlack.png);
+    color: var(--button-black-color)
+}
+
+.button--simple.data-v-ccf051cd {
+    border: 1px solid var(--button-simple-border-color)
+}
+
+.button--borderless.data-v-ccf051cd,.button--simple.data-v-ccf051cd {
+    background-color: var(--button-simple-bg-color);
+    color: var(--button-simple-color)
+}
+
+.button.block.data-v-ccf051cd {
+    display: flex
+}
+
+.button.disabled.data-v-ccf051cd {
+    background-image: none;
+    opacity: .75
+}
+
+.button.disabled.button--white.data-v-ccf051cd {
+    color: var(--button-white-disabled-color)
+}
+
+.button.disabled.button--black.data-v-ccf051cd {
+    background-color: var(--button-black-disabled-background-color);
+    color: var(--button-black-disabled-color)
+}

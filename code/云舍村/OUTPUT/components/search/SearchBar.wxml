@@ -1,0 +1,17 @@
+<view class="{{['search-input','data-v-53445f12',n]}}" style="{{'height:'+o+';'+p}}">
+    <block wx:if="{{a}}">
+        <view bindtap="{{d}}" class="range-date data-v-53445f12">
+            <view class="date data-v-53445f12"> 住 <text class="date-value data-v-53445f12">{{b}}</text>
+            </view>
+            <view class="date data-v-53445f12"> 离 <text class="date-value data-v-53445f12">{{c}}</text>
+            </view>
+        </view>
+        <view class="divider data-v-53445f12"></view>
+    </block>
+    <calendar bind:__l="__l" bindchangeDate="{{f}}" class="r data-v-53445f12" uI="53445f12-0" uR="calendarRef"></calendar>
+    <view class="iconfont icon-a-16_sousuo icon-search data-v-53445f12" style="{{'color:'+h}}" wx:if="{{g}}"></view>
+    <input bindconfirm="{{l}}" bindinput="{{k}}" class="input data-v-53445f12" confirmType="search" placeholder="{{j}}" value="{{i}}"></input>
+    <view bindtap="{{m}}" class="closeable data-v-53445f12">
+        <view class="iconfont icon-a-20_guanbi icon data-v-53445f12"></view>
+    </view>
+</view>

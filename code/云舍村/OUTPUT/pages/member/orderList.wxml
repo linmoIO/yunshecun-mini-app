@@ -1,0 +1,97 @@
+<view class="ui_orderList data-v-03807442">
+    <coustom-head bind:__l="__l" class="data-v-03807442" uI="03807442-0" uP="{{b}}" uS="{{['title']}}" wx:if="{{b}}">
+        <view class="orderTypeList data-v-03807442" slot="title">
+            <view bindtap="{{orderType.d}}" class="{{['orderType','data-v-03807442',orderType.c&&'active']}}" wx:for="{{a}}" wx:for-item="orderType" wx:key="b">{{orderType.a}}</view>
+        </view>
+    </coustom-head>
+    <view class="{{['data-v-03807442',p&&'fixedSearchBar']}}">
+        <view class="topBox data-v-03807442" wx:if="{{c}}">
+            <view class="searchInputBox data-v-03807442">
+                <search-input bind:__l="__l" bindclear="{{e}}" bindclick="{{f}}" bindsubmit="{{d}}" bindupdateModelValue="{{g}}" class="data-v-03807442" uI="03807442-1" uP="{{h}}" wx:if="{{h}}"></search-input>
+            </view>
+            <switch-bar bind:__l="__l" bindchangeIndex="{{i}}" class="data-v-03807442" uI="03807442-2" uP="{{j}}" wx:if="{{j}}"></switch-bar>
+        </view>
+        <view class="topBox data-v-03807442" wx:if="{{k}}">
+            <view class="searchInputBox data-v-03807442">
+                <view bindtap="{{l}}" class="inputMask data-v-03807442"></view>
+                <search-input bind:__l="__l" class="data-v-03807442" uI="03807442-3" uP="{{m}}" wx:if="{{m}}"></search-input>
+            </view>
+            <switch-bar bind:__l="__l" bindchangeIndex="{{n}}" class="data-v-03807442" uI="03807442-4" uP="{{o}}" wx:if="{{o}}"></switch-bar>
+        </view>
+    </view>
+    <view class="mockHeight data-v-03807442" wx:if="{{q}}"></view>
+    <view class="bottomBox data-v-03807442" wx:if="{{r}}">
+        <empty bind:__l="__l" class="data-v-03807442" uI="03807442-5" uP="{{t}}" wx:if="{{s}}"></empty>
+        <view bindtap="{{item.S}}" class="{{['orderItem','data-v-03807442',item.R&&'invalid']}}" wx:for="{{v}}" wx:key="Q">
+            <view class="topItem data-v-03807442">
+                <view class="leftPart data-v-03807442">
+                    <view class="{{['icon','data-v-03807442',item.a,item.b]}}"></view>
+                    <view class="channel data-v-03807442">{{item.c}}</view>
+                </view>
+                <view class="{{['rightPart','data-v-03807442',item.g&&'red',item.h&&'disabled']}}">{{item.d}}<label class="countTime data-v-03807442" wx:if="{{item.e}}">{{item.f}}</label>
+                </view>
+            </view>
+            <view class="middleItem data-v-03807442">
+                <image alt="" class="logo data-v-03807442" mode="aspectFill" src="{{item.i}}"></image>
+                <view class="info data-v-03807442">
+                    <view class="name data-v-03807442">{{item.j}}</view>
+                    <view class="info-line data-v-03807442" wx:if="{{item.k}}">{{item.l}}</view>
+                    <view class="info-line data-v-03807442">
+                        <label class="data-v-03807442" wx:if="{{item.m}}">{{item.n}}  </label>
+                        <label class="unit data-v-03807442" wx:if="{{item.o}}">数量x{{item.p}}</label>
+                    </view>
+                    <view class="info-line data-v-03807442" wx:if="{{item.q}}"> 券码{{item.r}}</view>
+                    <view class="desc data-v-03807442" wx:if="{{item.s}}"> 订单金额 ¥{{item.t}}</view>
+                    <block wx:else>
+                        <block wx:if="{{item.v}}">
+                            <view class="desc data-v-03807442"> 应付款 ¥{{item.w}}</view>
+                            <view class="desc data-v-03807442" wx:if="{{item.x}}"> 需付款 ¥{{item.y}}</view>
+                        </block>
+                        <view class="desc data-v-03807442" wx:else> 实付款 ¥{{item.z}}</view>
+                    </block>
+                </view>
+            </view>
+            <view class="bottomItem data-v-03807442">
+                <view catchtap="{{item.B}}" class="btnLeft data-v-03807442" wx:if="{{item.A}}"> 取消订单 </view>
+                <view catchtap="{{item.D}}" class="btnLeft data-v-03807442" wx:elif="{{item.C}}"> 在线客服 </view>
+                <view catchtap="{{item.F}}" class="btnLeft data-v-03807442" wx:elif="{{item.E}}"> 申请开票 </view>
+                <view catchtap="{{item.H}}" class="btnRight data-v-03807442" wx:if="{{item.G}}"> 去兑换 </view>
+                <view catchtap="{{item.J}}" class="btnRight data-v-03807442" wx:elif="{{item.I}}"> 去付款 </view>
+                <view catchtap="{{item.L}}" class="btnRight data-v-03807442" wx:elif="{{item.K}}"> 添加出行人 </view>
+                <view catchtap="{{item.N}}" class="btnRight data-v-03807442" wx:elif="{{item.M}}"> 立即签约 </view>
+                <view catchtap="{{item.P}}" class="btnRight data-v-03807442" wx:elif="{{item.O}}"> 填写接送信息 </view>
+            </view>
+        </view>
+    </view>
+    <view class="bottomBox data-v-03807442" wx:if="{{w}}">
+        <empty bind:__l="__l" class="data-v-03807442" uI="03807442-6" uP="{{y}}" wx:if="{{x}}"></empty>
+        <view bindtap="{{item.s}}" class="{{['orderItem','data-v-03807442',item.r&&'invalid']}}" wx:for="{{z}}" wx:key="q">
+            <view class="topItem data-v-03807442">
+                <view class="leftPart data-v-03807442">   </view>
+                <view class="{{['rightPart','data-v-03807442',item.d&&'red']}}">{{item.a}}<label class="countTime data-v-03807442" wx:if="{{item.b}}">{{item.c}}</label>
+                </view>
+            </view>
+            <view class="middleItem data-v-03807442">
+                <image alt="" class="logo data-v-03807442" mode="aspectFill" src="{{item.e}}"></image>
+                <view class="info data-v-03807442">
+                    <view class="name data-v-03807442">{{item.f}}</view>
+                    <view class="time data-v-03807442">{{item.g}}</view>
+                    <view class="desc data-v-03807442" wx:if="{{item.h}}"> 券码{{item.i}}</view>
+                    <view class="desc data-v-03807442"> 应付款 ¥{{item.j}}</view>
+                </view>
+            </view>
+            <view class="bottomItem data-v-03807442">
+                <view class="btnLeft data-v-03807442" wx:if="{{item.k}}"> 申请售后 </view>
+                <view class="btnLeft data-v-03807442" wx:if="{{item.l}}"> 确认收货 </view>
+                <view class="btnLeft data-v-03807442" wx:if="{{item.m}}"> 再次购买 </view>
+                <view class="btnLeft data-v-03807442" wx:if="{{item.n}}"> 开发票 </view>
+                <view class="btnLeft data-v-03807442" wx:if="{{item.o}}"> 去点评 </view>
+                <view class="btnRight data-v-03807442" wx:if="{{item.p}}"> 去付款 </view>
+            </view>
+        </view>
+    </view>
+    <kf-dialog bind:__l="__l" class="r data-v-03807442" uI="03807442-7" uP="{{B}}" uR="kf" wx:if="{{B}}"></kf-dialog>
+    <exchange-dialog bind:__l="__l" class="r data-v-03807442" uI="03807442-8" uP="{{D}}" uR="exchange" wx:if="{{D}}"></exchange-dialog>
+</view>
+<float-button-kf bind:__l="__l" class="data-v-03807442" data-c-h="{{!E}}" uI="03807442-9"></float-button-kf>
+<order-cancel-dialog bind:__l="__l" bindupdateShow="{{F}}" class="data-v-03807442" uI="03807442-10" uP="{{G}}" wx:if="{{G}}"></order-cancel-dialog>

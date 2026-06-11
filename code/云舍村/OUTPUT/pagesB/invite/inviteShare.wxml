@@ -1,0 +1,35 @@
+<view class="ui_invite_share data-v-b685e1e6" style="{{'background-image:'+v+';'+'background-size:'+'100% 100%'}}">
+    <view class="top data-v-b685e1e6">
+        <image alt="" class="userHeaderImg data-v-b685e1e6" src="{{a}}"></image>
+        <view class="info data-v-b685e1e6">
+            <view class="rowMemberCard data-v-b685e1e6">{{b}}</view>
+            <view class="rowUserName data-v-b685e1e6">{{c}}</view>
+        </view>
+    </view>
+    <view class="title1 data-v-b685e1e6">{{d}}</view>
+    <view class="title2 data-v-b685e1e6">{{e}}</view>
+    <view bindtap="{{f}}" class="btn data-v-b685e1e6">注册松赞会员</view>
+    <view class="title3 data-v-b685e1e6">和松赞一起，让这个世界的旅行更美好。</view>
+    <bottom-dialog bind:__l="__l" class="r data-v-b685e1e6" uI="b685e1e6-0" uP="{{q}}" uR="mobileLoginComponent" uS="{{['d']}}" wx:if="{{q}}">
+        <alert bind:__l="__l" class="data-v-b685e1e6" uI="b685e1e6-1,b685e1e6-0" uP="{{g}}" wx:if="{{g}}"></alert>
+        <view class="mobileLoginBox data-v-b685e1e6">
+            <view class="userInfoList data-v-b685e1e6">
+                <view class="userInfoItem data-v-b685e1e6">
+                    <view class="userInfoTitle data-v-b685e1e6">手机号</view>
+                    <view class="userInfoDesc data-v-b685e1e6">
+                        <input bindinput="{{i}}" class="data-v-b685e1e6" maxlength="11" placeholder="请输入手机号" type="number" value="{{h}}"></input>
+                        <view bindtap="{{k}}" class="{{['btn_yanzheng','data-v-b685e1e6',l&&'disabled']}}">{{j}}</view>
+                    </view>
+                </view>
+                <view class="userInfoItem data-v-b685e1e6">
+                    <view class="userInfoTitle data-v-b685e1e6">验证码</view>
+                    <view class="userInfoDesc data-v-b685e1e6">
+                        <input bindinput="{{n}}" class="data-v-b685e1e6" placeholder="请输入收到的验证码" type="number" value="{{m}}"></input>
+                    </view>
+                </view>
+            </view>
+            <view bindtap="{{o}}" class="mobileLoginBtn data-v-b685e1e6">登录</view>
+        </view>
+    </bottom-dialog>
+    <img-code bind:__l="__l" bindchangeTime="{{s}}" class="r data-v-b685e1e6" uI="b685e1e6-2" uP="{{t}}" uR="imgCodeComponent" wx:if="{{t}}"></img-code>
+</view>

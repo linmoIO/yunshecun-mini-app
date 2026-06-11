@@ -1,0 +1,56 @@
+.code-dialog__title.data-v-f0b9b977 {
+    align-items: center;
+    color: #333;
+    display: flex;
+    font-size: 28rpx;
+    font-weight: 700;
+    font-weight: 500;
+    height: 96rpx;
+    justify-content: center
+}
+
+.code-dialog__content.data-v-f0b9b977 {
+    background-color: #f8f8f8;
+    height: 100%;
+    padding: 32rpx;
+    width: 100%
+}
+
+.code-dialog__form.data-v-f0b9b977 {
+    width: 100%
+}
+
+.code-dialog__form-item.data-v-f0b9b977 {
+    align-items: center;
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 8rpx;
+    display: flex;
+    height: 100%;
+    height: 84rpx;
+    margin-bottom: 24rpx;
+    width: 100%
+}
+
+.code-dialog__form-item .code-dialog__form-input.data-v-f0b9b977 {
+    border-radius: 8rpx;
+    flex: 1;
+    height: 100%;
+    padding: 0 24rpx
+}
+
+.code-dialog__form-item .code-dialog__form-img-wrapper.data-v-f0b9b977 {
+    align-items: center;
+    display: flex;
+    flex-shrink: 0;
+    height: 80rpx;
+    justify-content: center;
+    width: 220rpx
+}
+
+.code-dialog__form-item .code-dialog__form-img-wrapper .code-dialog__form-img.data-v-f0b9b977 {
+    height: 100%;
+    -o-object-fit: contain;
+    object-fit: contain;
+    width: 100%
+}

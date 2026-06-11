@@ -1,0 +1,54 @@
+<view class="my-trip-component data-v-aef4e11b">
+    <view class="plan-classify__wrapper data-v-aef4e11b" style="{{'top:'+c}}">
+        <plan-classify-tabs bind:__l="__l" bindchange="{{a}}" class="data-v-aef4e11b" uI="aef4e11b-0" uP="{{b}}" wx:if="{{b}}"></plan-classify-tabs>
+    </view>
+    <view class="data-v-aef4e11b" style="height:45px"></view>
+    <view class="my-trip-list data-v-aef4e11b" wx:if="{{d}}">
+        <view class="refreshing-style data-v-aef4e11b" wx:if="{{e}}"> 数据刷新中... </view>
+        <view bindtap="{{item.G}}" class="my-trip-list-item data-v-aef4e11b" wx:for="{{f}}" wx:key="F">
+            <view class="list-image-type data-v-aef4e11b">
+                <view class="type-planned data-v-aef4e11b" wx:if="{{item.a}}">计划中</view>
+                <view class="type-following-up data-v-aef4e11b" wx:if="{{item.b}}">顾问跟进中</view>
+                <view class="type-ordered data-v-aef4e11b" wx:if="{{item.c}}">已下单</view>
+                <view class="type-terminated data-v-aef4e11b" wx:if="{{item.d}}">已终止</view>
+                <view class="renew-content data-v-aef4e11b">
+                    <text class="data-v-aef4e11b">{{item.e}}更新于</text>
+                    <text class="renew-date data-v-aef4e11b">{{item.f}}</text>
+                    <text class="data-v-aef4e11b" wx:if="{{item.g}}"> · {{item.h}}人已收藏</text>
+                </view>
+                <image class="list-image data-v-aef4e11b" src="{{item.i}}"></image>
+            </view>
+            <view class="list-title data-v-aef4e11b">{{item.j}}</view>
+            <view class="list-info-title data-v-aef4e11b">
+                <text class="data-v-aef4e11b" wx:if="{{item.k}}">{{item.l}}成人</text>
+                <text class="data-v-aef4e11b" wx:if="{{item.m}}">{{item.n}}儿童</text>
+                <text class="data-v-aef4e11b" wx:if="{{item.o}}">·</text>
+                <text class="data-v-aef4e11b">{{item.p}}</text>
+                <text class="data-v-aef4e11b" wx:if="{{item.q}}">-</text>
+                <text class="data-v-aef4e11b">{{item.r}}</text>
+                <text class="data-v-aef4e11b" wx:if="{{item.s}}">·</text>
+                <text class="data-v-aef4e11b">{{item.t}}</text>
+            </view>
+            <view class="list-bottom data-v-aef4e11b">
+                <view class="bottom-price data-v-aef4e11b">
+                    <view class="adviser-price data-v-aef4e11b" wx:if="{{item.v}}">以顾问报价为准</view>
+                    <view class="price-box data-v-aef4e11b" wx:else>
+                        <view class="price data-v-aef4e11b">¥{{item.w}}</view>
+                        <view class="rise data-v-aef4e11b">/人起</view>
+                    </view>
+                </view>
+                <view class="bottom-btn data-v-aef4e11b">
+                    <view catchtap="{{item.y}}" class="btn-edit data-v-aef4e11b" wx:if="{{item.x}}">继续编辑</view>
+                    <view catchtap="{{item.A}}" class="btn-ask data-v-aef4e11b" wx:if="{{item.z}}"> 下咨询单</view>
+                    <view catchtap="{{item.C}}" class="btn-edit data-v-aef4e11b" wx:if="{{item.B}}"> 联系顾问</view>
+                    <view catchtap="{{item.E}}" class="btn-edit data-v-aef4e11b" wx:if="{{item.D}}">重新编辑</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="ui_tripList data-v-aef4e11b" wx:else>
+        <empty bind:__l="__l" class="data-v-aef4e11b" uI="aef4e11b-1" uP="{{g}}" wx:if="{{g}}"></empty>
+    </view>
+    <kf-dialog bind:__l="__l" class="r data-v-aef4e11b" uI="aef4e11b-2" uP="{{i}}" uR="kf" wx:if="{{i}}"></kf-dialog>
+    <confirmation-dialog bind:__l="__l" bindupdateModelValue="{{j}}" class="data-v-aef4e11b" uI="aef4e11b-3" uP="{{k}}" wx:if="{{k}}"></confirmation-dialog>
+</view>

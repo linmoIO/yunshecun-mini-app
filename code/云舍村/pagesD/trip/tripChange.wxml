@@ -1,0 +1,176 @@
+<view class="ui_tripChange data-v-6f5255df">
+    <coustom-head bind:__l="__l" class="data-v-6f5255df" uI="6f5255df-0" uP="{{a}}" wx:if="{{a}}"></coustom-head>
+    <view class="tripChange data-v-6f5255df" wx:if="{{b}}">
+        <block wx:if="{{c}}">
+            <view class="change-warp data-v-6f5255df" wx:for="{{d}}" wx:key="v">
+                <view class="info-box data-v-6f5255df" wx:if="{{item.a}}">
+                    <view class="state-box data-v-6f5255df" wx:if="{{item.b}}">
+                        <view class="state data-v-6f5255df">
+                            <view class="iconfont icon-a-20_jieguo_dengdai data-v-6f5255df"></view>待出行人确认 </view>
+                        <view class="countdown data-v-6f5255df">{{item.c}}后未确认将自动取消变更 </view>
+                    </view>
+                    <view class="state-box data-v-6f5255df" wx:if="{{item.d}}">
+                        <view class="state data-v-6f5255df">
+                            <view class="iconfont icon-a-20_jieguo_dengdai data-v-6f5255df"></view>行程变更已取消 </view>
+                    </view>
+                    <view class="state-box data-v-6f5255df" wx:if="{{item.e}}">
+                        <view class="state data-v-6f5255df" wx:if="{{item.f}}">
+                            <view class="iconfont icon-a-20_jieguo_dengdai data-v-6f5255df"></view>待预订人支付 </view>
+                        <view class="state data-v-6f5255df" wx:else>
+                            <view class="iconfont icon-a-20_jieguo_dengdai data-v-6f5255df"></view>待支付 </view>
+                    </view>
+                    <view class="state-box data-v-6f5255df" wx:if="{{item.g}}">
+                        <view class="state data-v-6f5255df">
+                            <view class="iconfont icon-a-20_jieguo_dengdai data-v-6f5255df"></view>待其他出行人确认 </view>
+                        <view class="countdown data-v-6f5255df">{{item.h}}后未确认将自动取消变更 </view>
+                    </view>
+                    <view class="state-box data-v-6f5255df" wx:if="{{item.i}}">
+                        <view class="state data-v-6f5255df">
+                            <view class="iconfont icon-a-20_jieguo_chenggong data-v-6f5255df"></view>行程变更已完成 </view>
+                    </view>
+                </view>
+                <view class="info-box data-v-6f5255df">
+                    <view class="info-head data-v-6f5255df">变更项目</view>
+                    <view class="change-info data-v-6f5255df">
+                        <view class="change-info-item data-v-6f5255df" wx:if="{{item.j}}">
+                            <view class="lable data-v-6f5255df">新增/调整</view>
+                            <view class="change-list data-v-6f5255df">
+                                <view class="change-item data-v-6f5255df" wx:if="{{adjust.a}}" wx:for="{{item.k}}" wx:for-item="adjust" wx:key="e">
+                                    <view class="name data-v-6f5255df">{{adjust.b}}</view>
+                                    <view class="time data-v-6f5255df"> DAY{{adjust.c}} · {{adjust.d}}</view>
+                                </view>
+                            </view>
+                        </view>
+                        <view class="change-info-item data-v-6f5255df" wx:if="{{item.l}}">
+                            <view class="lable data-v-6f5255df">删除</view>
+                            <view class="change-list data-v-6f5255df">
+                                <view class="change-item data-v-6f5255df" wx:if="{{adjust.a}}" wx:for="{{item.m}}" wx:for-item="adjust" wx:key="e">
+                                    <view class="name data-v-6f5255df">{{adjust.b}}</view>
+                                    <view class="time data-v-6f5255df"> DAY{{adjust.c}} · {{adjust.d}}</view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+                <block wx:if="{{item.n}}">
+                    <view class="info-box data-v-6f5255df" wx:if="{{item.o}}">
+                        <view class="info-head data-v-6f5255df">费用明细</view>
+                        <view class="info-list data-v-6f5255df">
+                            <view class="info-item data-v-6f5255df">
+                                <view class="lable data-v-6f5255df">修改后订单金额</view>
+                                <view class="val data-v-6f5255df">¥{{item.p}}</view>
+                            </view>
+                            <view class="info-item data-v-6f5255df">
+                                <view class="lable data-v-6f5255df">原订单金额</view>
+                                <view class="val data-v-6f5255df">¥{{item.q}}</view>
+                            </view>
+                            <view class="info-item data-v-6f5255df">
+                                <view class="lable data-v-6f5255df">需支付差价</view>
+                                <view class="val weight data-v-6f5255df"> ¥{{item.r}}</view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="info-box data-v-6f5255df">
+                        <view class="info-head data-v-6f5255df">出行人确认进度</view>
+                        <view class="info-list data-v-6f5255df">
+                            <view class="info-item data-v-6f5255df" wx:if="{{guest.a}}" wx:for="{{item.s}}" wx:for-item="guest" wx:key="g">
+                                <view class="lable black data-v-6f5255df">{{guest.b}}</view>
+                                <view class="val orange data-v-6f5255df" wx:if="{{guest.c}}"> 待确认 </view>
+                                <view bindtap="{{guest.f}}" class="val grey data-v-6f5255df" wx:if="{{guest.d}}"> 已确认·{{guest.e}}<view class="iconfont icon-a-12_youlajiantou_hei data-v-6f5255df"></view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="tips data-v-6f5255df">您可帮助其他出行人一并确认</view>
+                </block>
+                <view bindtap="{{item.t}}" class="tripChangeBtn data-v-6f5255df" wx:elif="{{e}}"> 行程变更确认书<view class="iconfont icon-a-16_youlajiantou_hei data-v-6f5255df"></view>
+                </view>
+            </view>
+        </block>
+        <view class="change-warp data-v-6f5255df" wx:if="{{f}}">
+            <view bindtap="{{item.q}}" class="info-box2 data-v-6f5255df" key="i" wx:for="{{g}}">
+                <view class="info-head data-v-6f5255df">
+                    <view class="tl data-v-6f5255df">
+                        <view class="iconfont icon-a-20_hangchengbiangeng data-v-6f5255df"></view>变更申请 {{item.a}}</view>
+                    <view class="info-head-state data-v-6f5255df" wx:if="{{item.b}}"> 待出行人确认{{item.c}}</view>
+                    <view class="info-head-state data-v-6f5255df" wx:if="{{item.d}}"> 待预订人支付 </view>
+                    <view class="info-head-state data-v-6f5255df" wx:if="{{item.e}}"> 待支付 </view>
+                    <view class="info-head-state data-v-6f5255df" wx:if="{{item.f}}"> 待其他出行人确认{{item.g}}</view>
+                    <view class="info-head-state data-v-6f5255df" wx:if="{{item.h}}"> 行程变更已取消 </view>
+                    <view class="info-head-state black data-v-6f5255df" wx:if="{{item.i}}"> 已完成 </view>
+                </view>
+                <view class="change-info data-v-6f5255df">
+                    <view class="change-info-item data-v-6f5255df" wx:if="{{item.j}}">
+                        <view class="lable data-v-6f5255df">新增/调整</view>
+                        <view class="change-list data-v-6f5255df">
+                            <view class="change-item data-v-6f5255df" wx:if="{{adjust.a}}" wx:for="{{item.k}}" wx:for-item="adjust" wx:key="c">
+                                <view class="name data-v-6f5255df">{{adjust.b}}</view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="change-info-item data-v-6f5255df" wx:if="{{item.l}}">
+                        <view class="lable data-v-6f5255df">删除</view>
+                        <view class="change-list data-v-6f5255df">
+                            <view class="change-item data-v-6f5255df" wx:if="{{adjust.a}}" wx:for="{{item.m}}" wx:for-item="adjust" wx:key="c">
+                                <view class="name data-v-6f5255df">{{adjust.b}}</view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="change-info-item data-v-6f5255df">
+                        <view class="lable data-v-6f5255df">发起时间</view>
+                        <view class="change-list data-v-6f5255df">
+                            <view class="change-item data-v-6f5255df">{{item.n}}</view>
+                        </view>
+                    </view>
+                </view>
+                <view class="btns data-v-6f5255df">
+                    <view class="btn data-v-6f5255df">详情</view>
+                    <view catchtap="{{item.p}}" class="btn baseBtn data-v-6f5255df" wx:if="{{item.o}}"> 确认更变 </view>
+                </view>
+            </view>
+        </view>
+        <view class="change-warp data-v-6f5255df" wx:if="{{h}}">
+            <view class="info-box data-v-6f5255df">
+                <view class="tl data-v-6f5255df">计划赶不上变化？没关系！</view>
+                <view class="desc data-v-6f5255df"> 如果您需要调整活动项目、参与时间、参与成员，可联系管家申请变更，行程变更后可能会产生价格差。变更流程如下： </view>
+                <view class="step data-v-6f5255df">
+                    <view class="step-item data-v-6f5255df">
+                        <view class="step-item-no data-v-6f5255df">1</view>
+                        <view class="step-item-desc data-v-6f5255df">联系管家，发起行程变更</view>
+                    </view>
+                    <view class="step-item data-v-6f5255df">
+                        <view class="step-item-no data-v-6f5255df">2</view>
+                        <view class="step-item-desc data-v-6f5255df">出行人同意变更</view>
+                    </view>
+                    <view class="step-item data-v-6f5255df">
+                        <view class="step-item-no data-v-6f5255df">3</view>
+                        <view class="step-item-desc data-v-6f5255df">预订人支付差价</view>
+                    </view>
+                    <view class="step-item data-v-6f5255df">
+                        <view class="step-item-no data-v-6f5255df">4</view>
+                        <view class="step-item-desc data-v-6f5255df">行程变更完成</view>
+                    </view>
+                </view>
+            </view>
+            <view class="info-box data-v-6f5255df" wx:if="{{i}}">
+                <view class="housekeepInfo data-v-6f5255df">
+                    <view class="head data-v-6f5255df">
+                        <image class="head-img data-v-6f5255df" mode="aspectFill" src="{{k}}" wx:if="{{j}}"></image>
+                        <image class="head-img data-v-6f5255df" src="https://dsplatweb.oss-cn-chengdu.aliyuncs.com/songzan/images/head-def.png" wx:else></image>
+                    </view>
+                    <view class="housekeepInfo-head data-v-6f5255df">
+                        <view class="left-part data-v-6f5255df">
+                            <view class="career data-v-6f5255df">顾问</view>
+                            <view class="name data-v-6f5255df">{{l}}</view>
+                        </view>
+                        <view catchtap="{{n}}" class="iconfont icon-a-28_dianhua data-v-6f5255df" wx:if="{{m}}"></view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="footer data-v-6f5255df" wx:if="{{o}}">
+        <view bindtap="{{q}}" class="baseBtn data-v-6f5255df" wx:if="{{p}}"> 立即支付 </view>
+        <view bindtap="{{r}}" class="baseBtn data-v-6f5255df" wx:else> 确认变更 </view>
+    </view>
+</view>

@@ -1,0 +1,3 @@
+<st-checkbox bind:__l="__l" bindupdateModelValue="{{d}}" class="data-v-06d53b6d" uI="06d53b6d-0" uP="{{e}}" uS="{{['d']}}" wx:if="{{e}}">
+    <view class="{{['agreement-text','data-v-06d53b6d',c]}}"> 我理解并同意松赞按照<text catchtap="{{a}}" class="agreement-text__strong data-v-06d53b6d"> 《用户协议》 </text>、<text catchtap="{{b}}" class="agreement-text__strong data-v-06d53b6d"> 《隐私政策》 </text>所述处理我的个人信息，并接受来自松赞的关于其他产品和服务的广告讯息和联络。 </view>
+</st-checkbox>

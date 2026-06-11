@@ -1,0 +1,8 @@
+{
+    "navigationBarTitleText":  "选择可兑产品",
+    "navigationStyle":  "custom",
+    "usingComponents":  {
+                            "coustom-head":  "../../components/coustomHead",
+                            "exchange-list-box":  "../components/ExchangeListBox"
+                        }
+}

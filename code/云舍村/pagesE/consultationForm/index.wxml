@@ -1,0 +1,195 @@
+<view class="consultationForm_ui data-v-9e1edb21">
+    <coustom-head bind:__l="__l" class="data-v-9e1edb21" uI="9e1edb21-0" uP="{{a}}" wx:if="{{a}}"></coustom-head>
+    <view class="header_wrap data-v-9e1edb21" style="{{'background-image:'+j}}">
+        <view class="title data-v-9e1edb21">{{b}}</view>
+        <view class="subTitle data-v-9e1edb21">{{c}}</view>
+        <view class="hotel-box data-v-9e1edb21">
+            <view class="userInfoList data-v-9e1edb21">
+                <view class="userInfoItem data-v-9e1edb21">
+                    <view class="userInfoTitle data-v-9e1edb21">姓名</view>
+                    <view class="userInfoDesc data-v-9e1edb21">
+                        <input bindinput="{{e}}" class="data-v-9e1edb21" placeholder="请输入您的姓名" type="text" value="{{d}}"></input>
+                    </view>
+                </view>
+                <view class="userInfoItem data-v-9e1edb21">
+                    <view class="userInfoTitle data-v-9e1edb21">手机号</view>
+                    <view class="userInfoDesc data-v-9e1edb21">
+                        <input bindinput="{{g}}" class="data-v-9e1edb21" maxlength="11" placeholder="请输入手机号" type="number" value="{{f}}"></input>
+                    </view>
+                </view>
+                <view class="userInfoItem data-v-9e1edb21">
+                    <view class="userInfoTitle data-v-9e1edb21">出行时间</view>
+                    <view bindtap="{{i}}" class="userInfoDesc data-v-9e1edb21">
+                        <view class="dayTime data-v-9e1edb21">{{h}}</view>
+                        <view class="icon_more iconfont icon-a-12_youlajiantou_hei data-v-9e1edb21"></view>
+                    </view>
+                </view>
+            </view>
+            <view class="form_tip data-v-9e1edb21"> 以下为选填信息,填写有助于顾问更快了解您的需求。 </view>
+        </view>
+    </view>
+    <view class="destination_wrap data-v-9e1edb21">
+        <view class="des_main data-v-9e1edb21">
+            <view class="des_title data-v-9e1edb21">心仪目的地</view>
+            <view class="place_wrap data-v-9e1edb21" style="margin-top:8px">
+                <view class="data-v-9e1edb21" wx:for="{{k}}" wx:for-item="proItem" wx:key="d">
+                    <view class="des_name data-v-9e1edb21">{{proItem.a}}</view>
+                    <view class="check_wrap data-v-9e1edb21">
+                        <checkbox-group bindchange="{{proItem.c}}" class="checkbox_warp data-v-9e1edb21">
+                            <label class="{{['data-v-9e1edb21',item.f]}}" wx:for="{{proItem.b}}" wx:key="e">
+                                <view class="checkboxHidden data-v-9e1edb21">
+                                    <checkbox checked="{{item.b}}" class="data-v-9e1edb21" value="{{item.a}}"></checkbox>
+                                </view>
+                                <view class="name_wrap data-v-9e1edb21">{{item.c}}</view>
+                                <view class="{{[item.d,'icon_select','iconfont','icon-a-20_xuanzhongjiaobiao_youxiajiao_hongse','data-v-9e1edb21']}}"></view>
+                            </label>
+                        </checkbox-group>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="destination_wrap data-v-9e1edb21">
+        <view class="des_main data-v-9e1edb21">
+            <view class="des_title data-v-9e1edb21">行程偏好</view>
+            <view class="place_wrap data-v-9e1edb21">
+                <view class="des_name data-v-9e1edb21" style="margin-top:8px">偏好项目</view>
+                <view class="check_wrap data-v-9e1edb21">
+                    <checkbox-group bindchange="{{m}}" class="checkbox_warp data-v-9e1edb21">
+                        <label class="{{['data-v-9e1edb21',item.f]}}" wx:for="{{l}}" wx:key="e">
+                            <view class="checkboxHidden data-v-9e1edb21">
+                                <checkbox checked="{{item.b}}" class="data-v-9e1edb21" value="{{item.a}}"></checkbox>
+                            </view>
+                            <view class="name_wrap data-v-9e1edb21">{{item.c}}</view>
+                            <view class="{{[item.d,'icon_select','iconfont','icon-a-20_xuanzhongjiaobiao_youxiajiao_hongse','data-v-9e1edb21']}}"></view>
+                        </label>
+                    </checkbox-group>
+                </view>
+                <view class="des_name data-v-9e1edb21" style="margin-top:8px">更多需求</view>
+                <textarea autoHeight bindinput="{{o}}" class="textarea-text data-v-9e1edb21" placeholder="请输入其他行程需求" placeholderStyle="color: #CCCCCC;line-height: 22px;" value="{{n}}" wx:if="{{r0}}"></textarea>
+            </view>
+        </view>
+    </view>
+    <view class="destination_wrap data-v-9e1edb21">
+        <view class="des_main data-v-9e1edb21">
+            <view class="des_title data-v-9e1edb21">出行人数</view>
+            <view class="row rowNum data-v-9e1edb21">
+                <view class="tip data-v-9e1edb21"> 成人 <label class="tip_text data-v-9e1edb21">18岁及以上</label>
+                </view>
+                <view class="productNum data-v-9e1edb21">
+                    <view bindtap="{{q}}" class="data-v-9e1edb21">
+                        <view class="icon_select icon iconfont icon-a-20_jian data-v-9e1edb21" wx:if="{{p}}"></view>
+                        <view class="iconfont icon_disAble icon-a-20_jian_wufaxuanze data-v-9e1edb21" wx:else></view>
+                    </view>
+                    <label class="number data-v-9e1edb21">{{r}}</label>
+                    <view bindtap="{{s}}" class="data-v-9e1edb21">
+                        <view class="icon_select icon iconfont icon-a-20_jia data-v-9e1edb21"></view>
+                    </view>
+                </view>
+            </view>
+            <view class="row rowNum data-v-9e1edb21">
+                <view class="tip data-v-9e1edb21"> 大童 <label class="tip_text data-v-9e1edb21">12岁（含）-18岁</label>
+                </view>
+                <view class="productNum data-v-9e1edb21">
+                    <view bindtap="{{v}}" class="data-v-9e1edb21">
+                        <view class="icon_select icon iconfont icon-a-20_jian data-v-9e1edb21" wx:if="{{t}}"></view>
+                        <view class="iconfont icon_disAble icon-a-20_jian_wufaxuanze data-v-9e1edb21" wx:else></view>
+                    </view>
+                    <label class="number data-v-9e1edb21">{{w}}</label>
+                    <view bindtap="{{x}}" class="data-v-9e1edb21">
+                        <view class="icon_select icon iconfont icon-a-20_jia data-v-9e1edb21"></view>
+                    </view>
+                </view>
+            </view>
+            <view class="row rowNum data-v-9e1edb21">
+                <view class="tip data-v-9e1edb21"> 中童 <label class="tip_text data-v-9e1edb21">6岁（含）-12岁</label>
+                </view>
+                <view class="productNum data-v-9e1edb21">
+                    <view bindtap="{{z}}" class="data-v-9e1edb21">
+                        <view class="icon_select icon iconfont icon-a-20_jian data-v-9e1edb21" wx:if="{{y}}"></view>
+                        <view class="iconfont icon_disAble icon-a-20_jian_wufaxuanze data-v-9e1edb21" wx:else></view>
+                    </view>
+                    <label class="number data-v-9e1edb21">{{A}}</label>
+                    <view bindtap="{{B}}" class="data-v-9e1edb21">
+                        <view class="icon_select icon iconfont icon-a-20_jia data-v-9e1edb21"></view>
+                    </view>
+                </view>
+            </view>
+            <view class="row rowNum data-v-9e1edb21">
+                <view class="tip data-v-9e1edb21"> 幼童 <label class="tip_text data-v-9e1edb21">未满6岁</label>
+                </view>
+                <view class="productNum data-v-9e1edb21">
+                    <view bindtap="{{D}}" class="data-v-9e1edb21">
+                        <view class="icon_select icon iconfont icon-a-20_jian data-v-9e1edb21" wx:if="{{C}}"></view>
+                        <view class="iconfont icon_disAble icon-a-20_jian_wufaxuanze data-v-9e1edb21" wx:else></view>
+                    </view>
+                    <label class="number data-v-9e1edb21">{{E}}</label>
+                    <view bindtap="{{F}}" class="data-v-9e1edb21">
+                        <view class="icon_select icon iconfont icon-a-20_jia data-v-9e1edb21"></view>
+                    </view>
+                </view>
+            </view>
+            <view class="row rowNum data-v-9e1edb21">
+                <view class="tip data-v-9e1edb21"> 含老人 <label class="tip_text data-v-9e1edb21">60岁及以上</label>
+                </view>
+                <view class="productNum data-v-9e1edb21">
+                    <view bindtap="{{H}}" class="data-v-9e1edb21">
+                        <view class="icon_select icon iconfont icon-a-20_jian data-v-9e1edb21" wx:if="{{G}}"></view>
+                        <view class="iconfont icon_disAble icon-a-20_jian_wufaxuanze data-v-9e1edb21" wx:else></view>
+                    </view>
+                    <label class="number data-v-9e1edb21">{{I}}</label>
+                    <view bindtap="{{J}}" class="data-v-9e1edb21">
+                        <view class="icon_select icon iconfont icon-a-20_jia data-v-9e1edb21"></view>
+                    </view>
+                </view>
+            </view>
+            <view class="row rowNum data-v-9e1edb21">
+                <view class="tip data-v-9e1edb21">含港澳台人士</view>
+                <view class="productNum data-v-9e1edb21">
+                    <view bindtap="{{L}}" class="data-v-9e1edb21">
+                        <view class="icon_select icon iconfont icon-a-20_jian data-v-9e1edb21" wx:if="{{K}}"></view>
+                        <view class="iconfont icon_disAble icon-a-20_jian_wufaxuanze data-v-9e1edb21" wx:else></view>
+                    </view>
+                    <label class="number data-v-9e1edb21">{{M}}</label>
+                    <view bindtap="{{N}}" class="data-v-9e1edb21">
+                        <view class="icon_select icon iconfont icon-a-20_jia data-v-9e1edb21"></view>
+                    </view>
+                </view>
+            </view>
+            <view class="row rowNum data-v-9e1edb21">
+                <view class="tip data-v-9e1edb21">含外籍人士</view>
+                <view class="productNum data-v-9e1edb21">
+                    <view bindtap="{{P}}" class="data-v-9e1edb21">
+                        <view class="icon_select icon iconfont icon-a-20_jian data-v-9e1edb21" wx:if="{{O}}"></view>
+                        <view class="iconfont icon_disAble icon-a-20_jian_wufaxuanze data-v-9e1edb21" wx:else></view>
+                    </view>
+                    <label class="number data-v-9e1edb21">{{Q}}</label>
+                    <view bindtap="{{R}}" class="data-v-9e1edb21">
+                        <view class="icon_select icon iconfont icon-a-20_jia data-v-9e1edb21"></view>
+                    </view>
+                </view>
+            </view>
+            <view class="row rowAddress data-v-9e1edb21">
+                <view class="tip data-v-9e1edb21" style="width:88px">出发地</view>
+                <view class="productAddress data-v-9e1edb21">
+                    <picker-address bind:__l="__l" bindchangeCity="{{U}}" class="data-v-9e1edb21" style="width:100%" uI="9e1edb21-1" uS="{{['d']}}">
+                        <view class="address_wrap data-v-9e1edb21">
+                            <view class="address_text textColor data-v-9e1edb21" wx:if="{{S}}"> 请选择出发地 </view>
+                            <view class="address_text data-v-9e1edb21" wx:else>{{T}}</view>
+                            <view class="goAddress icon_more iconfont icon-a-12_youlajiantou_hei data-v-9e1edb21"></view>
+                        </view>
+                    </picker-address>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="bottom_dis data-v-9e1edb21"></view>
+    <view class="footer data-v-9e1edb21">
+        <view catchtap="{{V}}" class="kefu_wrap data-v-9e1edb21">
+            <view class="ke_text data-v-9e1edb21">一键咨询</view>
+        </view>
+        <view bindtap="{{W}}" class="order-btn data-v-9e1edb21">提交需求</view>
+    </view>
+    <calendar bind:__l="__l" bindchangeDate="{{Y}}" class="r data-v-9e1edb21" uI="9e1edb21-2" uP="{{Z}}" uR="calendarCompent" wx:if="{{Z}}"></calendar>
+    <kf-dialog bind:__l="__l" class="r data-v-9e1edb21" uI="9e1edb21-3" uP="{{ab}}" uR="kf" wx:if="{{ab}}"></kf-dialog>
+</view>

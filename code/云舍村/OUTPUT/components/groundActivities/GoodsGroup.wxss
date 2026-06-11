@@ -1,0 +1,162 @@
+.goods-group_main.data-v-feebbd27 {
+    padding-bottom: 32rpx
+}
+
+.goods-group_main .ad-container.data-v-feebbd27 {
+    margin-bottom: 24rpx
+}
+
+.goods-group_main .fade-slide.data-v-feebbd27 {
+    transition: all .3s ease
+}
+
+.goods-group_main .fade-show.data-v-feebbd27 {
+    opacity: 1;
+    transform: translateY(0)
+}
+
+.goods-group_main .fade-hide.data-v-feebbd27 {
+    opacity: 0;
+    transform: translateY(20rpx)
+}
+
+.goods-group_main .product-list.data-v-feebbd27 {
+    box-sizing: border-box;
+    min-height: 75vh;
+    padding: 0 32rpx
+}
+
+.goods-group_main .product-list .recommendation-list.data-v-feebbd27 {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: row;
+    gap: 30rpx
+}
+
+.goods-group_main .product-list .recommendation-list .recommendation-item.data-v-feebbd27 {
+    flex: 1
+}
+
+.goods-group_main .product-list .first-group_banner.data-v-feebbd27 {
+    border-radius: 16rpx;
+    display: block;
+    margin-bottom: 24rpx;
+    overflow: hidden
+}
+
+.goods-group_main .product-list .first-group_banner_image.data-v-feebbd27 {
+    height: 160rpx;
+    width: 100%
+}
+
+.goods-group_main .product-list .ad-custom-travel.data-v-feebbd27 {
+    border-radius: 16rpx;
+    display: block;
+    height: 164rpx;
+    margin: 24rpx 0;
+    overflow: hidden
+}
+
+.goods-group_main .product-list .ad-custom-travel__item.data-v-feebbd27 {
+    height: 164rpx
+}
+
+.goods-group_main .product-list .ad-custom-travel__image.data-v-feebbd27 {
+    width: 100%
+}
+
+.goods-group_main .group-container.data-v-feebbd27 {
+    background-color: #fff;
+    position: sticky;
+    z-index: 12
+}
+
+.goods-group_main .group-container .first-group_sticky.data-v-feebbd27 {
+    background-color: #fff;
+    padding-bottom: 16rpx;
+    padding-top: 16rpx;
+    z-index: 20
+}
+
+.goods-group_main .sticky-tabs.data-v-feebbd27 {
+    background-color: #fff;
+    position: sticky;
+    z-index: 15
+}
+
+.goods-group_main.data-v-feebbd27 ::-webkit-scrollbar {
+    color: transparent;
+    display: none;
+    height: 0;
+    width: 0
+}
+
+.goods-group_main .scroll-view_h.data-v-feebbd27 {
+    box-sizing: border-box;
+    height: 164rpx;
+    padding-left: 32rpx;
+    position: sticky
+}
+
+.goods-group_main .tab-placeholder.data-v-feebbd27 {
+    height: 32rpx
+}
+
+.goods-group_main .first-group.data-v-feebbd27 {
+    align-items: center;
+    box-sizing: border-box;
+    display: flex;
+    gap: 16rpx
+}
+
+.goods-group_main .first-group .right-placeholder.data-v-feebbd27 {
+    flex-shrink: 0;
+    height: 120rpx;
+    width: 36rpx
+}
+
+.goods-group_main .first-group .first-group_item.data-v-feebbd27 {
+    align-items: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 8rpx;
+    display: flex;
+    flex: 1;
+    flex-shrink: 0;
+    height: 120rpx;
+    justify-content: center;
+    position: relative
+}
+
+.goods-group_main .first-group .first-group_item .select-mask.data-v-feebbd27 {
+    background: linear-gradient(0deg,rgba(0,0,0,.2),rgba(0,0,0,.2)),linear-gradient(0deg,rgba(164,49,39,.8),rgba(164,49,39,.8));
+    border-radius: 8rpx;
+    height: 120rpx;
+    left: 50%;
+    position: absolute;
+    top: 0;
+    transform: translate(-50%);
+    width: 100%;
+    z-index: 1
+}
+
+.goods-group_main .first-group .first-group_item .select-mask.data-v-feebbd27:after {
+    background-image: url(https://songtsam-internal-static.oss-cn-chengdu.aliyuncs.com/mobile/assets/ic-tab-change.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    bottom: -14rpx;
+    content: "";
+    height: 16rpx;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%);
+    width: 32rpx
+}
+
+.goods-group_main .first-group .first-group_item_name.data-v-feebbd27 {
+    color: #fff;
+    font-family: Source Han Serif CN;
+    font-size: 32rpx;
+    position: relative;
+    z-index: 2
+}

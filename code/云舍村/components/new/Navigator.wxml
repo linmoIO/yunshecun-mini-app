@@ -1,0 +1,29 @@
+<view bindtap="{{n}}" class="{{['navigator','data-v-45650f7f',j,k]}}" style="{{l+';'+m}}">
+    <view class="navigator-bg data-v-45650f7f" style="{{'opacity:'+a}}"></view>
+    <view class="navigator-bar data-v-45650f7f" style="{{i}}">
+        <view class="navigator-bar__actions data-v-45650f7f" wx:if="{{b}}">
+            <slot name="actions" wx:if="{{$slots.actions}}"></slot>
+            <view class="navigator-bar__actions-content data-v-45650f7f" wx:else>
+                <view bindtap="{{d}}" class="action-item data-v-45650f7f" wx:if="{{c}}">
+                    <view class="icon iconfont icon-arrow-left-line data-v-45650f7f"></view>
+                </view>
+                <view bindtap="{{f}}" class="action-item data-v-45650f7f" wx:if="{{e}}">
+                    <view class="icon iconfont icon-home-line data-v-45650f7f"></view>
+                </view>
+            </view>
+        </view>
+        <view class="navigator-bar__title data-v-45650f7f">
+            <slot wx:if="{{$slots.d}}"></slot>
+            <text class="navigator-bar__title--text data-v-45650f7f" wx:else>{{g}}</text>
+        </view>
+        <view class="navigator-bar__extra data-v-45650f7f">
+            <slot name="extra" wx:if="{{$slots.extra}}"></slot>
+            <block wx:else>
+                <button class="action-item data-v-45650f7f" openType="share" wx:if="{{h}}">
+                    <view class="icon iconfont icon-a-20_fenxianganniu_bai data-v-45650f7f"></view>
+                </button>
+            </block>
+        </view>
+    </view>
+</view>
+<view class="navigator--placeholder data-v-45650f7f" style="{{'height:'+p}}" wx:if="{{o}}"></view>

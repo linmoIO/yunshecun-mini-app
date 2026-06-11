@@ -1,0 +1,39 @@
+<center-dialog bind:__l="__l" class="r data-v-ce9b9d0e" uI="ce9b9d0e-0" uP="{{i}}" uR="centerDialogRef" uS="{{['d']}}" wx:if="{{i}}">
+    <view class="retention data-v-ce9b9d0e">
+        <view class="retention__header data-v-ce9b9d0e">
+            <view class="retention__header__title data-v-ce9b9d0e">确定遗憾离开？</view>
+            <view class="retention__header__subTitle data-v-ce9b9d0e"> 距离愉快出行仅剩一步，若下单支付过程中遇到问题可联系顾问为您解决 </view>
+        </view>
+        <view class="retention__main data-v-ce9b9d0e">
+            <view bindtap="{{c}}" class="retention__main__consult data-v-ce9b9d0e" wx:if="{{a}}">
+                <view class="data-v-ce9b9d0e">
+                    <view class="iconfont icon-a-20_kefu consult-icon data-v-ce9b9d0e"></view>
+                </view>
+                <view class="data-v-ce9b9d0e">
+                    <view class="retention__main__consult__title data-v-ce9b9d0e">在线客服</view>
+                    <view class="retention__main__consult__text data-v-ce9b9d0e">{{b}}</view>
+                </view>
+                <view class="right-icon-box data-v-ce9b9d0e">
+                    <view class="iconfont icon-a-12_youlajiantou_hui right-icon data-v-ce9b9d0e"></view>
+                </view>
+            </view>
+            <view bindtap="{{e}}" class="retention__main__consult data-v-ce9b9d0e">
+                <view class="data-v-ce9b9d0e">
+                    <view class="iconfont icon-a-20_dianhua consult-icon data-v-ce9b9d0e"></view>
+                </view>
+                <view class="data-v-ce9b9d0e">
+                    <view class="retention__main__consult__title data-v-ce9b9d0e">电话客服</view>
+                    <view class="retention__main__consult__text data-v-ce9b9d0e">{{d}}</view>
+                </view>
+                <view class="right-icon-box data-v-ce9b9d0e">
+                    <view class="iconfont icon-a-12_youlajiantou_hui right-icon data-v-ce9b9d0e"></view>
+                </view>
+            </view>
+        </view>
+        <view class="retention__footer data-v-ce9b9d0e">
+            <view bindtap="{{f}}" class="retention__footer__btn cancel data-v-ce9b9d0e"> 确认离开 </view>
+            <view class="retention__footer__separation data-v-ce9b9d0e"></view>
+            <view bindtap="{{g}}" class="retention__footer__btn confirm data-v-ce9b9d0e"> 继续预订 </view>
+        </view>
+    </view>
+</center-dialog>

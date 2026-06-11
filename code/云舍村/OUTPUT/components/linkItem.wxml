@@ -1,0 +1,4 @@
+<view bindtap="{{b}}" class="linkItem data-v-2a11be81">
+    <view class="title data-v-2a11be81">{{a}}</view>
+    <view class="icon iconfont icon-a-16_youlajiantou_hei data-v-2a11be81"></view>
+</view>

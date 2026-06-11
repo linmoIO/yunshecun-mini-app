@@ -1,0 +1,24 @@
+.downLoad.data-v-bf51e621,.loading.data-v-bf51e621 {
+    background: #fff;
+    border-radius: 50%;
+    bottom: 64rpx;
+    bottom: calc(64rpx + constant(safe-area-inset-bottom));
+    bottom: calc(64rpx + env(safe-area-inset-bottom));
+    height: 76rpx;
+    position: fixed;
+    right: 32rpx;
+    width: 76rpx;
+    z-index: 10000
+}
+
+.downLoad.loading.data-v-bf51e621,.loading.loading.data-v-bf51e621 {
+    background: none
+}
+
+.downLoad .iconfont.data-v-bf51e621,.loading .iconfont.data-v-bf51e621 {
+    color: rgba(0,0,0,.88);
+    font-size: 80rpx;
+    left: -1px;
+    position: absolute;
+    top: -1px
+}

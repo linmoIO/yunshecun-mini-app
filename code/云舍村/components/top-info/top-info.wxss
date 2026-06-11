@@ -1,0 +1,121 @@
+/* components/top-info/top-info.wxss */
+
+.popup-box{
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  margin-top: -100rpx;
+}
+.info{
+  width: calc(100vw - 60rpx);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #F0ECE0;
+  padding: 10rpx 30rpx;
+  height: 70rpx;
+  overflow: hidden;
+}
+.info .swiper_zi {
+  height: 50rpx;
+  width: 100%;
+}
+.info .info-img{
+  width: 45rpx;
+  height: 45rpx;
+}
+.swiper_zi .info-text{
+  color: #7e7e7e;
+  font-size: calc(24 / 709 * 100vw);
+  margin-right: auto;
+  /* float: left; */
+  overflow: hidden;
+  /*隐藏溢出*/
+  text-overflow: ellipsis;
+  /*显示省略符号来代表被修剪的文本*/
+  white-space: nowrap;
+  /*强制文字不换行*/
+  color:  #7E7E7E;
+  line-height: 50rpx;
+  /* text-decoration:underline; */
+}
+
+.page-fangke-btn{
+  background: none;
+  border: 0;
+  padding: 0;
+  color: #7e7e7e;
+  font-size: calc(24 / 709 * 100vw);
+  /* border-bottom: 1px #977730 solid; */
+  float: right;
+  float: right;
+    margin-top: -45rpx;
+}
+
+.info-center{
+  position: fixed;
+  height:100vh;
+  top: 0;
+  left: 0;
+  z-index: 999900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10rpx;
+  width: 100%;
+}
+.info-content{
+  background-color: #F4EFE2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: calc(90% - 80rpx);
+  padding: 40rpx;
+  max-height: 60vh;
+  overflow-y: scroll;
+}
+.info-close{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 36rpx;
+  color: #000;
+  margin-bottom: 40rpx;
+}
+.info-close image{
+  flex: 0 0 36rpx;
+  display: block;
+  width: 36rpx;
+  height: 36rpx;
+}
+.info-contents{
+  font-size: 24rpx;
+  color: #000;
+}
+.info-content-list{
+  font-size: 25rpx;
+  line-height: 40rpx;
+  font-family: '微软雅黑';
+  margin-top: 66rpx;
+}
+
+/* .notification_content {
+  width: 80%;
+  font-size: 25rpx;
+  font-family: '微软雅黑';
+  position: absolute;
+  top: 180rpx;
+  left: 70rpx;
+  line-height: 40rpx;
+}
+
+.notification_bottom {
+  font-size: 25rpx;
+  font-family: '微软雅黑';
+  position: absolute;
+  bottom: 100rpx;
+  left: 70rpx;
+  line-height: 40rpx;
+} */

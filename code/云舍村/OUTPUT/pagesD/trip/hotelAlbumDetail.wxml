@@ -1,0 +1,13 @@
+<view class="ui_hotelAlbumDetail data-v-18c46e82">
+    <coustom-head bind:__l="__l" class="data-v-18c46e82" uI="18c46e82-0" uP="{{a}}" wx:if="{{a}}"></coustom-head>
+    <view class="moreText data-v-18c46e82" wx:if="{{b}}">
+        <more-text bind:__l="__l" class="data-v-18c46e82" uI="18c46e82-1" uP="{{c}}" wx:if="{{c}}"></more-text>
+    </view>
+    <view class="img-list data-v-18c46e82">
+        <view bindtap="{{item.c}}" class="img-item data-v-18c46e82" wx:for="{{d}}" wx:key="b">
+            <image class="album-item data-v-18c46e82" lazyLoad="true" mode="aspectFill" src="{{item.a}}"></image>
+        </view>
+    </view>
+    <empty bind:__l="__l" class="data-v-18c46e82" uI="18c46e82-2" uP="{{f}}" wx:if="{{e}}"></empty>
+</view>
+<v-preview-image bind:__l="__l" class="r data-v-18c46e82" uI="18c46e82-3" uP="{{h}}" uR="previewImageBox" wx:if="{{h}}"></v-preview-image>

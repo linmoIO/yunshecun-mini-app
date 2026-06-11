@@ -1,0 +1,10 @@
+{
+    "navigationBarTitleText":  "取消订单",
+    "navigationStyle":  "custom",
+    "usingComponents":  {
+                            "st-button":  "../../components/new/StButton",
+                            "kf-dialog":  "../../components/kfDialog",
+                            "recommend-products":  "../../components/RecommendProducts",
+                            "float-button-kf":  "/components/new/FloatButtonKf"
+                        }
+}

@@ -1,0 +1,14 @@
+<view class="net-error-popup data-v-7207bea8" wx:if="{{a}}">
+    <view class="net-error data-v-7207bea8">
+        <image class="net-error__image data-v-7207bea8" src="{{b}}"></image>
+        <view class="net-error__title data-v-7207bea8">家人别急，慢慢来~</view>
+        <view class="net-error__description data-v-7207bea8">当前访问人数如雪山融水般涌来</view>
+        <view class="net-error__description data-v-7207bea8">请稍后重试哦，扎西德勒！</view>
+        <view class="net-error__footer data-v-7207bea8">
+            <slot name="bottom" wx:if="{{$slots.bottom}}"></slot>
+            <block wx:else>
+                <st-button bind:__l="__l" bindclick="{{d}}" class="data-v-7207bea8" uI="7207bea8-0" uP="{{e}}" uS="{{['d']}}" wx:if="{{e}}">{{c}}</st-button>
+            </block>
+        </view>
+    </view>
+</view>

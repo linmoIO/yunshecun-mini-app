@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "订单",
+  "usingComponents": {
+    "navbar": "../../components/navBar/navBar",
+    "navigation-bar": "/components/navigation-bar/navigation-bar"
+  }
+}

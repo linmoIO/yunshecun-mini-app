@@ -1,0 +1,74 @@
+<navigation-bar title="游历票" back="{{true}}" color="black" background="#D9CDB3"></navigation-bar>
+<view class="bg-color1">
+
+  <view>
+    <view class="banner">
+      <swiper autoplay="true" interval="3000" duration="500" circular="true" indicator-active-color="#ffffff" class='sw'>
+        <block wx:for="{{price.coverUrlList}}" wx:key="item">
+          <swiper-item>
+            <navigator hover-class="none"  url="{{item.link}}" style="width:100%;height:100%;overflow:hidden">
+              <image src="{{item}}" class="slide-image" />
+            </navigator>
+            
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+    <view class="page-content">
+      <view class="page-notice">
+        已售罄状态只表示当下产品的库存状态，会根据此产品访客的下单状态进行更新。
+      </view>
+      <view class="page-ticket-num">
+        选择门票数量
+      </view>
+      <view class="page-ticket-date">
+        
+        <text>入村日期：</text>
+        <picker mode="date" value="{{date}}" start="2024-05-15" bindchange="bindDateChange">
+          <view class="picker">
+            {{date}}
+          </view>
+        </picker>
+      </view>
+
+      <view class="page-ticket-list" wx:for="{{priceList}}" wx:key="index" hover-class="none"  bindtap="changeColor" style="background-color:{{index == viewnum ? pageBackgroundColor: 'nonw'}}"  data-index="{{index}}" >
+        <text class="page-ticket-list-title">{{item.name}}</text>
+        <text class="page-ticket-list-text">{{item.priceRemark}}</text>
+        <view class="page-ticket-list-content">
+          <view class="page-ticket-list-content-price">
+            ￥ {{item.price}}
+          </view>
+          <view class="page-ticket-list-content-num">
+            <button class="aug" type="default" size="mini" 
+            style="{{item.count > 0 ? 'background-color: #b09d73;' : ''}}" 
+            data-count="{{item.count}}" 
+            data-key="{{index}}"  
+            bindtap="decrement">-</button>
+              <input  type="number" bindchange="bindManual" 
+              data-key="{{index}}" 
+              data-key="{{index}}" 
+              value="{{item.count}}" />
+            <button class="dec" type="default" size="mini" 
+            style="{{daySurplus > 0 ? 'background-color: #b09d73;' : ''}}" 
+            data-count="{{item.count}}" 
+            data-key="{{index}}" 
+            bindtap="increment">+</button>
+          </view>
+        </view>
+      </view>
+      <view class="page-shopping">
+        <view class="page-shopping__price">
+          <view class="price-text">
+          总计：
+          </view>
+          <view class="price-num">
+          ￥ {{totalPrice * 1}}
+          </view>
+        </view>
+        <view class="price-btn" bindtap="toConfirm">
+          提交订单
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

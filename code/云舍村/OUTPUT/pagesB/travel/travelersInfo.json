@@ -1,0 +1,7 @@
+{
+    "navigationBarTitleText":  "新增出行人",
+    "navigationStyle":  "custom",
+    "usingComponents":  {
+                            "coustom-head":  "../../components/coustomHead"
+                        }
+}

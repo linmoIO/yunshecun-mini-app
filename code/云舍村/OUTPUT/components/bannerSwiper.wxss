@@ -1,0 +1,41 @@
+.ui_bannerSwiper.data-v-7c671b43 {
+    position: relative
+}
+
+.ui_bannerSwiper .adLogo.data-v-7c671b43 {
+    border-radius: 16rpx;
+    height: 100%;
+    width: 100%
+}
+
+.ui_bannerSwiper .swiper.data-v-7c671b43 {
+    height: 164rpx;
+    width: 100%
+}
+
+.ui_bannerSwiper .swiper .swiperItem.data-v-7c671b43 {
+    height: 100%;
+    width: 100%
+}
+
+.ui_bannerSwiper .swiper-dots.data-v-7c671b43 {
+    bottom: -16rpx;
+    display: flex;
+    height: 40rpx;
+    justify-content: center;
+    left: 0;
+    position: absolute;
+    width: 100%
+}
+
+.ui_bannerSwiper .swiper-dots .swiper-dot.data-v-7c671b43 {
+    background: #ccc;
+    height: 4rpx;
+    opacity: .28;
+    width: 24rpx
+}
+
+.ui_bannerSwiper .swiper-dots .swiper-dot.active.data-v-7c671b43 {
+    background: #000;
+    opacity: 1
+}

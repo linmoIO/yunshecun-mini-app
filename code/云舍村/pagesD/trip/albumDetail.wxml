@@ -1,0 +1,13 @@
+<view class="ui_albumDetail data-v-771d1761">
+    <coustom-head bind:__l="__l" class="data-v-771d1761" uI="771d1761-0" uP="{{a}}" wx:if="{{a}}"></coustom-head>
+    <view class="title data-v-771d1761">{{b}}</view>
+    <view class="moreText data-v-771d1761" wx:if="{{c}}">
+        <more-text bind:__l="__l" class="data-v-771d1761" uI="771d1761-1" uP="{{d}}" wx:if="{{d}}"></more-text>
+    </view>
+    <view class="img-list data-v-771d1761">
+        <view bindtap="{{item.c}}" class="img-item data-v-771d1761" wx:for="{{e}}" wx:key="b">
+            <image class="album-item data-v-771d1761" lazyLoad="true" mode="aspectFill" src="{{item.a}}"></image>
+        </view>
+    </view>
+</view>
+<v-preview-image bind:__l="__l" class="r data-v-771d1761" uI="771d1761-2" uP="{{g}}" uR="previewImageBox" wx:if="{{g}}"></v-preview-image>

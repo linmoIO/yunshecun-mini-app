@@ -1,0 +1,74 @@
+/* pages/writeOffHistory/writeOffHistory.wxss */
+scroll-view{
+  height: 100vh;
+}
+.page-content{
+  padding: 40rpx 40rpx 0;
+}
+.page-search{
+  width: 100%;
+  
+  overflow: hidden;
+}
+.page-search-list{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.page-search-list-input{
+  flex: 0 0 75%;
+}
+.page-search-list-btn{
+  flex: 0 0 22%;
+}
+.page-search-input{
+  display: block;
+  width: 100%!important;
+  height: 80rpx;
+  line-height: 80rpx;
+  border: 1px #A8A59D solid;
+}
+.page-search-button{
+  display: block;
+  width: 100%!important;
+  background: #B09D73;
+  border-radius: 6rpx;
+  line-height: 80rpx;
+  padding: 0;
+  color: #fff;
+}
+.page-table-head{
+  margin-top: 40rpx;
+  display: flex;
+  align-items: center;
+  font-size: 30rpx;
+  font-weight: bold;
+}
+.page-table-head-th1{
+  width: 45%;
+}
+.page-table-head-th2{
+  width: 35%;
+}
+.page-table-head-th3{
+  width: 20%;
+  text-align: right;
+}
+.page-table-body-tr{
+  display: flex;
+  align-items: center;
+  padding: 10rpx 0;
+  color: #666;
+  font-size: 22rpx;
+}
+.page-table-body-tr-td1{
+  width: 45%;
+}
+.page-table-body-tr-td2{
+  width: 35%;
+}
+.page-table-body-tr-td3{
+  width: 20%;
+  color: #B09D73;
+  text-align: right;
+}

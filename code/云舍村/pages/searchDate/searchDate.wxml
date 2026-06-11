@@ -1,0 +1,53 @@
+<image src="https://yunshecun.oss-cn-guangzhou.aliyuncs.com/applet/img/7.png" class="top-bar" />
+<view>
+  <navbar></navbar>
+  <image src="https://yunshecun.oss-cn-guangzhou.aliyuncs.com/applet/img/bj2.png" mode="aspectFill" style="position: fixed; z-index: -1; top: 0;left: 0; right: 0;bottom: 0;width: 100vw; height: unset;" />
+  <view class="wrapper">
+    <view bind:tap="openCalendar">
+      <view class="datePart">
+        <view class="picker">
+          <view style="display: flex; flex-direction: column;align-items: center;">
+            <view class="datePart-day">{{enterDay}}</view>
+            <view class="datePart-yearMonth">{{enterYearMonth}}</view>
+          </view>
+          <view class="datePart-text">入村</view>
+        </view>
+      </view>
+      <view class="datePart leaveDate">
+        <view class="picker">
+          <view style="display: flex; flex-direction: column;align-items: center;">
+            <view class="datePart-day">{{leaveDay}}</view>
+            <view class="datePart-yearMonth">{{leaveYearMonth}}</view>
+          </view>
+          <view class="datePart-text">离村</view>
+        </view>
+      </view>
+      <view class="totalDays">共{{daysCN}}晚</view>
+    </view>
+    <view class="bottomPart">
+      <view class="number" bind:tap="showDialog">
+        <view class="relative quantity">{{childrenNumber + adultNumber}}</view>
+        <view class="relative">
+          <image src="https://yunshecun.oss-cn-guangzhou.aliyuncs.com/applet/img/numberBg.png" mode="" />
+          <view class="text">人數</view>
+        </view>
+      </view>
+      <view class="home" bind:tap="showDialog">
+        <view class="relative quantity">{{homeNumber}}</view>
+        <view class="relative">
+          <image src="https://yunshecun.oss-cn-guangzhou.aliyuncs.com/applet/img/numberBg.png" mode="" />
+          <view class="text">客房</view>
+        </view>
+      </view>
+      <view class="search" bind:tap="check">
+        <image src="https://yunshecun.oss-cn-guangzhou.aliyuncs.com/applet/img/21.png" mode="" />
+        <view></view>
+      </view>
+      <view style="height: 500rpx;">
+
+      </view>
+    </view>
+  </view>
+  <bottomDialog visible="{{dialogVisible}}" bind:getNumber="getNumber"></bottomDialog>
+  <t-calendar title="请选择日期" confirm-btn="确认" visible="{{calendarVisible}}" bind:confirm="handleConfirm" type="range" />
+</view>

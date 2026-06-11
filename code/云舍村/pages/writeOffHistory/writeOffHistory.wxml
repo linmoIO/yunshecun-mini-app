@@ -1,0 +1,33 @@
+<!--pages/writeOffHistory/writeOffHistory.wxml-->
+<navigation-bar title="核销历史" back="{{true}}" color="black" background="#D9CDB3"></navigation-bar>
+<view class="bg-color1">
+  <scroll-view type="list" scroll-y>
+    <view class="page-content">
+      <form class="page-search" catchsubmit="formSubmit" catchreset="formReset">
+        <view class="page-search-list">
+          <view class="page-search-list-input"><input class="page-search-input" bindinput="bindkeyword" type="text" value="{{keyword}}"/></view>
+          <view class="page-search-list-btn" bind:tap="getCheckHistory"><button class="page-search-button">搜索</button></view>
+        </view>
+      </form>
+      <view class="page-table">
+        <view class="page-table-head">
+          <view class="page-table-head-th1">订单号</view><view class="page-table-head-th2">核销时间</view><view class="page-table-head-th3">核销状态</view>
+        </view>
+        <view class="page-table-body">
+
+          <view class="page-table-body-tr" wx:for="{{list}}" wx:key="index">
+            <view class="page-table-body-tr-td1">{{item.orderNo}}</view>
+            <view class="page-table-body-tr-td2">{{item.checkTime}}</view>
+            <!-- 0-订单不存在，1-核销成功，11-重复核销，2-未到预定时间，3-已过期 -->
+            <view class="page-table-body-tr-td3" wx:if="{{item.checkStatus == 0}}">订单不存在</view>
+            <view class="page-table-body-tr-td3" wx:elif="{{item.checkStatus == 1}}">核销成功</view>
+            <view class="page-table-body-tr-td3" wx:elif="{{item.checkStatus == 11}}">重复核销</view>
+            <view class="page-table-body-tr-td3" wx:elif="{{item.checkStatus == 2}}">未到预定时间</view>
+            <view class="page-table-body-tr-td3" wx:elif="{{item.checkStatus == 3}}">已过期</view>
+            <view class="page-table-body-tr-td3" wx:else></view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

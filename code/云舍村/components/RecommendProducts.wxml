@@ -1,0 +1,27 @@
+<view class="product data-v-1429ceef" wx:if="{{a}}">
+    <view bindtap="{{g}}" class="product-header data-v-1429ceef" wx:if="{{b}}">
+        <view class="product-header__title data-v-1429ceef">{{c}}</view>
+        <view class="product-header__more data-v-1429ceef" wx:if="{{d}}">
+            <label class="product-header__more-desc data-v-1429ceef" wx:if="{{e}}">{{f}}</label>
+            <view class="iconfont icon-a-16_youlajiantou_hei data-v-1429ceef"></view>
+        </view>
+    </view>
+    <view class="product-list data-v-1429ceef">
+        <view bindtap="{{item.h}}" class="product-item data-v-1429ceef" wx:for="{{h}}" wx:key="g">
+            <view class="product-img data-v-1429ceef">
+                <image class="img data-v-1429ceef" src="{{item.a}}"></image>
+            </view>
+            <view class="product-info data-v-1429ceef">
+                <view class="product-name data-v-1429ceef">{{item.b}}</view>
+                <view class="product-bt data-v-1429ceef">
+                    <view class="product-price data-v-1429ceef">
+                        <block wx:if="{{item.c}}"> ¥{{item.d}}</block>
+                        <block wx:elif="{{item.e}}"> 满房 </block>
+                        <block wx:elif="{{item.f}}"> 免费 </block>
+                    </view>
+                    <view class="product-btn data-v-1429ceef">详情</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

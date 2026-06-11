@@ -1,0 +1,14 @@
+<view class="data-v-8d8411d2">
+    <view class="collapse-wrapper data-v-8d8411d2" style="{{'height:'+f}}">
+        <view class="content-wrapper data-v-8d8411d2" style="{{'height:'+a}}">
+            <slot name="content"></slot>
+        </view>
+        <view bindtap="{{d}}" class="collapse-btn data-v-8d8411d2" style="{{e}}" wx:if="{{b}}">
+            <view class="{{['iconfont','data-v-8d8411d2',c]}}"></view>
+        </view>
+    </view>
+    <view bindtap="{{h}}" class="open-btn data-v-8d8411d2" wx:if="{{g}}"> 展开更多<view class="iconfont icon-a-12_xialajiantou_hei data-v-8d8411d2"></view>
+    </view>
+    <view bindtap="{{j}}" class="open-btn data-v-8d8411d2" wx:if="{{i}}">收起更多<view class="iconfont icon-a-12_shanglajiantou_hei data-v-8d8411d2"></view>
+    </view>
+</view>

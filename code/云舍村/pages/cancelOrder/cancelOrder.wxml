@@ -1,0 +1,60 @@
+<!-- pages/cancelOrder/cancelOrder.wxml -->
+<navigation-bar title="我的订单" back="{{true}}" color="black" background="#D9CDB3"></navigation-bar>
+<view class="bg-color1">
+  <scroll-view type="list" scroll-y>
+    <view class="page-content">
+      <view class="page-time">您的订单已取消</view>
+      <view class="page-intro">
+        <view>您的订单已取消，期待下次与您相遇</view>
+      </view>
+      <view class="page-order">
+        <view class="page-order-title">游历票</view>
+        <view class="page-order-text">
+          <view>游历日期</view>
+          <view>2024年04月27日</view>
+        </view>
+        <view class="page-order-text">
+          <view>成人票</view>
+          <view>x 2</view>
+        </view>
+        <view class="page-order-text">
+          <view>学生票</view>
+          <view>x 2</view>
+        </view>
+        <view class="page-order-price">
+          <view>实付金额：</view>
+          <view>￥ 1494.00</view>
+        </view>
+        <view class="page-order-detail">
+          <view class="page-order-detail-list">
+            <view>联系方式：</view>
+            <view>178****1234</view>
+          </view>
+          <view class="page-order-detail-list">
+            <view>订单日期：</view>
+            <view>2024年4月5日 03:28:19</view>
+          </view>
+          <view class="page-order-detail-list">
+            <view>订单编号：</view>
+            <view>YSC20240405032019000001</view>
+          </view>
+          <view class="page-order-detail-list">
+            <view>合计金额：</view>
+            <view>￥ 1494.00</view>
+          </view>
+          <view class="page-order-detail-list">
+            <view>实付金额：</view>
+            <view>￥ 0.00</view>
+          </view>
+          <view class="page-order-detail-list">
+            <view>身份证号：</view>
+            <view>010110202409122211</view>
+          </view>
+        </view>
+      </view>
+      <navigator url="/pages/home/home" class="old-pay" target="self" hover-class="navigator-hover" open-type="reLaunch">
+        返回首页
+      </navigator>
+    </view>
+  </scroll-view>
+</view>
