@@ -14,7 +14,7 @@
     hotelGroupId: 1,
     hotelCode: 0,
     hotelId: 0,
-    appid: "wxf26084f7c2585736",
+    appid: "wxc8e2d82494b5b533",
     hotelGroupName: "云舍村",
     componentAppid: "",
     isOpenHotelGroupBook: "T",
@@ -24,15 +24,15 @@
     isOpenBook: "T",
     equipment: "desktop",
     isOpenHotelListBigPictureMode: "T",
-    domain: "https://m.songtsam.com",
-    baseUrlmall: USE_LOCAL_BACKEND ? LOCAL_BACKEND_URL : "https://apiwx.songtsam.com/guardian",
-    baseUrlApi: USE_LOCAL_BACKEND ? LOCAL_BACKEND_URL : "https://api.songtsam.com",
+    domain: "",
+    baseUrlmall: USE_LOCAL_BACKEND ? LOCAL_BACKEND_URL : "",
+    baseUrlApi: USE_LOCAL_BACKEND ? LOCAL_BACKEND_URL : "",
     // 使用本地后端时清空 appkey/appsecret 以跳过签名
     appkey: USE_LOCAL_BACKEND ? "" : "81756736",
     appsecret: USE_LOCAL_BACKEND ? "" : "DB6424FE510A11EEBFC917C3812AE482",
     aplusQueueAppKey: "8cazk1duqp299e0q778jljmo",
     qidianAppkey: "0MA006JIWVKVC962",
-    qidianApiHost: "https://event.songtsam.com"
+    qidianApiHost: ""
   };
   exports.config = _prodConfig, exports.config.componentAppid && (exports.config = (null == (e = (o = p.index).getExtConfigSync) ? void 0 : e.call(o)) || {})
 }();

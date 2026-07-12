@@ -65,7 +65,7 @@
         }
       }
     });
-  Array || (e.resolveComponent("l-painter-image") + e.resolveComponent("l-painter-view") + e.resolveComponent("l-painter-text") + e.resolveComponent("l-painter"))(), Math || ((() => "../../uni_modules/lime-painter/components/l-painter-image/l-painter-image.js") + (() => "../../uni_modules/lime-painter/components/l-painter-view/l-painter-view.js") + (() => "../../uni_modules/lime-painter/components/l-painter-text/l-painter-text.js") + (() => "../../uni_modules/lime-painter/components/l-painter/l-painter.js"))();
+  Array || (e.resolveComponent("l-painter-image") + e.resolveComponent("l-painter-view") + e.resolveComponent("l-painter-text") + e.resolveComponent("l-painter"))(), Math || ((() => "../uni_modules/lime-painter/components/l-painter-image/l-painter-image.js") + (() => "../uni_modules/lime-painter/components/l-painter-view/l-painter-view.js") + (() => "../uni_modules/lime-painter/components/l-painter-text/l-painter-text.js") + (() => "../uni_modules/lime-painter/components/l-painter/l-painter.js"))();
   const s = e._export_sfc(i, [
     ["render", function(t, o, i, s, n, r) {
       return e.e({

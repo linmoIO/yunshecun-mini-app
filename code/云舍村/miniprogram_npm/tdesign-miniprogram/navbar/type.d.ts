@@ -3,23 +3,27 @@ export interface TdNavbarProps {
         type: BooleanConstructor;
         value?: boolean;
     };
-    style?: {
-        type: StringConstructor;
-        value?: string;
-    };
     delta?: {
         type: NumberConstructor;
         value?: number;
-    };
-    externalClasses?: {
-        type: ArrayConstructor;
-        value?: ['t-class', 't-class-title', 't-class-left-icon', 't-class-home-icon', 't-class-capsule'];
     };
     fixed?: {
         type: BooleanConstructor;
         value?: boolean;
     };
+    isHiddenInSpecialScene?: {
+        type: BooleanConstructor;
+        value?: boolean;
+    };
     leftArrow?: {
+        type: BooleanConstructor;
+        value?: boolean;
+    };
+    placeholder?: {
+        type: BooleanConstructor;
+        value?: boolean;
+    };
+    safeAreaInsetTop?: {
         type: BooleanConstructor;
         value?: boolean;
     };
@@ -34,5 +38,9 @@ export interface TdNavbarProps {
     visible?: {
         type: BooleanConstructor;
         value?: boolean;
+    };
+    zIndex?: {
+        type: NumberConstructor;
+        value?: number;
     };
 }

@@ -1,7 +1,0 @@
-{
-    "navigationStyle":  "custom",
-    "usingComponents":  {
-                            "kf-dialog":  "../../components/kfDialog",
-                            "coustom-head":  "../../components/coustomHead"
-                        }
-}

@@ -1,6 +1,0 @@
-<!-- <view class='nav bg-white' style='height:{{navInfo.bottom - navInfo.top}}px; padding-top: {{navInfo.top}}px'>
-  <view class='nav-title'>
-    {{title}}
-  </view>
-  <image src="{{iconWhite ? '../../images/back.png' : '../../images/arrow-left.png'}}" mode='aspectFit' class='back' bindtap='navBack' hidden="{{hideBack}}"></image>
-</view> -->

@@ -1,5 +1,9 @@
 import { ButtonProps } from '../button/index';
 export interface TdCalendarProps {
+    allowSameDay?: {
+        type: BooleanConstructor;
+        value?: boolean;
+    };
     autoClose?: {
         type: BooleanConstructor;
         value?: boolean;
@@ -7,10 +11,6 @@ export interface TdCalendarProps {
     confirmBtn?: {
         type: null;
         value?: string | ButtonProps | null;
-    };
-    style?: {
-        type: StringConstructor;
-        value?: string;
     };
     firstDayOfWeek?: {
         type: NumberConstructor;
@@ -20,6 +20,10 @@ export interface TdCalendarProps {
         type: undefined;
         value?: CalendarFormatType;
     };
+    localeText?: {
+        type: ObjectConstructor;
+        value?: CalendarLocaleText;
+    };
     maxDate?: {
         type: NumberConstructor;
         value?: number;
@@ -27,6 +31,14 @@ export interface TdCalendarProps {
     minDate?: {
         type: NumberConstructor;
         value?: number;
+    };
+    readonly?: {
+        type: BooleanConstructor;
+        value?: boolean;
+    };
+    switchMode?: {
+        type: StringConstructor;
+        value?: 'none' | 'month' | 'year-month';
     };
     title?: {
         type: StringConstructor;
@@ -37,6 +49,10 @@ export interface TdCalendarProps {
         value?: 'single' | 'multiple' | 'range';
     };
     usePopup?: {
+        type: BooleanConstructor;
+        value?: boolean;
+    };
+    usingCustomNavbar?: {
         type: BooleanConstructor;
         value?: boolean;
     };
@@ -54,7 +70,7 @@ export interface TdCalendarProps {
     };
 }
 export declare type CalendarFormatType = (day: TDate) => TDate;
-export declare type TDateType = 'selected' | 'disabled' | 'start' | 'centre' | 'end' | '';
+export declare type TDateType = 'selected' | 'disabled' | 'start' | 'start-end' | 'centre' | 'end' | '';
 export interface TDate {
     date: Date;
     day: number;
@@ -62,4 +78,11 @@ export interface TDate {
     className?: string;
     prefix?: string;
     suffix?: string;
+}
+export interface CalendarLocaleText {
+    title?: string;
+    weekdays?: string[];
+    monthTitle?: string;
+    months?: string[];
+    confirm?: string;
 }

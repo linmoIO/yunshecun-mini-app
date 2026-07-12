@@ -21,7 +21,7 @@
     h = () => "../../components/kfDialog.js",
     C = () => "../../components/new/ErrorLimiting.js",
     y = () => "../../components/swiperBox.js",
-    D = () => "../../components/travelDialog.js",
+    D = () => "../components/travelDialog.js",
     T = () => "../components/ExchangeListBox.js",
     k = e.defineComponent({
       __name: "exchangeCouponDetail",

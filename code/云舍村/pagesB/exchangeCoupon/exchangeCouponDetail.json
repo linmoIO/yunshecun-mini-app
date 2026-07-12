@@ -9,7 +9,7 @@
                             "kf-dialog":  "../../components/kfDialog",
                             "error-limiting":  "../../components/new/ErrorLimiting",
                             "swiper-box":  "../../components/swiperBox",
-                            "travel-dialog":  "../../components/travelDialog",
+                            "travel-dialog":  "../components/travelDialog",
                             "exchange-list-box":  "../components/ExchangeListBox"
                         }
 }

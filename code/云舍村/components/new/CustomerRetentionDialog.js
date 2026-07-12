@@ -31,9 +31,7 @@
           p = r.getStorage("user"),
           v = e.ref(),
           h = e.ref("400-0000-830"),
-          _ = e.ref("解答咨询、预订、会员及订单相关问题"),
-          C = e.ref("https://imxcx19.7x24cc.com/phone_webChat.html?accountId=N000000035959&chatId=19ec8dcd-9c0c-40a7-863a-52124bcd83d3"),
-          f = e.ref("");
+          _ = e.ref("解答咨询、预订、会员及订单相关问题");
         e.watchEffect(() => {
           var e, o;
           i.show ? (y(), null == (e = v.value) || e.showDialog(), t.qdTracker.track("user_recovery", g.value)) : null == (o = v.value) || o.hideDialog()
@@ -48,7 +46,7 @@
           y = () => {
             var e = {
               appid: m.appid,
-              codes: ["customerServiceInfo", "tripContactPhone", "wxCustomerServiceUrl", "wxCustomerCorpId"].join(","),
+              codes: ["customerServiceInfo", "tripContactPhone"].join(","),
               componentAppid: m.componentAppid,
               hotelCode: m.hotelCode ? m.hotelCode : 0,
               hotelGroupCode: m.hotelGroupCode,
@@ -57,18 +55,14 @@
             a.api.getMultiSysOptionCommon(e).then(e => {
               var o;
               1 == e.result && (null == (o = e.retVal) || o.forEach((function(e, o) {
-                "customerServiceInfo" == e.code && e.value && (_.value = e.value), "tripContactPhone" == e.code && e.value && (h.value = e.value), "wxCustomerServiceUrl" == e.code && e.value && (C.value = e.value), "wxCustomerCorpId" == e.code && e.value && (f.value = e.value)
+                "customerServiceInfo" == e.code && e.value && (_.value = e.value), "tripContactPhone" == e.code && e.value && (h.value = e.value)
               }))), _.value || (_.value = "解答咨询、预订、会员及订单相关问题");
-              let t = "";
-              p.value && p.value.name && (t = p.value.name);
-              let a = "";
-              p.value && p.value.mobile && (a = p.value.mobile), C.value = `${C.value}&nickName=${t}&phone=${a}`
             }).catch(e => {
               console.log(e)
             })
           },
           x = () => {
-            u.goPage(C.value), b("online")
+            e.index.navigateTo({ url: "/pagesA/other/chat" }), b("online")
           },
           b = e => {
             const {

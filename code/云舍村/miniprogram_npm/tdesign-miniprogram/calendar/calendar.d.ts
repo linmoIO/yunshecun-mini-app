@@ -4,6 +4,7 @@ import { TdCalendarProps } from './type';
 export interface CalendarProps extends TdCalendarProps {
 }
 export default class Calendar extends SuperComponent {
+    behaviors: string[];
     externalClasses: string[];
     options: WechatMiniprogram.Component.ComponentOptions;
     properties: TdCalendarProps;
@@ -12,8 +13,14 @@ export default class Calendar extends SuperComponent {
         classPrefix: string;
         months: any[];
         scrollIntoView: string;
-        innerConfirmBtn: {
-            content: string;
+        innerConfirmBtn: {};
+        realLocalText: {};
+        currentMonth: {};
+        actionButtons: {
+            preYearBtnDisable: boolean;
+            prevMonthBtnDisable: boolean;
+            nextMonthBtnDisable: boolean;
+            nextYearBtnDisable: boolean;
         };
     };
     controlledProps: {
@@ -25,7 +32,10 @@ export default class Calendar extends SuperComponent {
         ready(): void;
     };
     observers: {
+        localeText(): void;
+        globalConfig(): void;
         type(v: any): void;
+        allowSameDay(v: any): void;
         confirmBtn(v: any): void;
         'firstDayOfWeek,minDate,maxDate'(firstDayOfWeek: any, minDate: any, maxDate: any): void;
         value(v: any): void;
@@ -35,6 +45,13 @@ export default class Calendar extends SuperComponent {
     methods: {
         initialValue(): void;
         scrollIntoView(): void;
+        getCurrentYearAndMonth(v: Date): {
+            year: number;
+            month: number;
+        };
+        updateActionButton(value: Date): void;
+        updateCurrentMonth(newValue?: any): void;
+        calcCurrentMonth(newValue?: any): void;
         calcMonths(): void;
         close(trigger: any): void;
         onVisibleChange(): void;
@@ -42,5 +59,8 @@ export default class Calendar extends SuperComponent {
         handleSelect(e: any): void;
         onTplButtonTap(): void;
         toTime(val: any): any;
+        onScroll(e: any): void;
+        getCurrentDate(): any;
+        handleSwitchModeChange(e: any): void;
     };
 }

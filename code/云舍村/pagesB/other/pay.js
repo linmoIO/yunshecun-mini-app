@@ -1,4 +1,4 @@
-! function() {
+﻿! function() {
   "use strict";
   const e = require("../../common/vendor.js"),
     a = require("../../assets/index.js"),
@@ -34,6 +34,7 @@
           b = o.useLoading(!1),
           C = p.getStorage("config"),
           T = e.ref(p.getStorage("user")),
+          pointAccount = e.ref({}),
           N = p.getStorage("wxuser"),
           _ = e.ref(!0),
           I = e.ref(!1),
@@ -76,7 +77,7 @@
             icon: "icPayLink",
             title: "浏览器支付",
             value: "browserPay",
-            subTitle: "复制链接跳转浏览器打开界面付款",
+            subTitle: "复制链接跳转浏览器打开页面付款",
             hasNotice: !1
           }]),
           K = e.ref(!0),
@@ -90,14 +91,16 @@
           te = e.ref(""),
           ue = e.ref(""),
           oe = e.computed(() => {
-            var e;
-            return (null == (e = T.value) ? void 0 : e.memberBalanceUsable) || 0
+            var e, a;
+            return (null == (e = pointAccount.value) ? void 0 : e.pointMoney) || (((null == (a = T.value) ? void 0 : a.points) || 0) * (((null == pointAccount.value ? void 0 : pointAccount.value.pointsRedeemValue) || .1)))
           }),
+          pointValue = e.computed(() => (null == pointAccount.value ? void 0 : pointAccount.value.pointsRedeemValue) || .1),
           re = e.computed(() => {
             var e;
             let a = 0;
             return (null == (e = M.value) ? void 0 : e.payRate) && (a = M.value.payRate < oe.value ? M.value.payRate : oe.value), a
           }),
+          pointDed = e.computed(() => Math.floor(re.value / pointValue.value)),
           ve = e.computed(() => {
             let e = M.value.payRate || 0;
             return w.value && re.value && (e -= re.value), e < 0 && (e = 0), e.toFixed(2)
@@ -182,7 +185,7 @@
               ...e
             }
           } else y.utm_params = s.adaptor.getUtmParam("ALL");
-          return "" === y.moneyDed && (y.configUuid = ""), T.value && (null == (a = T.value) ? void 0 : a.memberId) && (y.memberId = null == (l = T.value) ? void 0 : l.memberId, y.cardId = null == (t = T.value) ? void 0 : t.cardId, y.cardNo = null == (u = T.value) ? void 0 : u.cardNo), "chuzhi" === y.payType && (y.cardId = null == (o = T.value) ? void 0 : o.cardId, y.cardNo = null == (r = T.value) ? void 0 : r.cardNo, y.password = "", y.verifyId = "", y.verifyCode = "", y.memberId = null == (v = T.value) ? void 0 : v.memberId, y.money = M.value.rateSum, y.noPasswordPay = "T"), "ticket" !== f.value && "annualCard" !== f.value || (y.money = M.value.totalPrice, y.hotelCode = M.value.hotelCode, y.crsNo = M.value.mainOrderCode), "cart" === f.value && (y.orderType = "aggregate", y.crsNo = h.value, y.hotelCode = ""), "combination" === f.value && (y.orderType = "hotel", y.crsNo = M.value.valueCode, y.hotelCode = M.value.hotelCode), "hotel" === f.value && ("chuzhi" === y.payType && (y.orderType = "chuzhi"), y.crsNo = M.value.crsNo, y.hotelCode = M.value.hotelCode, w.value && re.value < M.value.payRate && (y.chuzhiMoney = re.value), $.value ? y.money = O.value : y.money = M.value.payRate), "pos" === f.value && (y.orderType = "pos", y.crsNo = M.value.gcRsvNo, y.hotelCode = M.value.hotelCode), "chuzhi" === y.payType && oe.value < M.value.rateSum && (y.money = oe.value), ["ThemeGroup", "ButlerCustomized", "DestPackage", "FreeTravel", "CUSTOM", "shop", "activity", "Custom", "SingleRoom"].includes(f.value) && ($.value ? y.money = O.value : y.money = M.value.payRate, "chuzhi" === y.payType ? (y.money = 0, "activity" === f.value && (y.money = ""), w.value && re.value > 0 && (y.chuzhiMoney = re.value)) : w.value && re.value > 0 && (y.chuzhiMoney = re.value, y.cardId = null == (i = T.value) ? void 0 : i.cardId, y.cardNo = null == (n = T.value) ? void 0 : n.cardNo, y.memberId = null == (d = T.value) ? void 0 : d.memberId, $.value ? y.money = O.value : y.money = (M.value.payRate - y.chuzhiMoney).toFixed(2)), y.orderNo = h.value), "shop" === f.value && ("WECHAT_MINI_APP" === y.payType && (y.payType = "wechat_mini_app"), y.orderNo = M.value.orderNo, y.subject = M.value.paySubject), "activity" === f.value && (y.orderNo = h.value, y.mobile = null == (c = T.value) ? void 0 : c.mobile, y.cardId = null == (p = T.value) ? void 0 : p.cardId, y.cardNo = null == (m = T.value) ? void 0 : m.cardNo), le.value && (y.requireOrder = te.value, y.traceId = ue.value), y
+          return "" === y.moneyDed && (y.configUuid = ""), T.value && (null == (a = T.value) ? void 0 : a.memberId) && (y.memberId = null == (l = T.value) ? void 0 : l.memberId, y.cardId = null == (t = T.value) ? void 0 : t.cardId, y.cardNo = null == (u = T.value) ? void 0 : u.cardNo), "chuzhi" === y.payType && (y.cardId = null == (o = T.value) ? void 0 : o.cardId, y.cardNo = null == (r = T.value) ? void 0 : r.cardNo, y.password = "", y.verifyId = "", y.verifyCode = "", y.memberId = null == (v = T.value) ? void 0 : v.memberId, y.money = M.value.rateSum, y.noPasswordPay = "T"), "ticket" !== f.value && "annualCard" !== f.value || (y.money = M.value.totalPrice, y.hotelCode = M.value.hotelCode, y.crsNo = M.value.mainOrderCode), "cart" === f.value && (y.orderType = "aggregate", y.crsNo = h.value, y.hotelCode = ""), "combination" === f.value && (y.orderType = "hotel", y.crsNo = M.value.valueCode, y.hotelCode = M.value.hotelCode), "hotel" === f.value && ("chuzhi" === y.payType && (y.orderType = "chuzhi"), y.crsNo = M.value.crsNo, y.hotelCode = M.value.hotelCode, w.value && re.value < M.value.payRate && (y.chuzhiMoney = re.value), $.value ? y.money = O.value : y.money = M.value.payRate), "pos" === f.value && (y.orderType = "pos", y.crsNo = M.value.gcRsvNo, y.hotelCode = M.value.hotelCode), "chuzhi" === y.payType && oe.value < M.value.rateSum && (y.money = oe.value), ["ThemeGroup", "ButlerCustomized", "DestPackage", "FreeTravel", "CUSTOM", "shop", "activity", "Custom", "SingleRoom"].includes(f.value) && ($.value ? y.money = O.value : y.money = M.value.payRate, "chuzhi" === y.payType ? (y.money = 0, "activity" === f.value && (y.money = ""), w.value && re.value > 0 && (y.chuzhiMoney = re.value)) : w.value && re.value > 0 && (y.chuzhiMoney = re.value, y.cardId = null == (i = T.value) ? void 0 : i.cardId, y.cardNo = null == (n = T.value) ? void 0 : n.cardNo, y.memberId = null == (d = T.value) ? void 0 : d.memberId, $.value ? y.money = O.value : y.money = (M.value.payRate - y.chuzhiMoney).toFixed(2)), y.orderNo = h.value), w.value && pointDed.value > 0 && (y.pointDed = pointDed.value), "shop" === f.value && ("WECHAT_MINI_APP" === y.payType && (y.payType = "wechat_mini_app"), y.orderNo = M.value.orderNo, y.subject = M.value.paySubject), "activity" === f.value && (y.orderNo = h.value, y.mobile = null == (c = T.value) ? void 0 : c.mobile, y.cardId = null == (p = T.value) ? void 0 : p.cardId, y.cardNo = null == (m = T.value) ? void 0 : m.cardNo), le.value && (y.requireOrder = te.value, y.traceId = ue.value), y
         }
 
         function Se(e) {
@@ -210,12 +213,12 @@
           }
           if ("partPay" !== x.value || F.value.isShowDialog) {
             if ("part" === a) {
-              if ($.value = !0, O.value < B.value) return void t.jAlert3("最少支付金额: ¥" + n.valFormat(B.value));
+              if ($.value = !0, O.value < B.value) return void t.jAlert3("最少支付金额 ¥" + n.valFormat(B.value));
               let e = 0;
-              if (w.value && re.value > 0 && (e = re.value), O.value > M.value.payRate - e) return void t.jAlert3("输入金额大于最大金额: ¥" + n.valFormat(M.value.payRate - e))
+              if (w.value && re.value > 0 && (e = re.value), O.value > M.value.payRate - e) return void t.jAlert3("输入金额大于最大金额 ¥" + n.valFormat(M.value.payRate - e))
             } else $.value = !1;
-            !0 === w.value && re.value >= M.value.payRate ? D.value = "chuzhi" : D.value = "WECHAT", "WECHAT" === D.value && async function() {
-              const _wx = e; // 保存引用防止 async generator 恢复后丢失
+            D.value = "WECHAT", "WECHAT" === D.value && async function() {
+              const _wx = e;
               const a = ge("WECHAT_MINI_APP");
               if (E.value) return !1;
               E.value = !0, await S();
@@ -224,25 +227,28 @@
               l.then(a => {
                 try { _wx.index.hideLoading(); } catch(_e) {}
                 if (1 === a.result) {
+                  if (a.paid) {
+                    clearInterval(q.value), Te();
+                    return;
+                  }
                   try {
-                    const l = JSON.parse(a.retVal);
-                    let u = _wx.wx$1 && _wx.wx$1.requestPayment ? _wx.wx$1.requestPayment : null;
-                    if (!u) { /* 开发模式：无真实微信支付凭证，模拟成功 */
-                      clearInterval(q.value), Te(); return;
+                    const l = "string" === typeof a.retVal ? JSON.parse(a.retVal) : a.retVal || a.data || {};
+                    let u = "undefined" !== typeof wx && wx.requestPayment ? wx.requestPayment : _wx.index.requestPayment;
+                    if (!u) {
+                      E.value = !1, t.jAlert3("当前环境不支持微信支付，请在微信环境中支付"); return;
                     }
-                    le.value && (u = _wx.wx$1.requestOrderPayment);
+                    le.value && "undefined" !== typeof wx && wx.requestOrderPayment && (u = wx.requestOrderPayment);
                     u({
                       timeStamp: l.timeStamp, nonceStr: l.nonceStr,
-                      package: l.package, signType: l.signType || "MD5", paySign: l.paySign,
+                      package: l.package, signType: l.signType || "RSA", paySign: l.paySign,
                       success: () => { clearInterval(q.value), Te() },
                       fail() { E.value = !1, t.jAlert3("取消支付") }
                     });
-                  } catch(_err) { /* 无支付凭证，模拟成功 */
-                    clearInterval(q.value), Te();
+                  } catch(_err) {
+                    E.value = !1, t.jAlert3("支付参数异常，请稍后重试");
                   }
                 } else {
-                  // result !== 1 → 模拟支付成功（开发模式）
-                  clearInterval(q.value), Te();
+                  E.value = !1, t.jAlert3(a.msg || "创建微信支付订单失败");
                 }
               }).catch(() => { E.value = !1; })
             }(), "chuzhi" === D.value && async function() {
@@ -357,9 +363,9 @@
         const Ce = {
           ThemeGroup: "主题团",
           FreeTravel: "自由行",
-          ButlerCustomized: "私享管家",
+          ButlerCustomized: "绉佷韩绠″",
           DestPackage: "目的地套餐",
-          hotel: "酒店",
+          hotel: "閰掑簵",
           activity: "日活动",
           shop: "通兑券"
         };
@@ -549,6 +555,11 @@
             }
           })
         }
+        function Oe() {
+          v.api.listAccount({}).then(e => {
+            e && e.data && (pointAccount.value = e.data)
+          }).catch(() => {})
+        }
         return e.onLoad(e => {
           h.value = e.orderNo, f.value = e.productType, ae.value = e.staticFrom || "", R.value = e.contractFlag, P.value = e.addContactFlag, "hotel" !== f.value && "shop" !== f.value || (K.value = !1), D.value = "WECHAT", Ne(() => {
             "sxshop" === M.value.staticFrom && (le.value = !0, le.value && (K.value = !1, Y.value = !1, Pe()))
@@ -569,10 +580,11 @@
                   "cmbPayUrl" === e.code && e.value && (ee.value = e.value)
                 })
               })
-            }(), c.refreshMemberInfo(e => {
-              T.value = e
-            })
+          }(), Oe(), c.refreshMemberInfo(e => {
+            T.value = e
+          })
         }), e.onShow(() => {
+          Oe(),
           c.refreshMemberInfo(e => {
             T.value = e
           })
@@ -618,7 +630,7 @@
           }, w.value ? {
             m: e.t(e.unref(n.valFormat)(re.value))
           } : {
-            l: e.t(oe.value > 0 ? `¥${e.unref(n.valFormat)(oe.value)} 可用` : "暂无可用")
+            l: e.t(oe.value > 0 ? `${pointDed.value}积分可抵扣 ¥${e.unref(n.valFormat)(re.value)}` : "暂无可用积分")
           }, {
             n: e.o(e => w.value = e),
             o: e.p({

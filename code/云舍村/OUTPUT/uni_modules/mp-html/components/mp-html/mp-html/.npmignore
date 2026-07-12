@@ -1,6 +1,0 @@
-node_modules/
-coverage/
-dev/
-yarn.lock
-*.yml
-*.psd

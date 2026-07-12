@@ -1,6 +1,0 @@
-{
-    "component":  true,
-    "usingComponents":  {
-                            "st-button":  "../../components/new/StButton"
-                        }
-}

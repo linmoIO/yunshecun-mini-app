@@ -94,13 +94,17 @@
     return t
   }, exports.getAllRect = function(t, r) {
     return new Promise(n => {
-      e.index.createSelectorQuery().in(t).selectAll(r).boundingClientRect().exec((e = []) => n(e[0]))
+      e.index.createSelectorQuery().in(t).selectAll(r).boundingClientRect().exec((e = []) => {
+        const t = Array.isArray(e) ? e : [];
+        n(t[0] || [])
+      })
     })
   }, exports.getBoundingClientRect = function(t) {
     return new Promise(r => {
       e.index.createSelectorQuery().selectAll(t).boundingClientRect().exec((e = []) => {
-        var t;
-        return r(null == (t = e[0]) ? void 0 : t[0])
+        const t = Array.isArray(e) ? e : [],
+          n = t[0] || [];
+        return r(n[0] || { width: 0, height: 0, top: 0, left: 0, right: 0, bottom: 0 })
       })
     })
   }, exports.getCurrentCard = () => {
@@ -128,7 +132,10 @@
     return t * (e.index.getSystemInfoSync().windowWidth / 375)
   }, exports.getRect = function(t, r) {
     return new Promise(n => {
-      e.index.createSelectorQuery().in(t).select(r).boundingClientRect().exec((e = []) => n(e[0]))
+      e.index.createSelectorQuery().in(t).select(r).boundingClientRect().exec((e = []) => {
+        const t = Array.isArray(e) ? e : [];
+        n(t[0] || { width: 0, height: 0, top: 0, left: 0, right: 0, bottom: 0 })
+      })
     })
   }, exports.getUrl = e => {
     if (!e) return "";

@@ -55,17 +55,20 @@
         const h = e.ref(!1);
         async function b() {
           const e = r.value.trim();
-          if (/\d{4}/.test(e))
-            if (h.value = !0, "function" != typeof s.beforeConfirm) "boolean" == typeof s.beforeConfirm && (h.value = !1, !1 === s.beforeConfirm && m());
-            else try {
-              const o = await (null == s ? void 0 : s.beforeConfirm({
-                sessionId: v.value,
-                code: e
-              }));
-              h.value = !1, o ? i() : m()
-            } catch {
-              h.value = !1, m()
-            }
+          if (!/^[A-Za-z0-9]{4}$/.test(e)) return wx.showToast({
+            title: "请输入4位验证码",
+            icon: "none"
+          });
+          if (h.value = !0, "function" != typeof s.beforeConfirm) "boolean" == typeof s.beforeConfirm && (h.value = !1, !1 === s.beforeConfirm && m());
+          else try {
+            const o = await (null == s ? void 0 : s.beforeConfirm({
+              sessionId: v.value,
+              code: e
+            }));
+            h.value = !1, o ? i() : m()
+          } catch {
+            h.value = !1, m()
+          }
         }
         const w = e.ref(!0);
         return e.watch(() => s.show, e => {

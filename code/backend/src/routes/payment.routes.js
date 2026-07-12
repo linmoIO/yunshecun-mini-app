@@ -1,4 +1,4 @@
-'use strict';
+﻿'use strict';
 
 const router = require('express').Router();
 const ctrl = require('../controllers/payment.controller');
@@ -17,14 +17,17 @@ router.get('/pay/status', authMiddleware, ctrl.queryPayStatus);
 // 退款
 router.post('/pay/refund', authMiddleware, ctrl.refund);
 
-// 模拟支付成功（开发测试用）
-router.get('/pay/mock', ctrl.mockPaySuccess);
 
 // 回调（不需要登录）
 router.post('/pay/wechat/notify', ctrl.wechatPayNotify);
 router.post('/pay/alipay/notify', ctrl.alipayNotify);
+router.post('/notify/payOk', ctrl.wechatPayNotify);
+router.post('/notify/payTicketOk', ctrl.wechatPayNotify);
+router.post('/notify/refundOk', ctrl.wechatRefundNotify);
 
-// 小红书支付
-router.post('/redminiapi/deal/query_pay_token', authMiddleware, (req, res) => res.json({ code: 0, data: { token: 'mock_token' } }));
+// 小红书支付未接入真实通道时不返回模拟 token，避免误判支付成功。
+router.post('/redminiapi/deal/query_pay_token', authMiddleware, (req, res) => {
+  res.json({ code: -1, result: 0, msg: '小红书支付未配置，请使用微信支付', data: null });
+});
 
 module.exports = router;

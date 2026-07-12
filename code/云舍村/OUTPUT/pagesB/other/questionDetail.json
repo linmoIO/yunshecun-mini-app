@@ -1,7 +1,0 @@
-{
-    "navigationBarTitleText":  "问题详情",
-    "navigationStyle":  "custom",
-    "usingComponents":  {
-                            "coustom-head":  "../../components/coustomHead"
-                        }
-}

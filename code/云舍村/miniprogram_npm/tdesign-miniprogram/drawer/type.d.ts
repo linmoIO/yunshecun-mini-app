@@ -1,3 +1,4 @@
+import { OverlayProps } from '../overlay/index';
 export interface TdDrawerProps {
     closeOnOverlayClick?: {
         type: BooleanConstructor;
@@ -11,6 +12,10 @@ export interface TdDrawerProps {
         type: ArrayConstructor;
         value?: DrawerItem[];
     };
+    overlayProps?: {
+        type: ObjectConstructor;
+        value?: OverlayProps;
+    };
     placement?: {
         type: StringConstructor;
         value?: 'left' | 'right';
@@ -22,6 +27,10 @@ export interface TdDrawerProps {
     title?: {
         type: StringConstructor;
         value?: string;
+    };
+    usingCustomNavbar?: {
+        type: BooleanConstructor;
+        value?: boolean;
     };
     visible?: {
         type: BooleanConstructor;

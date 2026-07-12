@@ -1,9 +1,0 @@
-{
-    "component":  true,
-    "usingComponents":  {
-                            "kf-dialog":  "../../components/kfDialog",
-                            "confirmation-dialog":  "ConfirmationDialog",
-                            "empty":  "../../components/empty",
-                            "plan-classify-tabs":  "PlanClassifyTabs"
-                        }
-}

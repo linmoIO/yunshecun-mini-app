@@ -2,9 +2,18 @@
 
 require('dotenv').config();
 
+const port = process.env.PORT || 3000;
+const publicBaseUrl = (process.env.PUBLIC_BASE_URL || `http://localhost:${port}`).replace(/\/$/, '');
+const resolvePublicUrl = (value) => {
+  if (!value) return '';
+  if (/^https?:\/\//i.test(value)) return value;
+  return `${publicBaseUrl}${value.startsWith('/') ? value : `/${value}`}`;
+};
+
 module.exports = {
-  port: process.env.PORT || 3000,
+  port,
   env: process.env.NODE_ENV || 'development',
+  publicBaseUrl,
 
   jwt: {
     secret: process.env.JWT_SECRET || 'yunshecun_secret_2024',
@@ -17,23 +26,30 @@ module.exports = {
   },
 
   wechat: {
-    appId: process.env.WECHAT_APP_ID || 'wxf26084f7c2585736',
+    code2SessionUrl: process.env.WECHAT_CODE2SESSION_URL || 'https://api.weixin.qq.com/sns/jscode2session?appid={0}&secret={1}&js_code={2}&grant_type=authorization_code',
+    appId: process.env.WECHAT_APP_ID || 'wxc8e2d82494b5b533',
     appSecret: process.env.WECHAT_APP_SECRET || '',
   },
 
   wechatPay: {
     mchId: process.env.WECHAT_PAY_MCH_ID || '',
-    apiKey: process.env.WECHAT_PAY_API_KEY || '',
+    merchantSerialNumber: process.env.WECHAT_PAY_MERCHANT_SERIAL_NUMBER || '',
+    privateKeyPath: process.env.WECHAT_PAY_PRIVATE_KEY_PATH || process.env.WECHAT_PAY_KEY_PATH || '',
+    apiV3Key: process.env.WECHAT_PAY_API_V3_KEY || process.env.WECHAT_PAY_API_KEY || '',
+    apiKey: process.env.WECHAT_PAY_API_KEY || process.env.WECHAT_PAY_API_V3_KEY || '',
     certPath: process.env.WECHAT_PAY_CERT_PATH || '',
     keyPath: process.env.WECHAT_PAY_KEY_PATH || '',
-    notifyUrl: process.env.WECHAT_PAY_NOTIFY_URL || '',
+    notifyUrl: resolvePublicUrl(process.env.WECHAT_PAY_NOTIFY_URL || process.env.WECHAT_PAY_PAY_NOTIFY_URL || ''),
+    payNotifyUrl: resolvePublicUrl(process.env.WECHAT_PAY_PAY_NOTIFY_URL || process.env.WECHAT_PAY_NOTIFY_URL || ''),
+    payTicketNotifyUrl: resolvePublicUrl(process.env.WECHAT_PAY_TICKET_NOTIFY_URL || ''),
+    refundNotifyUrl: resolvePublicUrl(process.env.WECHAT_PAY_REFUND_NOTIFY_URL || ''),
   },
 
   alipay: {
     appId: process.env.ALIPAY_APP_ID || '',
     privateKey: process.env.ALIPAY_PRIVATE_KEY || '',
     publicKey: process.env.ALIPAY_PUBLIC_KEY || '',
-    notifyUrl: process.env.ALIPAY_NOTIFY_URL || '',
+    notifyUrl: resolvePublicUrl(process.env.ALIPAY_NOTIFY_URL || ''),
   },
 
   oss: {
@@ -45,7 +61,7 @@ module.exports = {
   },
 
   upload: {
-    baseUrl: process.env.UPLOAD_BASE_URL || 'http://localhost:3000/uploads',
+    baseUrl: process.env.UPLOAD_BASE_URL || '/uploads',
     maxImageSize: 100 * 1024 * 1024, // 100MB
     maxVideoSize: 500 * 1024 * 1024, // 500MB
     allowedImageTypes: ['image/jpeg', 'image/png', 'image/gif', 'image/webp'],

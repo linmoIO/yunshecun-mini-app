@@ -1,3 +1,0 @@
-<view class="{{['safe-area',a]}}" style="{{b}}">
-    <slot></slot>
-</view>

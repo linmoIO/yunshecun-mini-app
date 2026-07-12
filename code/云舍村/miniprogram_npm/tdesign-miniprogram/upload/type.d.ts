@@ -1,5 +1,9 @@
 import { ImageProps } from '../image/index';
 export interface TdUploadProps {
+    addBtn?: {
+        type: BooleanConstructor;
+        value?: boolean;
+    };
     addContent?: {
         type: StringConstructor;
         value?: string;
@@ -12,9 +16,16 @@ export interface TdUploadProps {
         type: ObjectConstructor;
         value?: UploadMpConfig;
     };
-    style?: {
-        type: StringConstructor;
-        value?: string;
+    disabled?: {
+        type: BooleanConstructor;
+        value?: boolean;
+    };
+    draggable?: {
+        type: null;
+        value?: boolean | {
+            vibrate?: boolean;
+            collisionVibrate?: boolean;
+        };
     };
     files?: {
         type: ArrayConstructor;
@@ -48,8 +59,16 @@ export interface TdUploadProps {
         type: ArrayConstructor;
         value?: Array<MediaType>;
     };
+    preview?: {
+        type: BooleanConstructor;
+        value?: boolean;
+    };
+    removeBtn?: {
+        type: BooleanConstructor;
+        value?: boolean;
+    };
     requestMethod?: {
-        type: null;
+        type: undefined;
         value?: null;
     };
     sizeLimit?: {
@@ -60,26 +79,28 @@ export interface TdUploadProps {
         type: StringConstructor;
         value?: 'media' | 'messageFile';
     };
+    theme?: {
+        type: StringConstructor;
+        value?: 'grid' | 'list';
+    };
+    transition?: {
+        type: ObjectConstructor;
+        value?: Transition;
+    };
 }
-export declare type UploadMpConfig = ImageConfig | VideoConfig;
-export interface ImageConfig {
+export declare type UploadMpConfig = UploadImageConfig | UploadVideoConfig;
+export interface UploadImageConfig {
     count?: number;
     sizeType?: Array<SizeTypeValues>;
     sourceType?: Array<SourceTypeValues>;
 }
 export declare type SizeTypeValues = 'original' | 'compressed';
 export declare type SourceTypeValues = 'album' | 'camera';
-export interface VideoConfig {
+export interface UploadVideoConfig {
     sourceType?: Array<SourceTypeValues>;
     compressed?: boolean;
     maxDuration?: number;
     camera?: 'back' | 'front';
-}
-export interface UploadDisplayDragEvents {
-    onDrop?: (event: DragEvent) => void;
-    onDragenter?: (event: DragEvent) => void;
-    onDragover?: (event: DragEvent) => void;
-    onDragleave?: (event: DragEvent) => void;
 }
 export interface UploadFile {
     url: string;
@@ -89,7 +110,7 @@ export interface UploadFile {
     percent?: number;
     status: 'loading' | 'reload' | 'failed' | 'done';
 }
-export declare type MediaType = 'image' | 'video';
+export declare type MediaType = 'image' | 'video' | 'mix';
 export interface SizeLimitObj {
     size: number;
     unit: SizeUnit;
@@ -97,3 +118,8 @@ export interface SizeLimitObj {
 }
 export declare type SizeUnitArray = ['B', 'KB', 'MB', 'GB'];
 export declare type SizeUnit = SizeUnitArray[number];
+export interface Transition {
+    backTransition?: boolean;
+    duration?: number;
+    timingFunction?: string;
+}

@@ -7,7 +7,7 @@
     o = require("../../base/jAlert/jAlert.js"),
     r = require("../../base/product.js"),
     i = require("../../hooks/useAdReport.js"),
-    u = require("../../hooks/useQTAutoClk.js"),
+    u = require("../hooks/useQTAutoClk.js"),
     n = require("../../hooks/useScroll.js"),
     c = require("../../hooks/useSubscribeMessage.js"),
     s = require("../../hooks/useXhsReport.js"),
@@ -29,7 +29,7 @@
     A = () => "../../components/new/LimitingRetry/LimitingRetryDialog.js",
     E = () => "../../components/new/Stepper.js",
     _ = () => "../../components/noData.js",
-    S = () => "../../components/share.js",
+    S = () => "../components/share.js",
     j = () => "../../components/swiperBox.js",
     k = () => "../components/dailyPrice.js",
     G = () => "../components/travel/CategorySubInfo.js",
@@ -551,7 +551,7 @@
             "PEOPLE" === G.value.priceModel ? (Ne.value = e[0].adult || 1, qe.value = e[0].children || 0, Ve(Ne.value), Oe(qe.value)) : (xe.value = 1, Le.value = a)
           }()) : o.jAlert12("请联系云舍村客服或顾问", "联系客服", "重新选择", () => {}, () => {
             R.value.hideDialog(), ze(!1)
-          }, "您选择的产品因资源保障原因暂无法购买，详讯400-0000-830。"))
+          }, "您选择的产品因资源保障原因暂无法购买，请联系在线客服。"))
         }
         const da = e.ref(!1);
 
@@ -641,7 +641,7 @@
               e.travelGroupCode === G.value.travelGroupCode && e.productAvailNum > 0 && (o = !0)
             }), o ? null == a || a() : null == t || t(), o || e.index.showModal({
               title: "请联系云舍村客服或顾问",
-              content: "您选择的产品因资源保障原因暂无法购买,详讯400-0000-830",
+              content: "您选择的产品因资源保障原因暂无法购买，请联系在线客服。",
               cancelText: "联系客服",
               confirmText: "我知道了",
               cancelColor: "#a43127",

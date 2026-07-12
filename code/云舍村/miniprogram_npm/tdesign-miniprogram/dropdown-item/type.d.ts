@@ -1,23 +1,8 @@
 import { KeysType } from '../common/common';
 export interface TdDropdownItemProps {
-    style?: {
-        type: StringConstructor;
-        value?: string;
-    };
     disabled?: {
         type: BooleanConstructor;
         value?: boolean;
-    };
-    externalClasses?: {
-        type: ArrayConstructor;
-        value?: [
-            't-class',
-            't-class-content',
-            't-class-column',
-            't-class-column-item',
-            't-class-column-item-label',
-            't-class-footer'
-        ];
     };
     keys?: {
         type: ObjectConstructor;
@@ -39,9 +24,9 @@ export interface TdDropdownItemProps {
         type: null;
         value?: string | number;
     };
-    optionsLayout?: {
+    placement?: {
         type: StringConstructor;
-        value?: string;
+        value?: 'left' | 'right';
     };
     value?: {
         type: null;

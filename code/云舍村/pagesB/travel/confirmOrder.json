@@ -11,7 +11,7 @@
                             "stepper":  "../../components/new/Stepper",
                             "st-radio":  "../../components/new/StRadio",
                             "order-contact-tip-notice":  "../../components/order/OrderContactTipNotice",
-                            "order-discount-plan":  "../../components/order/OrderDiscountPlan",
+                            "order-discount-plan":  "../components/order/OrderDiscountPlan",
                             "retry-modal":  "../../components/RetryModal",
                             "float-button-kf":  "/components/new/FloatButtonKf"
                         }

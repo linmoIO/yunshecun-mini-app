@@ -1,3 +1,4 @@
+import { PopupProps } from '../popup/index';
 export interface TdActionSheetProps {
     align?: {
         type: StringConstructor;
@@ -18,8 +19,17 @@ export interface TdActionSheetProps {
     items: {
         type: ArrayConstructor;
         value?: Array<string | ActionSheetItem>;
+        required?: boolean;
+    };
+    popupProps?: {
+        type: ObjectConstructor;
+        value?: PopupProps;
     };
     showCancel?: {
+        type: BooleanConstructor;
+        value?: boolean;
+    };
+    showOverlay?: {
         type: BooleanConstructor;
         value?: boolean;
     };
@@ -27,27 +37,24 @@ export interface TdActionSheetProps {
         type: StringConstructor;
         value?: 'list' | 'grid';
     };
-    visible: {
+    usingCustomNavbar?: {
         type: BooleanConstructor;
         value?: boolean;
     };
-    defaultVisible: {
+    visible?: {
         type: BooleanConstructor;
         value?: boolean;
     };
-    showOverlay: {
+    defaultVisible?: {
         type: BooleanConstructor;
         value?: boolean;
-    };
-    popupProps: {
-        type: ObjectConstructor;
-        value?: object;
     };
 }
 export interface ActionSheetItem {
     label: string;
+    description?: string;
     color?: string;
     disabled?: boolean;
-    icon?: string;
-    suffixIcon?: string;
+    icon?: string | object;
+    suffixIcon?: string | object;
 }

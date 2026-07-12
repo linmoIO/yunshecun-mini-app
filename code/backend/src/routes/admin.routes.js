@@ -252,6 +252,39 @@ const DEFAULT_SERIES = [
   { productSeriesName: '香格里拉环线', productSeriesCode: 'shangri-la' },
   { productSeriesName: '冰川环线', productSeriesCode: 'glacier' },
 ];
+
+router.get('/date-inventory', async (req, res) => {
+  const { type, targetId, targetCode, pageNum = 1, pageSize = 50 } = req.query;
+  const where = {};
+  if (type) where.type = String(type);
+  if (targetId) where.targetId = Number(targetId);
+  if (targetCode) where.targetCode = String(targetCode);
+  const [list, total] = await Promise.all([
+    prisma.dateInventory.findMany({ where, orderBy: [{ date: 'asc' }, { id: 'asc' }], skip: (Number(pageNum) - 1) * Number(pageSize), take: Number(pageSize) }),
+    prisma.dateInventory.count({ where }),
+  ]);
+  return success(res, { list, total });
+});
+
+router.post('/date-inventory', async (req, res) => {
+  const { type, targetId, targetCode, date, endDate, price, stock, remark, status } = req.body || {};
+  if (!type || !targetId || !date) return res.json({ code: -1, msg: '缺少库存类型、对象或日期' });
+  const data = { type, targetId: Number(targetId), targetCode: targetCode || '', date, endDate: endDate || date, price: price === '' || price === undefined ? null : Number(price), stock: Number(stock) || 0, remark, status: status !== undefined ? Number(status) : 1 };
+  const item = await prisma.dateInventory.upsert({ where: { type_targetId_date: { type: data.type, targetId: data.targetId, date: data.date } }, update: data, create: data });
+  return success(res, item);
+});
+
+router.put('/date-inventory/:id', async (req, res) => {
+  const { date, endDate, price, stock, remark, status } = req.body || {};
+  const item = await prisma.dateInventory.update({ where: { id: Number(req.params.id) }, data: { ...(date !== undefined && { date }), ...(endDate !== undefined && { endDate: endDate || date }), ...(price !== undefined && { price: price === '' ? null : Number(price) }), ...(stock !== undefined && { stock: Number(stock) || 0 }), ...(remark !== undefined && { remark }), ...(status !== undefined && { status: Number(status) }) } });
+  return success(res, item);
+});
+
+router.delete('/date-inventory/:id', async (req, res) => {
+  await prisma.dateInventory.delete({ where: { id: Number(req.params.id) } });
+  return success(res, null, '删除成功');
+});
+
 router.get('/destinations/series', async (req, res) => {
   const cfg = await prisma.sysConfig.findFirst({ where: { key: 'destinations_series' } });
   const series = cfg?.value ? JSON.parse(cfg.value) : DEFAULT_SERIES;

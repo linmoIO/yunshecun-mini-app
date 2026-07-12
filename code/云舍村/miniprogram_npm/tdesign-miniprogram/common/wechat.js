@@ -1,9 +1,1 @@
-export const getObserver = (context, selector) => {
-    return new Promise((resolve, reject) => {
-        wx.createIntersectionObserver(context)
-            .relativeToViewport()
-            .observe(selector, (res) => {
-            resolve(res);
-        });
-    });
-};
+export const getObserver=(e,t)=>new Promise(o=>{e.createIntersectionObserver({nativeMode:!0}).relativeToViewport().observe(t,e=>{o(e)})});export const getWindowInfo=()=>wx.getWindowInfo&&wx.getWindowInfo()||wx.getSystemInfoSync();export const getAppBaseInfo=()=>wx.getAppBaseInfo&&wx.getAppBaseInfo()||wx.getSystemInfoSync();export const getDeviceInfo=()=>wx.getDeviceInfo&&wx.getDeviceInfo()||wx.getSystemInfoSync();

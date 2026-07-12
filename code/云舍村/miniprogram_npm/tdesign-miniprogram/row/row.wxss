@@ -1,5 +1,1 @@
-.t-row:after {
-  clear: both;
-  content: '';
-  display: table;
-}
+@import '../common/style/index.wxss';.t-row{display:flex;flex-direction:row;flex-wrap:wrap;box-sizing:border-box;}

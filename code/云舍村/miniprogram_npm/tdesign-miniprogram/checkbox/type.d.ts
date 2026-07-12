@@ -31,13 +31,9 @@ export interface TdCheckboxProps {
         type: BooleanConstructor;
         value?: boolean;
     };
-    externalClasses?: {
-        type: ArrayConstructor;
-        value?: ['t-class', 't-class-icon', 't-class-label', 't-class-content', 't-class-border'];
-    };
     icon?: {
         type: null;
-        value?: 'circle' | 'line' | 'rectangle' | string[];
+        value?: CheckboxIconType;
     };
     indeterminate?: {
         type: BooleanConstructor;
@@ -72,3 +68,4 @@ export interface TdCheckboxProps {
         value?: string | number | boolean;
     };
 }
+export declare type CheckboxIconType = 'circle' | 'line' | 'rectangle' | string[];

@@ -4,11 +4,55 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const { v4: uuidv4 } = require('uuid');
 const axios = require('axios');
+const crypto = require('crypto');
 const { PrismaClient } = require('@prisma/client');
 const config = require('../config');
 const { success, error } = require('../utils/response');
 
 const prisma = new PrismaClient();
+
+const getSysConfigMap = async (keys) => {
+  const rows = await prisma.sysConfig.findMany({ where: { key: { in: keys } } });
+  return Object.fromEntries(rows.map(r => [r.key, r.value || '']));
+};
+
+const isTruthy = (v) => ['1', 'true', 'T', 'Y', 'yes', 'on'].includes(String(v || '').trim());
+
+const hmac = (key, msg, encoding) => crypto.createHmac('sha256', key).update(msg).digest(encoding);
+const sha256 = (msg) => crypto.createHash('sha256').update(msg).digest('hex');
+
+const callTencentCloudApi = async ({ service, host, action, version, region = 'ap-guangzhou', payload, secretId, secretKey }) => {
+  if (!secretId || !secretKey) throw new Error('腾讯云 SecretId/SecretKey 未配置');
+  const timestamp = Math.floor(Date.now() / 1000);
+  const date = new Date(timestamp * 1000).toISOString().slice(0, 10);
+  const body = JSON.stringify(payload || {});
+  const canonicalHeaders = `content-type:application/json; charset=utf-8\nhost:${host}\nx-tc-action:${action.toLowerCase()}\n`;
+  const signedHeaders = 'content-type;host;x-tc-action';
+  const canonicalRequest = ['POST', '/', '', canonicalHeaders, signedHeaders, sha256(body)].join('\n');
+  const credentialScope = `${date}/${service}/tc3_request`;
+  const stringToSign = ['TC3-HMAC-SHA256', timestamp, credentialScope, sha256(canonicalRequest)].join('\n');
+  const secretDate = hmac(`TC3${secretKey}`, date);
+  const secretService = hmac(secretDate, service);
+  const secretSigning = hmac(secretService, 'tc3_request');
+  const signature = hmac(secretSigning, stringToSign, 'hex');
+  const authorization = `TC3-HMAC-SHA256 Credential=${secretId}/${credentialScope}, SignedHeaders=${signedHeaders}, Signature=${signature}`;
+
+  const resp = await axios.post(`https://${host}`, body, {
+    timeout: 10000,
+    headers: {
+      Authorization: authorization,
+      'Content-Type': 'application/json; charset=utf-8',
+      Host: host,
+      'X-TC-Action': action,
+      'X-TC-Timestamp': timestamp,
+      'X-TC-Version': version,
+      'X-TC-Region': region,
+    },
+  });
+  const response = resp.data?.Response || {};
+  if (response.Error) throw new Error(`${response.Error.Code}: ${response.Error.Message}`);
+  return response;
+};
 
 const generateToken = (member) => {
   return jwt.sign(
@@ -117,23 +161,22 @@ const wechatLogin = async (req, res) => {
   }
 };
 
-// 生成图形验证码（使用 svg-captcha，返回 SVG 图片和 captchaId）
+const createLocalCaptcha = async (sessionId) => {
+  const svgCaptcha = require('svg-captcha');
+  const captcha = svgCaptcha.create({ size: 4, ignoreChars: '0o1l', noise: 1, color: true });
+  const captchaId = sessionId || uuidv4();
+  const expiresAt = new Date(Date.now() + 10 * 60000);
+  await prisma.sysConfig.deleteMany({ where: { key: `captcha_${captchaId}` } }).catch(() => {});
+  await prisma.sysConfig.create({
+    data: { key: `captcha_${captchaId}`, value: JSON.stringify({ code: captcha.text, expiresAt: expiresAt.toISOString() }) },
+  });
+  return { captchaId, sessionId: captchaId, image: captcha.data, path: `data:image/svg+xml;utf8,${encodeURIComponent(captcha.data)}` };
+};
+
+// 生成图形验证码（本地开发兜底）
 const generateCaptcha = async (req, res) => {
   try {
-    const svgCaptcha = require('svg-captcha');
-    const { v4: uuid } = require('uuid');
-    const captcha = svgCaptcha.create({ size: 4, ignoreChars: '0o1l', noise: 1, color: true });
-    const captchaId = uuid();
-    const expiresAt = new Date(Date.now() + 10 * 60000); // 10 分钟有效期
-    // 存储验证码（可用数据库或内存，这里用 sysConfig 表简单存储）
-    await prisma.sysConfig.create({
-      data: { key: `captcha_${captchaId}`, value: captcha.text, expiresAt }
-    }).catch(async () => {
-      // 如果 upsert 冲突，先删旧的再创建
-      await prisma.sysConfig.deleteMany({ where: { key: `captcha_${captchaId}` } }).catch(() => {});
-      return prisma.sysConfig.create({ data: { key: `captcha_${captchaId}`, value: captcha.text, expiresAt } });
-    });
-    return success(res, { captchaId, image: captcha.data }, '图形验证码已生成');
+    return success(res, await createLocalCaptcha(req.query.sessionId || req.body?.sessionId), '图形验证码已生成');
   } catch (err) {
     console.error('generateCaptcha error:', err.message);
     return error(res, '验证码生成失败: ' + err.message);
@@ -146,8 +189,19 @@ const verifyCaptcha = async (captchaId, userCode) => {
   try {
     const stored = await prisma.sysConfig.findUnique({ where: { key: `captcha_${captchaId}` } });
     if (!stored) return false;
+    let storedCode = stored.value;
+    let expiresAt = null;
+    try {
+      const parsed = JSON.parse(stored.value);
+      storedCode = parsed.code;
+      expiresAt = parsed.expiresAt ? new Date(parsed.expiresAt) : null;
+    } catch (_) {}
+    if (expiresAt && expiresAt <= new Date()) {
+      await prisma.sysConfig.delete({ where: { key: `captcha_${captchaId}` } }).catch(() => {});
+      return false;
+    }
     // 不区分大小写
-    const match = stored.value.toLowerCase() === userCode.toLowerCase().trim();
+    const match = String(storedCode || '').toLowerCase() === userCode.toLowerCase().trim();
     // 验证成功后删除（一次性）
     if (match) {
       await prisma.sysConfig.delete({ where: { key: `captcha_${captchaId}` } }).catch(() => {});
@@ -158,38 +212,111 @@ const verifyCaptcha = async (captchaId, userCode) => {
   }
 };
 
-// 短信宝发送 SMS（需配置 sms_provider / sms_user / sms_pass / sms_sign）
-const sendSmsBao = async (phone, content) => {
-  const axios_sms = require('axios');
-  const md5 = require('crypto');
-  const cfgRows = await prisma.sysConfig.findMany({
-    where: { key: { in: ['sms_user', 'sms_pass', 'sms_sign'] } }
-  });
-  const cfg = Object.fromEntries(cfgRows.map(r => [r.key, r.value]));
+const verifyHumanCaptcha = async (params, cfg) => {
+  const provider = (cfg.captcha_provider || 'local').toLowerCase();
+  if (provider === 'none') return true;
+  if (provider === 'tencent') {
+    const ticket = params.ticket || params.captchaTicket;
+    const randstr = params.randstr || params.captchaRandstr;
+    if (!ticket || !randstr) return false;
+    const resp = await callTencentCloudApi({
+      service: 'captcha',
+      host: 'captcha.tencentcloudapi.com',
+      action: 'DescribeCaptchaResult',
+      version: '2019-07-22',
+      region: cfg.captcha_tencent_region || 'ap-guangzhou',
+      secretId: cfg.captcha_tencent_secret_id,
+      secretKey: cfg.captcha_tencent_secret_key,
+      payload: {
+        CaptchaType: Number(cfg.captcha_tencent_type || 9),
+        Ticket: ticket,
+        UserIp: params.userIp || params.ip || '',
+        Randstr: randstr,
+        CaptchaAppId: Number(cfg.captcha_tencent_app_id),
+        AppSecretKey: cfg.captcha_tencent_app_secret_key,
+      },
+    });
+    return Number(resp.CaptchaCode) === 1;
+  }
+  const captchaId = params.captchaId || params.sessionId;
+  const userCode = params.captchaCode || params.identifyCode;
+  return verifyCaptcha(captchaId, userCode);
+};
+
+// 短信宝发送 SMS（保留兼容）
+const sendSmsBao = async (phone, content, cfg) => {
   if (!cfg.sms_user || !cfg.sms_pass) throw new Error('短信服务未配置，请在后台-系统设置-短信配置中填写账号信息');
-  const passHash = md5.createHash('md5').update(cfg.sms_pass).digest('hex');
+  const passHash = crypto.createHash('md5').update(cfg.sms_pass).digest('hex');
   const sign = cfg.sms_sign ? `【${cfg.sms_sign}】` : '【云舍村】';
   const smsContent = sign + content;
   const url = `https://api.smsbao.com/sms?u=${encodeURIComponent(cfg.sms_user)}&p=${passHash}&m=${phone}&c=${encodeURIComponent(smsContent)}`;
-  const res = await axios_sms.get(url, { timeout: 8000 });
+  const res = await axios.get(url, { timeout: 8000 });
   const code = String(res.data).trim();
   const SMS_ERRORS = { '0':'成功','30':'账号不存在','40':'账号密码错','41':'余额不足','43':'IP限制','50':'内容含敏感词','51':'手机号非法','52':'短信过期','53':'发送数量超限','54':'信息有误' };
   if (code !== '0') throw new Error('短信发送失败：' + (SMS_ERRORS[code] || `错误码${code}`));
 };
 
+const sendTencentSms = async (phone, code, cfg) => {
+  const templateParams = (cfg.sms_tencent_template_params || '{code}').split(',').map(p => {
+    const key = p.trim();
+    return key === '{code}' || key === 'code' ? code : key;
+  });
+  const resp = await callTencentCloudApi({
+    service: 'sms',
+    host: 'sms.tencentcloudapi.com',
+    action: 'SendSms',
+    version: '2021-01-11',
+    region: cfg.sms_tencent_region || 'ap-guangzhou',
+    secretId: cfg.sms_tencent_secret_id,
+    secretKey: cfg.sms_tencent_secret_key,
+    payload: {
+      PhoneNumberSet: [`+86${phone}`],
+      SmsSdkAppId: cfg.sms_tencent_sdk_app_id,
+      SignName: cfg.sms_tencent_sign_name,
+      TemplateId: cfg.sms_tencent_template_id,
+      TemplateParamSet: templateParams,
+    },
+  });
+  const status = resp.SendStatusSet?.[0];
+  if (status && status.Code && status.Code !== 'Ok') {
+    throw new Error(`${status.Code}: ${status.Message || '短信发送失败'}`);
+  }
+};
+
+const sendLoginSms = async (phone, code, cfg) => {
+  const provider = (cfg.sms_provider || 'smsbao').toLowerCase();
+  if (provider === 'tencent') return sendTencentSms(phone, code, cfg);
+  if (provider === 'smsbao') return sendSmsBao(phone, `您的验证码是：${code}，5分钟内有效，请勿泄露。`, cfg);
+  if (provider === 'dev') return;
+  throw new Error(`不支持的短信服务商：${provider}`);
+};
+
 // 发送短信验证码（需先验证图形验证码）
 const sendVerifyCode = async (req, res) => {
   const params = { ...(req.query || {}), ...(req.body || {}) };
-  const { mobile, phone, captchaId, captchaCode } = params;
+  const { mobile, phone, sessionId } = params;
   const phoneNo = mobile || phone;
+
+  const cfg = await getSysConfigMap([
+    'sms_provider','sms_dev_mode','sms_user','sms_pass','sms_sign',
+    'sms_tencent_secret_id','sms_tencent_secret_key','sms_tencent_sdk_app_id',
+    'sms_tencent_sign_name','sms_tencent_template_id','sms_tencent_template_params','sms_tencent_region',
+    'captcha_provider','captcha_required','captcha_tencent_secret_id','captcha_tencent_secret_key',
+    'captcha_tencent_app_id','captcha_tencent_app_secret_key','captcha_tencent_region','captcha_tencent_type',
+  ]);
+
+  // 前端图形验证码组件初始化时只传 sessionId，不传手机号；这里返回验证码图片。
+  if (!phoneNo && sessionId) {
+    const captcha = await createLocalCaptcha(sessionId);
+    return res.json({ code: 0, result: 1, msg: 'success', retVal: { path: captcha.path, captchaId: captcha.captchaId } });
+  }
 
   if (!phoneNo) return error(res, '请提供手机号');
   if (!/^1\d{10}$/.test(phoneNo)) return error(res, '手机号格式不正确');
 
-  // 验证图形验证码（如果提供了）
-  if (captchaId && captchaCode) {
-    const captchaValid = await verifyCaptcha(captchaId, captchaCode);
-    if (!captchaValid) return error(res, '图形验证码错误或已过期');
+  if (isTruthy(cfg.captcha_required) && !params.captchaVerified) {
+    const captchaValid = await verifyHumanCaptcha({ ...params, userIp: req.ip }, cfg);
+    if (!captchaValid) return error(res, '人机验证失败或已过期');
   }
 
   // 频率限制：同一手机号 60 秒内只能发一次
@@ -205,24 +332,54 @@ const sendVerifyCode = async (req, res) => {
 
   // 尝试真实短信发送
   try {
-    await sendSmsBao(phoneNo, `您的验证码是：${code}，5分钟内有效，请勿泄露。`);
+    await sendLoginSms(phoneNo, code, cfg);
     console.log(`[SMS] 已发送验证码到 ${phoneNo}`);
   } catch (smsErr) {
-    console.warn(`[SMS] 短信发送失败（${smsErr.message}），开发模式返回验证码`);
-    // 短信未配置时，开发模式直接返回验证码（生产环境应去掉 devCode）
-    return success(res, { mobile: phoneNo, devCode: code }, '验证码已发送（开发模式）');
+    console.warn(`[SMS] 短信发送失败：${smsErr.message}`);
+    if (isTruthy(cfg.sms_dev_mode) || (cfg.sms_provider || '').toLowerCase() === 'dev') {
+      return success(res, { mobile: phoneNo, devCode: code }, '验证码已发送（开发模式）');
+    }
+    return error(res, '短信发送失败，请检查后台短信配置');
   }
 
   return success(res, { mobile: phoneNo }, '验证码已发送');
 };
 
+// 兼容前端旧流程：校验图形验证码并发送短信，返回 retVal 作为 verifyId。
+const verifyIdentifyCode = async (req, res) => {
+  const params = { ...(req.query || {}), ...(req.body || {}) };
+  const phoneNo = params.mobile || params.phone;
+  if (!phoneNo) return error(res, '请提供手机号');
+  const cfg = await getSysConfigMap([
+    'sms_provider','sms_dev_mode','sms_user','sms_pass','sms_sign',
+    'sms_tencent_secret_id','sms_tencent_secret_key','sms_tencent_sdk_app_id',
+    'sms_tencent_sign_name','sms_tencent_template_id','sms_tencent_template_params','sms_tencent_region',
+    'captcha_provider','captcha_required','captcha_tencent_secret_id','captcha_tencent_secret_key',
+    'captcha_tencent_app_id','captcha_tencent_app_secret_key','captcha_tencent_region','captcha_tencent_type',
+  ]);
+  const captchaValid = await verifyHumanCaptcha({ ...params, captchaId: params.sessionId, captchaCode: params.identifyCode, userIp: req.ip }, cfg);
+  if (!captchaValid) return res.json({ code: -1, result: 0, msg: '人机验证失败或已过期', data: null });
+
+  req.query = { ...params, mobile: phoneNo, captchaVerified: true };
+  req.body = { ...params, mobile: phoneNo, captchaVerified: true };
+  const originalJson = res.json.bind(res);
+  res.json = (payload) => {
+    if (payload?.code === 0) {
+      return originalJson({ code: 0, result: 1, msg: payload.msg || 'success', retVal: uuidv4(), data: payload.data });
+    }
+    return originalJson({ ...payload, result: 0 });
+  };
+  return sendVerifyCode(req, res);
+};
+
 // 手机号+验证码登录
 const loginByMobileCode = async (req, res) => {
-  const { mobile, phone, identifyCode, code, hotelGroupCode } = req.body || req.query;
+  const { mobile, phone, identifyCode, code, verifyCode, openid } = req.body || req.query;
   const phoneNo = mobile || phone;
-  const verCode = identifyCode || code;
+  const verCode = identifyCode || code || verifyCode;
 
   if (!phoneNo || !verCode) return error(res, '请提供手机号和验证码');
+  if (!/^1\d{10}$/.test(phoneNo)) return error(res, '手机号格式不正确');
 
   const record = await prisma.verifyCode.findFirst({
     where: { phone: phoneNo, code: verCode, used: false, expiresAt: { gt: new Date() } },
@@ -236,18 +393,50 @@ const loginByMobileCode = async (req, res) => {
   let member = await prisma.member.findUnique({ where: { phone: phoneNo } });
   if (!member) {
     member = await prisma.member.create({
-      data: { memberId: uuidv4(), phone: phoneNo, cardLevel: '普通会员' },
+      data: { memberId: uuidv4(), phone: phoneNo, wechatOpenId: openid || null, cardLevel: '普通会员' },
     });
+  } else if (openid && !member.wechatOpenId) {
+    member = await prisma.member.update({ where: { id: member.id }, data: { wechatOpenId: openid } });
   }
 
   const token = generateToken(member);
-  await prisma.member.update({ where: { id: member.id }, data: { memberToken: token } });
+  member = await prisma.member.update({ where: { id: member.id }, data: { memberToken: token } });
 
   return success(res, {
     memberId: member.memberId,
     memberToken: token,
     memberInfo: formatMember(member),
   });
+};
+
+const loginByVerificationCode = async (req, res) => {
+  const payload = { ...(req.query || {}), ...(req.body || {}) };
+  req.body = {
+    ...payload,
+    mobile: payload.mobile || payload.phone,
+    verifyCode: payload.verifyCode || payload.identifyCode || payload.code,
+  };
+
+  const originalJson = res.json.bind(res);
+  res.json = (body) => {
+    if (body?.code === 0) {
+      const token = body.data?.memberToken || body.data?.memberInfo?.memberToken || '';
+      if (token) {
+        res.setHeader('accessToken', token);
+        res.setHeader('refreshToken', token);
+      }
+      return originalJson({
+        success: true,
+        code: 0,
+        data: {
+          isNew: false,
+          member: body.data?.memberInfo || {},
+        },
+      });
+    }
+    return originalJson({ success: false, code: body?.code || -1, message: body?.msg || '登录失败', msg: body?.msg || '登录失败' });
+  };
+  return loginByMobileCode(req, res);
 };
 
 // Token 刷新
@@ -493,4 +682,19 @@ const loginByAuthorization = async (req, res) => {
   }
 };
 
-module.exports = { wechatLogin, sendVerifyCode, loginByMobileCode, refreshToken, logout, adminLogin, memberLoginOpen, staffLogin, bindPhone, generateCaptcha, verifyCaptcha, loginByAuthorization };
+module.exports = {
+  wechatLogin,
+  sendVerifyCode,
+  verifyIdentifyCode,
+  loginByMobileCode,
+  loginByVerificationCode,
+  refreshToken,
+  logout,
+  adminLogin,
+  memberLoginOpen,
+  staffLogin,
+  bindPhone,
+  generateCaptcha,
+  verifyCaptcha,
+  loginByAuthorization,
+};

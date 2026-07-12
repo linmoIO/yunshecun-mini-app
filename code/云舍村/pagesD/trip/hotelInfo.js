@@ -8,7 +8,7 @@
   const a = () => "../../components/swiperBox.js",
     l = () => "../../components/moreText.js",
     u = () => "../../components/coustomHead.js",
-    s = () => "../../components/tripNav.js",
+    s = () => "../components/tripNav.js",
     n = e.defineComponent({
       __name: "hotelInfo",
       setup(a) {

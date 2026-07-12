@@ -1,9 +1,0 @@
-{
-    "navigationStyle":  "custom",
-    "usingComponents":  {
-                            "picker-address":  "../../components/pickerAddress",
-                            "calendar":  "../../components/calendar",
-                            "kf-dialog":  "../../components/kfDialog",
-                            "coustom-head":  "../../components/coustomHead"
-                        }
-}

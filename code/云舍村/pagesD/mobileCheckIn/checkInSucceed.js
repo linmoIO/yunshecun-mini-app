@@ -14,9 +14,9 @@
             nativeMode: !0
           }),
           b: e.t(e.unref(n).hotelDesc),
-          c: e.o(t => ("400-0000-830", void e.index.makePhoneCall({
-            phoneNumber: "400-0000-830"
-          }))),
+          c: e.o(t => e.index.navigateTo({
+            url: "/pagesA/other/chat"
+          })),
           d: e.o(t => {
             e.index.switchTab({
               url: "/pages/trip/index"

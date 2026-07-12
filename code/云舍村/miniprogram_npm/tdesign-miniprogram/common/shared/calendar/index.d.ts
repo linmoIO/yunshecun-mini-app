@@ -5,10 +5,11 @@ export default class TCalendar {
     type: TCalendarType;
     minDate: Date;
     maxDate: Date;
+    allowSameDay: Boolean;
     format: (day: TDate) => TDate;
     constructor(options?: {});
     getTrimValue(): Date | Date[];
-    getDays(): any[];
+    getDays(weekdays: string[]): any[];
     getMonths(): any[];
     select({ cellType, year, month, date }: {
         cellType: any;

@@ -1,3 +1,0 @@
-<view class="paragraph data-v-772662fd" wx:if="{{a}}">
-    <text class="paragraph__text data-v-772662fd">{{b}}</text>
-</view>

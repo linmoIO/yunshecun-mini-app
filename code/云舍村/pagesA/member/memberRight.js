@@ -8,7 +8,7 @@
       wx.setNavigationBarTitle({ title: this.data.title });
       const key = 'page_member_right';
       wx.request({
-        url: 'http://localhost:3000/api/cache/sysOptions/getMultiSysOptionCommon.json?codes=' + key + '&hotelGroupCode=' + c.config.hotelGroupCode + '&clientType=wechat_mini&appid=' + c.config.appid,
+        url: c.config.baseUrlmall + '/cache/sysOptions/getMultiSysOptionCommon.json?codes=' + key + '&hotelGroupCode=' + c.config.hotelGroupCode + '&clientType=wechat_mini&appid=' + c.config.appid,
         method: 'GET',
         success: res => {
           const d = res.data;

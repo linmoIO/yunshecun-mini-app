@@ -1,7 +1,7 @@
 ! function() {
   "use strict";
   const e = require("../../../common/vendor.js"),
-    t = require("../../../hooks/useConfig.js"),
+    t = require("../../hooks/useConfig.js"),
     o = require("../../../utils/api.js");
   Math || r();
   const r = () => "../../../components/bottomDialog.js",

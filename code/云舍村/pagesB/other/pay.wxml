@@ -9,7 +9,7 @@
     </view>
     <view bindtap="{{p}}" class="balance-ded data-v-bf26b57e" wx:if="{{j}}">
         <view class="info data-v-bf26b57e">
-            <view class="label data-v-bf26b57e"> 余额抵扣 </view>
+            <view class="label data-v-bf26b57e"> 积分抵扣 </view>
             <view class="val data-v-bf26b57e" wx:if="{{k}}">{{l}}</view>
             <view class="val red data-v-bf26b57e" wx:else> -¥{{m}}</view>
         </view>
@@ -17,7 +17,7 @@
             <st-radio bind:__l="__l" bindupdateModelValue="{{n}}" class="data-v-bf26b57e" uI="bf26b57e-1" uP="{{o}}" wx:if="{{o}}"></st-radio>
         </view>
     </view>
-    <view class="payment-mode-tips data-v-bf26b57e" wx:if="{{q}}"> 可用余额不足，请在下方选择一种方式组合支付 </view>
+    <view class="payment-mode-tips data-v-bf26b57e" wx:if="{{q}}"> 可用余额不足，请在下方选择一种方式组合支付</view>
     <view class="payment-mode-tips data-v-bf26b57e" wx:else> 支付方式 </view>
     <view class="payment-mode-box data-v-bf26b57e">
         <view bindtap="{{mode.k}}" class="{{['data-v-bf26b57e',mode.j]}}" wx:for="{{r}}" wx:for-item="mode" wx:key="l">
@@ -92,9 +92,9 @@
             </view>
             <view class="content data-v-bf26b57e">
                 <view class="text data-v-bf26b57e">
-                    <view class="iconfont icon-danxuan_bukexuan data-v-bf26b57e"></view>定金支付至少¥{{J}}； </view>
+                    <view class="iconfont icon-danxuan_bukexuan data-v-bf26b57e"></view>定金支付至少¥{{J}}；</view>
                 <view class="text data-v-bf26b57e">
-                    <view class="iconfont icon-danxuan_bukexuan data-v-bf26b57e"></view>若剩余待支付金额不足 ¥{{K}} 时，第二次支付则必须支付完； </view>
+                    <view class="iconfont icon-danxuan_bukexuan data-v-bf26b57e"></view>若剩余待支付金额不足 ¥{{K}} 时，第二次支付须支付完； </view>
                 <view class="text data-v-bf26b57e">
                     <view class="iconfont icon-danxuan_bukexuan data-v-bf26b57e"></view>若剩余待支付金额超过 ¥{{L}} 时，第二次支付可多笔支付直至支付完成 </view>
             </view>

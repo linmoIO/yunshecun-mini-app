@@ -2,6 +2,7 @@
 
 const { PrismaClient } = require('@prisma/client');
 const { success, error, paginate } = require('../utils/response');
+const { decrementTravelDeparture, restoreTravelDeparture } = require('../utils/inventory');
 
 const prisma = new PrismaClient();
 
@@ -108,22 +109,35 @@ const saveOrder = async (req, res) => {
     if (mc?.coupon) discount = mc.coupon.discountAmount || 0;
   }
 
-  const order = await prisma.travelOrder.create({
-    data: {
-      memberId: req.member.id,
-      productId: product.id,
-      status: 'pending',
-      totalAmount: Math.max(0, totalAmount - discount),
-      discount,
-      startDate: startDate || null,
-      endDate: endDate || null,
-      persons,
-      contactName,
-      contactPhone,
-      guestInfo: JSON.stringify(dto.rsvDtos || []),
-      notes: dto.remark || '',
-    },
-  });
+  let order;
+  try {
+    order = await prisma.$transaction(async (tx) => {
+      await decrementTravelDeparture(tx, {
+        productId: product.id,
+        productCode: product.productCode,
+        date: startDate,
+        quantity: 1,
+      });
+      return tx.travelOrder.create({
+        data: {
+          memberId: req.member.id,
+          productId: product.id,
+          status: 'pending',
+          totalAmount: Math.max(0, totalAmount - discount),
+          discount,
+          startDate: startDate || null,
+          endDate: endDate || null,
+          persons,
+          contactName,
+          contactPhone,
+          guestInfo: JSON.stringify(dto.rsvDtos || []),
+          notes: dto.remark || '',
+        },
+      });
+    });
+  } catch (err) {
+    return error(res, err.message || '库存不足');
+  }
 
   // confirmOrder.js 判断逻辑：result===1 为成功，msg 存订单号（用于跳转 pay 页）
   return res.json({
@@ -208,10 +222,18 @@ const queryOrderStatus = async (req, res) => {
 
 const cancelOrder = async (req, res) => {
   const { orderNo, cancelReason } = req.body;
-  const order = await prisma.travelOrder.findFirst({ where: { orderNo, memberId: req.member.id } });
+  const order = await prisma.travelOrder.findFirst({ where: { orderNo, memberId: req.member.id }, include: { product: true } });
   if (!order) return error(res, '订单不存在');
   if (!['pending', 'paid'].includes(order.status)) return error(res, '当前状态不可取消');
-  await prisma.travelOrder.update({ where: { orderNo }, data: { status: 'cancelled', cancelReason } });
+  await prisma.$transaction(async (tx) => {
+    await tx.travelOrder.update({ where: { orderNo }, data: { status: 'cancelled', cancelReason } });
+    await restoreTravelDeparture(tx, {
+      productId: order.productId,
+      productCode: order.product?.productCode,
+      date: order.startDate,
+      quantity: 1,
+    });
+  });
   return success(res, null, '取消成功');
 };
 

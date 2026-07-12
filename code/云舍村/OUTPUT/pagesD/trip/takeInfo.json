@@ -1,8 +1,0 @@
-{
-    "navigationBarTitleText":  "接送信息",
-    "navigationStyle":  "custom",
-    "usingComponents":  {
-                            "coustom-head":  "../../components/coustomHead",
-                            "float-button-kf":  "/components/new/FloatButtonKf"
-                        }
-}

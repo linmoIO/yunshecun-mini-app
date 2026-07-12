@@ -3,15 +3,11 @@ export interface TdTabBarProps {
         type: BooleanConstructor;
         value?: boolean;
     };
-    style?: {
-        type: StringConstructor;
-        value?: string;
-    };
-    externalClasses?: {
-        type: ArrayConstructor;
-        value?: ['t-class'];
-    };
     fixed?: {
+        type: BooleanConstructor;
+        value?: boolean;
+    };
+    placeholder?: {
         type: BooleanConstructor;
         value?: boolean;
     };
@@ -38,5 +34,9 @@ export interface TdTabBarProps {
     defaultValue?: {
         type: null;
         value?: string | number | Array<string | number>;
+    };
+    zIndex?: {
+        type: NumberConstructor;
+        value?: number;
     };
 }

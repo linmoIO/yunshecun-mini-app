@@ -1,6 +1,1 @@
-{
-  "component": true,
-  "usingComponents": {
-    "t-checkbox": "../checkbox/checkbox"
-  }
-}
+{"component":true,"styleIsolation":"apply-shared","usingComponents":{"t-checkbox":"../checkbox/checkbox"}}

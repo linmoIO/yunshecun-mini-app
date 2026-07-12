@@ -4,6 +4,7 @@
  * addUnit */
 // 为 css 添加单位
 function addUnit(value) {
+  // prettier-ignore
   var REGEXP = getRegExp('^-?\d+(.\d+)?$');
   if (value == null) {
     return undefined;
@@ -23,9 +24,13 @@ function isObject(obj) {
   return obj && obj.constructor === 'Object';
 }
 
-var isNoEmptyObj = function (obj) {
+function isBoolean(value) {
+  return typeof value === 'boolean';
+}
+
+function isNoEmptyObj(obj) {
   return isObject(obj) && JSON.stringify(obj) !== '{}';
-};
+}
 
 function includes(arr, value) {
   if (!arr || !isArray(arr)) return false;
@@ -105,7 +110,7 @@ function _style(styles) {
         return item != null && item !== '';
       })
       .map(function (item) {
-        return isArray(item) ? _style(item) : endsWith(item, ';');
+        return isString(item) ? endsWith(item, ';') : _style(item);
       })
       .join(' ');
   }
@@ -124,14 +129,21 @@ function _style(styles) {
   return styles;
 }
 
+function isValidIconName(str) {
+  // prettier-ignore
+  return getRegExp('^[A-Za-z0-9\-\_]+$').test(str);
+}
+
 module.exports = {
   addUnit: addUnit,
   isString: isString,
   isArray: isArray,
   isObject: isObject,
+  isBoolean: isBoolean,
   isNoEmptyObj: isNoEmptyObj,
   includes: includes,
   cls: cls,
   getBadgeAriaLabel: getBadgeAriaLabel,
   _style: _style,
+  isValidIconName: isValidIconName,
 };

@@ -4,17 +4,21 @@ export interface TdTabBarItemProps {
         type: ObjectConstructor;
         value?: BadgeProps;
     };
-    style?: {
-        type: StringConstructor;
-        value?: string;
-    };
     icon?: {
+        type: null;
+        value?: string | object;
+    };
+    linkType?: {
         type: StringConstructor;
-        value?: string;
+        value?: 'redirectTo' | 'switchTab' | 'reLaunch' | 'navigateTo';
     };
     subTabBar?: {
         type: ArrayConstructor;
         value?: SubTabBarItem[];
+    };
+    url?: {
+        type: StringConstructor;
+        value?: string;
     };
     value?: {
         type: null;

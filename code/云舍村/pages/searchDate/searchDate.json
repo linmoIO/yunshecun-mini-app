@@ -1,8 +1,0 @@
-
-{
-  "navigationBarTitleText": "预约",
-  "usingComponents": {
-    "navbar": "../../components/navBar/navBar"
-  },
-  "disableScroll": true
-}

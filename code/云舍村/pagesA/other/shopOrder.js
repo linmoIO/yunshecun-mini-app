@@ -2,7 +2,6 @@
   'use strict';
   const cfg = require('../../utils/config.js');
   const BASE = cfg.config.baseUrlmall || 'http://localhost:3000/api';
-  const IS_DEV = BASE.indexOf('localhost') >= 0 || BASE.indexOf('127.0.0.1') >= 0;
 
   function getToken() {
     try { var u = wx.getStorageSync('user'); return (u && u.memberToken) ? u.memberToken : ''; } catch(e) { return ''; }
@@ -19,17 +18,6 @@
           else reject(new Error((d && d.msg) || '请求失败'));
         },
         fail: function(e) { reject(new Error('网络错误')); }
-      });
-    });
-  }
-
-  // 调用模拟支付（开发环境）
-  function mockPay(mockPayUrl) {
-    return new Promise(function(resolve) {
-      wx.request({
-        url: 'http://localhost:3000' + mockPayUrl, method: 'GET',
-        success: function() { resolve(); },
-        fail: function() { resolve(); }
       });
     });
   }
@@ -103,9 +91,19 @@
       request('POST', '/shop/pay.json', { orderNo: orderData.orderNo, payMethod: 'wechat' })
         .then(function(payData) {
           wx.hideLoading();
-          var params = payData.payParams || {};
+          var params = {};
+          try {
+            params = typeof payData === 'string' ? JSON.parse(payData) : (payData.payParams || payData.retVal || payData.data || payData || {});
+          } catch(e) {
+            params = {};
+          }
 
           // 调起微信支付
+          if (!params.timeStamp || !params.nonceStr || !params.package || !params.paySign) {
+            self.setData({ paying: false });
+            wx.showToast({ title: '支付参数异常，请重试', icon: 'none', duration: 3000 });
+            return;
+          }
           wx.requestPayment({
             timeStamp: params.timeStamp || String(Math.floor(Date.now() / 1000)),
             nonceStr: params.nonceStr || '',
@@ -118,17 +116,12 @@
             },
             fail: function(err) {
               self.setData({ paying: false });
-              // 开发环境：自动走模拟支付
-              if (IS_DEV && payData.mockPayUrl) {
-                mockPay(payData.mockPayUrl).then(function() {
-                  self._showSuccess(orderData.orderNo, orderData.totalAmount);
-                });
-              } else if (err && err.errMsg && err.errMsg.indexOf('cancel') >= 0) {
+              if (err && err.errMsg && err.errMsg.indexOf('cancel') >= 0) {
                 wx.showToast({ title: '已取消支付', icon: 'none' });
               } else {
                 wx.showModal({
                   title: '支付提示',
-                  content: '微信支付暂未配置，订单已保存。\n订单号：' + orderData.orderNo,
+                  content: '微信支付调起失败，请稍后重试。\n订单号：' + orderData.orderNo,
                   confirmText: '好的', showCancel: false,
                   success: function() { self._navBack(); }
                 });

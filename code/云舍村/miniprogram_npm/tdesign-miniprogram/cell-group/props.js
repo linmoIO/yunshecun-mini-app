@@ -1,17 +1,1 @@
-const props = {
-    bordered: {
-        type: Boolean,
-    },
-    externalClasses: {
-        type: Array,
-    },
-    theme: {
-        type: String,
-        value: 'default',
-    },
-    title: {
-        type: String,
-        value: '',
-    },
-};
-export default props;
+const props={bordered:{type:Boolean,value:!1},theme:{type:String,value:"default"},title:{type:String,value:""}};export default props;

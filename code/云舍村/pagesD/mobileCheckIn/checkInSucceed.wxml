@@ -9,7 +9,7 @@
                     <view class="hotel_name data-v-cb3c7c01">{{b}}</view>
                 </view>
             </view>
-            <view class="subTips data-v-cb3c7c01"> 可直接前往酒店前台领取房卡，如需取消入住办理，请联系酒店人员 <label bindtap="{{c}}" class="phone-color data-v-cb3c7c01"> 400-0000-830 <view class="icon iconfont icon-a-12_youlajiantou_hui data-v-cb3c7c01"></view>
+            <view class="subTips data-v-cb3c7c01"> 可直接前往酒店前台领取房卡，如需取消入住办理，请联系在线客服 <label bindtap="{{c}}" class="phone-color data-v-cb3c7c01"> 在线客服 <view class="icon iconfont icon-a-12_youlajiantou_hui data-v-cb3c7c01"></view>
                 </label>
             </view>
         </view>

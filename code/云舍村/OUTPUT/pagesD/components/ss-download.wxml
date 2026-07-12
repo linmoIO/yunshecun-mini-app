@@ -1,3 +1,0 @@
-<view bindtap="{{a}}" class="downLoad data-v-bf51e621">
-    <view class="iconfont icon-a-40_xiazai data-v-bf51e621"></view>
-</view>

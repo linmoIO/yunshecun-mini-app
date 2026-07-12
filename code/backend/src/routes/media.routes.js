@@ -2,8 +2,10 @@
 
 const router = require('express').Router();
 const ctrl = require('../controllers/media.controller');
-const { adminAuthMiddleware } = require('../middleware/auth');
+const { adminAuthMiddleware, optionalAuth } = require('../middleware/auth');
 const { uploadImage, uploadVideo, uploadAny } = require('../middleware/upload');
+
+router.post('/media/upload', optionalAuth, uploadAny.single('file'), ctrl.uploadImage);
 
 // 管理端 - 媒体上传（需要管理员登录）
 router.post('/admin/media/upload/image', adminAuthMiddleware, uploadImage.single('file'), ctrl.uploadImage);

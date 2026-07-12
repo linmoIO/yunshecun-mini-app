@@ -46,7 +46,12 @@ if (config.env !== 'test') {
 }
 
 // 请求体解析
-app.use(express.json({ limit: '10mb' }));
+app.use(express.json({
+  limit: '10mb',
+  verify: (req, _res, buf) => {
+    req.rawBody = buf;
+  },
+}));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
 // 静态文件（上传的媒体文件）

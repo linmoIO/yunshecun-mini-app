@@ -1,9 +1,0 @@
-{
-    "navigationBarTitleText":  "关联行李吊牌",
-    "enablePullDownRefresh":  false,
-    "navigationStyle":  "custom",
-    "usingComponents":  {
-                            "bottom-btn":  "../../components/bottomBtn",
-                            "coustom-head":  "../../components/coustomHead"
-                        }
-}

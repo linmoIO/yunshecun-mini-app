@@ -1,0 +1,7 @@
+{
+    "component":  true,
+    "usingComponents":  {
+                            "bottom-dialog":  "/components/bottomDialog",
+                            "kf-dialog":  "/components/kfDialog"
+                        }
+}

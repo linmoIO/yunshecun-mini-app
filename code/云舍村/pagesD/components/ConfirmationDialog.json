@@ -1,6 +1,0 @@
-{
-    "component":  true,
-    "usingComponents":  {
-                            "center-dialog":  "../../components/centerDialog"
-                        }
-}

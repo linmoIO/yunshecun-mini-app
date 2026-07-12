@@ -884,14 +884,14 @@ tr:hover td{background:#fafafa}
 
       <div class="tabs">
         <div class="tab active" onclick="switchSettingsTab(this,'wechatTab')">微信小程序</div>
-        <div class="tab" onclick="switchSettingsTab(this,'wxpayTab')">微信支付</div>
+        <div class="tab" onclick="switchSettingsTab(this,'wxpayV3Tab')">微信支付</div>
         <div class="tab" onclick="switchSettingsTab(this,'csTab')">客服配置</div>
         <div class="tab" onclick="switchSettingsTab(this,'pagesTab')">个人中心页面</div>
         <div class="tab" onclick="switchSettingsTab(this,'navTab')">导航栏配置</div>
         <div class="tab" onclick="switchSettingsTab(this,'diyContentTab')">DIY行程内容</div>
         <div class="tab" onclick="switchSettingsTab(this,'otherTab')">其他配置</div>
         <div class="tab" onclick="switchSettingsTab(this,'smsTab')">短信配置</div>
-        <div class="tab" onclick="switchSettingsTab(this,'wxpayV3Tab')">微信支付v3</div>
+        <div class="tab" onclick="switchSettingsTab(this,'pointsTab')">积分配置</div>
         <div class="tab" onclick="switchSettingsTab(this,'accountTab');loadMyAccount()">账号安全</div>
       </div>
 
@@ -906,23 +906,6 @@ tr:hover td{background:#fafafa}
               <b>提示：</b>AppSecret 为空时后端进入开发模拟模式，每个微信 code 映射固定 openid，可正常测试登录流程，但不会实际请求微信服务器。
             </div>
             <button class="btn btn-dark" onclick="saveWechatConfig()">保存微信配置</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- 微信支付 -->
-      <div id="wxpayTab" class="tab-content">
-        <div class="card" style="max-width:640px">
-          <div class="card-header"><span class="card-title">微信支付配置</span></div>
-          <div style="padding:20px">
-            <div class="field"><label>商户号 (MCH ID)</label><input id="cfg_wxpay_mch_id" placeholder="1234567890"></div>
-            <div class="field"><label>API 密钥 (v2 / v3)</label><input id="cfg_wxpay_api_key" type="password" placeholder="32位密钥"></div>
-            <div class="field"><label>支付回调地址</label><input id="cfg_wxpay_notify_url" placeholder="https://你的域名/api/pay/notify/wechat"></div>
-            <div class="field"><label>证书路径 (apiclient_cert.pem)</label><input id="cfg_wxpay_cert_path" placeholder="/path/to/apiclient_cert.pem（退款需要）"></div>
-            <div style="background:#fffbe6;border:1px solid #ffe58f;border-radius:8px;padding:12px 16px;font-size:13px;color:#8a6d00;margin-bottom:16px">
-              <b>本地开发：</b>支付配置未填时，点击"立即支付"会走模拟支付（自动成功），不会调用微信服务器。
-            </div>
-            <button class="btn btn-dark" onclick="saveWxpayConfig()">保存支付配置</button>
           </div>
         </div>
       </div>
@@ -1042,22 +1025,40 @@ tr:hover td{background:#fafafa}
       <!-- 短信配置 -->
       <div id="smsTab" class="tab-content">
         <div class="card" style="max-width:660px">
-          <div class="card-header"><span class="card-title">短信服务配置（短信宝 smsbao.com）</span></div>
+          <div class="card-header"><span class="card-title">短信与登录验证配置</span></div>
           <div style="padding:20px">
             <div style="background:#e6f7ff;border:1px solid #91d5ff;border-radius:8px;padding:12px 16px;font-size:13px;color:#0050b3;margin-bottom:16px">
-              💡 使用 <b>短信宝（smsbao.com）</b>：注册账号 → 购买套餐（有少量免费额度）→ 填写下方用户名和密码。
-              官网：<code>https://www.smsbao.com</code>
+              推荐正式环境使用腾讯云短信 + 腾讯云验证码。开发模式会把短信验证码返回给前端，只能本地测试使用。
             </div>
-            <div class="field"><label>短信宝用户名</label><input id="cfg_sms_user" placeholder="smsbao账号用户名"></div>
+            <div class="field"><label>短信服务商</label><input id="cfg_sms_provider" placeholder="tencent / smsbao / dev"></div>
+            <div class="field"><label>开发模式返回验证码</label><input id="cfg_sms_dev_mode" placeholder="true/false，正式环境必须 false"></div>
+            <div class="field"><label>腾讯云 SecretId</label><input id="cfg_sms_tencent_secret_id" placeholder="AKID..."></div>
+            <div class="field"><label>腾讯云 SecretKey</label><input id="cfg_sms_tencent_secret_key" type="password" placeholder="SecretKey"></div>
+            <div class="field"><label>短信应用 SDK AppID</label><input id="cfg_sms_tencent_sdk_app_id" placeholder="1400xxxxxx"></div>
+            <div class="field"><label>短信签名</label><input id="cfg_sms_tencent_sign_name" placeholder="云舍村"></div>
+            <div class="field"><label>短信模板 ID</label><input id="cfg_sms_tencent_template_id" placeholder="模板ID，模板参数第一个为验证码"></div>
+            <div class="field"><label>短信模板参数</label><input id="cfg_sms_tencent_template_params" placeholder="{code} 或 {code},5"></div>
+            <div class="field"><label>腾讯云地域</label><input id="cfg_sms_tencent_region" placeholder="ap-guangzhou"></div>
+            <hr style="border:none;border-top:1px solid #eee;margin:18px 0">
+            <div class="field"><label>短信宝用户名（兼容旧配置）</label><input id="cfg_sms_user" placeholder="smsbao账号用户名"></div>
             <div class="field"><label>短信宝密码（原始密码，后端自动MD5）</label><input id="cfg_sms_pass" type="password" placeholder="登录密码"></div>
-            <div class="field"><label>短信签名（如：云舍村）</label><input id="cfg_sms_sign" placeholder="云舍村（发送时自动加【】）"></div>
+            <div class="field"><label>短信宝签名</label><input id="cfg_sms_sign" placeholder="云舍村"></div>
+            <hr style="border:none;border-top:1px solid #eee;margin:18px 0">
+            <div class="field"><label>人机验证服务商</label><input id="cfg_captcha_provider" placeholder="tencent / local / none"></div>
+            <div class="field"><label>发短信前强制人机验证</label><input id="cfg_captcha_required" placeholder="true/false"></div>
+            <div class="field"><label>腾讯云验证码 SecretId</label><input id="cfg_captcha_tencent_secret_id" placeholder="AKID..."></div>
+            <div class="field"><label>腾讯云验证码 SecretKey</label><input id="cfg_captcha_tencent_secret_key" type="password" placeholder="SecretKey"></div>
+            <div class="field"><label>验证码 CaptchaAppId</label><input id="cfg_captcha_tencent_app_id" placeholder="控制台验证码应用ID"></div>
+            <div class="field"><label>验证码 AppSecretKey</label><input id="cfg_captcha_tencent_app_secret_key" type="password" placeholder="控制台 AppSecretKey"></div>
+            <div class="field"><label>验证码类型</label><input id="cfg_captcha_tencent_type" placeholder="一般填 9"></div>
+            <div class="field"><label>验证码地域</label><input id="cfg_captcha_tencent_region" placeholder="ap-guangzhou"></div>
             <button class="btn btn-dark" onclick="saveSmsConfig()">保存短信配置</button>
             <button class="btn btn-default" style="margin-left:10px" onclick="testSms()">发送测试短信</button>
           </div>
         </div>
       </div>
 
-      <!-- 微信支付v3配置 -->
+      <!-- 微信支付配置 -->
       <div id="wxpayV3Tab" class="tab-content">
         <div class="card" style="max-width:660px">
           <div class="card-header"><span class="card-title">微信支付 v3 配置</span></div>
@@ -1066,14 +1067,32 @@ tr:hover td{background:#fafafa}
               ⚠️ 需要在微信商户平台申请微信支付，获取商户号、证书和 API v3 密钥。<br>
               商户平台：<code>https://pay.weixin.qq.com</code>
             </div>
+            <div class="field"><label>公开访问域名（本地可填 http://localhost:3000）</label><input id="cfg_public_base_url" placeholder="http://localhost:3000 或 https://你的域名"></div>
             <div class="field"><label>商户号（mchId）</label><input id="cfg_wxpay_mch_id" placeholder="1234567890"></div>
             <div class="field"><label>证书序列号（serial_no）</label><input id="cfg_wxpay_serial_no" placeholder="从商户平台下载证书获取"></div>
             <div class="field"><label>API v3 密钥</label><input id="cfg_wxpay_api_v3_key" type="password" placeholder="32位字符串"></div>
+            <div class="field"><label>私钥文件路径（apiclient_key.pem）</label><input id="cfg_wxpay_private_key_path" placeholder="C:\Users\...\证书\apiclient_key.pem 或 /home/project/.../apiclient_key.pem"></div>
+            <div class="field"><label>API证书路径（apiclient_cert.pem，可选）</label><input id="cfg_wxpay_cert_path" placeholder="C:\Users\...\证书\apiclient_cert.pem 或 /home/project/.../apiclient_cert.pem"></div>
             <div class="field"><label>私钥（apiclient_key.pem 完整内容）</label>
               <textarea id="cfg_wxpay_private_key" rows="6" placeholder="-----BEGIN PRIVATE KEY-----&#10;...&#10;-----END PRIVATE KEY-----"></textarea>
             </div>
             <div class="field"><label>支付回调地址（notifyUrl，需公网HTTPS）</label><input id="cfg_wxpay_notify_url" placeholder="https://yourdomain.com/api/pay/wechat/notify"></div>
+            <div class="field"><label>旅行/票务支付回调地址</label><input id="cfg_wxpay_ticket_notify_url" placeholder="https://yourdomain.com/api/notify/payTicketOk"></div>
+            <div class="field"><label>退款回调地址</label><input id="cfg_wxpay_refund_notify_url" placeholder="https://yourdomain.com/api/pay/refund/notify"></div>
             <button class="btn btn-dark" onclick="saveWxpayV3Config()">保存支付配置</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="pointsTab" class="tab-content">
+        <div class="card" style="max-width:660px">
+          <div class="card-header"><span class="card-title">积分规则配置</span></div>
+          <div style="padding:20px">
+            <div class="field"><label>启用积分</label><input id="cfg_points_enabled" placeholder="true/false"></div>
+            <div class="field"><label>消费多少元获得 1 积分</label><input id="cfg_points_earn_yuan_per_point" placeholder="10"></div>
+            <div class="field"><label>1 积分抵扣金额（元）</label><input id="cfg_points_redeem_value" placeholder="0.1"></div>
+            <div class="field"><label>单笔最大抵扣比例</label><input id="cfg_points_max_deduct_rate" placeholder="1 表示最多抵100%，0.5 表示最多抵50%"></div>
+            <button class="btn btn-dark" onclick="savePointsConfig()">保存积分配置</button>
           </div>
         </div>
       </div>
@@ -1956,6 +1975,7 @@ async function loadRoomTypes(hotelId) {
         <td style="padding:10px">${r.status==1?'<span style="color:#27ae60;font-size:12px">●</span> 上架':'<span style="color:#aaa;font-size:12px">●</span> 下架'}</td>
         <td style="padding:10px">
           <button class="btn btn-sm btn-default" onclick="editRoom(${r.id})">编辑</button>
+          <button class="btn btn-sm btn-default" onclick="setDateInventory('hotel_room',${r.id},'${r.roomCode || ''}','${(r.name||'').replace(/'/g, "\\'")}')">日期库存</button>
           <button class="btn btn-sm btn-danger" onclick="deleteRoom(${r.id})">删除</button>
         </td>
       </tr>`).join('');
@@ -2040,6 +2060,42 @@ async function deleteRoom(id) {
   } catch(e) { toast('删除失败: ' + e.message, 'error'); }
 }
 
+async function setDateInventory(type, targetId, targetCode, title) {
+  const label = type === 'hotel_room' ? '房型' : '活动';
+  const date = prompt(`设置${label}「${title || targetCode || targetId}」的日期库存\n请输入日期（格式：YYYY-MM-DD）`);
+  if (!date) return;
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) return toast('日期格式应为 YYYY-MM-DD', 'error');
+
+  let current = null;
+  try {
+    const d = await get(`/admin/date-inventory?type=${encodeURIComponent(type)}&targetId=${targetId}&pageNum=1&pageSize=200`);
+    current = (d.list || []).find(x => x.date === date);
+  } catch {}
+
+  const stockText = prompt(`${date} 当前余量：${current ? current.stock : '未设置'}\n请输入新的库存余量`, current ? String(current.stock) : '10');
+  if (stockText === null) return;
+  const stock = Number(stockText);
+  if (!Number.isFinite(stock) || stock < 0) return toast('库存余量必须是大于等于 0 的数字', 'error');
+
+  const priceText = prompt('可选：输入该日期价格，留空则使用默认价格', current?.price != null ? String(current.price) : '');
+  try {
+    await post('/admin/date-inventory', {
+      type,
+      targetId,
+      targetCode,
+      date,
+      endDate: date,
+      stock,
+      price: priceText || '',
+      status: 1,
+      remark: `${label}日期库存`,
+    });
+    toast('日期库存已保存', 'success');
+  } catch(e) {
+    toast('保存日期库存失败: ' + e.message, 'error');
+  }
+}
+
 // ===================== 活动 =====================
 let activityPage = 1;
 async function loadActivity(page = 1) {
@@ -2053,7 +2109,7 @@ async function loadActivity(page = 1) {
         <td>${a.location||'-'}</td>
         <td><strong style="color:#e8b86d">¥${a.price}</strong></td>
         <td>${a.status==1?'<span class="badge badge-success">上架</span>':'<span class="badge badge-default">下架</span>'}</td>
-        <td><button class="btn btn-sm btn-default" onclick="editActivity(${a.id})">编辑</button> <button class="btn btn-sm btn-danger" onclick="deleteItem('activities',${a.id})">删除</button></td>
+        <td><button class="btn btn-sm btn-default" onclick="editActivity(${a.id})">编辑</button> <button class="btn btn-sm btn-default" onclick="setDateInventory('activity',${a.id},'${a.activityCode || ''}','${(a.title||'').replace(/'/g, "\\'")}')">日期库存</button> <button class="btn btn-sm btn-danger" onclick="deleteItem('activities',${a.id})">删除</button></td>
       </tr>`).join('');
     document.getElementById('activityTableBody').innerHTML = rows || '<tr><td colspan="6"><div class="empty-state"><span class="icon">🎯</span><p>暂无活动</p></div></td></tr>';
     renderPagination('activityPagination', d.total, page, 15, 'loadActivity');
@@ -2391,7 +2447,7 @@ async function loadPayments(page = 1) {
         <td>${p.method||'-'}</td>
         <td>${payStatusBadge(p.status)}</td>
         <td style="font-size:12px;color:#aaa">${fmtDate(p.createdAt)}</td>
-        <td>${p.status==='success'?`<button class="btn btn-sm btn-danger" onclick="doRefund('${p.paymentNo}',${p.amount})">退款</button>`:p.status==='pending'?`<button class="btn btn-sm btn-success" onclick="mockPay('${p.paymentNo}')">模拟支付</button>`:''}</td>
+        <td>${p.status==='success'?`<button class="btn btn-sm btn-danger" onclick="doRefund('${p.paymentNo}',${p.amount})">退款</button>`:''}</td>
       </tr>`).join('');
     document.getElementById('paymentTableBody').innerHTML = rows || '<tr><td colspan="8"><div class="empty-state"><span class="icon">💳</span><p>暂无记录</p></div></td></tr>';
     renderPagination('paymentPagination', d.total, page, 15, 'loadPayments');
@@ -2404,13 +2460,6 @@ async function doRefund(paymentNo, amount) {
     await post('/admin/payments/refund', { paymentNo, refundAmount: amount });
     loadPayments(1); toast('退款成功', 'success');
   } catch(e) { toast('退款失败','error'); }
-}
-
-async function mockPay(paymentNo) {
-  try {
-    await get('/pay/mock?paymentNo='+paymentNo);
-    loadPayments(1); toast('模拟支付成功','success');
-  } catch(e) {}
 }
 
 // ===================== 会员 =====================
@@ -3038,9 +3087,17 @@ function switchSettingsTab(btn, tabId) {
 
 const SETTINGS_KEYS = [
   'wechat_app_id','wechat_app_secret',
-  'wxpay_mch_id','wxpay_api_key','wxpay_notify_url','wxpay_cert_path',
+  'wxpay_mch_id','wxpay_notify_url','wxpay_cert_path',
+  'wxpay_serial_no','wxpay_api_v3_key','wxpay_private_key','wxpay_private_key_path',
+  'wxpay_ticket_notify_url','wxpay_refund_notify_url','public_base_url',
   'cs_phone','cs_wx_url','cs_wx_corpid',
   'hotel_group_name','hotel_group_code','sms_api_key',
+  'sms_provider','sms_dev_mode','sms_user','sms_pass','sms_sign',
+  'sms_tencent_secret_id','sms_tencent_secret_key','sms_tencent_sdk_app_id',
+  'sms_tencent_sign_name','sms_tencent_template_id','sms_tencent_template_params','sms_tencent_region',
+  'captcha_provider','captcha_required','captcha_tencent_secret_id','captcha_tencent_secret_key',
+  'captcha_tencent_app_id','captcha_tencent_app_secret_key','captcha_tencent_type','captcha_tencent_region',
+  'points_enabled','points_earn_yuan_per_point','points_redeem_value','points_max_deduct_rate',
   'page_member_right','page_member_policy','page_member_benefits',
   'page_travel_preference','page_about',
 ];
@@ -3074,14 +3131,16 @@ async function saveWechatConfig() {
   catch(e) { toast('保存失败: '+e.message,'error'); }
 }
 
-async function saveWxpayConfig() {
-  try { await saveConfigKeys(['wxpay_mch_id','wxpay_api_key','wxpay_notify_url','wxpay_cert_path']); }
-  catch(e) { toast('保存失败: '+e.message,'error'); }
-}
-
 async function saveOtherConfig() {
   try { await saveConfigKeys(['hotel_group_name','hotel_group_code','sms_api_key']); }
   catch(e) { toast('保存失败: '+e.message,'error'); }
+}
+
+async function savePointsConfig() {
+  try {
+    await saveConfigKeys(['points_enabled','points_earn_yuan_per_point','points_redeem_value','points_max_deduct_rate']);
+    toast('积分配置已保存', 'success');
+  } catch(e) { toast('保存失败: '+e.message,'error'); }
 }
 
 function switchPageContentTab(btn, tabId) {
@@ -3467,13 +3526,14 @@ async function closeChatConv() {
 
 // ===================== 短信 & 微信支付配置 =====================
 async function saveSmsConfig() {
-  const user = document.getElementById('cfg_sms_user').value.trim();
-  const pass = document.getElementById('cfg_sms_pass').value.trim();
-  const sign = document.getElementById('cfg_sms_sign').value.trim();
   try {
-    await post('/admin/sys-config', { key: 'sms_user', value: user });
-    await post('/admin/sys-config', { key: 'sms_pass', value: pass });
-    await post('/admin/sys-config', { key: 'sms_sign', value: sign });
+    await saveConfigKeys([
+      'sms_provider','sms_dev_mode','sms_user','sms_pass','sms_sign',
+      'sms_tencent_secret_id','sms_tencent_secret_key','sms_tencent_sdk_app_id',
+      'sms_tencent_sign_name','sms_tencent_template_id','sms_tencent_template_params','sms_tencent_region',
+      'captcha_provider','captcha_required','captcha_tencent_secret_id','captcha_tencent_secret_key',
+      'captcha_tencent_app_id','captcha_tencent_app_secret_key','captcha_tencent_type','captcha_tencent_region',
+    ]);
     toast('短信配置已保存', 'success');
   } catch(err) { toast('保存失败: ' + err.message, 'error'); }
 }
@@ -3482,17 +3542,28 @@ async function testSms() {
   const phone = prompt('输入测试手机号：');
   if (!phone) return;
   try {
-    await get('/member/createIdentifyCode.json?mobile=' + phone);
+    await get('/member/createIdentifyCode.json?mobile=' + phone + '&captchaVerified=true');
     toast('测试短信已发送至 ' + phone, 'success');
   } catch(err) { toast('发送失败: ' + err.message, 'error'); }
 }
 
 async function saveWxpayV3Config() {
-  const fields = ['wxpay_mch_id','wxpay_serial_no','wxpay_api_v3_key','wxpay_private_key','wxpay_notify_url'];
+  const fields = [
+    'public_base_url',
+    'wxpay_mch_id',
+    'wxpay_serial_no',
+    'wxpay_api_v3_key',
+    'wxpay_private_key_path',
+    'wxpay_cert_path',
+    'wxpay_private_key',
+    'wxpay_notify_url',
+    'wxpay_ticket_notify_url',
+    'wxpay_refund_notify_url',
+  ];
   try {
     for (var f of fields) {
       var val = document.getElementById('cfg_' + f).value.trim();
-      if (val) await post('/admin/sys-config', { key: f, value: val });
+      await post('/admin/sys-config', { key: f, value: val });
     }
     toast('微信支付配置已保存', 'success');
   } catch(err) { toast('保存失败: ' + err.message, 'error'); }

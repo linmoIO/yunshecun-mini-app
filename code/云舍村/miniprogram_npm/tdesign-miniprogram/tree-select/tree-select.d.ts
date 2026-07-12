@@ -8,19 +8,24 @@ export default class TreeSelect extends SuperComponent {
     data: {
         prefix: string;
         classPrefix: string;
+        scrollIntoView: any;
     };
-    properties: import("./type").TdTreeSelectProps<TreeOptionData>;
+    properties: import("./type").TdTreeSelectProps<TreeOptionData<string | number>>;
     controlledProps: {
         key: string;
         event: string;
     }[];
     observers: {
-        'value, options, keys, multiple'(): void;
+        'value, customValue, options, keys, multiple'(): void;
+    };
+    lifetimes: {
+        ready(): void;
     };
     methods: {
         buildTreeOptions(): void;
+        getScrollIntoView(status: string): void;
         onRootChange(e: any): void;
         handleTreeClick(e: any): void;
-        handleRadioChange(e: any): void;
+        handleChange(e: any): void;
     };
 }

@@ -12,7 +12,7 @@
                             "limiting-retry-dialog":  "../../components/new/LimitingRetry/LimitingRetryDialog",
                             "stepper":  "../../components/new/Stepper",
                             "no-data":  "../../components/noData",
-                            "share":  "../../components/share",
+                            "share":  "../components/share",
                             "swiper-box":  "../../components/swiperBox",
                             "daily-price":  "../components/dailyPrice",
                             "category-sub-info":  "../components/travel/CategorySubInfo"

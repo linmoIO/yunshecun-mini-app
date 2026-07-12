@@ -1,9 +1,0 @@
-{
-    "navigationBarTitleText":  "历史行李牌",
-    "enablePullDownRefresh":  false,
-    "navigationStyle":  "custom",
-    "usingComponents":  {
-                            "coustom-head":  "../../components/coustomHead",
-                            "empty":  "../../components/empty"
-                        }
-}

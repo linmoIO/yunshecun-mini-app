@@ -1,5 +1,9 @@
 import { LoadingProps } from '../loading/index';
 export interface TdPullDownRefreshProps {
+    disabled?: {
+        type: BooleanConstructor;
+        value?: boolean;
+    };
     enableBackToTop?: {
         type: BooleanConstructor;
         value?: boolean;
@@ -7,10 +11,6 @@ export interface TdPullDownRefreshProps {
     enablePassive?: {
         type: BooleanConstructor;
         value?: boolean;
-    };
-    externalClasses?: {
-        type: ArrayConstructor;
-        value?: ['t-class', 't-class-loading', 't-class-text', 't-class-indicator'];
     };
     loadingBarHeight?: {
         type: null;
@@ -44,9 +44,17 @@ export interface TdPullDownRefreshProps {
         type: BooleanConstructor;
         value?: boolean;
     };
+    successDuration?: {
+        type: null;
+        value?: string | number;
+    };
     upperThreshold?: {
         type: null;
         value?: string | number;
+    };
+    usingCustomNavbar?: {
+        type: BooleanConstructor;
+        value?: boolean;
     };
     value?: {
         type: BooleanConstructor;

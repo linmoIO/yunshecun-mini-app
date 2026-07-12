@@ -34,21 +34,15 @@
           p = e.ref(),
           m = e.ref("400-0000-830"),
           _ = e.ref(""),
-          h = e.ref(""),  // 留空，由 wxCustomerServiceUrl 配置决定；为空时弹提示
-          f = e.ref(""),
           k = e.ref(t.getStorage("user")),
           g = e.ref(!0),
           {
             result: C
-          } = c.useSysOptions(["customerServiceInfo", "tripContactPhone", "wxCustomerServiceUrl", "wxCustomerCorpId"]);
+          } = c.useSysOptions(["customerServiceInfo", "tripContactPhone"]);
         e.watch(C, e => {
-          var t, o;
           e.forEach(e => {
-            "customerServiceInfo" === e.code && e.value && (_.value = e.value), "tripContactPhone" === e.code && e.value && (m.value = e.value), "wxCustomerServiceUrl" === e.code && e.value && (h.value = e.value), "wxCustomerCorpId" === e.code && e.value && (f.value = e.value)
+            "customerServiceInfo" === e.code && e.value && (_.value = e.value), "tripContactPhone" === e.code && e.value && (m.value = e.value)
           }), _.value || (_.value = "解答咨询、预订、会员及订单相关问题");
-          const a = (null == (t = k.value) ? void 0 : t.name) || "",
-            r = (null == (o = k.value) ? void 0 : o.mobile) || "";
-          h.value && (h.value = `${h.value}&nickName=${a}&phone=${r}`)
         }, {
           immediate: !0
         });
@@ -66,16 +60,11 @@
               ...v.trackingData,
               service_type: "在线客服"
             });
-            // 优先走内置聊天页，外部链接作为备选
-            if (h.value && (h.value.startsWith('http://') || h.value.startsWith('https://'))) {
-              o.goPage(h.value);
-            } else {
-              try {
-                e.index.navigateTo({ url: '/pagesA/other/chat' });
-              } catch(_e) {
-                const _phone = (m && m.value) ? String(m.value) : '400-0000-830';
-                try { e.index.showToast({ title: '客服热线：' + _phone, icon: 'none', duration: 3000 }); } catch(_e2) {}
-              }
+            try {
+              e.index.navigateTo({ url: '/pagesA/other/chat' });
+            } catch(_e) {
+              const _phone = (m && m.value) ? String(m.value) : '400-0000-830';
+              try { e.index.showToast({ title: '客服热线：' + _phone, icon: 'none', duration: 3000 }); } catch(_e2) {}
             }
           };
         return l({

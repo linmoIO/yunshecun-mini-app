@@ -1,6 +1,0 @@
-{
-    "component":  true,
-    "usingComponents":  {
-                            "float-button":  "../../components/new/FloatButton"
-                        }
-}

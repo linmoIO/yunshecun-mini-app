@@ -3,6 +3,7 @@
 const router = require('express').Router();
 const ctrl = require('../controllers/member.controller');
 const { authMiddleware, optionalAuth } = require('../middleware/auth');
+const { checkInvoiceEligibility, listInvoiceEligibleOrders } = require('../utils/invoiceEligibility');
 
 const auth = authMiddleware; // 简写
 
@@ -212,31 +213,28 @@ router.post('/invoice/request', auth, async (req, res) => {
   const { orderNos, invoiceType, title, taxNo, email, phone, amount } = req.body;
   if (!title) return _me(res, '请填写发票抬头');
   if (!orderNos?.length) return _me(res, '请选择需要开票的订单');
+
+  const checkedOrders = [];
+  for (const orderNo of orderNos) {
+    const checked = await checkInvoiceEligibility(_mp, req.member.id, orderNo);
+    if (!checked.eligible) return _me(res, `${orderNo}：${checked.reason}`);
+    checkedOrders.push(checked);
+  }
+
+  const invoiceAmount = checkedOrders.reduce((sum, item) => sum + Number(item.amount || 0), 0);
   const r = await _mp.invoiceRequest.create({ data: {
     memberId: req.member.id,
     orderNos: JSON.stringify(orderNos),
     invoiceType: invoiceType || 'personal',
     title, taxNo: taxNo || null, email: email || null, phone: phone || null,
-    amount: Number(amount) || 0, status: 'pending',
+    amount: Math.round(invoiceAmount * 100) / 100, status: 'pending',
   }});
   return _ms(res, r, '开票申请已提交');
 });
 
 // 所有订单（开票用）
 router.get('/orders/all', auth, async (req, res) => {
-  const memberId = req.member.id;
-  const [travel, hotel, shop, activity] = await Promise.all([
-    _mp.travelOrder.findMany({ where: { memberId }, include: { product: { select: { title: true } } }, orderBy: { createdAt: 'desc' }, take: 30 }),
-    _mp.hotelOrder.findMany({ where: { memberId }, include: { hotel: { select: { name: true } } }, orderBy: { createdAt: 'desc' }, take: 10 }),
-    _mp.shopOrder.findMany({ where: { memberId }, orderBy: { createdAt: 'desc' }, take: 20 }),
-    _mp.activityOrder.findMany({ where: { memberId }, include: { activity: { select: { title: true } } }, orderBy: { createdAt: 'desc' }, take: 10 }),
-  ]);
-  const list = [
-    ...travel.map(o => ({ orderNo: o.orderNo, type: 'travel', typeName: '旅游套餐', name: o.product?.title || '旅游订单', amount: o.totalAmount, status: o.status, createdAt: o.createdAt })),
-    ...hotel.map(o => ({ orderNo: o.orderNo, type: 'hotel', typeName: '酒店', name: o.hotel?.name || '酒店订单', amount: o.totalAmount, status: o.status, createdAt: o.createdAt })),
-    ...shop.map(o => ({ orderNo: o.orderNo, type: 'shop', typeName: '风物商城', name: (o.notes||'').split('|')[0]||'商城订单', amount: o.totalAmount, status: o.status, createdAt: o.createdAt })),
-    ...activity.map(o => ({ orderNo: o.orderNo, type: 'activity', typeName: '活动', name: o.activity?.title || '活动订单', amount: o.totalAmount, status: o.status, createdAt: o.createdAt })),
-  ].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+  const list = await listInvoiceEligibleOrders(_mp, req.member.id);
   return _ms(res, { list });
 });
 

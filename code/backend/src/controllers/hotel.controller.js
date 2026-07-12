@@ -2,6 +2,7 @@
 
 const { PrismaClient } = require('@prisma/client');
 const { success, error, paginate } = require('../utils/response');
+const { decrementDateInventory, normalizeDate } = require('../utils/inventory');
 
 const prisma = new PrismaClient();
 const tryParse = (s, f) => { try { return s ? JSON.parse(s) : f; } catch { return f; } };
@@ -62,16 +63,168 @@ const getHotelInfo = async (req, res) => {
   return success(res, { ...formatHotel(hotel), roomTypes: hotel.roomTypes.map(formatRoom) });
 };
 
+const buildWechatHotelDetail = (hotel, fromDate, toDate, inventoryMap = new Map()) => {
+  const rooms = (hotel.roomTypes || []).map(room => buildWechatRoom(hotel, room, fromDate, toDate, inventoryMap.get(room.id)));
+  const minRoomPrice = rooms.reduce((min, room) => {
+    const price = Number(room.gcProductBases?.[0]?.pbMinPriceWithPromotion) || 0;
+    return price > 0 ? Math.min(min, price) : min;
+  }, 999999);
+
+  return {
+    gcHotel: {
+      hotelCode: hotel.hotelCode,
+      descript: hotel.name,
+      address1: hotel.address || '',
+      city: hotel.city || '',
+      province: hotel.province || '',
+      phone: hotel.phone || '',
+      logo: hotel.coverImage || '',
+      description: hotel.description || '',
+      resrvNoticePp: '',
+      resrvNoticeCs: '',
+      starLevel: hotel.starLevel || 5,
+    },
+    gcHotelExtra: { logo: hotel.coverImage || '' },
+    minPrice: hotel.priceFrom || (minRoomPrice === 999999 ? 0 : minRoomPrice),
+    productRoomList: rooms,
+    roomImagesList: [],
+  };
+};
+
+const buildWechatRoom = (hotel, room, fromDate, toDate, dateInventory) => {
+  const images = tryParse(room.images, []);
+  const stock = dateInventory ? Number(dateInventory.stock) : (room.stock != null ? Number(room.stock) : 10);
+  const canBook = stock > 0;
+  const price = Number(room.price) || 0;
+  const roomCode = room.roomCode || String(room.id);
+  const productCode = `${hotel.hotelCode}-${roomCode}`;
+  const roomDetail = {
+    roomCode,
+    fromDate,
+    toDate,
+    price,
+    unit: '元',
+    priceDtos: [{ payType: 'CASH', adultPrice: price }],
+    specificationsPriceDtos: [{ priceModel: 'ROOM', priceModelDesc: '间/晚', price }],
+    productAvailNum: stock,
+    canBook,
+    bedType: room.bedType || '',
+    area: room.area ? `${room.area}㎡` : '',
+    capacity: room.capacity || 2,
+  };
+
+  return {
+    roomCode,
+    roomName: room.name,
+    roomDescript: room.name,
+    bedType: room.bedType || '',
+    area: room.area ? `${room.area}㎡` : '',
+    capacity: room.capacity || 2,
+    roomPicCount: Math.max(1, images.length),
+    gcRoomExtra: {
+      logo: images[0] || hotel.coverImage || '',
+      picturesList: images,
+      pictures: images.join(';'),
+      description: room.description || '',
+      abstracts: room.description || '',
+      bedType: room.bedType || '',
+      squareMeter: room.area ? `${room.area}㎡` : '',
+      floor: '',
+      detail: room.description || '',
+    },
+    gcProductBases: [{
+      name: `${price}元/晚`,
+      showName: `${price}元/晚`,
+      pbMinPriceWithPromotion: price,
+      bookAble: canBook ? 'T' : 'F',
+      minSaleNum: canBook ? Math.max(1, stock) : 0,
+      notMemberBook: 'T',
+      payMethod: 'CASH',
+      prodCategorySub: 'STD',
+      price,
+      productCode,
+      roomType: roomCode,
+      pmsRateCode: roomCode,
+      rateCode: roomCode,
+      ticket: '',
+      hotelGroupCode: hotel.hotelGroupCode || 'SONGTSAM',
+      stayTime: '',
+      resrvNumMin: 1,
+      prepayTimeLimit: 24,
+      prepayHoldTimeMax: 72,
+      prepayMethod: 'PREPAY',
+      cancelPrehour: 24,
+      cancelPretime: '',
+      cancelPredays: 1,
+      cancelCondition: '入住前24小时可免费取消',
+      otaChannel: 'WECHAT',
+      fromDate,
+      toDate,
+    }],
+    travelWechatHotelDetailDtos: [roomDetail],
+    travelList: [roomDetail],
+  };
+};
+
 const showOrder = async (req, res) => {
-  const { hotelCode, checkIn, checkOut } = req.query;
+  const { hotelCode, orderNo, checkIn, checkOut } = req.query;
+
+  if (orderNo) {
+    const order = await prisma.hotelOrder.findUnique({
+      where: { orderNo },
+      include: { hotel: true, roomType: true },
+    });
+    if (!order) return error(res, '订单不存在');
+
+    const retVal = {
+      ...formatHotelOrder(order),
+      crsNo: order.orderNo,
+      gcRsvNo: order.orderNo,
+      orderNo: order.orderNo,
+      hotelCode: order.hotel?.hotelCode || '',
+      hotelGroupCode: order.hotel?.hotelGroupCode || 'SONGTSAM',
+      hotelDescript: order.hotel?.name || '',
+      roomDescript: order.roomType?.name || '',
+      productDesc: order.roomType?.name || order.hotel?.name || '酒店预订',
+      paySubject: order.roomType?.name || order.hotel?.name || '酒店预订',
+      rateSum: Number(order.totalAmount || 0),
+      payRate: Number(order.totalAmount || 0),
+      leftTimeSeconds: order.status === 'pending' ? 30 * 60 : 0,
+      paySta: order.status === 'paid' ? '2' : '1',
+      sta: order.status === 'cancelled' ? 'X' : 'R',
+      arr: order.checkIn,
+      dep: order.checkOut,
+      adult: 1,
+      baby: 0,
+      children: 0,
+      bigChildren: 0,
+      memberLevel: '000',
+      cardType: '',
+      cardLevel: '000',
+    };
+    return res.json({ code: 0, result: 1, msg: 'success', retVal, data: retVal });
+  }
+
+  if (!hotelCode) return error(res, '缺少酒店编码');
   const hotel = await prisma.hotel.findUnique({
     where: { hotelCode },
     include: { roomTypes: { where: { status: 1 } } },
   });
   if (!hotel) return error(res, '酒店不存在');
+  const inventoryRows = checkIn ? await prisma.dateInventory.findMany({
+    where: {
+      type: 'hotel_room',
+      targetId: { in: hotel.roomTypes.map(r => r.id) },
+      date: normalizeDate(checkIn),
+      status: 1,
+    },
+  }) : [];
+  const inventoryMap = new Map(inventoryRows.map(row => [row.targetId, row]));
+  const detail = buildWechatHotelDetail(hotel, checkIn, checkOut, inventoryMap);
   return success(res, {
     hotel: formatHotel(hotel),
     roomTypes: hotel.roomTypes.map(formatRoom),
+    ...detail,
     checkIn,
     checkOut,
   });
@@ -93,22 +246,47 @@ const makeHotelOrder = async (req, res) => {
   const pricePerNight = roomType?.price || 0;
   const totalAmount = pricePerNight * Number(rooms) * nights;
 
-  const order = await prisma.hotelOrder.create({
-    data: {
-      memberId: req.member.id,
-      hotelId: hotel.id,
-      roomTypeId: roomType?.id || null,
-      status: 'pending',
-      checkIn,
-      checkOut,
-      nights,
-      rooms: Number(rooms),
-      totalAmount,
-      guestName,
-      guestPhone,
-      notes,
-    },
-  });
+  const roomCount = Number(rooms);
+  let order;
+  try {
+    order = await prisma.$transaction(async (tx) => {
+      if (roomType) {
+        const dateInventory = await decrementDateInventory(tx, {
+          type: 'hotel_room',
+          targetId: roomType.id,
+          targetCode: roomType.roomCode,
+          date: normalizeDate(checkIn),
+          quantity: roomCount,
+        });
+        if (!dateInventory) {
+          if (roomType.stock < roomCount) {
+            const err = new Error(`该房型库存不足，当前剩余 ${roomType.stock}`);
+            err.code = 'OUT_OF_STOCK';
+            throw err;
+          }
+          await tx.roomType.update({ where: { id: roomType.id }, data: { stock: { decrement: roomCount } } });
+        }
+      }
+      return tx.hotelOrder.create({
+        data: {
+          memberId: req.member.id,
+          hotelId: hotel.id,
+          roomTypeId: roomType?.id || null,
+          status: 'pending',
+          checkIn,
+          checkOut,
+          nights,
+          rooms: roomCount,
+          totalAmount,
+          guestName,
+          guestPhone,
+          notes,
+        },
+      });
+    });
+  } catch (err) {
+    return error(res, err.message || '库存不足');
+  }
   return res.json({ code: 0, result: 1, msg: 'success', retVal: { orderNo: order.orderNo, totalAmount: order.totalAmount, gcRsvNo: order.orderNo }, data: { orderNo: order.orderNo, totalAmount: order.totalAmount } });
 };
 

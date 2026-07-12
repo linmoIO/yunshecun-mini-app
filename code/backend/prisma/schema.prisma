@@ -133,6 +133,9 @@ model TravelOrder {
   totalAmount   Float
   paidAmount    Float?
   discount      Float?
+  pointDed       Int?           @default(0)
+  pointMoney     Float?         @default(0)
+  pointEarned    Int?           @default(0)
   startDate     String?
   endDate       String?
   persons       Int?
@@ -163,6 +166,9 @@ model HotelOrder {
   rooms         Int?
   totalAmount   Float
   paidAmount    Float?
+  pointDed       Int?       @default(0)
+  pointMoney     Float?     @default(0)
+  pointEarned    Int?       @default(0)
   guestName     String?
   guestPhone    String?
   notes         String?
@@ -201,6 +207,9 @@ model ShopOrder {
   totalAmount   Float
   paidAmount    Float?
   discount      Float?
+  pointDed       Int?            @default(0)
+  pointMoney     Float?          @default(0)
+  pointEarned    Int?            @default(0)
   shippingFee   Float?
   addressId     Int?
   paymentMethod String?
@@ -260,6 +269,9 @@ model ActivityOrder {
   quantity      Int?
   totalAmount   Float
   paidAmount    Float?
+  pointDed       Int?      @default(0)
+  pointMoney     Float?    @default(0)
+  pointEarned    Int?      @default(0)
   contactName   String?
   contactPhone  String?
   activityDate  String?
@@ -421,6 +433,10 @@ model Payment {
   orderType       String?  // 'travel'|'hotel'|'shop'|'activity'
   memberId        Int?
   amount          Float
+  originalAmount  Float?    @default(0)
+  pointDed        Int?      @default(0)
+  pointMoney      Float?    @default(0)
+  pointEarned     Int?      @default(0)
   method          String?
   status          String   @default("pending")
   transactionId   String?
@@ -630,4 +646,22 @@ model TravelDeparture {
   remark        String?
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
+}
+
+model DateInventory {
+  id          Int      @id @default(autoincrement())
+  type        String   // hotel_room | activity
+  targetId    Int
+  targetCode  String?
+  date        String   // YYYY-MM-DD
+  endDate     String?
+  price       Float?
+  stock       Int      @default(0)
+  status      Int      @default(1)
+  remark      String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@unique([type, targetId, date])
+  @@index([type, targetCode, date])
 }

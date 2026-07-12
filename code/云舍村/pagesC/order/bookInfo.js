@@ -22,7 +22,7 @@
     y = () => "../../components/empty.js",
     b = () => "../../components/new/CustomerRetentionDialog.js",
     C = () => "../../components/order/OrderContactTipNotice.js",
-    D = () => "../../components/order/OrderDiscountPlan.js",
+    D = () => "../components/order/OrderDiscountPlan.js",
     T = () => "../../components/RetryModal.js",
     N = e.defineComponent({
       __name: "bookInfo",

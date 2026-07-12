@@ -1,8 +1,0 @@
-{
-    "navigationBarTitleText":  "",
-    "navigationStyle":  "custom",
-    "usingComponents":  {
-                            "coustom-head":  "../../components/coustomHead",
-                            "invite-share-img":  "inviteShareImg"
-                        }
-}

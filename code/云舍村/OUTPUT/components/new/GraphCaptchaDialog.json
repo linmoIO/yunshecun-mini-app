@@ -1,8 +1,0 @@
-{
-    "component":  true,
-    "usingComponents":  {
-                            "spin":  "Spin",
-                            "st-button":  "StButton",
-                            "st-dialog":  "StDialog"
-                        }
-}

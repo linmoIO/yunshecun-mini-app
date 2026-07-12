@@ -12,7 +12,7 @@
     n = () => "../../components/coustomHead.js",
     s = () => "../../components/moreText.js",
     c = () => "../../components/swiperBox.js",
-    v = () => "../../components/tripNav.js",
+    v = () => "../components/tripNav.js",
     d = () => "../components/v-previewImage.js",
     f = e.defineComponent({
       __name: "tripDetail",

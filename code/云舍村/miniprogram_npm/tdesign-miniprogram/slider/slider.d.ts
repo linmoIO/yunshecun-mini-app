@@ -18,10 +18,17 @@ declare type dataType = {
     scaleTextArray: any[];
     _value: SliderValue;
     prefix: string;
+    realLabel: string | string[];
+    extremeLabel: string[];
     isVisibleToScreenReader: boolean;
+    identifier: number[];
+    __inited: boolean;
 };
 export default class Slider extends SuperComponent {
     externalClasses: string[];
+    options: {
+        pureDataPattern: RegExp;
+    };
     properties: import("./type").TdSliderProps;
     controlledProps: {
         key: string;
@@ -32,15 +39,22 @@ export default class Slider extends SuperComponent {
         value(newValue: SliderValue): void;
         _value(newValue: SliderValue): void;
         marks(val: any): void;
+        label(val: any): void;
+        'showExtremeValue, min, max'(): void;
     };
+    getwExtremeLabel(): void;
     lifetimes: {
         created(): void;
         attached(): void;
     };
+    injectPageScroll(): void;
+    observerScrollTop(rest: any): void;
     toggleA11yTips(): void;
     renderLine(val: any): void;
     triggerValue(value?: SliderValue): void;
+    getLabelByValue(value: SliderValue, position?: 'start' | 'end' | 'min' | 'max'): any;
     handlePropsChange(newValue: SliderValue): void;
+    valueToPosition(value: number): number;
     handleMark(marks: any): void;
     setSingleBarWidth(value: number): void;
     init(): Promise<void>;
@@ -54,5 +68,6 @@ export default class Slider extends SuperComponent {
     onTouchMoveRight(e: WechatMiniprogram.TouchEvent): void;
     setLineStyle(left: number, right: number): void;
     onTouchEnd(e: WechatMiniprogram.TouchEvent): void;
+    getPagePosition(touch: any): any;
 }
 export {};

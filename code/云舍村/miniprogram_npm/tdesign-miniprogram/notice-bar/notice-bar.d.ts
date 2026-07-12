@@ -7,6 +7,7 @@ export default class NoticeBar extends SuperComponent {
         prefix: string;
         classPrefix: string;
         loop: number;
+        __ready: boolean;
     };
     observers: {
         marquee(val: any): void;
@@ -26,6 +27,7 @@ export default class NoticeBar extends SuperComponent {
         show(): void;
         clearNoticeBarAnimation(): void;
         setPrefixIcon(v: any): void;
+        onChange(e: WechatMiniprogram.SwiperChange): void;
         clickPrefixIcon(): void;
         clickContent(): void;
         clickSuffixIcon(): void;

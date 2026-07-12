@@ -1,4 +1,4 @@
-import { TdTransitionProps } from '../transition/index';
+import { OverlayProps } from '../overlay/index';
 export interface TdPopupProps {
     closeBtn?: {
         type: BooleanConstructor;
@@ -12,21 +12,13 @@ export interface TdPopupProps {
         type: StringConstructor;
         value?: string;
     };
-    style?: {
-        type: StringConstructor;
-        value?: string;
-    };
     duration?: {
         type: NumberConstructor;
         value?: number;
     };
-    externalClasses?: {
-        type: ArrayConstructor;
-        value?: ['t-class', 't-class-overlay', 't-class-content'];
-    };
     overlayProps?: {
         type: ObjectConstructor;
-        value?: object;
+        value?: OverlayProps;
     };
     placement?: {
         type: StringConstructor;
@@ -40,9 +32,9 @@ export interface TdPopupProps {
         type: BooleanConstructor;
         value?: boolean;
     };
-    transitionProps?: {
-        type: ObjectConstructor;
-        value?: TdTransitionProps;
+    usingCustomNavbar?: {
+        type: BooleanConstructor;
+        value?: boolean;
     };
     visible?: {
         type: BooleanConstructor;
@@ -56,7 +48,4 @@ export interface TdPopupProps {
         type: NumberConstructor;
         value?: number;
     };
-}
-export interface PopupVisibleChangeContext {
-    trigger: 'close-btn' | 'overlay';
 }

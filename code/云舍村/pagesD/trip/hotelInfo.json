@@ -5,6 +5,6 @@
                             "swiper-box":  "../../components/swiperBox",
                             "more-text":  "../../components/moreText",
                             "coustom-head":  "../../components/coustomHead",
-                            "trip-nav":  "../../components/tripNav"
+                            "trip-nav":  "../components/tripNav"
                         }
 }

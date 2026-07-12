@@ -1,5 +1,6 @@
 import { ComponentsOptionsType, SuperComponent } from '../common/src/index';
 export default class Drawer extends SuperComponent {
+    behaviors: string[];
     externalClasses: any[];
     options: ComponentsOptionsType;
     properties: import("./type").TdDrawerProps;
@@ -7,9 +8,9 @@ export default class Drawer extends SuperComponent {
         classPrefix: string;
     };
     methods: {
-        visibleChange({ detail }: {
+        onVisibleChange({ detail }: {
             detail: any;
         }): void;
-        itemClick(detail: any): void;
+        onItemClick(detail: any): void;
     };
 }

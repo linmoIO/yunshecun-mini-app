@@ -1,4 +1,6 @@
 import { SuperComponent, ComponentsOptionsType, RelationsOptions } from '../common/src/index';
+import { TdCheckboxProps } from './type';
+export declare type CheckboxProps = TdCheckboxProps;
 export default class CheckBox extends SuperComponent {
     externalClasses: string[];
     behaviors: string[];
@@ -8,6 +10,9 @@ export default class CheckBox extends SuperComponent {
         theme: {
             type: StringConstructor;
             value: string;
+        };
+        tId: {
+            type: StringConstructor;
         };
         block?: {
             type: BooleanConstructor;
@@ -41,13 +46,9 @@ export default class CheckBox extends SuperComponent {
             type: BooleanConstructor;
             value?: boolean;
         };
-        externalClasses?: {
-            type: ArrayConstructor;
-            value?: ["t-class", "t-class-icon", "t-class-label", "t-class-content", "t-class-border"];
-        };
         icon?: {
             type: null;
-            value?: string[] | "circle" | "rectangle" | "line";
+            value?: import("./type").CheckboxIconType;
         };
         indeterminate?: {
             type: BooleanConstructor;
@@ -85,6 +86,10 @@ export default class CheckBox extends SuperComponent {
     data: {
         prefix: string;
         classPrefix: string;
+        _disabled: boolean;
+    };
+    observers: {
+        disabled(v: any): void;
     };
     controlledProps: {
         key: string;
@@ -92,5 +97,6 @@ export default class CheckBox extends SuperComponent {
     }[];
     methods: {
         handleTap(e: WechatMiniprogram.TouchEvent): void;
+        setDisabled(disabled: Boolean): void;
     };
 }

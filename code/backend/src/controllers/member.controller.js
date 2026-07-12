@@ -69,9 +69,23 @@ const getAccountBalance = async (req, res) => {
     where: { id: req.member.id },
     select: { balance: true, points: true },
   });
+  const cfgRows = await prisma.sysConfig.findMany({
+    where: { key: { in: ['points_enabled', 'points_redeem_value', 'points_earn_yuan_per_point', 'points_max_deduct_rate'] } },
+  }).catch(() => []);
+  const cfg = Object.fromEntries(cfgRows.map(r => [r.key, r.value]));
+  const redeemValue = Math.max(Number(cfg.points_redeem_value || 0.1), 0);
+  const points = member?.points || 0;
+  const pointMoney = Math.round(points * redeemValue * 100) / 100;
   return success(res, {
     balance: member?.balance || 0,
-    points: member?.points || 0,
+    points,
+    pointBalance: points,
+    pointMoney,
+    pointDeductMoney: pointMoney,
+    pointsEnabled: cfg.points_enabled !== 'false',
+    pointsRedeemValue: redeemValue,
+    pointsEarnYuanPerPoint: Number(cfg.points_earn_yuan_per_point || 10),
+    pointsMaxDeductRate: Number(cfg.points_max_deduct_rate || 1),
     treatBalance: 0,
   });
 };

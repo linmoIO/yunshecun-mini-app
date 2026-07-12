@@ -1,6 +1,7 @@
 import { SuperComponent, RelationsOptions } from '../common/src/index';
 export default class CheckBoxGroup extends SuperComponent {
     externalClasses: string[];
+    behaviors: string[];
     relations: RelationsOptions;
     data: {
         prefix: string;
@@ -11,6 +12,7 @@ export default class CheckBoxGroup extends SuperComponent {
     observers: {
         value(): void;
         options(): void;
+        disabled(v: any): void;
     };
     lifetimes: {
         ready(): void;
@@ -23,10 +25,11 @@ export default class CheckBoxGroup extends SuperComponent {
     methods: {
         getChildren(): any;
         updateChildren(): void;
-        updateValue({ value, checked, checkAll, indeterminate }: {
+        updateValue({ value, checked, checkAll, item, indeterminate }: {
             value: any;
             checked: any;
             checkAll: any;
+            item: any;
             indeterminate: any;
         }): void;
         initWithOptions(): void;

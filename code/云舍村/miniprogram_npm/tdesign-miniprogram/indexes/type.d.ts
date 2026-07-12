@@ -1,15 +1,19 @@
 export interface TdIndexesProps {
-    style?: {
-        type: StringConstructor;
-        value?: string;
+    current?: {
+        type: null;
+        value?: string | number;
+    };
+    defaultCurrent?: {
+        type: null;
+        value?: string | number;
     };
     indexList?: {
-        type: null;
-        value?: string[] | number[];
-    };
-    list?: {
         type: ArrayConstructor;
-        value?: ListItem[];
+        value?: Array<string | number>;
+    };
+    showFullIndex?: {
+        type: BooleanConstructor;
+        value?: Boolean;
     };
     sticky?: {
         type: BooleanConstructor;
@@ -19,12 +23,4 @@ export interface TdIndexesProps {
         type: NumberConstructor;
         value?: number;
     };
-}
-export interface ListItem {
-    title: string;
-    index: string;
-    children: {
-        title: string;
-        [key: string]: any;
-    }[];
 }

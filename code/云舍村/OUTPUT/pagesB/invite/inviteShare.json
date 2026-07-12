@@ -1,9 +1,0 @@
-{
-    "navigationBarTitleText":  "",
-    "navigationStyle":  "custom",
-    "usingComponents":  {
-                            "img-code":  "../../components/imgCode",
-                            "alert":  "../../components/Alert",
-                            "bottom-dialog":  "../../components/bottomDialog"
-                        }
-}

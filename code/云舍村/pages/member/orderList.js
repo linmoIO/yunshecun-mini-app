@@ -615,7 +615,9 @@
               p: o.showPay
             }, o.showPay ? {
               p_h: e.o(function() {
-                wx.showToast({ title: '暂不支持在线支付，请联系客服', icon: 'none', duration: 2000 });
+                e.index.navigateTo({
+                  url: '/pagesB/other/pay?orderNo=' + o.orderId + '&productType=shop'
+                });
               }, t)
             } : {}, {
               q: t,

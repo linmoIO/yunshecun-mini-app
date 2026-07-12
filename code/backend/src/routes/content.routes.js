@@ -245,7 +245,7 @@ async function handleInterfaceTransfer(req, res) {
               showName: `¥${roomPrice}/晚`,
               pbMinPriceWithPromotion: roomPrice,  // roomList.js 用这个显示第二行价格
               bookAble: canBook ? 'T' : 'F',       // 'T'=可预订, 否则显示"不可订"
-              minSaleNum: 0,                       // 0=无最低间夜数限制
+              minSaleNum: canBook ? Math.max(1, stock) : 0,
               notMemberBook: 'T',                  // 允许非会员预订
               payMethod: 'CASH',                   // 非SCORE则走普通预订
               prodCategorySub: 'STD',

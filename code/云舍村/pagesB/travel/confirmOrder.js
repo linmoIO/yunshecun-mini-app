@@ -13,7 +13,7 @@
   const s = require("../../utils/qdTracker.js");
   require("../../base/product.js"), require("../../services/request/request.js"), require("../../utils/request.js");
   const d = require("../../hooks/useAdReport.js"),
-    m = require("../../hooks/useLoadingSync.js"),
+    m = require("../hooks/useLoadingSync.js"),
     c = require("../../hooks/useSubscribeMessage.js"),
     v = require("../../hooks/useXhsReport.js"),
     p = require("../../services/common.js"),
@@ -29,7 +29,7 @@
     R = () => "../../components/new/Stepper.js",
     S = () => "../../components/new/StRadio.js",
     N = () => "../../components/order/OrderContactTipNotice.js",
-    A = () => "../../components/order/OrderDiscountPlan.js",
+    A = () => "../components/order/OrderDiscountPlan.js",
     P = () => "../../components/RetryModal.js",
     I = e.defineComponent({
       __name: "confirmOrder",
@@ -317,7 +317,7 @@
                   a && (e.realValue = a.realValue || 0)
                 })) : ("实时计价" === A.price ? $.value && ($.value = !1, e.index.showModal({
                   title: "请联系云舍村客服或顾问",
-                  content: "您选择的产品因资源保障原因暂无法购买，详讯400-0000-830。",
+                  content: "您选择的产品因资源保障原因暂无法购买，请联系在线客服。",
                   cancelText: "联系客服",
                   confirmText: "重新选择",
                   success(a) {

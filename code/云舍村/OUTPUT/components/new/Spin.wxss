@@ -1,9 +1,0 @@
-.spin.data-v-9d1ac0a5 {
-    height: var(--spin-size);
-    width: var(--spin-size)
-}
-
-.spin-icon.data-v-9d1ac0a5 {
-    height: 100%;
-    width: 100%
-}

@@ -1,8 +1,0 @@
-{
-    "navigationBarTitleText":  "变更详情",
-    "enablePullDownRefresh":  false,
-    "navigationStyle":  "custom",
-    "usingComponents":  {
-                            "coustom-head":  "../../components/coustomHead"
-                        }
-}

@@ -1,6 +1,1 @@
-{
-  "component": true,
-  "usingComponents": {
-    "t-loading": "../loading/loading"
-  }
-}
+{"component":true,"styleIsolation":"apply-shared","usingComponents":{"t-loading":"../loading/loading"}}

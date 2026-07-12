@@ -26,7 +26,8 @@ var getBadgeStyles = function (props) {
     styleStr += 'background:' + props.color + ';';
   }
   if (props.offset[0]) {
-    styleStr += 'right:' + (hasUnit(props.offset[0].toString()) ? props.offset[0] : props.offset[0] + 'px') + ';';
+    styleStr +=
+      'left: calc(100% + ' + (hasUnit(props.offset[0].toString()) ? props.offset[0] : props.offset[0] + 'px') + ');';
   }
   if (props.offset[1]) {
     styleStr += 'top:' + (hasUnit(props.offset[1].toString()) ? props.offset[1] : props.offset[1] + 'px') + ';';
@@ -34,20 +35,14 @@ var getBadgeStyles = function (props) {
   return styleStr;
 };
 
-var getBadgeOuterClass = function (props) {
-  var baseClass = 't-badge';
-  var classNames = [baseClass, props.shape === 'ribbon' ? baseClass + '__ribbon-outer' : ''];
-  return classNames.join(' ');
-};
-
 var getBadgeInnerClass = function (props) {
-  var baseClass = 't-badge';
+  var baseClass = props.classPrefix;
   var classNames = [
     baseClass + '--basic',
     props.dot ? baseClass + '--dot' : '',
     baseClass + '--' + props.size,
     baseClass + '--' + props.shape,
-    !props.dot && props.count ? baseClass + '--count' : '',
+    !props.dot ? baseClass + '--count' : '',
   ];
   return classNames.join(' ');
 };
@@ -65,6 +60,5 @@ var isShowBadge = function (props) {
 
 module.exports.getBadgeValue = getBadgeValue;
 module.exports.getBadgeStyles = getBadgeStyles;
-module.exports.getBadgeOuterClass = getBadgeOuterClass;
 module.exports.getBadgeInnerClass = getBadgeInnerClass;
 module.exports.isShowBadge = isShowBadge;

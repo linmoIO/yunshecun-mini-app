@@ -1,5 +1,0 @@
-<view class="{{['data-v-fe6d7eeb','ui_bottomBtn',c&&'layout']}}">
-    <view bindtap="{{b}}" class="{{['data-v-fe6d7eeb','bottomBtn',a&&'disabled']}}">
-        <slot></slot>
-    </view>
-</view>

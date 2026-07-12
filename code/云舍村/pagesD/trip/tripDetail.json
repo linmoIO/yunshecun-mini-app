@@ -6,7 +6,7 @@
                             "coustom-head":  "../../components/coustomHead",
                             "more-text":  "../../components/moreText",
                             "swiper-box":  "../../components/swiperBox",
-                            "trip-nav":  "../../components/tripNav",
+                            "trip-nav":  "../components/tripNav",
                             "v-preview-image":  "../components/v-previewImage"
                         }
 }

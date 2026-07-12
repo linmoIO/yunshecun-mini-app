@@ -12,7 +12,7 @@ const authMiddleware = async (req, res, next) => {
     req.body?.memberToken;
 
   if (!token) {
-    return error(res, '未登录或登录已过期', 401, 401);
+    return error(res, '请先登录', 401, 401);
   }
 
   try {

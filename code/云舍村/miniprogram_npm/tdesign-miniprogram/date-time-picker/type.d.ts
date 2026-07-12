@@ -1,4 +1,9 @@
+import { PopupProps } from '../popup/index';
 export interface TdDateTimePickerProps {
+    autoClose?: {
+        type: BooleanConstructor;
+        value?: boolean;
+    };
     cancelBtn?: {
         type: StringConstructor;
         value?: string;
@@ -11,13 +16,17 @@ export interface TdDateTimePickerProps {
         type: null;
         value?: string | number;
     };
-    externalClasses?: {
-        type: ArrayConstructor;
-        value?: ['t-class', 't-class-confirm', 't-class-cancel', 't-class-title'];
+    filter?: {
+        type: undefined;
+        value?: (type: TimeModeValues, columns: DateTimePickerColumn) => DateTimePickerColumn;
     };
     format?: {
         type: StringConstructor;
         value?: string;
+    };
+    formatter?: {
+        type: undefined;
+        value?: (option: DateTimePickerColumnItem, columnIndex: number) => DateTimePickerColumnItem;
     };
     header?: {
         type: BooleanConstructor;
@@ -26,6 +35,10 @@ export interface TdDateTimePickerProps {
     mode?: {
         type: null;
         value?: DateTimePickerMode;
+    };
+    popupProps?: {
+        type: ObjectConstructor;
+        value?: PopupProps;
     };
     showWeek?: {
         type: BooleanConstructor;
@@ -37,11 +50,17 @@ export interface TdDateTimePickerProps {
     };
     steps?: {
         type: ObjectConstructor;
-        value?: object;
+        value?: {
+            [key in TimeModeValues]?: number;
+        };
     };
     title?: {
         type: StringConstructor;
         value?: string;
+    };
+    usePopup?: {
+        type: BooleanConstructor;
+        value?: boolean;
     };
     value?: {
         type: null;
@@ -55,10 +74,11 @@ export interface TdDateTimePickerProps {
         type: BooleanConstructor;
         value?: boolean;
     };
-    popupProps: {
-        type: Object;
-        value: {};
-    };
+}
+export declare type DateTimePickerColumn = DateTimePickerColumnItem[];
+export interface DateTimePickerColumnItem {
+    label: string;
+    value: string;
 }
 export declare type DateTimePickerMode = TimeModeValues | Array<TimeModeValues>;
 export declare type TimeModeValues = 'year' | 'month' | 'date' | 'hour' | 'minute' | 'second';

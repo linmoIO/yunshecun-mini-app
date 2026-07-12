@@ -14,6 +14,10 @@ export default class ImageViewer extends SuperComponent {
             type: null;
             value?: string | boolean | object;
         };
+        imageProps?: {
+            type: ObjectConstructor;
+            value?: import("../image/type").TdImageProps;
+        };
         images?: {
             type: ArrayConstructor;
             value?: string[];
@@ -21,6 +25,10 @@ export default class ImageViewer extends SuperComponent {
         initialIndex?: {
             type: NumberConstructor;
             value?: Number;
+        };
+        lazy?: {
+            type: BooleanConstructor;
+            value?: boolean;
         };
         showIndex?: {
             type: BooleanConstructor;
@@ -43,6 +51,7 @@ export default class ImageViewer extends SuperComponent {
         prefix: string;
         classPrefix: string;
         currentSwiperIndex: number;
+        loadedImageIndexes: any[];
         windowHeight: number;
         windowWidth: number;
         swiperStyle: {};
@@ -58,7 +67,7 @@ export default class ImageViewer extends SuperComponent {
     }[];
     ready(): void;
     observers: {
-        visible(value: any): void;
+        'visible,initialIndex,images'(visible: any, initialIndex: any, images: any): void;
         closeBtn(v: any): void;
         deleteBtn(v: any): void;
     };

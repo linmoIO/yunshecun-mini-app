@@ -18,6 +18,8 @@ router.post('/member/getCaptcha', ctrl.generateCaptcha);
 // 发送验证码（需先通过图形验证码）
 router.get('/member/createIdentifyCode.json', ctrl.sendVerifyCode);
 router.post('/member/createIdentifyCode.json', ctrl.sendVerifyCode);
+router.get('/member/verifyIdentifyCode.json', ctrl.verifyIdentifyCode);
+router.post('/member/verifyIdentifyCode.json', ctrl.verifyIdentifyCode);
 
 // 验证码登录
 router.post('/member/memberLoginByMobileCode.json', ctrl.loginByMobileCode);
@@ -29,10 +31,13 @@ router.post('/member/fastRegister.json', ctrl.loginByMobileCode);
 
 // 一键登录 (auth-center) - memberLogin.js 使用
 router.post('/auth-center/api/login/authorization', ctrl.loginByAuthorization);
+router.post('/auth-center/api/login/verification/code', ctrl.loginByVerificationCode);
 
 // Token 刷新 (auth-center)
 router.post('/auth/refresh/token', ctrl.refreshToken);
 router.get('/auth/refresh/token', ctrl.refreshToken);
+router.post('/auth-center/api/auth/refresh/token', ctrl.refreshToken);
+router.get('/auth-center/api/auth/refresh/token', ctrl.refreshToken);
 
 // 退出登录
 router.post('/member/logout', authMiddleware, ctrl.logout);
