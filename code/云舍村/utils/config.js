@@ -4,8 +4,9 @@
   const p = require("../common/vendor.js");
 
   // 本地开发后端地址（开发时将此设为 true 并填写本地服务器地址）
-  const USE_LOCAL_BACKEND = true;
+  const USE_LOCAL_BACKEND = false;
   const LOCAL_BACKEND_URL = "http://localhost:3000/api";
+  const REMOTE_BACKEND_URL = "https://test.yunshecun.com/api";
 
   const _prodConfig = {
     env: "production",
@@ -25,8 +26,8 @@
     equipment: "desktop",
     isOpenHotelListBigPictureMode: "T",
     domain: "",
-    baseUrlmall: USE_LOCAL_BACKEND ? LOCAL_BACKEND_URL : "",
-    baseUrlApi: USE_LOCAL_BACKEND ? LOCAL_BACKEND_URL : "",
+    baseUrlmall: USE_LOCAL_BACKEND ? LOCAL_BACKEND_URL : REMOTE_BACKEND_URL,
+    baseUrlApi: USE_LOCAL_BACKEND ? LOCAL_BACKEND_URL : REMOTE_BACKEND_URL,
     // 使用本地后端时清空 appkey/appsecret 以跳过签名
     appkey: USE_LOCAL_BACKEND ? "" : "81756736",
     appsecret: USE_LOCAL_BACKEND ? "" : "DB6424FE510A11EEBFC917C3812AE482",

@@ -33,7 +33,7 @@
       requestHeaders: p,
       params: c,
       response: m
-    } = o || {}, f = +new Date - n, g = JSON.stringify(m.data).slice(0, 1e3);
+    } = o || {}, f = +new Date - n, g = (JSON.stringify(null == m ? void 0 : m.data) || "").slice(0, 1e3);
     let v = "unknown";
     e.isNil(null == (t = m.data) ? void 0 : t.msg) || (v = null == (r = m.data) ? void 0 : r.msg);
     let h = 10240002;

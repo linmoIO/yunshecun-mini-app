@@ -122,8 +122,16 @@ const getCollection = async (req, res) => {
 
 const isCollection = async (req, res) => {
   const { goodsId } = req.query;
-  const col = await prisma.goodsCollection.findFirst({ where: { memberId: req.member.id, productId: Number(goodsId) } });
-  return success(res, { isCollection: !!col });
+  const col = goodsId
+    ? await prisma.goodsCollection.findFirst({ where: { memberId: req.member.id, productId: Number(goodsId) } })
+    : null;
+  return res.json({
+    code: 0,
+    result: 1,
+    msg: 'success',
+    data: { isCollection: !!col },
+    retVal: col ? [{ goodsId: String(goodsId) }] : [],
+  });
 };
 
 // ---- 管理端 ----

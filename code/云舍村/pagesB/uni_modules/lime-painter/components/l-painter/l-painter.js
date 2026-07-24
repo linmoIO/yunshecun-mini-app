@@ -107,7 +107,7 @@
           })
         },
         async render(t = {}) {
-          if (this.stopWatch && this.stopWatch(), !Object.keys(t).length) return console.error("绌哄璞?);
+          if (this.stopWatch && this.stopWatch(), !Object.keys(t).length) return console.error("空对象");
           this.progress = 0, this.done = !1, await this.getSize(t);
           const e = await this.getContext();
           let {
@@ -117,7 +117,7 @@
             canvas: r,
             afterDelay: c
           } = this;
-          if (i && !r) return Promise.reject(new Error("canvas 娌″垱寤?));
+          if (i && !r) return Promise.reject(new Error("canvas 没创建"));
           if (this.boundary = {
               top: 0,
               left: 0,
