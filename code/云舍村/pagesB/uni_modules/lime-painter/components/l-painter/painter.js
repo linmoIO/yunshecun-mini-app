@@ -604,7 +604,7 @@
                   return 1 * t
                 })) : i.includes("rotate") ? d[t][i] = 1 * n.match(/^-?\d+(\.\d+)?/)[0] : /[X, Y]/.test(i) ? d[t][i] = /[X]/.test(i) ? s(r[0], o.width) : s(r[0], o.height) : (d[t][i + "X"] = s(r[0], o.width), d[t][i + "Y"] = s(r[1] || r[0], o.height))
               })), "continue";
-              if (/^font$/i.test(t) && console.warn("font 涓嶆敮鎸佺畝鍐?), /^textindent/i.test(t) && (d[t] = /^calc/.test(s) ? s : y(s)), /^textstroke/i.test(t)) {
+              if (/^font$/i.test(t) && console.warn("font 不支持简写"), /^textindent/i.test(t) && (d[t] = /^calc/.test(s) ? s : y(s)), /^textstroke/i.test(t)) {
                 var M = t.match(/color|width|type$/i),
                   k = (c = "textStroke", s.split(" ").map((function(t) {
                     return /^\d+(rpx|px|vh|vw)?$/.test(t) ? y(t) : t
@@ -1828,11 +1828,11 @@
                 dt = at.text,
                 ct = (rt[st + 1] || {}).width;
               if (K += dt, (ot += ht) + (void 0 === ct ? 0 : ct) + (0 == tt ? W : 0) + (tt == O ? et : 0) > a.width) {
-                tt >= O && (K += "鈥?), tt++, ot = 0;
+                tt >= O && (K += "…"), tt++, ot = 0;
                 var lt = D(K);
                 V = lt.fix, q = lt.lineY, N(K, Q, d + V), X(Q, d + q, ot), d += x, K = ""
               } else if (st == rt.length - 1) {
-                nt != it.length - 1 && tt == O && et + ot < a.width && (K += "鈥?);
+                nt != it.length - 1 && tt == O && et + ot < a.width && (K += "…");
                 var ft = D(K);
                 V = ft.fix, q = ft.lineY, N(K, Q, d + V), X(Q, d + q, ot)
               }
@@ -1856,7 +1856,7 @@
                   return s.lifecycle("onEffectSuccess", t)
                 })).catch((function(t) {
                   return s.lifecycle("onEffectFail", t)
-                })), this.performance && console.log("甯冨眬鐢ㄦ椂锛? + (+new Date - e) + "ms"), [2, this.size]) : [2, console.warn("no node")]
+                })), this.performance && console.log("布局用时：" + (+new Date - e) + "ms"), [2, this.size]) : [2, console.warn("no node")]
             }
           }))
         }))
@@ -2002,7 +2002,7 @@
                 case 14:
                   return u = n.sent(), this.lifecycle("onEffectFail", u), o(u), [3, 15];
                 case 15:
-                  return this.performance && console.log("娓叉煋鐢ㄦ椂锛? + (+new Date - e - 30) + "ms"), [2]
+                  return this.performance && console.log("渲染用时：" + (+new Date - e - 30) + "ms"), [2]
               }
               var g
             }))
