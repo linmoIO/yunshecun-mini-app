@@ -3,14 +3,14 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "mysql"
   url      = env("DATABASE_URL")
 }
 
 model Member {
   id               Int                @id @default(autoincrement())
   memberId         String             @unique @default(cuid())
-  memberToken      String?            @unique
+  memberToken      String?            @unique @db.VarChar(512)
   phone            String?            @unique
   email            String?
   wechatOpenId     String?            @unique
@@ -443,7 +443,7 @@ model Payment {
   paidAt          DateTime?
   refundedAt      DateTime?
   refundAmount    Float?
-  extra           String?
+  extra           String?   @db.Text
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
 }
@@ -497,7 +497,7 @@ model ContentPage {
 model SysConfig {
   id          Int      @id @default(autoincrement())
   key         String   @unique
-  value       String?
+  value       String?  @db.Text
   description String?
   updatedAt   DateTime @updatedAt
 }

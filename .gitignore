@@ -1,2 +1,26 @@
 .spec-workflow
-task
+.workbuddy/
+
+# Local dependencies and test output
+/code/backend/node_modules/
+/code/backend/test-results/
+/code/backend/playwright-report/
+/code/backend/blob-report/
+/code/backend/.cache/
+
+# Runtime state, backups, and local Docker artifacts
+/code/backend/uploads/
+/code/backend/prisma/*.db
+/deploy/local/backup/
+/deploy/cloud-test/backup/
+/deploy/cloud-test/runtime/
+/deploy/cloud-test/.env
+/deploy/cloud-test/.env.*
+!/deploy/cloud-test/.env.example
+
+# Credentials and local certificate exports
+/code/backend/.env
+/deploy/local/*.crt
+/deploy/local/*.pem
+*.key
+*.p12

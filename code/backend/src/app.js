@@ -12,6 +12,7 @@ const rateLimit = require('express-rate-limit');
 const config = require('./config');
 const routes = require('./routes');
 const { errorHandler, notFound } = require('./middleware/errorHandler');
+const { normalizePublicAssetUrls } = require('./utils/publicAssetUrl');
 
 const app = express();
 
@@ -53,6 +54,13 @@ app.use(express.json({
   },
 }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
+
+// 兼容历史数据中绑定 localhost:3000 的上传地址，按当前公开入口返回。
+app.use((_req, res, next) => {
+  const originalJson = res.json.bind(res);
+  res.json = (body) => originalJson(normalizePublicAssetUrls(body, config.publicBaseUrl));
+  next();
+});
 
 // 静态文件（上传的媒体文件）
 app.use('/uploads', express.static(path.join(__dirname, '../uploads')));

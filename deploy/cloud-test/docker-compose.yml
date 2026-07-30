@@ -1,0 +1,71 @@
+name: yunshecun-cloud-test
+
+services:
+  mysql:
+    image: mysql:8.4
+    container_name: yunshecun-mysql-test
+    env_file:
+      - ${ENV_FILE:-.env}
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h localhost -u\"$$MYSQL_USER\" -p\"$$MYSQL_PASSWORD\""]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    volumes:
+      - yunshecun_test_mysql:/var/lib/mysql
+    restart: unless-stopped
+
+  database-init:
+    profiles: ["bootstrap"]
+    build:
+      context: ../..
+      dockerfile: deploy/cloud-test/Dockerfile
+    env_file:
+      - ${ENV_FILE:?ENV_FILE must be set to the private environment file}
+    command: ["npx", "prisma", "db", "push", "--skip-generate"]
+    depends_on:
+      mysql:
+        condition: service_healthy
+    restart: "no"
+
+  migration:
+    profiles: ["migration"]
+    user: "0:0"
+    build:
+      context: ../..
+      dockerfile: deploy/cloud-test/Dockerfile
+    env_file:
+      - ${ENV_FILE:?ENV_FILE must be set to the private environment file}
+    environment:
+      SQLITE_DATABASE_URL: file:/backup/旧数据.sqlite
+      MIGRATION_MODE: ${MIGRATION_MODE:-migrate}
+    command: ["node", "/migration/迁移SQLite到MySQL.js"]
+    volumes:
+      - ${MIGRATION_BACKUP_DIR:?MIGRATION_BACKUP_DIR must be set}:/backup
+      - ../local/迁移SQLite到MySQL.js:/migration/迁移SQLite到MySQL.js:ro
+      - yunshecun_test_uploads:/target-uploads
+    depends_on:
+      mysql:
+        condition: service_healthy
+    restart: "no"
+
+  backend:
+    container_name: yunshecun-backend-test
+    build:
+      context: ../..
+      dockerfile: deploy/cloud-test/Dockerfile
+    env_file:
+      - ${ENV_FILE:?ENV_FILE must be set to the private environment file}
+    ports:
+      - "127.0.0.1:${BACKEND_PORT:-3000}:3000"
+    volumes:
+      - ${CERTIFICATE_DIR:?CERTIFICATE_DIR must be set}:/app/certs:ro
+      - yunshecun_test_uploads:/app/uploads
+    depends_on:
+      mysql:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  yunshecun_test_mysql:
+  yunshecun_test_uploads:

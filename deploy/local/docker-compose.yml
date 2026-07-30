@@ -1,0 +1,93 @@
+name: local-backend
+
+services:
+  mysql:
+    image: mysql:8.4
+    environment:
+      MYSQL_DATABASE: yunshecun_local
+      MYSQL_USER: yunshecun
+      MYSQL_PASSWORD: local_yunshecun_password
+      MYSQL_ROOT_PASSWORD: local_yunshecun_root_password
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h localhost -u\"$$MYSQL_USER\" -p\"$$MYSQL_PASSWORD\""]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    volumes:
+      - yunshecun_backend_mysql:/var/lib/mysql
+    restart: unless-stopped
+
+  database-init:
+    build:
+      context: ../..
+      dockerfile: deploy/local/Dockerfile
+    env_file:
+      - ../../code/backend/.env
+    environment:
+      DATABASE_URL: mysql://yunshecun:local_yunshecun_password@mysql:3306/yunshecun_local
+    command: ["npx", "prisma", "db", "push", "--skip-generate"]
+    depends_on:
+      mysql:
+        condition: service_healthy
+    restart: "no"
+
+  migration:
+    profiles: ["migration"]
+    user: "0:0"
+    build:
+      context: ../..
+      dockerfile: deploy/local/Dockerfile
+    env_file:
+      - ../../code/backend/.env
+    environment:
+      DATABASE_URL: mysql://yunshecun:local_yunshecun_password@mysql:3306/yunshecun_local
+      SQLITE_DATABASE_URL: file:/backup/旧数据.sqlite
+    command: ["node", "/migration/迁移SQLite到MySQL.js"]
+    volumes:
+      - ./backup/迁移前-2026-07-29:/backup
+      - ./迁移SQLite到MySQL.js:/migration/迁移SQLite到MySQL.js:ro
+      - yunshecun_backend_mysql_uploads:/target-uploads
+    depends_on:
+      mysql:
+        condition: service_healthy
+    restart: "no"
+
+  backend:
+    build:
+      context: ../..
+      dockerfile: deploy/local/Dockerfile
+    env_file:
+      - ../../code/backend/.env
+    environment:
+      DATABASE_URL: mysql://yunshecun:local_yunshecun_password@mysql:3306/yunshecun_local
+      PUBLIC_BASE_URL: https://localhost:${LOCAL_HTTPS_PORT:-3443}
+      WECHAT_PAY_PRIVATE_KEY_PATH: /app/certs/apiclient_key.pem
+      WECHAT_PAY_CERT_PATH: /app/certs/apiclient_cert.pem
+    ports:
+      - "127.0.0.1:${LOCAL_BACKEND_PORT:-3001}:3000"
+    volumes:
+      - ../../code/证书:/app/certs:ro
+      - yunshecun_backend_mysql_uploads:/app/uploads
+    depends_on:
+      database-init:
+        condition: service_completed_successfully
+    restart: unless-stopped
+
+  https-proxy:
+    image: caddy:2-alpine
+    ports:
+      - "127.0.0.1:${LOCAL_HTTPS_PORT:-3443}:3443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - yunshecun_backend_https:/data
+      - yunshecun_backend_https_config:/config
+    depends_on:
+      backend:
+        condition: service_started
+    restart: unless-stopped
+
+volumes:
+  yunshecun_backend_mysql:
+  yunshecun_backend_mysql_uploads:
+  yunshecun_backend_https:
+  yunshecun_backend_https_config:

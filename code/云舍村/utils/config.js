@@ -5,7 +5,7 @@
 
   // 本地开发后端地址（开发时将此设为 true 并填写本地服务器地址）
   const USE_LOCAL_BACKEND = true;
-  const LOCAL_BACKEND_URL = "http://localhost:3000/api";
+  const LOCAL_BACKEND_URL = "https://localhost:3443/api";
 
   const _prodConfig = {
     env: "production",

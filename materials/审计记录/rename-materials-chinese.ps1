@@ -2,8 +2,8 @@ $ErrorActionPreference = 'Stop'
 
 $workspace = 'D:/Linmo/Documents/日常/云舍村小程序/workspace'
 $imagesRoot = Join-Path $workspace 'materials/images'
-$previousMap = Import-Csv -LiteralPath (Join-Path $workspace 'task/image-audit/rename-map.csv')
-$mapPath = Join-Path $workspace 'task/image-audit/rename-map-chinese.csv'
+$previousMap = Import-Csv -LiteralPath (Join-Path $workspace 'materials/审计记录/rename-map.csv')
+$mapPath = Join-Path $workspace 'materials/审计记录/rename-map-chinese.csv'
 
 $terms = @{
     'accommodation' = '住宿'; 'architecture' = '建筑'; 'archive' = '归档'; 'arrival' = '到访'; 'aerial' = '航拍'; 'ancient' = '古青石';
