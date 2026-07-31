@@ -62,8 +62,11 @@ app.use((_req, res, next) => {
   next();
 });
 
-// 静态文件（上传的媒体文件）
-app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
+// 上传文件以 UUID 命名，更新会使用新 URL，可安全使用长期浏览器缓存。
+app.use('/uploads', express.static(path.join(__dirname, '../uploads'), {
+  maxAge: '30d',
+  immutable: true,
+}));
 
 // 管理后台网页（访问 http://localhost:3000 即可打开）
 app.use(express.static(path.join(__dirname, '../public')));

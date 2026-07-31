@@ -3,12 +3,16 @@
   var o, e;
   const p = require("../common/vendor.js");
 
-  // 本地开发后端地址（开发时将此设为 true 并填写本地服务器地址）
+  // 测试环境切换：false 使用云端，true 使用本地 Docker HTTPS。
   const USE_LOCAL_BACKEND = true;
-  const LOCAL_BACKEND_URL = "https://localhost:3443/api";
+  const CLOUD_API_BASE_URL = "https://test.yunshecun.com/api";
+  const LOCAL_API_BASE_URL = "https://localhost:3443/api";
+  const API_BASE_URL = USE_LOCAL_BACKEND ? LOCAL_API_BASE_URL : CLOUD_API_BASE_URL;
+  // 当前云端后端不使用旧系统 appkey/appsecret 签名
+  const ENABLE_LEGACY_API_SIGNATURE = false;
 
   const _prodConfig = {
-    env: "production",
+    env: USE_LOCAL_BACKEND ? "development" : "production",
     version: "3.1.0",
     hotelGroupCode: "SONGTSAM",
     hotelGroupId: 1,
@@ -25,11 +29,10 @@
     equipment: "desktop",
     isOpenHotelListBigPictureMode: "T",
     domain: "",
-    baseUrlmall: USE_LOCAL_BACKEND ? LOCAL_BACKEND_URL : "",
-    baseUrlApi: USE_LOCAL_BACKEND ? LOCAL_BACKEND_URL : "",
-    // 使用本地后端时清空 appkey/appsecret 以跳过签名
-    appkey: USE_LOCAL_BACKEND ? "" : "81756736",
-    appsecret: USE_LOCAL_BACKEND ? "" : "DB6424FE510A11EEBFC917C3812AE482",
+    baseUrlmall: API_BASE_URL,
+    baseUrlApi: API_BASE_URL,
+    appkey: ENABLE_LEGACY_API_SIGNATURE ? "81756736" : "",
+    appsecret: ENABLE_LEGACY_API_SIGNATURE ? "DB6424FE510A11EEBFC917C3812AE482" : "",
     aplusQueueAppKey: "8cazk1duqp299e0q778jljmo",
     qidianAppkey: "0MA006JIWVKVC962",
     qidianApiHost: ""

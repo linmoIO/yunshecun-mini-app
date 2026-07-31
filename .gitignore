@@ -12,6 +12,7 @@
 /code/backend/uploads/
 /code/backend/prisma/*.db
 /deploy/local/backup/
+/deploy/local/optimized-uploads/
 /deploy/cloud-test/backup/
 /deploy/cloud-test/runtime/
 /deploy/cloud-test/.env

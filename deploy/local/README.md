@@ -15,6 +15,15 @@ curl -k https://localhost:3443/api/health
 
 管理后台与小程序图片测试入口：`https://localhost:3443`。
 
+压缩本地上传图片（保留原图，输出到 `deploy/local/optimized-uploads/images`）：
+
+```powershell
+node deploy/local/压缩上传图片.js
+docker compose -f deploy/local/docker-compose.yml -f deploy/local/docker-compose.optimized.yml up -d backend
+```
+
+压缩目录可在确认清单后同步到云端原上传目录。同步前先备份云端 `uploads/images`，只覆盖同名文件，不删除云端多出的文件；图片 URL 和数据库记录无需修改。
+
 Windows 微信开发者工具首次使用本地 HTTPS 时，需要信任 Caddy 的本地开发根证书，然后重启开发者工具：
 
 ```powershell

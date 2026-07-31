@@ -1,6 +1,6 @@
 <view bindtap="{{x}}" class="card" style="{{w}}">
     <view class="card-media">
-        <image class="card-media__cover" mode="aspectFill" src="{{b}}" wx:if="{{a}}"></image>
+        <image lazyLoad class="card-media__cover" mode="aspectFill" src="{{b}}" wx:if="{{a}}"></image>
         <view class="card-media__tags">
             <view class="tag tag--primary" wx:if="{{c}}">
                 <image class="icon" src="{{d}}"></image>

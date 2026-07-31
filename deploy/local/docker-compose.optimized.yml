@@ -1,0 +1,4 @@
+services:
+  backend:
+    volumes:
+      - ./optimized-uploads/images:/app/uploads/images:ro

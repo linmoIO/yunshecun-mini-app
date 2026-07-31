@@ -61,6 +61,8 @@ test('travel home advertisement API exposes HTTPS images without legacy URLs', a
     const image = await fetch(imageUrl, { method: 'HEAD' });
     assert.equal(image.status, 200, imageUrl);
     assert.match(image.headers.get('content-type') || '', /^image\//, imageUrl);
+    assert.match(image.headers.get('cache-control') || '', /max-age=2592000/, imageUrl);
+    assert.match(image.headers.get('cache-control') || '', /immutable/, imageUrl);
   }
 });
 
