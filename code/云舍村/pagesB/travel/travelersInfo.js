@@ -49,8 +49,16 @@
           v = e.ref([]);
         var c = /^(^[1-9]\d{7}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}$)|(^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])((\d{4})|\d{3}[Xx])$)$/,
           C = /(\w{8,10}$)/,
-          b = /^([A-Z]\d{6,10}(\w1)?)$/,
+          b = /^[A-Z]\d{6,10}[A-Z0-9]?$/,
           x = /(^[a-zA-Z][0-9]{9}$)|(^\d{8}$)/;
+        const F = a => {
+          const r = String(a || "").trim().toUpperCase();
+          if (!c.test(r) || 18 !== r.length) return 15 === r.length && c.test(r);
+          const t = [7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2],
+            e = ["1", "0", "X", "9", "8", "7", "6", "5", "4", "3", "2"],
+            n = r.slice(0, 17).split("").reduce((e, a, r) => e + Number(a) * t[r], 0);
+          return e[n % 11] === r[17]
+        };
         let N = e.computed(() => {
           let e = "";
           return m.forEach(a => {
@@ -94,7 +102,7 @@
         });
         const j = () => {
             if ("01" != h.idCode) return;
-            if (!c.test(h.idNo)) return;
+            if (!F(h.idNo)) return;
             const e = h.idNo.substr(6, 4),
               a = h.idNo.substr(10, 2),
               r = h.idNo.substr(12, 2),
@@ -114,13 +122,13 @@
                 filePath: a.toString()
               },
               success: function(a) {
-                if (200 != a.statusCode) return t.jAlert3(a.msg), !1;
+                if (200 != a.statusCode) return t.jAlert3("身份证识别失败，请手动填写"), !1;
                 var r = JSON.parse(a.data);
-                if (1 != r.result) return t.jAlert3(r.msg), !1;
+                if (1 != r.result) return t.jAlert3("身份证识别失败，请手动填写"), !1;
                 h.name = r.retVal.data.face.data.name, h.idNo = r.retVal.data.face.data.idNumber, "男" == r.retVal.data.face.data.sex ? h.sex = "1" : h.sex = "2", h.idCode = "01", h.birth = e.dayjs(r.retVal.data.face.data.birthDate.replace("年", "-").replace("月", "-").replace("日", "")).format("YYYY-MM-DD")
               },
               fail: function(e) {
-                t.jAlert3("上传失败，msg：" + JSON.stringify(e))
+                t.jAlert3("身份证识别失败，请手动填写")
               }
             })
           },
@@ -159,11 +167,9 @@
             if (!h.sex) return t.jAlert3("请选择性别"), !1;
             if (!h.birth) return t.jAlert3("请选择出生日期"), !1;
             if ("01" == h.idCode || "02" == h.idCode) {
-              if (!c.test(h.idNo)) return t.jAlert3("请输入正确的证件号"), !1
+              if (!F(h.idNo)) return t.jAlert3("请输入正确的证件号"), !1
             } else if ("14" == h.idCode) {
               if (!C.test(h.idNo)) return t.jAlert3("请输入正确的证件号"), !1
-            } else if ("16" == h.idCode) {
-              if (!x.test(h.idNo)) return t.jAlert3("请输入正确的证件号"), !1
             } else if ("21" == h.idCode && !b.test(h.idNo)) return t.jAlert3("请输入正确的证件号"), !1;
             if (!/^1\d{10}$/.test(h.mobile))
               if (s.value) {
