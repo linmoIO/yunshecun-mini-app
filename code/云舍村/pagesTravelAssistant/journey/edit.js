@@ -1,25 +1,13 @@
 const ROUTE_GROUPS = [{
-  title: "滇藏线",
-  options: ["拉萨", "来古", "如美", "波密", "梅里", "香格里拉"]
-}, {
-  title: "香格里拉环线",
-  options: ["泸沽湖", "丽江", "塔城", "香格里拉", "亚丁"]
-}, {
-  title: "梅里环线",
-  options: ["石月亮", "茨中", "梅里", "奔子栏", "香格里拉"]
-}, {
-  title: "拉萨环线",
-  options: ["拉萨", "百巴", "林芝", "乃朗", "巴松措"]
-}, {
-  title: "冰川环线",
-  options: ["来古", "南迦巴瓦", "波密"]
-}, {
-  title: "昆明/普洱",
-  options: ["景迈山", "普洱", "昆明"]
+  title: "云舍村到访体验",
+  options: ["归居院落", "村落漫游", "茶坊", "书屋", "菜园", "果园"]
 }];
 
-const PREFERENCE_OPTIONS = ["美食美酒", "自然风光", "宗教文化", "深度户外", "民间艺术", "历史人文", "户外轻徒步"];
-const CITY_OPTIONS = ["广东 广州", "上海 上海", "北京 北京", "四川 成都", "云南 昆明"];
+const cfg = require('../../utils/config.js');
+const PUBLIC_BASE_URL = (cfg.config.baseUrlmall || 'http://localhost:3000/api').replace(/\/api\/?$/, '');
+
+const PREFERENCE_OPTIONS = ["地方风味", "自然风光", "茶事体验", "传统手工", "农事体验", "历史人文", "村落漫游"];
+const CITY_OPTIONS = ["湖南 常德", "湖南 长沙", "广东 广州", "上海 上海", "北京 北京"];
 
 function pad(num) {
   return num < 10 ? `0${num}` : `${num}`;
@@ -50,7 +38,7 @@ Page({
   data: {
     title: "开启旅行计划",
     subtitle: "提交需求 > 确认方案 > 签约付款 > 轻松出行",
-    headerImage: "https://songtsam-internal-static.oss-cn-chengdu.aliyuncs.com/mobile/assets/travel-assistant/guide_bg_img.jpeg",
+    headerImage: PUBLIC_BASE_URL + "/uploads/images/云舍村-苔藓院落.webp",
     name: "",
     phone: "",
     startDate: "",

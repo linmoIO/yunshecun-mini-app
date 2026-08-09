@@ -9,11 +9,11 @@
                             <view class="iconfont icon-play icon data-v-1a32bab8" wx:else></view>
                         </view>
                     </view>
-                    <image class="swiper-item swiper-item__video-cover data-v-1a32bab8" hidden="{{!item.e}}" mode="aspectFill" src="{{item.f}}"></image>
+                    <image lazyLoad class="swiper-item swiper-item__video-cover data-v-1a32bab8" hidden="{{!item.e}}" mode="aspectFill" src="{{item.f}}"></image>
                 </video>
             </view>
             <view class="swiper-item data-v-1a32bab8" wx:elif="{{item.o}}">
-                <image class="swiper-item__image data-v-1a32bab8" mode="aspectFill" src="{{item.p}}"></image>
+                <image lazyLoad class="swiper-item__image data-v-1a32bab8" mode="aspectFill" src="{{item.p}}"></image>
             </view>
         </swiper-item>
     </swiper>

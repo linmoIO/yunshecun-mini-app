@@ -85,6 +85,7 @@
           X = e.ref(!1),
           Z = e.ref(!0);
         e.ref(!1);
+        const paymentFailureMessage = "支付暂时不可用，请稍后重试";
         const ee = e.ref("http://netpay.netpay.bas.cmburl.cn:801/netpayment/BaseHttp.dll?MB_APPPay"),
           ae = e.ref(""),
           le = e.ref(!1),
@@ -208,7 +209,7 @@
                 let e = `/pagesB/other/browserPay?params=${L.value}&price=${ve.value}&paySubject=${null==(l=M.value)?void 0:l.paySubject}&orderNo=${h.value}&productType=${f.value}`;
                 return R.value && (e += "&contractFlag=" + R.value), P.value && (e += "&addContactFlag=" + P.value), c.goPage(e)
               }
-              E.value = !1, Se(a.msg)
+              E.value = !1, Se(paymentFailureMessage)
             })
           }
           if ("partPay" !== x.value || F.value.isShowDialog) {
@@ -248,9 +249,12 @@
                     E.value = !1, t.jAlert3("支付参数异常，请稍后重试");
                   }
                 } else {
-                  E.value = !1, t.jAlert3(a.msg || "创建微信支付订单失败");
+                  E.value = !1, t.jAlert3("微信支付暂时不可用，请稍后重试");
                 }
-              }).catch(() => { E.value = !1; })
+              }).catch(() => {
+                try { _wx.index.hideLoading(); } catch(_e) {}
+                E.value = !1, t.jAlert3("微信支付暂时不可用，请稍后重试")
+              })
             }(), "chuzhi" === D.value && async function() {
               const a = ge("chuzhi");
               if (E.value) return !1;
@@ -259,9 +263,9 @@
               e.index.showLoading({
                 title: "支付中"
               }), l.then(a => {
-                console.log("<Pay> {payApi} res:", a), e.index.hideLoading(), 1 === a.result ? (clearInterval(q.value), Te()) : (E.value = !1, Se(a.msg))
+                console.log("<Pay> {payApi} res:", a), e.index.hideLoading(), 1 === a.result ? (clearInterval(q.value), Te()) : (E.value = !1, Se(paymentFailureMessage))
               }).catch(e => {
-                console.log("<Pay> {payApi} error:", e), E.value = !1
+                console.log("<Pay> {payApi} error:", e), e.index.hideLoading(), E.value = !1, Se(paymentFailureMessage)
               })
             }(), "cmbPay" === D.value && function() {
               const a = ge("cmbPay");
@@ -293,10 +297,10 @@
                       }, 2e3)
                     },
                     fail(e) {
-                      t.jAlert3(JSON.stringify(e))
+                      E.value = !1, t.jAlert3(paymentFailureMessage)
                     }
                   })
-                } else E.value = !1, Se(a.msg)
+                } else E.value = !1, Se(paymentFailureMessage)
               })
             }(), "h5_alipay" === D.value && function() {
               const a = ge("h5_alipay");
@@ -315,7 +319,7 @@
                       Te()
                     })
                   }, 2e3)
-                } else E.value = !1, Se(a.msg)
+                } else E.value = !1, Se(paymentFailureMessage)
               })
             }(), "xhsPay" === D.value && function() {
               const a = ge("h5_alipay");
@@ -351,11 +355,11 @@
                         }, 5e3)
                       },
                       fail(e) {
-                        E.value = !1, t.jAlert3(e.requestOrderPayment || "支付取消")
+                        E.value = !1, t.jAlert3(paymentFailureMessage)
                       }
-                    }) : (E.value = !1, t.jAlert3(a.msg))
+                    }) : (E.value = !1, t.jAlert3(paymentFailureMessage))
                   })
-                } else E.value = !1, Se(l.msg)
+                } else E.value = !1, Se(paymentFailureMessage)
               })
             }()
           } else F.value.showDialog()
@@ -464,7 +468,7 @@
             }).then(a => {
               1 === a.result ? (M.value = a.retVal, M.value.leftTimeSeconds > 0 && 0 !== M.value.payRate && (q.value = setInterval(() => {
                 M.value.leftTimeSeconds > 0 ? (M.value.leftTimeSeconds--, U.value = Re(M.value.leftTimeSeconds)) : clearInterval(q.value)
-              }, 1e3)), e && e()) : t.jAlert3(a.msg)
+              }, 1e3)), e && e()) : t.jAlert3(paymentFailureMessage)
             })
           }(e), ["ThemeGroup", "DestPackage", "ButlerCustomized", "FreeTravel", "CUSTOM", "Custom", "SingleRoom"].includes(f.value) && function(e) {
             var a, l, t;
@@ -548,10 +552,10 @@
         function Pe() {
           e.wx$1.checkBeforeAddOrder({
             success(e) {
-              "checkBeforeAddOrder:ok" === e.errMsg ? (te.value = e.data.requireOrder, ue.value = e.data.traceId) : t.jAlert3(e.errMsg)
+              "checkBeforeAddOrder:ok" === e.errMsg ? (te.value = e.data.requireOrder, ue.value = e.data.traceId) : t.jAlert3(paymentFailureMessage)
             },
             fail(e) {
-              t.jAlert3(JSON.stringify(e))
+              t.jAlert3(paymentFailureMessage)
             }
           })
         }

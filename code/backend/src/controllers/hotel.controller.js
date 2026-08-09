@@ -6,6 +6,57 @@ const { decrementDateInventory, normalizeDate } = require('../utils/inventory');
 
 const prisma = new PrismaClient();
 const tryParse = (s, f) => { try { return s ? JSON.parse(s) : f; } catch { return f; } };
+const PHONE_PATTERN = /^1\d{10}$/;
+const DATE_PATTERN = /^\d{4}-\d{2}-\d{2}$/;
+
+const toUtcDate = (value) => {
+  if (!DATE_PATTERN.test(String(value || ''))) return null;
+  const date = new Date(`${value}T00:00:00Z`);
+  return !Number.isNaN(date.getTime()) && date.toISOString().slice(0, 10) === value ? date : null;
+};
+
+const normalizeHotelOrderInput = (body = {}) => {
+  const request = body.bookOrderInfoRQ && typeof body.bookOrderInfoRQ === 'object' ? body.bookOrderInfoRQ : {};
+  const checkIn = body.checkIn || request.fromDate || request.checkIn || '';
+  const checkOut = body.checkOut || request.toDate || request.checkOut || '';
+  const rooms = Number(body.rooms ?? request.rmNum ?? request.rooms ?? 1);
+  const roomCode = body.roomCode || request.rmtype || request.roomCode || request.productCode || '';
+  const checkInDate = toUtcDate(checkIn);
+  const checkOutDate = toUtcDate(checkOut);
+  const nights = checkInDate && checkOutDate ? (checkOutDate - checkInDate) / 86400000 : Number.NaN;
+  return {
+    hotelCode: body.hotelCode || request.hotelCode || request.productHotelCode || '',
+    roomCode,
+    checkIn,
+    checkOut,
+    rooms,
+    nights,
+    guestName: body.guestName || request.contactName || request.rsvMan || '',
+    guestPhone: body.guestPhone || request.contactMobile || request.mobile || '',
+    notes: body.notes || request.remark || '',
+    couponNo: body.couponNo || request.couponNo || '',
+  };
+};
+
+const validateHotelOrderInput = (input, requireContact = false) => {
+  if (!input.hotelCode) return '缺少酒店编码';
+  if (!input.roomCode) return '请选择房型';
+  if (!Number.isInteger(input.rooms) || input.rooms < 1) return '房间数量不正确';
+  if (!Number.isInteger(input.nights) || input.nights < 1) return '入住日期不正确';
+  if (requireContact && !String(input.guestName).trim()) return '请填写入住人姓名';
+  if (requireContact && !PHONE_PATTERN.test(String(input.guestPhone))) return '请填写正确的手机号';
+  return '';
+};
+
+const buildDailyPriceDetails = (checkIn, nights, dailyRate) => {
+  if (!checkIn) return [{ rsvDate: '', realPrice: dailyRate }];
+  const date = new Date(`${checkIn}T00:00:00Z`);
+  return Array.from({ length: nights }, (_, index) => {
+    const current = new Date(date);
+    current.setUTCDate(date.getUTCDate() + index);
+    return { rsvDate: current.toISOString().slice(0, 10), realPrice: dailyRate };
+  });
+};
 
 // ---- 小程序端 ----
 
@@ -20,6 +71,7 @@ const getHotelList = async (req, res) => {
   const [list, total] = await Promise.all([
     prisma.hotel.findMany({
       where,
+      include: { roomTypes: { where: { status: 1 }, orderBy: { price: 'asc' }, take: 1 } },
       orderBy: [{ sortOrder: 'asc' }, { createdAt: 'desc' }],
       skip: (Number(pageNum) - 1) * Number(pageSize),
       take: Number(pageSize),
@@ -27,21 +79,24 @@ const getHotelList = async (req, res) => {
     prisma.hotel.count({ where }),
   ]);
 
-  const hotels = list.map(h => ({
-    ...formatHotel(h),
-    // 兼容前端 findHotelByCondition 格式
-    hotelCode: h.hotelCode,
-    hotelName: h.name,
-    hotelPic: h.coverImage || '',
-    hotelCity: h.city || '',
-    address: h.address || '',
-    star: h.starLevel || 5,
-    priceMin: h.priceFrom || 0,
-    productType: 'Hotel',
-    pics: h.coverImage || '',
-    title: h.name,
-    minPriceDto: { payType: 'CASH', price: h.priceFrom || 0 },
-  }));
+  const hotels = list.map(h => {
+    const priceFrom = h.roomTypes?.[0]?.price || 0;
+    return {
+      ...formatHotel(h),
+      // 兼容前端 findHotelByCondition 格式
+      hotelCode: h.hotelCode,
+      hotelName: h.name,
+      hotelPic: h.coverImage || '',
+      hotelCity: h.city || '',
+      address: h.address || '',
+      star: h.starLevel || 5,
+      priceMin: priceFrom,
+      productType: 'Hotel',
+      pics: h.coverImage || '',
+      title: h.name,
+      minPriceDto: { payType: 'CASH', price: priceFrom },
+    };
+  });
 
   // 兼容多种格式：list 格式 + retVal 格式（搜索页）
   return res.json({
@@ -147,7 +202,7 @@ const buildWechatRoom = (hotel, room, fromDate, toDate, dateInventory) => {
       pmsRateCode: roomCode,
       rateCode: roomCode,
       ticket: '',
-      hotelGroupCode: hotel.hotelGroupCode || 'SONGTSAM',
+      hotelGroupCode: hotel.hotelGroupCode || 'YUNSHECUN',
       stayTime: '',
       resrvNumMin: 1,
       prepayTimeLimit: 24,
@@ -182,7 +237,7 @@ const showOrder = async (req, res) => {
       gcRsvNo: order.orderNo,
       orderNo: order.orderNo,
       hotelCode: order.hotel?.hotelCode || '',
-      hotelGroupCode: order.hotel?.hotelGroupCode || 'SONGTSAM',
+      hotelGroupCode: order.hotel?.hotelGroupCode || 'YUNSHECUN',
       hotelDescript: order.hotel?.name || '',
       roomDescript: order.roomType?.name || '',
       productDesc: order.roomType?.name || order.hotel?.name || '酒店预订',
@@ -230,8 +285,43 @@ const showOrder = async (req, res) => {
   });
 };
 
+const checkHotelReservation = async (req, res) => {
+  const input = normalizeHotelOrderInput(req.body || {});
+  const validationError = validateHotelOrderInput(input);
+  if (validationError) return res.json({ code: 0, result: 1, msg: validationError, retVal: { isBookAble: 1 } });
+  const hotel = input.hotelCode ? await prisma.hotel.findUnique({ where: { hotelCode: input.hotelCode } }) : null;
+  if (!hotel) return res.json({ code: 0, result: 1, msg: '酒店不存在', retVal: { isBookAble: 1 } });
+
+  const roomType = input.roomCode
+    ? await prisma.roomType.findFirst({ where: { hotelId: hotel.id, roomCode: input.roomCode, status: 1 } })
+    : null;
+  if (!roomType) return res.json({ code: 0, result: 1, msg: '房型不存在或已下架', retVal: { isBookAble: 1 } });
+
+  const dailyRate = Number(roomType.price || 0) * input.rooms;
+  const isBookAble = roomType.stock != null && Number(roomType.stock) < input.rooms ? 1 : 0;
+  return res.json({
+    code: 0,
+    result: 1,
+    msg: isBookAble ? '该房型库存不足' : 'success',
+    retVal: {
+      result: 0,
+      isBookAble,
+      msg: isBookAble ? '该房型库存不足' : '',
+      rateSum: dailyRate * input.nights,
+      everyDayDetails: buildDailyPriceDetails(input.checkIn, input.nights, dailyRate),
+      gcProductDetailDto: { arrivalFrom: hotel.checkInTime || '12:00', arrivalTo: '23:59', productGcLevel: '000', tickets: '' },
+      rmNum: input.rooms,
+      fromDate: input.checkIn,
+      toDate: input.checkOut,
+    },
+  });
+};
+
 const makeHotelOrder = async (req, res) => {
-  const { hotelCode, roomCode, checkIn, checkOut, rooms = 1, guestName, guestPhone, notes, couponNo } = req.body;
+  const input = normalizeHotelOrderInput(req.body || {});
+  const validationError = validateHotelOrderInput(input, true);
+  if (validationError) return error(res, validationError);
+  const { hotelCode, roomCode, checkIn, checkOut, rooms, nights, guestName, guestPhone, notes } = input;
 
   const hotel = await prisma.hotel.findUnique({ where: { hotelCode } });
   if (!hotel) return error(res, '酒店不存在');
@@ -239,10 +329,8 @@ const makeHotelOrder = async (req, res) => {
   const roomType = roomCode
     ? await prisma.roomType.findFirst({ where: { hotelId: hotel.id, roomCode } })
     : null;
+  if (!roomType || roomType.status !== 1) return error(res, '房型不存在或已下架');
 
-  const nights = checkIn && checkOut
-    ? Math.max(1, Math.round((new Date(checkOut) - new Date(checkIn)) / 86400000))
-    : 1;
   const pricePerNight = roomType?.price || 0;
   const totalAmount = pricePerNight * Number(rooms) * nights;
 
@@ -259,12 +347,15 @@ const makeHotelOrder = async (req, res) => {
           quantity: roomCount,
         });
         if (!dateInventory) {
-          if (roomType.stock < roomCount) {
+          const updated = await tx.roomType.updateMany({
+            where: { id: roomType.id, stock: { gte: roomCount } },
+            data: { stock: { decrement: roomCount } },
+          });
+          if (updated.count !== 1) {
             const err = new Error(`该房型库存不足，当前剩余 ${roomType.stock}`);
             err.code = 'OUT_OF_STOCK';
             throw err;
           }
-          await tx.roomType.update({ where: { id: roomType.id }, data: { stock: { decrement: roomCount } } });
         }
       }
       return tx.hotelOrder.create({
@@ -462,7 +553,7 @@ const buildHotelData = (body) => {
     checkInTime, checkOutTime, sortOrder, status, hotelGroupCode } = body;
   return {
     hotelCode: hotelCode || `hotel_${Date.now()}`,
-    hotelGroupCode: hotelGroupCode || 'SONGTSAM',
+    hotelGroupCode: hotelGroupCode || 'YUNSHECUN',
     name, address, city, province, phone, description,
     coverImage, videoUrl, videoThumb, videoLinkType,
     latitude: latitude ? Number(latitude) : null,
@@ -496,7 +587,7 @@ const formatHotelOrder = (o) => ({
 });
 
 module.exports = {
-  getHotelList, getHotelInfo, showOrder, makeHotelOrder, getHotelOrderList,
+  getHotelList, getHotelInfo, showOrder, checkHotelReservation, makeHotelOrder, getHotelOrderList,
   adminListHotels, adminGetHotel, adminCreateHotel, adminUpdateHotel,
   adminDeleteHotel, adminUpdateHotelMedia,
   adminListRoomTypes, adminCreateRoomType, adminUpdateRoomType, adminDeleteRoomType,

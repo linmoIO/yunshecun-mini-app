@@ -3,7 +3,7 @@
         <view class="{{['control-play','data-v-01b76427',c,d,e]}}">
             <view class="iconfont icon-play icon data-v-01b76427"></view>
         </view>
-        <image class="st-ad__cover data-v-01b76427" hidden="{{!f}}" mode="aspectFill" src="{{g}}"></image>
+        <image lazyLoad class="st-ad__cover data-v-01b76427" hidden="{{!f}}" mode="aspectFill" src="{{g}}"></image>
     </video>
-    <image class="st-ad__cover data-v-01b76427" mode="aspectFill" src="{{v}}" wx:elif="{{t}}"></image>
+    <image lazyLoad class="st-ad__cover data-v-01b76427" mode="aspectFill" src="{{v}}" wx:elif="{{t}}"></image>
 </view>

@@ -48,15 +48,13 @@
             return l.maxDialog && (e += `max-height:${n.value};overflow-y: auto;`), e
           });
         return e.onMounted(() => {
-          e.index.getSystemInfo({
-            success: e => {
-              const t = o.getMenuButtonBoundingClientRect();
-              s.value = e.screenHeight - e.statusBarHeight - 50 + "px", n.value = e.screenHeight - t.bottom - (t.top - e.statusBarHeight) - 56 + "px"
-            },
-            fail(e) {
-              console.log(e)
-            }
-          })
+          try {
+            const e = wx.getWindowInfo ? wx.getWindowInfo() : wx.getSystemInfoSync(),
+              t = o.getMenuButtonBoundingClientRect();
+            s.value = e.screenHeight - e.statusBarHeight - 50 + "px", n.value = e.screenHeight - t.bottom - (t.top - e.statusBarHeight) - 56 + "px"
+          } catch (e) {
+            console.log(e)
+          }
         }), {
           isShowDialog: a,
           showDialog: () => {

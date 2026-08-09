@@ -1,55 +1,59 @@
+const cfg = require('../../utils/config.js');
+const PUBLIC_BASE_URL = (cfg.config.baseUrlmall || 'http://localhost:3000/api').replace(/\/api\/?$/, '');
+const image = (name) => `${PUBLIC_BASE_URL}/uploads/images/${name}`;
+
 const DAY_LIST = [{
   key: "overview",
   label: "概览"
 }, {
   key: "day1",
-  label: "5月1日"
+  label: "第1日"
 }, {
   key: "day2",
-  label: "5月2日"
+  label: "第2日"
 }, {
   key: "day3",
-  label: "5月3日"
+  label: "第3日"
 }, {
   key: "day4",
-  label: "5月4日"
+  label: "第4日"
 }];
 
 const ITINERARY = [{
   key: "day1",
-  date: "05月01日",
-  title: "抵达地>丽江和香格里拉",
-  subTitle: "抵达丽江 - 云舍村丽江山居",
-  image: "https://yunshecun.oss-cn-guangzhou.aliyuncs.com/applet/img/homeDetailList-bg-2.jpg",
-  desc: "避开人头攒动的大研古城和束河古镇，山居坐落在仍延续着纳西传统生活的村落。"
+  date: "第1日",
+  title: "抵达云舍村",
+  subTitle: "走进桃花源·云舍村",
+  image: image('云舍村-村落风景-03.webp'),
+  desc: "沿青石板路走进村落，安顿后自由漫游院落、园林与溪流。"
 }, {
   key: "day2",
-  date: "05月02日",
-  title: "丽江和香格里拉",
-  subTitle: "云舍村丽江山居",
-  image: "https://yunshecun.oss-cn-guangzhou.aliyuncs.com/applet/img/homeDetailList-bg-3.jpg",
-  desc: "在一食一餐中品味当地风物，在语言言谈中走进在地生活，回到亲切温馨的家园。"
+  date: "第2日",
+  title: "院落与茶事",
+  subTitle: "茶坊与地方风味",
+  image: image('云舍村-村落风景-07.webp'),
+  desc: "在茶饮与地方风味中感受村落待客之道，享受慢下来的日常。"
 }, {
   key: "day3",
-  date: "05月03日",
-  title: "丽江和香格里拉",
-  subTitle: "云舍村香格里拉林卡",
-  image: "https://yunshecun.oss-cn-guangzhou.aliyuncs.com/applet/img/homeDetailList-bg-4.jpg",
-  desc: "隐匿于如“香巴拉”秘境般自在与安宁的绿色山谷，田园与村落交织。"
+  date: "第3日",
+  title: "民间手艺",
+  subTitle: "桃源绣体验",
+  image: image('云舍村-村落风景-04.webp'),
+  desc: "认识桃源绣的民间工艺与吉祥纹样，在手作中感受地方文化。"
 }, {
   key: "day4",
-  date: "05月04日",
-  title: "丽江和香格里拉",
-  subTitle: "云舍村香格里拉林卡",
-  image: "https://yunshecun.oss-cn-guangzhou.aliyuncs.com/applet/img/homeDetailList-bg-1.jpg",
-  desc: "探索当地节气文化与村落步道，在轻户外体验中收获更完整的旅行记忆。"
+  date: "第4日",
+  title: "自然与农事",
+  subTitle: "菜园与村落步道",
+  image: image('云舍村-稻田鸭群.png'),
+  desc: "在四季菜园与村落步道中观察自然，感受传统乡居的节律。"
 }, {
   key: "day5",
-  date: "05月05日",
-  title: "丽江和香格里拉>离开地",
-  subTitle: "离开丽江（含接机/站）",
-  image: "https://yunshecun.oss-cn-guangzhou.aliyuncs.com/applet/img/homeDetailList-bg-5.jpg",
-  desc: "告别雪山与峡谷，结束本次行程。"
+  date: "第5日",
+  title: "泛舟与返程",
+  subTitle: "按确认时间离村",
+  image: image('云舍村-泛舟夜景.webp'),
+  desc: "如已预约泛舟体验，可按确认安排参与；随后结束本次云舍村到访。"
 }];
 
 function getDefaultPeople() {
@@ -66,10 +70,10 @@ function getDefaultPeople() {
 
 Page({
   data: {
-    heroImage: "https://yunshecun.oss-cn-guangzhou.aliyuncs.com/applet/img/homeDetailList-bg-2.jpg",
-    title: "丽江和香格里拉 4晚5天 行程计划",
-    subInfo: "1成人 · 05月01日抵达",
-    price: 17170,
+    heroImage: image('云舍村-村落风景-03.webp'),
+    title: "云舍村到访行程计划",
+    subInfo: "1成人 · 待确认日期",
+    price: "预约确认后显示",
     tabs: DAY_LIST,
     tabIndex: 0,
     needButler: false,
@@ -78,10 +82,10 @@ Page({
     displayList: ITINERARY,
     showPicker: false,
     people: getDefaultPeople(),
-    arrivalDate: "2026-05-01",
-    departureCity: "广东 广州",
-    returnCity: "广东 广州",
-    cityOptions: ["广东 广州", "上海 上海", "北京 北京", "四川 成都", "云南 昆明"],
+    arrivalDate: "",
+    departureCity: "湖南 常德",
+    returnCity: "湖南 常德",
+    cityOptions: ["湖南 常德", "湖南 长沙", "广东 广州", "上海 上海", "北京 北京"],
     departureCityIndex: 0,
     returnCityIndex: 0,
     isDetailMode: false,

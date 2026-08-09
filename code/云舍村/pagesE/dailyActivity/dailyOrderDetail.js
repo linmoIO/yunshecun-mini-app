@@ -14,8 +14,9 @@
     c = e.defineComponent({
       __name: "dailyOrderDetail",
       setup(o) {
-        let n = r.getStorage("user"),
-          i = r.getStorage("config");
+        const asObject = e => e && "object" == typeof e && !Array.isArray(e) ? e : {};
+        let n = asObject(r.getStorage("user")),
+          i = asObject(r.getStorage("config"));
         const c = e.ref(!1),
           p = e.ref(""),
           m = e.ref(),
@@ -155,10 +156,17 @@
             memberToken: n.memberToken
           }).then(e => {
             if (1 == e.result) {
-              g.value = e.retVal;
-              let a = e.retVal.couponName ? e.retVal.couponName.split(",") : [],
-                t = e.retVal.couponNo ? e.retVal.couponNo.split(",") : [],
-                u = e.retVal.couponDisPriceStr ? e.retVal.couponDisPriceStr.split(",") : [],
+              const o = asObject(e.retVal);
+              g.value = {
+                couponName: "",
+                couponNo: "",
+                couponDisPriceStr: "",
+                payTypes: [],
+                ...o
+              };
+              let a = g.value.couponName ? g.value.couponName.split(",") : [],
+                t = g.value.couponNo ? g.value.couponNo.split(",") : [],
+                u = g.value.couponDisPriceStr ? g.value.couponDisPriceStr.split(",") : [],
                 l = [];
               a.map((e, a) => {
                 let v = {
@@ -167,7 +175,7 @@
                   couponDisPriceStr: u[a]
                 };
                 l.push(v)
-              }), x.value = l, F.value = !!e.retVal.payTypes.includes("chuzhi")
+              }), x.value = l, F.value = Array.isArray(g.value.payTypes) && g.value.payTypes.includes("chuzhi")
             }
           }), e.index.showLoading({
             title: "加载中..."
@@ -179,9 +187,23 @@
             memberToken: n.memberToken
           }).then(a => {
             var t;
-            1 == a.result && (f.value = a.retVal, y.value = a.retVal, I.value = a.retVal.aggregationOrder, a.retVal.verifyList.map(e => {
-              e.couponNo = e.verifyCode, e.couponSta = e.verifySta
-            }), h.value = a.retVal.verifyList, 2 == I.value.payStatus && 1 == I.value.orderStatus ? y.value.sta = "DFK" : "T" == y.value.agency && "R" == y.value.sta && "F" == y.value.isAgency ? y.value.sta = "DQY" : "1" != y.value.paySta && "8" != y.value.paySta || "R" != y.value.sta && "W" != y.value.sta ? "2" != y.value.paySta || "R" != y.value.sta && "W" != y.value.sta ? "4" == y.value.paySta ? y.value.sta = "DTK" : "5" == y.value.paySta ? y.value.sta = "YTK" : "7" == y.value.paySta && (y.value.sta = "YTZ") : y.value.sta = "RW" : y.value.sta = "DFK", "DQY" != y.value.sta && "DFK" != y.value.sta || "8" != y.value.paySta && y.value.leftTimeSeconds && (T.value = setInterval(() => {
+            if (1 == a.result) {
+              const o = asObject(a.retVal);
+              const s = Array.isArray(o.verifyList) ? o.verifyList : [];
+              const v = {
+                activityInfo: {},
+                guestInfo: [],
+                verifyList: [],
+                aggregationOrder: {},
+                ...o,
+                activityInfo: asObject(o.activityInfo),
+                guestInfo: Array.isArray(o.guestInfo) ? o.guestInfo : [],
+                verifyList: s,
+                aggregationOrder: asObject(o.aggregationOrder)
+              };
+              f.value = v, y.value = v, I.value = v.aggregationOrder, s.forEach(e => {
+                e.couponNo = e.verifyCode || e.couponNo || "", e.couponSta = e.verifySta || e.couponSta || ""
+              }), h.value = s, 2 == I.value.payStatus && 1 == I.value.orderStatus ? y.value.sta = "DFK" : "T" == y.value.agency && "R" == y.value.sta && "F" == y.value.isAgency ? y.value.sta = "DQY" : "1" != y.value.paySta && "8" != y.value.paySta || "R" != y.value.sta && "W" != y.value.sta ? "2" != y.value.paySta || "R" != y.value.sta && "W" != y.value.sta ? "4" == y.value.paySta ? y.value.sta = "DTK" : "5" == y.value.paySta ? y.value.sta = "YTK" : "7" == y.value.paySta && (y.value.sta = "YTZ") : y.value.sta = "RW" : y.value.sta = "DFK", "DQY" != y.value.sta && "DFK" != y.value.sta || "8" != y.value.paySta && y.value.leftTimeSeconds && (T.value = setInterval(() => {
               y.value.leftTimeSeconds > 0 ? (y.value.leftTimeSeconds--, D.value = function(e) {
                 const a = Math.floor(e / 3600),
                   t = Math.floor(e % 3600 / 60),
@@ -202,8 +224,9 @@
                 activityName: t.activityInfo.name
               }
             }).then(e => {
-              1 == e.result && 0 == e.retVal.result && (P.value = e.retVal.retVal)
-            }))
+              1 == e.result && 0 == asObject(e.retVal).result && (P.value = asObject(e.retVal).retVal || {})
+            })
+            }
           }).finally(() => {
             e.index.hideLoading(),
               function() {
@@ -228,7 +251,7 @@
                     hotelGroupCode: i.hotelGroupCode
                   }
                 }).then(e => {
-                  1 == e.result && 0 == e.retVal.result && (g.value = e.retVal.retVal, g.value.activityRateSumDto && (g.value = Object.assign(g.value, g.value.activityRateSumDto)), g.value.needPay = Number((g.value.rateSum - g.value.memberDscAmount - g.value.couponRateSum - g.value.exchangeRateSum - g.value.gwDiscount).toFixed(2)), g.value.aleadyPayPrice = Number((g.value.alreadyPayFund + g.value.alreadyPayMember + g.value.alreadyPayOther).toFixed(2)), console.log(g.value.aleadyPayPrice, " payData.value.aleadyPayPrice-------"), g.value.allRateSum = Number((g.value.memberDscAmount + g.value.couponRateSum + g.value.gwDiscount).toFixed(2)), g.value.couponSimpleInfoDtoList && g.value.couponSimpleInfoDtoList.length > 0 && (g.value.couponDesc = "", g.value.couponSimpleInfoDtoList.forEach((e, a) => {
+                   1 == e.result && 0 == asObject(e.retVal).result && asObject(e.retVal).retVal && (g.value = asObject(e.retVal).retVal, g.value.activityRateSumDto && (g.value = Object.assign(g.value, g.value.activityRateSumDto)), g.value.needPay = Number((g.value.rateSum - g.value.memberDscAmount - g.value.couponRateSum - g.value.exchangeRateSum - g.value.gwDiscount).toFixed(2)), g.value.aleadyPayPrice = Number((g.value.alreadyPayFund + g.value.alreadyPayMember + g.value.alreadyPayOther).toFixed(2)), console.log(g.value.aleadyPayPrice, " payData.value.aleadyPayPrice-------"), g.value.allRateSum = Number((g.value.memberDscAmount + g.value.couponRateSum + g.value.gwDiscount).toFixed(2)), Array.isArray(g.value.couponSimpleInfoDtoList) && g.value.couponSimpleInfoDtoList.length > 0 && (g.value.couponDesc = "", g.value.couponSimpleInfoDtoList.forEach((e, a) => {
                     a == g.value.couponSimpleInfoDtoList.length - 1 ? e.num > 1 ? g.value.couponDesc += `${e.descript} x${e.num}` : g.value.couponDesc += "" + e.descript : e.num > 1 ? g.value.couponDesc += `${e.descript} x${e.num};` : g.value.couponDesc += e.descript + ";"
                   })))
                 })
@@ -239,13 +262,13 @@
             orderNo: p.value,
             orderType: "A"
           }).then(e => {
-            1 == e.result && (A.value = e.retVal.invoiceSta, "HI" == A.value && u.api.getInvoiceOrder({
+            1 == e.result && (A.value = asObject(e.retVal).invoiceSta || "NI", "HI" == A.value && u.api.getInvoiceOrder({
               hotelCode: i.hotelCode,
               hotelGroupCode: i.hotelGroupCode,
               orderNo: p.value,
               orderType: "A"
             }).then(e => {
-              1 == e.result && 0 == e.retVal.resultCode && (R.value = e.retVal.orderInvoice, R.value.eiinvoicePdfUrl && N.value.push({
+              1 == e.result && 0 == asObject(e.retVal).resultCode && (R.value = asObject(e.retVal).orderInvoice, R.value.eiinvoicePdfUrl && N.value.push({
                 name: "发票",
                 url: R.value.eiinvoicePdfUrl
               })), console.log(e)

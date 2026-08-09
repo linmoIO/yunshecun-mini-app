@@ -12,6 +12,7 @@ const rateLimit = require('express-rate-limit');
 const config = require('./config');
 const routes = require('./routes');
 const { errorHandler, notFound } = require('./middleware/errorHandler');
+const { normalizePublicAssetUrls } = require('./utils/publicAssetUrl');
 
 const app = express();
 
@@ -54,8 +55,23 @@ app.use(express.json({
 }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
-// 静态文件（上传的媒体文件）
-app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
+// 兼容历史数据中绑定 localhost:3000 的上传地址，按当前公开入口返回。
+app.use((_req, res, next) => {
+  const originalJson = res.json.bind(res);
+  res.json = (body) => originalJson(normalizePublicAssetUrls(body, config.publicBaseUrl));
+  next();
+});
+
+// 上传文件以 UUID 命名，更新会使用新 URL，可安全使用长期浏览器缓存。
+app.use('/uploads', express.static(path.join(__dirname, '../uploads'), {
+  maxAge: '30d',
+  immutable: true,
+}));
+// 云舍村随代码发布的本地化素材使用同一公开 URL 契约；上传卷中没有同名文件时回退到此目录。
+app.use('/uploads/images', express.static(path.join(__dirname, '../public/images'), {
+  maxAge: '30d',
+  immutable: true,
+}));
 
 // 管理后台网页（访问 http://localhost:3000 即可打开）
 app.use(express.static(path.join(__dirname, '../public')));

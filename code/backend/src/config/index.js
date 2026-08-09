@@ -69,7 +69,7 @@ module.exports = {
   },
 
   hotel: {
-    groupCode: process.env.HOTEL_GROUP_CODE || 'SONGTSAM',
+    groupCode: process.env.HOTEL_GROUP_CODE || 'YUNSHECUN',
     groupId: parseInt(process.env.HOTEL_GROUP_ID) || 1,
   },
 

@@ -330,9 +330,9 @@ router.get('/diy/examples', async (req, res) => {
   if (!plans.length) {
     // 默认示例
     plans = [
-      { id: 'ex1', title: '梅里雪山·7日深度游', image: '', duration: '7天6晚', persons: '2-4人', budget: '5000-8000元/人', summary: '从香格里拉出发，途经雨崩村、明永冰川，深度体验藏区自然风光与人文风情。', tags: ['雪山', '徒步', '文化体验'] },
-      { id: 'ex2', title: '拉萨朝圣·10日', image: '', duration: '10天9晚', persons: '2人', budget: '8000-12000元/人', summary: '飞拉萨，游布达拉宫、大昭寺，转山冈仁波齐，感受藏传佛教的神圣力量。', tags: ['朝圣', '冈仁波齐', '文化'] },
-      { id: 'ex3', title: '香格里拉短途·4日亲子游', image: '', duration: '4天3晚', persons: '4人（含小孩）', budget: '3000-5000元/人', summary: '普达措国家公园、纳帕海、独克宗古城，亲子友好型行程，老少皆宜。', tags: ['亲子', '自然', '古城'] },
+      { id: 'ex1', title: '云舍村归居两日', image: '', duration: '2天1晚', persons: '2人起', budget: '以预约确认信息为准', summary: '入住传统院落，漫游青石板路，在茶事与地方风味中感受村落日常。', tags: ['归居院落', '村落漫游', '地方风味'] },
+      { id: 'ex2', title: '东方村落文化一日', image: '', duration: '1日', persons: '2-8人', budget: '以预约确认信息为准', summary: '围绕湖湘民居、桃源绣、擂茶和园林展开的村落文化体验。', tags: ['湖湘民居', '桃源绣', '擂茶'] },
+      { id: 'ex3', title: '泛舟与农事体验', image: '', duration: '1日', persons: '2-4人', budget: '以预约确认信息为准', summary: '在自然水景与四季菜园之间，感受云舍村周边的慢生活。', tags: ['泛舟', '农事', '自然风光'] },
     ];
   }
   return _diyOk(res, { list: plans });
@@ -344,7 +344,7 @@ router.get('/diy/config', async (req, res) => {
     _diyPrisma.sysConfig.findFirst({ where: { key: 'diy_trip_content' } }).catch(() => null),
     _diyPrisma.sysConfig.findFirst({ where: { key: 'diy_trip_title' } }).catch(() => null),
   ]);
-  return res.json({ code: 0, data: { content: contentCfg?.value || '', title: titleCfg?.value || '定制专属行程' } });
+  return res.json({ code: 0, data: { content: contentCfg?.value || '告诉我们您的到访时间、同行人数与偏好，我们将为您整理云舍村到访建议。', title: titleCfg?.value || '定制云舍村到访体验' } });
 });
 
 module.exports = router;

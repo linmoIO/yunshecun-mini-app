@@ -122,28 +122,134 @@ const deleteAddress = async (req, res) => {
 };
 
 // 常旅客/随行人员
+const PHONE_PATTERN = /^1\d{10}$/;
+const ID_TYPE_MAP = {
+  '01': 'idCard',
+  '身份证': 'idCard',
+  idCard: 'idCard',
+  '02': 'temporaryIdCard',
+  '临时身份证': 'temporaryIdCard',
+  temporaryIdCard: 'temporaryIdCard',
+  '14': 'passport',
+  '护照': 'passport',
+  passport: 'passport',
+  '21': 'travelPermit',
+  '港澳通行证': 'travelPermit',
+  travelPermit: 'travelPermit',
+};
+
+const isValidDate = (value) => {
+  if (!/^\d{8}$/.test(value)) return false;
+  const year = Number(value.slice(0, 4));
+  const month = Number(value.slice(4, 6));
+  const day = Number(value.slice(6, 8));
+  const date = new Date(year, month - 1, day);
+  return date.getFullYear() === year && date.getMonth() === month - 1 && date.getDate() === day;
+};
+
+const isValidIdCard = (value) => {
+  const idNumber = String(value || '').trim().toUpperCase();
+  if (/^\d{15}$/.test(idNumber)) return isValidDate(`19${idNumber.slice(6, 12)}`);
+  if (!/^\d{17}[\dX]$/.test(idNumber) || !isValidDate(idNumber.slice(6, 14))) return false;
+  const factors = [7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2];
+  const checks = ['1', '0', 'X', '9', '8', '7', '6', '5', '4', '3', '2'];
+  const sum = idNumber.slice(0, 17).split('').reduce((total, digit, index) => total + Number(digit) * factors[index], 0);
+  return checks[sum % 11] === idNumber[17];
+};
+
+const normalizeGuestInput = (body = {}) => {
+  const rawIdType = String(body.idType || body.extraIdcode || '').trim();
+  return {
+    name: String(body.name || body.extraName || '').trim(),
+    phone: String(body.phone || body.extraMobile || '').trim(),
+    email: String(body.email || body.extraEmail || '').trim(),
+    idType: ID_TYPE_MAP[rawIdType] || rawIdType,
+    idNumber: String(body.idNumber || body.extraIdno || '').trim(),
+    birthday: String(body.birthday || body.extraBirth || '').trim(),
+    gender: body.gender || body.campSex || null,
+    nationality: String(body.nationality || '中国').trim(),
+  };
+};
+
+const validateGuestInput = (guest) => {
+  if (!guest.name) return '请填写姓名';
+  if (guest.phone && !PHONE_PATTERN.test(guest.phone)) return '手机号格式不正确';
+  if (!guest.idType || !guest.idNumber) return '请填写完整证件信息';
+  if (guest.idType || guest.idNumber) {
+    const type = ID_TYPE_MAP[guest.idType];
+    if (!type) return '证件类型不支持';
+    if (!guest.idNumber) return '请填写证件号码';
+    const valid = type === 'idCard' || type === 'temporaryIdCard'
+      ? isValidIdCard(guest.idNumber)
+      : type === 'passport'
+        ? /^[A-Za-z0-9]{5,17}$/.test(guest.idNumber)
+        : /^[A-Za-z]\d{6,10}[A-Za-z0-9]?$/.test(guest.idNumber);
+    if (!valid) return '证件号码格式不正确';
+  }
+  if (guest.birthday && (
+    !/^\d{4}-\d{2}-\d{2}$/.test(guest.birthday)
+    || !isValidDate(guest.birthday.replaceAll('-', ''))
+  )) return '出生日期格式不正确';
+  return '';
+};
+
 const getGuests = async (req, res) => {
   const list = await prisma.guest.findMany({
     where: { memberId: req.member.id },
     orderBy: { createdAt: 'desc' },
   });
-  return success(res, { list });
+  const idCodeMap = {
+    idCard: '01',
+    temporaryIdCard: '02',
+    passport: '14',
+    travelPermit: '21',
+  };
+  const legacyList = list.map((guest) => ({
+    ...guest,
+    guestId: String(guest.id),
+    guestNo: String(guest.id),
+    mobile: guest.phone || '',
+    idCode: idCodeMap[guest.idType] || '01',
+    idNo: guest.idNumber || '',
+    birth: guest.birthday || '',
+    sex: guest.gender == null ? '' : String(guest.gender),
+    guestLinkRelationExtraSimpleDtoList: [
+      { type: 'EXTRA_NAME', value: guest.name || '' },
+      { type: 'EXTRA_MOBILE', value: guest.phone || '' },
+      { type: 'EXTRA_IDCODE', value: idCodeMap[guest.idType] || '01' },
+      { type: 'EXTRA_IDNO', value: guest.idNumber || '' },
+      { type: 'EXTRA_BIRTH', value: guest.birthday || '' },
+      { type: 'CAMP_SEX', value: guest.gender == null ? '' : String(guest.gender) },
+    ],
+  }));
+  return res.json({
+    code: 0,
+    result: 1,
+    data: { list },
+    retVal: { result: 0, retVal: legacyList },
+  });
 };
 
 const saveGuest = async (req, res) => {
-  const { name, phone, email, idType, idNumber, birthday, gender, nationality } = req.body;
-  if (!name) return error(res, '请填写姓名');
+  const guestInput = normalizeGuestInput(req.body);
+  const validationError = validateGuestInput(guestInput);
+  if (validationError) return error(res, validationError);
   const guest = await prisma.guest.create({
-    data: { memberId: req.member.id, name, phone, email, idType, idNumber, birthday, gender, nationality },
+    data: { memberId: req.member.id, ...guestInput, gender: guestInput.gender ? Number(guestInput.gender) : null },
   });
   return success(res, guest);
 };
 
 const updateGuest = async (req, res) => {
-  const { id, name, phone, email, idType, idNumber, birthday, gender, nationality } = req.body;
+  const { id } = req.body;
+  const guestInput = normalizeGuestInput(req.body);
+  const validationError = validateGuestInput(guestInput);
+  if (validationError) return error(res, validationError);
+  const existing = await prisma.guest.findFirst({ where: { id: Number(id), memberId: req.member.id } });
+  if (!existing) return error(res, '出行人不存在');
   const guest = await prisma.guest.update({
     where: { id: Number(id) },
-    data: { name, phone, email, idType, idNumber, birthday, gender, nationality },
+    data: { ...guestInput, gender: guestInput.gender ? Number(guestInput.gender) : null },
   });
   return success(res, guest);
 };
@@ -286,7 +392,7 @@ module.exports = {
   getMemberInfo, updateMemberInfo, getMemberCardLevels,
   getPoints, getMemberCoupons, getAccountBalance,
   getAddresses, addAddress, deleteAddress,
-  getGuests, saveGuest, updateGuest, deleteGuest,
+  getGuests, saveGuest, updateGuest, deleteGuest, normalizeGuestInput, validateGuestInput,
   getMemberInvoice, saveOrUpdateInvoice, deleteInvoice,
   getBeneficiaries, saveBeneficiary, deleteBeneficiary,
   searchMember, transferPoints,

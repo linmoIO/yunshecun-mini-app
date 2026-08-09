@@ -19,6 +19,10 @@ const failForMiniProgram = (res, msg, code = -1) => {
   return res.json({ code, result: 0, msg, data: null, retVal: null });
 };
 
+const getPaymentFailureMessage = (err) => (
+  err.code === 'POINTS_INVALID' ? err.message : '微信支付暂时不可用，请稍后重试'
+);
+
 const pay = async (req, res) => {
   try {
     const payload = { ...(req.query || {}), ...(req.body || {}) };
@@ -95,8 +99,7 @@ const pay = async (req, res) => {
     });
   } catch (err) {
     console.error('[WxPay] create payment failed:', err.response?.data || err.message);
-    if (err.code === 'POINTS_INVALID') return failForMiniProgram(res, err.message);
-    return failForMiniProgram(res, '创建微信支付订单失败: ' + formatWxError(err));
+    return failForMiniProgram(res, getPaymentFailureMessage(err));
   }
 };
 
@@ -622,6 +625,7 @@ module.exports = {
   wechatRefundNotify,
   alipayNotify,
   refund,
+  getPaymentFailureMessage,
   queryPayStatus,
   adminListPayments,
 };

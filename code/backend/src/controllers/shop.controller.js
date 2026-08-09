@@ -275,25 +275,37 @@ const getProductById = async (req, res) => {
 const createShopOrder = async (req, res) => {
   const { productId, quantity = 1, contactName, contactPhone, address, province, city, district, notes } = req.body;
   if (!productId) return error(res, '请选择商品');
-  const product = await prisma.shopProduct.findUnique({ where: { id: Number(productId) } });
-  if (!product || product.status !== 1) return error(res, '商品不存在或已下架');
-  if (product.stock !== null && product.stock < quantity) return error(res, '库存不足');
+  const quantityValue = Number(quantity);
+  if (!Number.isInteger(quantityValue) || quantityValue < 1) return error(res, '商品数量不正确');
+  if (!String(contactName || '').trim()) return error(res, '请填写收件人姓名');
+  if (!/^1\d{10}$/.test(String(contactPhone || ''))) return error(res, '请填写正确的手机号');
+  if (!String(address || '').trim()) return error(res, '请填写详细地址');
+  let order;
+  try {
+    order = await prisma.$transaction(async (tx) => {
+      const product = await tx.shopProduct.findUnique({ where: { id: Number(productId) } });
+      if (!product || product.status !== 1) throw new Error('商品不存在或已下架');
+      if (product.stock !== null) {
+        const updated = await tx.shopProduct.updateMany({
+          where: { id: product.id, status: 1, stock: { gte: quantityValue } },
+          data: { stock: { decrement: quantityValue } },
+        });
+        if (updated.count !== 1) throw new Error('库存不足');
+      }
 
-  const totalAmount = product.price * Number(quantity);
-  const order = await prisma.shopOrder.create({
-    data: {
-      memberId: req.member.id,
-      status: 'pending',
-      totalAmount,
-      notes: [notes, contactName && `收件人:${contactName}`, contactPhone && `电话:${contactPhone}`, address && `地址:${[province, city, district, address].filter(Boolean).join(' ')}`].filter(Boolean).join(' | '),
-      items: { create: [{ productId: product.id, productName: product.name, price: product.price, quantity: Number(quantity) }] },
-    },
-    include: { items: true },
-  });
-
-  // 减库存
-  if (product.stock !== null) {
-    await prisma.shopProduct.update({ where: { id: product.id }, data: { stock: { decrement: Number(quantity) } } });
+      return tx.shopOrder.create({
+        data: {
+          memberId: req.member.id,
+          status: 'pending',
+          totalAmount: product.price * quantityValue,
+          notes: [notes, contactName && `收件人:${contactName}`, contactPhone && `电话:${contactPhone}`, address && `地址:${[province, city, district, address].filter(Boolean).join(' ')}`].filter(Boolean).join(' | '),
+          items: { create: [{ productId: product.id, productName: product.name, price: product.price, quantity: quantityValue }] },
+        },
+        include: { items: true },
+      });
+    });
+  } catch (err) {
+    return error(res, ['商品不存在或已下架', '库存不足'].includes(err.message) ? err.message : '订单创建失败');
   }
 
   return success(res, { orderNo: order.orderNo, totalAmount: order.totalAmount });

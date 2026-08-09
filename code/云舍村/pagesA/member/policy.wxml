@@ -1,5 +1,5 @@
-﻿<view class="page-container">
-  <view wx:if="{{loading}}" style="text-align:center;padding:40px;color:#aaa">加载中...</view>
-  <view wx:elif="{{content}}" style="padding:16px"><rich-text nodes="{{content}}"></rich-text></view>
-  <view wx:else style="text-align:center;padding:60px;color:#aaa"><text>暂无内容</text></view>
-</view>
+<scroll-view class="policy-wrap" scroll-y>
+  <view wx:if="{{loading}}" class="policy-state">加载中...</view>
+  <rich-text wx:elif="{{content}}" class="policy-content" nodes="{{content}}"></rich-text>
+  <view wx:else class="policy-state">暂无内容</view>
+</scroll-view>

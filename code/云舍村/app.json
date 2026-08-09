@@ -69,6 +69,7 @@
       "pages": [
         "member/setting",
         "member/policy",
+        "member/privacy",
         "member/memberRight",
         "member/collectionCenter",
         "member/memberInfo",

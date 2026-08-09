@@ -1,0 +1,17 @@
+.git
+.spec-workflow
+.workbuddy
+code/*
+!code/backend/
+!code/backend/**
+code/backend/.env
+code/backend/dev.db
+code/backend/prisma/dev.db
+code/backend/node_modules
+code/backend/uploads
+deploy/local
+deploy/cloud-test
+docs
+materials
+task
+*.docx

@@ -1,0 +1,5 @@
+<scroll-view class="privacy-wrap" scroll-y>
+  <view wx:if="{{loading}}" class="privacy-state">加载中...</view>
+  <rich-text wx:elif="{{content}}" class="privacy-content" nodes="{{content}}"></rich-text>
+  <view wx:else class="privacy-state">暂无隐私政策内容</view>
+</scroll-view>

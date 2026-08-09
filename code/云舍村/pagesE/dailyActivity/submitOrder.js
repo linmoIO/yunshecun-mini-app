@@ -42,10 +42,41 @@
         setTimeout(() => {
           C("VIEW_CONTENT")
         }, 300);
-        const g = y.getStorage("config"),
-          N = y.getStorage("user"),
-          S = y.getStorage("wxuser"),
-          A = y.getStorage("dailyActivityInfo"),
+        const asObject = e => e && "object" == typeof e && !Array.isArray(e) ? e : {},
+          g = asObject(y.getStorage("config")),
+          N = asObject(y.getStorage("user")),
+          S = asObject(y.getStorage("wxuser")),
+          storedActivityInfo = asObject(y.getStorage("dailyActivityInfo")),
+          A = {
+            title: "",
+            activityCode: "",
+            hotels: [],
+            minSaleSize: 1,
+            minPriceList: [],
+            dailyPriceList: [],
+            curDailyPrice: {
+              sumCapacity: 1,
+              embarkDate: "",
+              time: "",
+              onSaleCode: ""
+            },
+            minPriceDto: {
+              payType: "CASH",
+              price: 0
+            },
+            ...storedActivityInfo
+          };
+        Array.isArray(A.hotels) || (A.hotels = []), Array.isArray(A.minPriceList) || (A.minPriceList = []), Array.isArray(A.dailyPriceList) || (A.dailyPriceList = []), A.curDailyPrice = {
+          sumCapacity: 1,
+          embarkDate: "",
+          time: "",
+          onSaleCode: "",
+          ...asObject(A.curDailyPrice)
+        }, A.minPriceDto = {
+          payType: "CASH",
+          price: 0,
+          ...asObject(A.minPriceDto)
+        };
           E = e.ref(r.defaultActivityChannel),
           I = e.ref(),
           R = e.ref();
@@ -216,7 +247,7 @@
         }
 
         function Ie() {
-          Z.value ? "FWQ" === X.value[0].couponType ? t.jAlert3("通兑券不能与会员折扣共享") : t.jAlert3("折扣券不能与会员折扣共享") : (w.value.forEach(e => {
+          Z.value && X.value.length ? "FWQ" === X.value[0].couponType ? t.jAlert3("通兑券不能与会员折扣共享") : t.jAlert3("折扣券不能与会员折扣共享") : (w.value.forEach(e => {
             e.type === k.value ? e.choosed = !0 : e.choosed = !1
           }), Y.value.showDialog())
         }
@@ -328,7 +359,7 @@
               hotelGroupCode: g.hotelGroupCode
             }
           }).then(e => {
-            1 === e.result && 0 === e.retVal.result && (z.value = [], e.retVal.retVal && e.retVal.retVal.length > 0 && (z.value = e.retVal.retVal), W.value && z.value.forEach(e => {
+            1 === e.result && e.retVal && 0 === e.retVal.result && (z.value = [], Array.isArray(e.retVal.retVal) && e.retVal.retVal.length > 0 && (z.value = e.retVal.retVal), W.value && z.value.forEach(e => {
               e.couponNo === W.value && (Me(e), He())
             }))
           })
@@ -350,7 +381,7 @@
               hotelGroupCode: g.hotelGroupCode
             }
           }).then(e => {
-            1 === e.result && 0 === e.retVal.result && (ne.value = e.retVal.retVal, ce.value.basicTeamRateSum = e.retVal.retVal.price)
+            1 === e.result && e.retVal && 0 === e.retVal.result && e.retVal.retVal && (ne.value = e.retVal.retVal, ce.value.basicTeamRateSum = e.retVal.retVal.price || 0)
           })
         }
 
@@ -528,7 +559,7 @@
           Te.allPeople ? Be() : K.value = !1
         }), e.onLoad(e => {
           e.productType && (P.value = e.productType), setTimeout(() => {
-            oe.value.createDate(y.getStorage("dailyActivityInfo").dailyPriceList)
+            oe.value.createDate(A.dailyPriceList)
           }, 1e3)
         }), e.onShow(() => {
           d.api.listGuestLinkExtraInfoWithMemberIdOrOpenId({
@@ -538,10 +569,10 @@
             memberId: N.memberId,
             openIdType: E.value
           }).then(r => {
-            if (1 === r.result && 0 === r.retVal.result && r.retVal.retVal.length) {
+            if (1 === r.result && r.retVal && 0 === r.retVal.result && Array.isArray(r.retVal.retVal) && r.retVal.retVal.length) {
               const a = [];
               r.retVal.retVal.forEach(r => {
-                r.guestLinkRelationExtraSimpleDtoList.forEach(e => {
+                (Array.isArray(r.guestLinkRelationExtraSimpleDtoList) ? r.guestLinkRelationExtraSimpleDtoList : []).forEach(e => {
                   "EXTRA_IDCODE" === e.type && (r.idCode = e.value), "EXTRA_IDNO" === e.type && (r.idNo = e.value), "CAMP_SEX" === e.type && (r.sex = e.value), "EXTRA_EMAIL" === e.type && (r.email = e.value), "EXTRA_MOBILE" === e.type && (r.mobile = e.value), "EXTRA_NAME" === e.type && (r.name = e.value), "EXTRA_BIRTH" === e.type && (r.birth = e.value)
                 }), r.guestNo = r.guestId, r.license = r.idNo, r.phone = r.mobile, r.relationshipWithMe = r.relationship, r.guestId && (r.birth && (r.age = e.dayjs(Te.reserveOrderDto.endDate).diff(r.birth, "year")), r.age >= 18 ? (r.ageType = "adult", r.ageTypeDesc = "成人") : r.age >= 12 ? (r.ageType = "bigChildren", r.ageTypeDesc = "大童") : r.age >= 6 ? (r.ageType = "children", r.ageTypeDesc = "中童") : (r.ageType = "baby", r.ageTypeDesc = "幼童"), x.value.forEach(e => {
                   r.guestId === e.guestId && (r.active = e.active, r.activeNotCan = e.activeNotCan)
@@ -567,7 +598,7 @@
                 hotelGroupCode: g.hotelGroupCode
               }
             }).then(e => {
-              1 === e.result && 0 === e.retVal.result && (w.value = e.retVal.retVal, w.value.forEach(e => {
+              1 === e.result && e.retVal && 0 === e.retVal.result && (w.value = Array.isArray(e.retVal.retVal) ? e.retVal.retVal : [], w.value.forEach(e => {
                 e.discount = e.rightsValue, e.type = "member", e.desc = e.rightsItemDescript
               }), w.value.length > 0 && !W.value && (Ge(w.value[0]), Pe()), w.value.push({
                 discount: 1,
@@ -590,7 +621,7 @@
               activityName: A.title
             }
           }).then(e => {
-            1 === e.result && 0 === e.retVal.result && (ue.value = e.retVal.retVal)
+            1 === e.result && e.retVal && 0 === e.retVal.result && (ue.value = e.retVal.retVal || {})
           }), we(), e.index.getSystemInfo({
             success: e => {
               _.value = e.statusBarHeight + 60

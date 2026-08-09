@@ -1,0 +1,164 @@
+{
+  "source": "local-backend MySQL and upload volume",
+  "generatedAt": "2026-08-09T21:26:39",
+  "database": "mysql/00-current.sql",
+  "referencedUploadFiles": 31,
+  "publicImageFiles": 17,
+  "files": [
+    {
+      "name": "01bb6f1f-ec09-4961-a80c-8ffbd7403c5f.jpg",
+      "bytes": 155941,
+      "sha256": "8d5dcf42634ee90497d430d455a777016718a08fce5c0b62a9e9ff4f5544a9e5"
+    },
+    {
+      "name": "0713b26d-787e-4537-9978-76ef8aac9ec2.jpg",
+      "bytes": 247833,
+      "sha256": "e8d82fe3dd692e7e0d5720c4c1941e525b32fd5820973da34baa8bfdb68a2155"
+    },
+    {
+      "name": "13929223-44d2-4a13-b961-eb4b40f8767e.jpg",
+      "bytes": 87149,
+      "sha256": "9ee4293293ff421558e9366bc62489a7e29b5a4003f91052344cca5c93272093"
+    },
+    {
+      "name": "2d9e6cb6-eb6d-412e-ab52-3d7f0a204cda.jpg",
+      "bytes": 245266,
+      "sha256": "9a3c98a93870471134a12a0ebd3d3a06d6f245757d68dac4fbabe50a94d4adab"
+    },
+    {
+      "name": "38ae28c6-3422-42f2-a75f-a436b1e9aade.jpg",
+      "bytes": 218853,
+      "sha256": "46d5a1787791faf277cb94081d28d05d6f66eabe0f9d4c2610120bdaa7977310"
+    },
+    {
+      "name": "59bf51aa-c42b-4090-9e9d-530cb7f14095.jpg",
+      "bytes": 233090,
+      "sha256": "2ad301eb52736bec1366f839f0c3a48897436701daabb8a73dbf4d21a4ab6d92"
+    },
+    {
+      "name": "709412df-f99b-440b-8351-e57b0068dd0c.jpg",
+      "bytes": 23892,
+      "sha256": "ad6fae3bbdf45a248b343e2c64e0d3e9fd201caeced7dff71287178a40fda39a"
+    },
+    {
+      "name": "7f1620ae-932e-48a4-96f7-3ed54266bbe1.jpg",
+      "bytes": 98506,
+      "sha256": "a9fb9603b55882c4c04f1728147f2fa31e66014f92377c46e78699a7d6fccb2f"
+    },
+    {
+      "name": "89901092-0f7a-4ce9-a0f0-6175ff8923da.jpg",
+      "bytes": 86131,
+      "sha256": "593d47c17f19912634ac0379ce9f8da89fd5ecc9951c363aeace417ba6a51eba"
+    },
+    {
+      "name": "8d80f25f-d982-442d-ade8-5ae2abf9c78d.jpg",
+      "bytes": 49504,
+      "sha256": "dc1ea105ba7249bcbb18a226e8a3608beb06c26d8e67f7985607eaffb60ad2f3"
+    },
+    {
+      "name": "9fb14dc0-397e-45a4-a46f-57be8fe42727.jpg",
+      "bytes": 191342,
+      "sha256": "9052c40b81bddd180593bab314e033eeb50fee24234f2287d28426d54e43c8fc"
+    },
+    {
+      "name": "云舍村-稻田耕牛.jpg",
+      "bytes": 167120,
+      "sha256": "3f56236a11cb740eb2bb2364125f7f7fa1fe01acdcc21fc8068d498212c11bc3"
+    },
+    {
+      "name": "云舍村-古戏楼.jpg",
+      "bytes": 155941,
+      "sha256": "8d5dcf42634ee90497d430d455a777016718a08fce5c0b62a9e9ff4f5544a9e5"
+    },
+    {
+      "name": "云舍村-航拍全景.jpg",
+      "bytes": 218853,
+      "sha256": "46d5a1787791faf277cb94081d28d05d6f66eabe0f9d4c2610120bdaa7977310"
+    },
+    {
+      "name": "云舍村-木构接待厅.jpg",
+      "bytes": 87149,
+      "sha256": "9ee4293293ff421558e9366bc62489a7e29b5a4003f91052344cca5c93272093"
+    },
+    {
+      "name": "云舍村-品牌横幅.jpg",
+      "bytes": 23892,
+      "sha256": "ad6fae3bbdf45a248b343e2c64e0d3e9fd201caeced7dff71287178a40fda39a"
+    },
+    {
+      "name": "云舍村-青石板古道.jpg",
+      "bytes": 233090,
+      "sha256": "2ad301eb52736bec1366f839f0c3a48897436701daabb8a73dbf4d21a4ab6d92"
+    },
+    {
+      "name": "云舍村-水岸泛舟.jpg",
+      "bytes": 184021,
+      "sha256": "1d44e60274e178dcdd09b04120567d0f6b9c83ebdbdd977e10dda633bd538aaf"
+    },
+    {
+      "name": "云舍村-雅室陈设.jpg",
+      "bytes": 245266,
+      "sha256": "9a3c98a93870471134a12a0ebd3d3a06d6f245757d68dac4fbabe50a94d4adab"
+    },
+    {
+      "name": "云舍村-竹林小径.jpg",
+      "bytes": 208339,
+      "sha256": "efac64899f66dae1c88230b47e9080745ae971799c035c258975c81b32a9d373"
+    },
+    {
+      "name": "云舍村-竹榻书屋.jpg",
+      "bytes": 127656,
+      "sha256": "c728389dcc46f3957f8f5d885e7903d41d224cdd3d8af4e98e6e37a5a7b04153"
+    },
+    {
+      "name": "a41bfdfc-2bf0-4946-8bd3-919e8531f339.png",
+      "bytes": 279175,
+      "sha256": "4ffaa1f44328c9791abf8ce488219128a0f2a7a02da35c29eae0d46221a0403f"
+    },
+    {
+      "name": "a4a40ac5-a3b9-41af-ad63-fd0b0372360f.jpg",
+      "bytes": 208339,
+      "sha256": "efac64899f66dae1c88230b47e9080745ae971799c035c258975c81b32a9d373"
+    },
+    {
+      "name": "a8ba02e4-9f46-407f-812a-c155d0457864.jpg",
+      "bytes": 188847,
+      "sha256": "60472d48a0683dd5f23fb62410218855399468f54ffa9d02fb86bbb1b453a0c0"
+    },
+    {
+      "name": "a9a5e74e-ba69-4c9a-88b6-9573242963af.jpg",
+      "bytes": 170264,
+      "sha256": "50dd98df56c4a44969e84d8bc4ae7f2cc8c7fd8e79ded52bb277d13d6021138f"
+    },
+    {
+      "name": "b6b89ce8-eda5-43d2-acd0-34bc021cb876.jpg",
+      "bytes": 167120,
+      "sha256": "3f56236a11cb740eb2bb2364125f7f7fa1fe01acdcc21fc8068d498212c11bc3"
+    },
+    {
+      "name": "b9e0f62a-5fdd-4cbf-b3e9-9074e325ac64.jpg",
+      "bytes": 82702,
+      "sha256": "09132916880b68446e0d86d2b9db1b28c0f84ad2655ab12157a1f7d88262b836"
+    },
+    {
+      "name": "c8c54615-d0f3-474c-97ce-5f4e3e592543.jpg",
+      "bytes": 184021,
+      "sha256": "1d44e60274e178dcdd09b04120567d0f6b9c83ebdbdd977e10dda633bd538aaf"
+    },
+    {
+      "name": "deca69dd-40ac-4067-ad4f-c91bcdf6c7ae.jpg",
+      "bytes": 187843,
+      "sha256": "c79601581e3f81e67721dd5c5602a5c9827de16a468677d636996a7f82f2c415"
+    },
+    {
+      "name": "e1b8fc71-823e-42ee-ba24-b4d6a60c2a67.jpg",
+      "bytes": 127656,
+      "sha256": "c728389dcc46f3957f8f5d885e7903d41d224cdd3d8af4e98e6e37a5a7b04153"
+    },
+    {
+      "name": "fcb7f8dd-8d5a-4ea9-a7b9-43cc3ca987a6.jpg",
+      "bytes": 115594,
+      "sha256": "48e41f6604fc365e99cb6144a7ceb074fd9d50c0a21bce66c8d66a41f19019b3"
+    }
+  ]
+}

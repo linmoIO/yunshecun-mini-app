@@ -78,17 +78,25 @@ router.get('/member/travelers', auth, async (req, res) => {
   return _ms(res, { list });
 });
 router.post('/member/travelers', auth, async (req, res) => {
-  const { name, phone, email, idType, idNumber, birthday, gender, nationality } = req.body;
-  if (!name) return _me(res, '请填写姓名');
-  const r = await _mp.guest.create({ data: { memberId: req.member.id, name, phone, email, idType, idNumber, birthday, gender: gender ? Number(gender) : null, nationality } });
+  const guest = ctrl.normalizeGuestInput(req.body);
+  const validationError = ctrl.validateGuestInput(guest);
+  if (validationError) return _me(res, validationError);
+  const r = await _mp.guest.create({ data: { memberId: req.member.id, ...guest, gender: guest.gender ? Number(guest.gender) : null } });
   return _ms(res, r);
 });
 router.put('/member/travelers/:id', auth, async (req, res) => {
-  const r = await _mp.guest.update({ where: { id: Number(req.params.id) }, data: req.body });
+  const guest = ctrl.normalizeGuestInput(req.body);
+  const validationError = ctrl.validateGuestInput(guest);
+  if (validationError) return _me(res, validationError);
+  const existing = await _mp.guest.findFirst({ where: { id: Number(req.params.id), memberId: req.member.id } });
+  if (!existing) return _me(res, '出行人不存在');
+  const r = await _mp.guest.update({ where: { id: existing.id }, data: { ...guest, gender: guest.gender ? Number(guest.gender) : null } });
   return _ms(res, r);
 });
 router.delete('/member/travelers/:id', auth, async (req, res) => {
-  await _mp.guest.delete({ where: { id: Number(req.params.id) } });
+  const existing = await _mp.guest.findFirst({ where: { id: Number(req.params.id), memberId: req.member.id } });
+  if (!existing) return _me(res, '出行人不存在');
+  await _mp.guest.delete({ where: { id: existing.id } });
   return _ms(res, null, '删除成功');
 });
 

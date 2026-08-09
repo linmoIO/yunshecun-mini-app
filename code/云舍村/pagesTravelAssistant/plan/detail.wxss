@@ -67,12 +67,14 @@ page {
   position: absolute;
   right: 32rpx;
   bottom: 78rpx;
-  min-width: 164rpx;
+  min-width: 152rpx;
   height: 74rpx;
   border-radius: 37rpx;
-  background: rgba(255, 255, 255, 0.7);
-  color: #fff;
-  font-size: 38rpx;
+  background: rgba(255, 255, 255, 0.88);
+  border: 1rpx solid rgba(17, 17, 17, 0.08);
+  color: #111;
+  font-size: 34rpx;
+  font-weight: 600;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -247,8 +249,10 @@ page {
 .price {
   margin-top: 4rpx;
   color: #af372d;
-  font-size: 58rpx;
+  font-size: 42rpx;
   font-weight: 600;
+  line-height: 1.2;
+  white-space: nowrap;
 }
 
 .price text {

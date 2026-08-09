@@ -16,7 +16,7 @@
 
     <view class="diy-field">
       <view class="diy-label">意向目的地</view>
-      <input class="diy-input" placeholder="如：香格里拉、梅里雪山" value="{{form.destinations}}" bindinput="onInput" data-key="destinations"/>
+      <input class="diy-input" placeholder="如：院落住宿、擂茶、桃源绣、泛舟" value="{{form.destinations}}" bindinput="onInput" data-key="destinations"/>
     </view>
 
     <view class="diy-field">
