@@ -21,6 +21,9 @@ router.get('/shopapi/sz/queryMarketingPageTags.json', (req, res) => res.json({ c
 // 系统配置
 router.get('/cache/sysOptions/getMultiSysOptionCommon.json', ctrl.getSysOptions);
 
+// 小程序 CMS 页面（关于我们、常见问题、预约须知）
+router.get('/cms/:pageCode', ctrl.getCmsPage);
+
 // 优惠券领取（需要登录）
 router.get('/coupon/getPresentCouponDetail.json', authMiddleware, couponCtrl.getCouponDetail);
 router.get('/coupon/receiveGiftCoupon.json', authMiddleware, couponCtrl.receiveGiftCoupon);
@@ -255,7 +258,7 @@ async function handleInterfaceTransfer(req, res) {
               roomType: r.roomCode,
               pmsRateCode: r.roomCode,
               ticket: '',
-              hotelGroupCode: h.hotelGroupCode || 'SONGTSAM',
+              hotelGroupCode: h.hotelGroupCode || 'YUNSHECUN',
               stayTime: '',
               resrvNumMin: 1,
               prepayTimeLimit: 24,
@@ -290,6 +293,34 @@ async function handleInterfaceTransfer(req, res) {
       };
     });
     return res.json({ code: 0, result: 1, retVal: { result: 0, retVal: result } });
+  }
+
+  // 日活动确认页依赖的兼容接口：返回旧页面可直接消费的空集合/价格定义。
+  if (method.includes('listCouponByUse')) {
+    return res.json({ code: 0, result: 1, retVal: { result: 0, retVal: [] } });
+  }
+
+  if (method.includes('getPriceDefine')) {
+    const activity = query.activityCode
+      ? await _prisma.activity.findUnique({ where: { activityCode: query.activityCode } })
+      : null;
+    const price = Number(activity?.price || 0);
+    return res.json({
+      code: 0,
+      result: 1,
+      retVal: {
+        result: 0,
+        retVal: { price, mixPrice: price, credit: 0, mixCredit: 0 },
+      },
+    });
+  }
+
+  if (method.includes('queryCardLevelRightsWithMemberId')) {
+    return res.json({ code: 0, result: 1, retVal: { result: 0, retVal: [] } });
+  }
+
+  if (method.includes('getOneActivityIntroduce')) {
+    return res.json({ code: 0, result: 1, retVal: { result: 0, retVal: {} } });
   }
 
   // 酒店列表（按状态/全量）
@@ -445,6 +476,15 @@ async function handleInterfaceTransfer(req, res) {
       if (order) {
         totalFromOrder = order.totalAmount || 0;
         unitPrice = order.product?.price || 0;
+      } else {
+        const activityOrder = await _prisma.activityOrder.findFirst({
+          where: { orderNo },
+          include: { activity: true },
+        });
+        if (activityOrder) {
+          totalFromOrder = activityOrder.totalAmount || 0;
+          unitPrice = activityOrder.activity?.price || 0;
+        }
       }
     }
 
@@ -464,8 +504,13 @@ async function handleInterfaceTransfer(req, res) {
         adultTeamRateSum: total,
         basicTeamRateSum: 0,
         childrenTeamRateSum: 0,
+        bigChildrenTeamRateSum: 0,
+        midChildrenTeamRateSum: 0,
+        babyTeamRateSum: 0,
         singleRoomRateSum: 0,
         guaranteedPrice: 0,
+        couponSimpleInfoDtoList: [],
+        rsvRmClassList: Array.isArray(query.rsvRmClassList) ? query.rsvRmClassList : [],
         priceModel: 'PEOPLE',
         unitPrice,
         adultNum,
@@ -574,10 +619,7 @@ router.get('/shopapi/search/getHomeHotWordList', require('../controllers/search.
 
 // ---- 线路系列配置（destinations 页面 tabs）----
 const DEFAULT_SERIES = [
-  { productSeriesName: '梅里环线', productSeriesCode: 'meili' },
-  { productSeriesName: '拉萨环线', productSeriesCode: 'lasa' },
-  { productSeriesName: '香格里拉环线', productSeriesCode: 'shangri-la' },
-  { productSeriesName: '冰川环线', productSeriesCode: 'glacier' },
+  { productSeriesName: '桃花源·云舍村', productSeriesCode: 'taoyuan' },
 ];
 
 router.get('/shop-api/productShelfApp/getProductShelfConfigApp', optionalAuth, async (req, res) => {
@@ -703,7 +745,7 @@ router.get('/tfMember/getAuthInfo.json', authMiddleware, (req, res) => res.json(
 // 客服电话（统一出口，前端可直接调）
 router.get('/cs/phone', async (req, res) => {
   const cfg = await _prisma.sysConfig.findFirst({ where: { key: 'cs_phone' } });
-  res.json({ code: 0, phone: cfg?.value || '400-0000-830' });
+  res.json({ code: 0, phone: cfg?.value || '0736-7070666' });
 });
 
 module.exports = router;

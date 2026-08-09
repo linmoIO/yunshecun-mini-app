@@ -8,6 +8,8 @@
 
     onLoad() {
       wx.setNavigationBarTitle({ title: '关于云舍村' });
+      var publicBase = BASE.replace(/\/api\/?$/, '');
+      this.setData({ logoUrl: publicBase + '/images/云舍村-中文品牌标识.png' });
       // 从后端 CMS 加载关于页内容
       wx.request({
         url: BASE + '/cms/about_us',

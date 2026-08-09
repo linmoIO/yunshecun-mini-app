@@ -56,8 +56,8 @@
 
   <view class="bottom-fixed">
     <view class="price-wrap">
-      <view class="price-label">预估人均价格</view>
-      <view class="price">¥{{price}} <text>/人起</text></view>
+      <view class="price-label">费用</view>
+      <view class="price">{{price}}</view>
     </view>
     <view class="next-btn" bindtap="onNextStep">{{isDetailMode ? "提交咨询" : "下一步"}}</view>
   </view>

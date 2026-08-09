@@ -23,3 +23,6 @@
 - 本地小程序图片验证使用 Docker 内 Caddy HTTPS 入口时，首次需将 Caddy 本地开发根证书导入当前 Windows 用户证书库，并重启微信开发者工具；证书只用于本地开发，删除 HTTPS Docker 卷后需重新导入。
 - 严格遵守用户指定的变更范围。“最小改动”“不要修改代码”“回退到某提交”等指令是硬边界；任何超出范围的优化、统一、重构或顺手修复都必须先获得用户明确授权。
 - 用户体验约束：接口列表为空或字段缺失时必须提供可用的空态/默认数组，禁止在模板中遍历或拼接 `undefined`；手机号、证件号等关键资料必须前端即时校验并由后端再次校验；用户提示不得展示接口原始 `msg`、`success`、错误堆栈或调试字段；积分、优惠券和会员折扣等金额相关选项只可沿用用户真实历史选择或接口明确返回的可用方案，不得凭空代填。
+- 后端存在通用兼容路由时，具体业务路由必须优先注册；例如 `content.routes` 的 `/cms/:pageCode` 必须位于 `member.routes` 的兼容 `/cms/:key` 之前，否则 CMS 页面会被误读为系统配置并返回空内容。
+- `deploy/local` 的实际运行态使用 Docker named volume 中的 MySQL，`code/backend/prisma/dev.db` 不是运行数据库；涉及内容数据变更时必须先备份 MySQL，再通过容器内 Prisma 执行，避免 PowerShell 直接向 MySQL 写入中文造成乱码。
+- `deploy/local/bootstrap` 是新克隆首次启动的完整运行快照；MySQL 和上传文件只在对应 named volume 为空时导入，禁止覆盖已有卷。小程序 `utils/config.js` 默认使用本地接口，通过 `npm run env:local` 与 `npm run env:remote` 切换。

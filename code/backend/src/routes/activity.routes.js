@@ -12,6 +12,6 @@ router.post('/singleActivity/saveSingleActivityOrder', authMiddleware, ctrl.save
 router.get('/singleActivity/querySingleActivityOrder', authMiddleware, ctrl.getActivityOrder);
 router.post('/singleActivity/getSingleActivityOrderPrice', authMiddleware, ctrl.calculateActivityPrice);
 router.get('/singleActivity/cancelSingleActivityOrder', authMiddleware, ctrl.cancelActivityOrder);
-router.get('/singleActivity/payDetail', authMiddleware, (req, res) => res.json({ code: 0, data: {} }));
+router.get('/singleActivity/payDetail', authMiddleware, ctrl.getActivityPayDetail);
 
 module.exports = router;

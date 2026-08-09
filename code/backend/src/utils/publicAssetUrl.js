@@ -2,10 +2,15 @@
 
 const legacyUploadPrefix = 'http://localhost:3000/uploads/';
 
-const normalizeString = (value, publicBaseUrl) => value.replaceAll(
+const normalizeString = (value, publicBaseUrl) => {
+  const normalized = value.replaceAll(
   legacyUploadPrefix,
   `${publicBaseUrl}/uploads/`,
-);
+  );
+  return normalized.startsWith('/images/') || normalized.startsWith('/uploads/')
+    ? `${publicBaseUrl}${normalized}`
+    : normalized;
+};
 
 const normalizePublicAssetUrls = (value, publicBaseUrl) => {
   if (typeof value === 'string') return normalizeString(value, publicBaseUrl);

@@ -1,19 +1,23 @@
+const cfg = require('../../utils/config.js');
+const PUBLIC_BASE_URL = (cfg.config.baseUrlmall || 'http://localhost:3000/api').replace(/\/api\/?$/, '');
+const image = (name) => `${PUBLIC_BASE_URL}/uploads/images/${name}`;
+
 const RECOMMEND_LIST = [{
   id: "plan-1",
-  image: "https://yunshecun.oss-cn-guangzhou.aliyuncs.com/applet/img/homeDetailList-bg-2.jpg",
-  title: "香格里拉环线｜回到远方的家 6晚7天",
-  subTitle: "丽江2晚-塔城2晚-香格里拉（绿谷）2晚",
-  desc: "从自古便是茶马古道重镇的丽江出发，经过物产丰饶的恬静村庄塔城，最终抵达香格里拉。",
-  tags: ["旅行", "云舍经典", "在地生活"],
-  price: "¥17000 /人起"
+  image: image('云舍村-村落风景-03.webp'),
+  title: "云舍村归居两日",
+  subTitle: "传统院落-村落漫游-茶事与地方风味",
+  desc: "走进青石板路串联的湖湘院落，在村落日常中慢下来。",
+  tags: ["归居院落", "村落漫游", "地方风味"],
+  price: "以预约确认信息为准"
 }, {
   id: "plan-2",
-  image: "https://yunshecun.oss-cn-guangzhou.aliyuncs.com/applet/img/homeDetailList-bg-4.jpg",
-  title: "梅里环线｜雪山与秘境 6晚7天",
-  subTitle: "石月亮2晚-茨中2晚-梅里-香格里拉",
-  desc: "从云南最后的秘境怒江大峡谷出发，穿越孔雀山，见证梅里雪山与澜沧江同框绝景。",
-  tags: ["旅行", "秘境探索"],
-  price: "¥16000 /人起"
+  image: image('云舍村-村落风景-04.webp'),
+  title: "东方村落文化一日",
+  subTitle: "湖湘民居-桃源绣-擂茶",
+  desc: "从传统建筑、园林到民间手艺，感受东方村落文明的日常表达。",
+  tags: ["湖湘民居", "桃源绣", "擂茶"],
+  price: "以预约确认信息为准"
 }];
 
 Page({

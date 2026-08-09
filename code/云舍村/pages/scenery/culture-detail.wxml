@@ -2,57 +2,28 @@
   <coustom-head title="什么是云舍村" color="#000000" bgColor="#ffffff" nativeMode="{{true}}"></coustom-head>
 
   <view class="paper">
-    <image
-      class="hero-image"
-      src="https://yunshecun.oss-cn-guangzhou.aliyuncs.com/applet/img/homeDetailList-bg-3.jpg"
-      mode="aspectFill"
-    />
+    <image wx:if="{{heroImage}}" class="hero-image" src="{{heroImage}}" mode="aspectFill" />
 
     <view class="section">
-      <view class="section-title">关于云舍村</view>
-      <view class="section-text">
-        云舍村以“在地文化 + 深度旅行”为核心，围绕山居酒店、目的地线路与人文体验，打造从出发前规划到旅程落地的一体化服务。
-      </view>
-      <view class="section-text">
-        我们希望每一次出发都不止于抵达，而是在自然、人文与生活细节中，获得真正放松且有记忆点的旅行体验。
+      <view class="section-title">{{title}}</view>
+      <view class="section-text" wx:for="{{paragraphs}}" wx:key="*this">{{item}}</view>
+    </view>
+
+    <image wx:if="{{contentImage}}" class="content-image" src="{{contentImage}}" mode="aspectFill" />
+
+    <view class="section" wx:if="{{gallery.length}}">
+      <view class="section-title">村落画卷</view>
+      <view class="gallery">
+        <image wx:for="{{gallery}}" wx:key="*this" class="gallery-image" src="{{item}}" mode="aspectFill" />
       </view>
     </view>
 
-    <image
-      class="map-image"
-      src="https://yunshecun.oss-cn-guangzhou.aliyuncs.com/applet/img/homeDetailList-bg-5.jpg"
-      mode="aspectFill"
-    />
-
-    <view class="btn-list">
-      <view class="red-btn">查看全部产品</view>
-      <view class="red-btn">2026年会员季焕新</view>
-      <view class="red-btn">五一出行精选</view>
-      <view class="red-btn">低海拔云南春天</view>
-    </view>
-
-    <image
-      class="content-image"
-      src="https://yunshecun.oss-cn-guangzhou.aliyuncs.com/applet/img/homeDetailList-bg-4.jpg"
-      mode="aspectFill"
-    />
-
-    <view class="qrcode-group">
-      <view class="qrcode-item">
-        <image class="qrcode-img" src="/pages/images/rqcode.png" mode="aspectFill" />
-        <view class="qrcode-text">长按扫码关注“云舍村旅行”公众号</view>
-      </view>
-      <view class="qrcode-item">
-        <image class="qrcode-img" src="/pages/images/rqcode.png" mode="aspectFill" />
-        <view class="qrcode-text">长按扫码添加云舍村旅行顾问</view>
-      </view>
-      <view class="qrcode-item">
-        <image class="qrcode-img" src="/pages/images/rqcode.png" mode="aspectFill" />
-        <view class="qrcode-text">扫码关注“云舍村”视频号</view>
-      </view>
+    <view class="section contact-section">
+      <view class="section-title">到访咨询</view>
+      <view class="section-text">{{address}}</view>
+      <view class="red-btn" bindtap="makePhoneCall">电话咨询 {{phone}}</view>
     </view>
   </view>
 
   <float-button-kf></float-button-kf>
 </view>
-

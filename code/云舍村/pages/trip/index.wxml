@@ -256,7 +256,7 @@
         </view>
         <view bindtap="{{y}}" class="login-bn">立即登录</view>
         <view class="login-flex">
-            <view class="login-tips"> 注册云舍村会员即送5000积分，<view></view>享受免费接送机预订服务。 </view>
+            <view class="login-tips"> 登录后可保存行程并查看预约信息。 </view>
         </view>
     </view>
     <view class="recd">

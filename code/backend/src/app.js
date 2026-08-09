@@ -67,6 +67,11 @@ app.use('/uploads', express.static(path.join(__dirname, '../uploads'), {
   maxAge: '30d',
   immutable: true,
 }));
+// 云舍村随代码发布的本地化素材使用同一公开 URL 契约；上传卷中没有同名文件时回退到此目录。
+app.use('/uploads/images', express.static(path.join(__dirname, '../public/images'), {
+  maxAge: '30d',
+  immutable: true,
+}));
 
 // 管理后台网页（访问 http://localhost:3000 即可打开）
 app.use(express.static(path.join(__dirname, '../public')));

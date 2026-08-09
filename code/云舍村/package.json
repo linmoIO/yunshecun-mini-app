@@ -4,6 +4,8 @@
   "description": "",
   "main": ".eslintrc.js",
   "scripts": {
+    "env:local": "node scripts/switch-api-mode.js local",
+    "env:remote": "node scripts/switch-api-mode.js remote",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -11,5 +13,8 @@
   "license": "ISC",
   "dependencies": {
     "tdesign-miniprogram": "^1.15.2"
+  },
+  "devDependencies": {
+    "miniprogram-automator": "^0.12.1"
   }
 }

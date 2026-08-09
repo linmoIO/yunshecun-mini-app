@@ -222,13 +222,21 @@ const getContentPage = async (req, res) => {
   return success(res, formatPage(page));
 };
 
+const getCmsPage = async (req, res) => {
+  const pageCode = String(req.params.pageCode || '').trim();
+  if (!pageCode) return error(res, '页面不存在');
+  const page = await prisma.contentPage.findUnique({ where: { pageCode } });
+  if (!page || page.status !== 1) return success(res, { pageCode, content: '', title: '' });
+  return success(res, formatPage(page));
+};
+
 const getSysOptions = async (req, res) => {
   const { keys, codes } = req.query;
   const codeArr = (codes || keys || '').split(',').map(s => s.trim()).filter(Boolean);
 
   // 从 SysConfig 读客服电话（后台系统设置里可以配置）
   const phoneConfig = await prisma.sysConfig.findFirst({ where: { key: 'cs_phone' } });
-  const csPhone = phoneConfig?.value || '400-0000-830';
+  const csPhone = phoneConfig?.value || '0736-7070666';
   const wxCsUrl = (await prisma.sysConfig.findFirst({ where: { key: 'cs_wx_url' } }))?.value || '';
   const wxCorpId = (await prisma.sysConfig.findFirst({ where: { key: 'cs_wx_corpid' } }))?.value || '';
   const cmbPayUrl = (await prisma.sysConfig.findFirst({ where: { key: 'cmb_pay_url' } }))?.value || '';
@@ -393,7 +401,7 @@ const formatPage = (p) => ({
 const tryParse = (s, f) => { try { return s ? JSON.parse(s) : f; } catch { return f; } };
 
 module.exports = {
-  getBanners, getAdvertisementPage, getAdvertisementPageV2, getMarketingPage, getModePage, getContentPage, getSysOptions,
+  getBanners, getAdvertisementPage, getAdvertisementPageV2, getMarketingPage, getModePage, getContentPage, getCmsPage, getSysOptions,
   adminListBanners, adminCreateBanner, adminUpdateBanner, adminDeleteBanner,
   adminListPages, adminCreatePage, adminUpdatePage, adminDeletePage,
   adminGetSysConfigs, adminSetSysConfig,

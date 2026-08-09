@@ -1,0 +1,4 @@
+page { background: #f5f5f5; }
+.privacy-wrap { box-sizing: border-box; height: 100vh; padding: 32rpx; }
+.privacy-state { padding: 96rpx 0; color: #888; font-size: 28rpx; text-align: center; }
+.privacy-content { display: block; color: #262626; font-size: 28rpx; line-height: 1.8; }

@@ -3,25 +3,40 @@
 
 # Local dependencies and test output
 /code/backend/node_modules/
+/code/云舍村/node_modules/
 /code/backend/test-results/
 /code/backend/playwright-report/
 /code/backend/blob-report/
 /code/backend/.cache/
+**/coverage/
+*.log
+npm-debug.log*
 
 # Runtime state, backups, and local Docker artifacts
 /code/backend/uploads/
 /code/backend/prisma/*.db
 /deploy/local/backup/
 /deploy/local/optimized-uploads/
+/deploy/local/verification/
 /deploy/cloud-test/backup/
 /deploy/cloud-test/runtime/
 /deploy/cloud-test/.env
 /deploy/cloud-test/.env.*
 !/deploy/cloud-test/.env.example
 
-# Credentials and local certificate exports
-/code/backend/.env
+# Non-deployment source material and task records
+materials
+task
+docs/*.pdf
+
+# Local certificate exports outside the tracked payment certificate directory
 /deploy/local/*.crt
 /deploy/local/*.pem
 *.key
 *.p12
+
+# IDE and operating-system metadata
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db

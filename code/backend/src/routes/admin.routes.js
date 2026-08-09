@@ -247,10 +247,7 @@ router.delete('/departures/:id', async (req, res) => {
 
 // ---- 目的地线路系列管理 ----
 const DEFAULT_SERIES = [
-  { productSeriesName: '梅里环线', productSeriesCode: 'meili' },
-  { productSeriesName: '拉萨环线', productSeriesCode: 'lasa' },
-  { productSeriesName: '香格里拉环线', productSeriesCode: 'shangri-la' },
-  { productSeriesName: '冰川环线', productSeriesCode: 'glacier' },
+  { productSeriesName: '桃花源·云舍村', productSeriesCode: 'taoyuan' },
 ];
 
 router.get('/date-inventory', async (req, res) => {

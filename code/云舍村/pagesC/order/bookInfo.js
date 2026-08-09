@@ -42,9 +42,10 @@
             object: "hotelConfirmOrder"
           })
         }, 300);
-        const T = p.getStorage("config"),
-          N = p.getStorage("user"),
-          I = p.getStorage("wxuser"),
+        const asObject = e => e && "object" == typeof e && !Array.isArray(e) ? e : {},
+          T = asObject(p.getStorage("config")),
+          N = asObject(p.getStorage("user")),
+          I = asObject(p.getStorage("wxuser")),
           A = e.ref(""),
           j = e.ref(""),
           E = e.ref(""),
@@ -90,7 +91,16 @@
           me = e.ref([0]),
           pe = e.ref(""),
           fe = e.ref(""),
-          he = e.reactive(p.getStorage("hotelOrderRoom")),
+          hotelOrderRoom = asObject(p.getStorage("hotelOrderRoom")),
+          he = e.reactive({
+            roomDescript: "",
+            productTags: [],
+            gcRoomExtra: {},
+            gcProductBases: [],
+            productCode: "",
+            roomCode: "",
+            ...hotelOrderRoom
+          }),
           ge = e.ref(""),
           ye = e.ref([]),
           be = e.ref(!1),
@@ -230,12 +240,12 @@
             srcHotelGroupCode: T.hotelGroupCode
           };
           N && N.memberId && (l.memberNo = N.cardNo ? N.cardNo : "", l.cardLevel = N.cardLevel ? N.cardLevel : "", l.cardType = N.cardType ? N.cardType : "", l.memberId = N.memberId ? N.memberId : ""), n.api.resrvCheck(c.makeOrder(l)).then(l => {
-            K.value = !1, 1 === l.result ? (0 === l.retVal.isBookAble && (J.value = !0, Q.value = !1, x.value = t, function(e) {
+            K.value = !1, 1 === l.result && l.retVal ? (0 === l.retVal.isBookAble && (J.value = !0, Q.value = !1, x.value = t, function(e) {
               "mins" === e ? Ne.value.pop() : "plus" === e && Ne.value.push({
                 name: "",
                 idNo: ""
               })
-            }(a), "init" === a && (ee.value = l.retVal.gcProductDetailDto.arrivalFrom || "12:00", ae.value = l.retVal.gcProductDetailDto.arrivalTo || "23:59", l.retVal.gcProductDetailDto && l.retVal.gcProductDetailDto.productGcLevel && "000" !== l.retVal.gcProductDetailDto.productGcLevel && (_e.value = !1, N && N.memberId && n.api.getAllCardLevel({
+            }(a), "init" === a && (ee.value = (l.retVal.gcProductDetailDto || {}).arrivalFrom || "12:00", ae.value = (l.retVal.gcProductDetailDto || {}).arrivalTo || "23:59", l.retVal.gcProductDetailDto && l.retVal.gcProductDetailDto.productGcLevel && "000" !== l.retVal.gcProductDetailDto.productGcLevel && (_e.value = !1, N && N.memberId && n.api.getAllCardLevel({
               isPhysical: "F",
               hotelGroupId: T.hotelGroupId,
               hotelGroupCode: T.hotelGroupCode,
@@ -244,9 +254,9 @@
               1 === e.result && e.retVal.listLevelDto && e.retVal.listLevelDto.length > 0 && e.retVal.listLevelDto.forEach(e => {
                 console.log(e.code, N.cardLevel), e.code === N.cardLevel && (Fe.value = `已享受${e.descript}会员价`)
               })
-            })))), oe.value = Number(l.retVal.rateSum), l.retVal.everyDayDetails.forEach((a, o) => {
+            })))), oe.value = Number(l.retVal.rateSum || 0), (Array.isArray(l.retVal.everyDayDetails) ? l.retVal.everyDayDetails : []).forEach((a, o) => {
               a.rsvDateDesc = a.rsvDate, a.rsvDate = e.dayjs(a.rsvDate).format("MM-DD")
-            }), te.value = l.retVal.everyDayDetails, le.value = l.retVal.gcProductDetailDto.tickets || "", N && N.memberId && (Z.value = [], ra())) : (1 === t && (J.value = !1), o.jAlert3(l.msg)), "init" === a && function() {
+            }), te.value = Array.isArray(l.retVal.everyDayDetails) ? l.retVal.everyDayDetails : [], le.value = (l.retVal.gcProductDetailDto || {}).tickets || "", N && N.memberId && (Z.value = [], ra())) : (1 === t && (J.value = !1), o.jAlert3(l.msg)), "init" === a && function() {
               const a = [],
                 o = Number(ee.value.split(":")[0]) || 12,
                 t = 25 - o;
@@ -345,7 +355,7 @@
             };
             _e.value || (a.couponTypeReal = "DF,VF,CP"), console.log(), te.value && te.value.length && te.value[0] && (a.firstPrice = te.value[0].realPrice), n.api.findCouponDetailListByCondi(a).then(a => {
               var t;
-              1 === a.result ? (a.retVal.listCouponDetailWebDtos.forEach(a => {
+              1 === a.result ? ((Array.isArray(a.retVal && a.retVal.listCouponDetailWebDtos) ? a.retVal.listCouponDetailWebDtos : []).forEach(a => {
                 a.choosed = !1, a.descript = a.couponName, a.validFromDate && (a.validFromDate = e.dayjs(a.validFromDate).format("YYYY.MM.DD")), a.validToDate && (a.validToDate = e.dayjs(a.validToDate).format("YYYY.MM.DD")), "RF" === a.couponType ? a.discountNum = Number.parseFloat((10 * a.presentValue).toFixed(1)) : a.discountNum = a.presentValue
               }), ne.value = null == (t = a.retVal.listCouponDetailWebDtos) ? void 0 : t.filter(e => "KFQ" !== e.discountType)) : o.jAlert3(a.msg)
             })
@@ -481,10 +491,10 @@
             memberId: N.memberId,
             openIdType: "WECHAT"
           }).then(e => {
-            if (1 === e.result && 0 === e.retVal.result && e.retVal.retVal.length) {
+            if (1 === e.result && e.retVal && 0 === e.retVal.result && Array.isArray(e.retVal.retVal) && e.retVal.retVal.length) {
               const a = [];
               e.retVal.retVal.forEach(e => {
-                e.guestId && (e.guestLinkRelationExtraSimpleDtoList.forEach(a => {
+                e.guestId && ((Array.isArray(e.guestLinkRelationExtraSimpleDtoList) ? e.guestLinkRelationExtraSimpleDtoList : []).forEach(a => {
                   "EXTRA_IDCODE" === a.type && (e.idCode = a.value), "EXTRA_IDNO" === a.type && (e.idNo = a.value), "CAMP_SEX" === a.type && (e.sex = a.value), "EXTRA_EMAIL" === a.type && (e.email = a.value), "EXTRA_MOBILE" === a.type && (e.mobile = a.value), "EXTRA_NAME" === a.type && (e.name = a.value), "EXTRA_BIRTH" === a.type && (e.birth = a.value)
                 }), ye.value.forEach(a => {
                   e.guestId === a.guestId && (e.active = a.active, e.activeNotCan = a.activeNotCan)
@@ -515,7 +525,7 @@
                 productCode: A.value
               };
               n.api.getCancelRule(m.createUrl(e)).then(e => {
-                1 === e.result && (ge.value = e.retVal.cancelRule)
+                1 === e.result && (ge.value = (e.retVal || {}).cancelRule || "")
               })
             }(), Qe("init"), N && N.memberId && (N.mobile && (fe.value = N.mobile), "T" === N.isRealName && (pe.value = N.name))
         }), e.onLoad(e => {
@@ -613,7 +623,7 @@
                 let a = ye.value.filter(e => e.active);
                 return 1 === x.value && 1 === a.length ? (ye.value.forEach(e => {
                   e.active = !1
-                }), e.active = !0, !1) : !(!e.active && a >= x.value) && (e.active = !e.active, a = ye.value.filter(e => e.active), void ia())
+                }), e.active = !0, !1) : !(!e.active && a.length >= x.value) && (e.active = !e.active, a = ye.value.filter(e => e.active), void ia())
               }(a), o)
             })),
             J: e.o(a => function() {

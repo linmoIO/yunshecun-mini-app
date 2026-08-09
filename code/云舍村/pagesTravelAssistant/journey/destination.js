@@ -1,48 +1,24 @@
+const cfg = require('../../utils/config.js');
+const PUBLIC_BASE_URL = (cfg.config.baseUrlmall || 'http://localhost:3000/api').replace(/\/api\/?$/, '');
+const image = (name) => `${PUBLIC_BASE_URL}/uploads/images/${name}`;
+
 const ROUTE_CARDS = [{
-  code: "shangri-la",
-  title: "香格里拉环线",
-  desc: "香格里拉，云舍村的故事和起点。",
-  image: "https://yunshecun.oss-cn-guangzhou.aliyuncs.com/applet/img/homeDetailList-bg-1.jpg",
+  code: "taoyuan",
+  title: "桃花源·云舍村",
+  desc: "一处可居、可游、可感知的东方村落空间。",
+  image: image('云舍村-苔藓院落.webp'),
   items: [{
-    name: "丽江和香格里拉",
-    desc: "丽江和香格里拉是滇西北的重要门户，也是探索者的大本营。",
-    image: "https://yunshecun.oss-cn-guangzhou.aliyuncs.com/applet/img/homeDetailList-bg-2.jpg"
+    name: "归居院落",
+    desc: "在传统湖湘院落中安顿身心，感受村落日常。",
+    image: image('云舍村-村落风景-03.webp')
   }, {
-    name: "塔城",
-    desc: "位于金沙江畔山峦间的塔城，是滇西北物产丰饶的鱼米乡。",
-    image: "https://yunshecun.oss-cn-guangzhou.aliyuncs.com/applet/img/homeDetailList-bg-3.jpg"
+    name: "茶事与擂茶",
+    desc: "从茶饮与地方风味中，认识云舍村的日常待客之道。",
+    image: image('云舍村-村落风景-07.webp')
   }, {
-    name: "亚丁",
-    desc: "仙乃日、央迈勇和夏诺多吉三座神山脚下，是旷世奇作。",
-    image: "https://yunshecun.oss-cn-guangzhou.aliyuncs.com/applet/img/homeDetailList-bg-4.jpg"
-  }]
-}, {
-  code: "meili",
-  title: "梅里环线",
-  desc: "三江并流地理奇观，亚洲最迷人的地区之一。",
-  image: "https://yunshecun.oss-cn-guangzhou.aliyuncs.com/applet/img/homeDetailList-bg-5.jpg",
-  items: [{
-    name: "梅里雪山",
-    desc: "从金沙江河谷中的小镇奔子栏到令人神往的梅里雪山。",
-    image: "https://yunshecun.oss-cn-guangzhou.aliyuncs.com/applet/img/homeDetailList-bg-5.jpg"
-  }, {
-    name: "怒江",
-    desc: "怒江大峡谷，秘境中的秘境，云雾缭绕的原始山谷。",
-    image: "https://yunshecun.oss-cn-guangzhou.aliyuncs.com/applet/img/homeDetailList-bg-2.jpg"
-  }]
-}, {
-  code: "lhasa",
-  title: "拉萨环线",
-  desc: "西藏经典，满足人们对西藏的所有想象。",
-  image: "https://yunshecun.oss-cn-guangzhou.aliyuncs.com/applet/img/homeDetailList-bg-4.jpg",
-  items: [{
-    name: "拉萨",
-    desc: "圣城拉萨，信仰与历史交汇的高原之城。",
-    image: "https://yunshecun.oss-cn-guangzhou.aliyuncs.com/applet/img/homeDetailList-bg-3.jpg"
-  }, {
-    name: "林芝",
-    desc: "雪山森林与峡谷河流，四季风光各具层次。",
-    image: "https://yunshecun.oss-cn-guangzhou.aliyuncs.com/applet/img/homeDetailList-bg-1.jpg"
+    name: "四季菜园与农事",
+    desc: "在四季菜园和稻田景色中感受地方生活与自然。",
+    image: image('云舍村-稻田鸭群.png')
   }]
 }];
 

@@ -40,11 +40,32 @@
           } = c.useSubscribeMessage(["ORDER_CANCEL_NOTICE", "NOT_COMPLETE_FIRST_PAYMENT"]),
           h = v.useXshReport(),
           T = u.useNavigatorRect(),
-          C = n.getStorage("config"),
+          asObject = a => a && "object" == typeof a && !Array.isArray(a) ? a : {},
+          C = asObject(n.getStorage("config")),
           R = null == C ? void 0 : C.version,
-          S = n.getStorage("user"),
-          N = n.getStorage("wxuser"),
-          A = n.getStorage("travelInfo"),
+          S = asObject(n.getStorage("user")),
+          N = asObject(n.getStorage("wxuser")),
+          storedTravelInfo = asObject(n.getStorage("travelInfo")),
+          A = {
+            orderType: "FreeTravel",
+            priceModel: "PEOPLE",
+            priceDtos: [{
+              payType: "CASH",
+              singleSupplement: 0
+            }],
+            specificationsPriceDtos: [],
+            skuInfo: [],
+            number: 1,
+            adult: 1,
+            children: 0,
+            bigChildren: 0,
+            baby: 0,
+            ...storedTravelInfo
+          };
+        Array.isArray(A.priceDtos) || (A.priceDtos = [{
+          payType: "CASH",
+          singleSupplement: 0
+        }]), Array.isArray(A.specificationsPriceDtos) || (A.specificationsPriceDtos = []), Array.isArray(A.skuInfo) || (A.skuInfo = []);
           P = e.computed(() => "ThemeGroup" === A.orderType && "FAMILY" !== A.priceModel || "ButlerCustomized" === A.orderType || "FreeTravel" === A.orderType || "DestPackage" === A.orderType),
           I = e.ref(!1),
           O = e.ref(),
@@ -89,6 +110,14 @@
             singleRoomRateSum: 0,
             guaranteedPrice: 0
           }),
+          normalizePriceSummary = a => {
+            const r = a && "object" == typeof a ? a : {},
+              o = ["readyPay", "totalPrice", "rateSum", "memberDscAmount", "couponRateSum", "exchangeRateSum", "gwDiscount", "point", "pointMoney", "adultTeamRateSum", "basicTeamRateSum", "childrenTeamRateSum", "bigChildrenTeamRateSum", "midChildrenTeamRateSum", "babyTeamRateSum", "singleRoomRateSum", "guaranteedPrice"];
+            return o.forEach(a => {
+              const o = Number(r[a]);
+              r[a] = Number.isFinite(o) ? o : 0
+            }), r.couponSimpleInfoDtoList = Array.isArray(r.couponSimpleInfoDtoList) ? r.couponSimpleInfoDtoList : [], r.rsvRmClassList = Array.isArray(r.rsvRmClassList) ? r.rsvRmClassList : [], r.travelRateSumDto = r.travelRateSumDto && "object" == typeof r.travelRateSumDto ? r.travelRateSumDto : {}, r
+          },
           ee = e.computed(() => X.value.orderPrice),
           ae = e.ref(!1);
         m.useLoadingSync(ae);
@@ -306,13 +335,14 @@
                     hotelGroupCode: C.hotelGroupCode
                   }
                 });
-                1 === o.result && 0 === o.retVal.result ? (Ae.value = !0, _.value = !0, X.value = o.retVal.retVal, r.point !== X.value.point && (a || (ae.value = !1), setTimeout(() => {
+                const transferPayload = o && o.retVal || {};
+                o && 1 === o.result && 0 === transferPayload.result ? (Ae.value = !0, _.value = !0, X.value = normalizePriceSummary(transferPayload.retVal), r.point !== X.value.point && (a || (ae.value = !1), setTimeout(() => {
                   e.index.showToast({
                     title: "已为您按照最佳优惠方案调整积分抵扣金额",
                     icon: "none",
                     duration: 3e3
                   })
-                }, 200), Pe.value = !0, Ce.value.setUsedPoint(X.value.point)), X.value.rsvRmClassList && (V.value = X.value.rsvRmClassList), X.value.travelRateSumDto && (X.value = Object.assign(X.value, X.value.travelRateSumDto)), "FreeTravel" === A.orderType ? X.value.babyRoomNum = r.babyRoomNum : X.value.babyRoomNum = 0, X.value.exchangeSum = Number((X.value.exchangeRateSum + X.value.memberDscAmount + X.value.couponRateSum).toFixed(2)), X.value.orderPrice = (X.value.basicTeamRateSum || 0) + (X.value.singleRoomRateSum || 0) + (X.value.guaranteedPrice || 0), w.value.forEach(e => {
+                }, 200), Pe.value = !0, Ce.value.setUsedPoint(X.value.point)), X.value.rsvRmClassList && (V.value = X.value.rsvRmClassList), X.value.travelRateSumDto && (X.value = normalizePriceSummary(Object.assign({}, X.value, X.value.travelRateSumDto))), "FreeTravel" === A.orderType ? X.value.babyRoomNum = r.babyRoomNum : X.value.babyRoomNum = 0, X.value.exchangeSum = Number((X.value.exchangeRateSum + X.value.memberDscAmount + X.value.couponRateSum).toFixed(2)), X.value.orderPrice = (X.value.basicTeamRateSum || 0) + (X.value.singleRoomRateSum || 0) + (X.value.guaranteedPrice || 0), w.value.forEach(e => {
                   const a = X.value.couponSimpleInfoDtoList.find(a => a.num === e.couponNo);
                   a && (e.realValue = a.realValue || 0)
                 })) : ("实时计价" === A.price ? $.value && ($.value = !1, e.index.showModal({
@@ -325,7 +355,7 @@
                       delta: 1
                     })) : a.cancel && ($.value = !0, E.value.showDialog())
                   }
-                })) : t.jAlert3(o.retVal.msg || o.msg), _.value = !1)
+                })) : t.jAlert3(transferPayload.msg || o && o.msg || "暂时无法获取价格，请稍后重试"), _.value = !1)
               } catch (e) {
                 console.error("queryPayDetail error", e)
               } finally {

@@ -6,7 +6,7 @@
   Page({
     data: { content: '', loading: true },
     onLoad() {
-      wx.setNavigationBarTitle({ title: '会员政策' });
+      wx.setNavigationBarTitle({ title: '预约须知' });
       wx.request({
         url: BASE + '/cms/member_policy',
         method: 'GET',

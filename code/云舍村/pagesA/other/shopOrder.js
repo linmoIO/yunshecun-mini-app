@@ -25,25 +25,42 @@
   Page({
     data: {
       productId: '', productName: '', qty: 1, price: 0,
+      loadingProduct: true, productUnavailable: false,
       submitting: false, paying: false,
       selectedAddr: null,
       form: { contactName: '', contactPhone: '', province: '', city: '', address: '', notes: '' },
     },
 
     onLoad: function(opts) {
-      this.setData({ productId: opts.id || '', qty: parseInt(opts.qty) || 1, price: parseFloat(opts.price) || 0 });
+      var quantity = Math.max(1, parseInt(opts.qty, 10) || 1);
+      this.setData({ productId: opts.id || '', qty: quantity, price: 0 });
       try {
         var u = wx.getStorageSync('user');
         if (u && u.realName) this.setData({ 'form.contactName': u.realName });
         if (u && u.mobile) this.setData({ 'form.contactPhone': u.mobile });
       } catch(e) {}
       var self = this;
+      if (!opts.id) {
+        this.setData({ loadingProduct: false, productUnavailable: true });
+        wx.showToast({ title: '商品信息无效，请返回重试', icon: 'none' });
+        return;
+      }
       wx.request({
-        url: BASE + '/shop/products/' + opts.id, method: 'GET',
+        url: BASE + '/shop/products/' + encodeURIComponent(opts.id), method: 'GET',
         header: { 'Authorization': 'Bearer ' + getToken() },
         success: function(res) {
-          if (res.data && res.data.code === 0 && res.data.data) self.setData({ productName: res.data.data.name || '' });
-        }, fail: function() {}
+          if (res.data && res.data.code === 0 && res.data.data) {
+            var product = res.data.data;
+            self.setData({
+              productName: product.name || '',
+              price: Number(product.price || 0) * quantity,
+              loadingProduct: false,
+              productUnavailable: product.stock === 0,
+            });
+          } else {
+            self.setData({ loadingProduct: false, productUnavailable: true });
+          }
+        }, fail: function() { self.setData({ loadingProduct: false, productUnavailable: true }); }
       });
     },
 
@@ -55,6 +72,8 @@
 
     submit: function() {
       if (this.data.submitting || this.data.paying) return;
+      if (this.data.loadingProduct) { wx.showToast({ title: '商品信息加载中', icon: 'none' }); return; }
+      if (this.data.productUnavailable) { wx.showToast({ title: '商品暂不可购买，请返回重试', icon: 'none' }); return; }
       var f = this.data.form;
       if (!f.contactName.trim()) { wx.showToast({ title: '请填写收件人姓名', icon: 'none' }); return; }
       if (!/^1\d{10}$/.test(f.contactPhone)) { wx.showToast({ title: '请填写正确的手机号', icon: 'none' }); return; }
@@ -75,10 +94,10 @@
         self._orderData = orderData;
         // 第二步：发起支付
         self._doPay(orderData);
-      }).catch(function(e) {
+      }).catch(function() {
         self.setData({ submitting: false });
         wx.hideLoading();
-        wx.showToast({ title: (e && e.message) || '提交失败', icon: 'none', duration: 3000 });
+        wx.showToast({ title: '订单提交失败，请稍后重试', icon: 'none', duration: 3000 });
       });
     },
 
@@ -139,7 +158,7 @@
     _showSuccess: function(orderNo, amount) {
       var self = this;
       wx.showModal({
-        title: '支付成功 🎉',
+        title: '支付成功',
         content: '订单号：' + orderNo + '\n金额：¥' + amount + '\n我们将尽快发货，请留意快递通知！',
         confirmText: '好的', showCancel: false,
         success: function() { self._navBack(); }
