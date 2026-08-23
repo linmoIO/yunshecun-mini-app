@@ -49,8 +49,8 @@ const getActivityList = async (req, res) => {
 const getActivityDetail = async (req, res) => {
   const { activityCode, id } = req.query;
   const activity = id
-    ? await prisma.activity.findUnique({ where: { id: Number(id) } })
-    : await prisma.activity.findUnique({ where: { activityCode } });
+    ? await prisma.activity.findFirst({ where: { id: Number(id), status: 1 } })
+    : await prisma.activity.findFirst({ where: { activityCode, status: 1 } });
   if (!activity) return error(res, '活动不存在');
   return success(res, formatActivity(activity));
 };
@@ -71,7 +71,7 @@ const saveActivityOrder = async (req, res) => {
   if (activityDate && !isValidDate(activityDate)) return error(res, '活动日期不正确');
 
   const activity = activityCode
-    ? await prisma.activity.findUnique({ where: { activityCode } })
+    ? await prisma.activity.findFirst({ where: { activityCode, status: 1 } })
     : null;
   if (!activity) return error(res, '活动不存在');
 
@@ -230,7 +230,7 @@ const calculateActivityPrice = async (req, res) => {
   if (!activityCode) return error(res, '请选择活动');
   if (!Number.isInteger(quantity) || quantity < 1) return error(res, '参与人数不正确');
   const activity = activityCode
-    ? await prisma.activity.findUnique({ where: { activityCode } })
+    ? await prisma.activity.findFirst({ where: { activityCode, status: 1 } })
     : null;
   if (!activity) return error(res, '活动不存在');
 

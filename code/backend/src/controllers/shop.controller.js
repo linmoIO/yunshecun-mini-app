@@ -29,15 +29,15 @@ const listGoods = async (req, res) => {
 const goodsDetail = async (req, res) => {
   const { goodsId, productCode } = req.query;
   const product = goodsId
-    ? await prisma.shopProduct.findUnique({ where: { id: Number(goodsId) } })
-    : await prisma.shopProduct.findUnique({ where: { productCode } });
+    ? await prisma.shopProduct.findFirst({ where: { id: Number(goodsId), status: 1 } })
+    : await prisma.shopProduct.findFirst({ where: { productCode, status: 1 } });
   if (!product) return error(res, '商品不存在');
   return success(res, formatProduct(product));
 };
 
 const goodsSku = async (req, res) => {
   const { goodsId } = req.query;
-  const product = await prisma.shopProduct.findUnique({ where: { id: Number(goodsId) } });
+  const product = await prisma.shopProduct.findFirst({ where: { id: Number(goodsId), status: 1 } });
   if (!product) return error(res, '商品不存在');
   return success(res, { skuList: tryParse(product.skuInfo, []) });
 };

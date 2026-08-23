@@ -1,8 +1,12 @@
 {
   "source": "local-backend MySQL and upload volume",
-  "generatedAt": "2026-08-09T21:26:39",
+  "generatedAt": "2026-08-17T17:39:33.859Z",
   "database": "mysql/00-current.sql",
-  "referencedUploadFiles": 31,
+  "referencedUploadFiles": 95,
+  "documentPages": {
+    "云舍村简介202403.pdf": 32,
+    "云舍村入住细则等260811.pptx": 10
+  },
   "publicImageFiles": 17,
   "files": [
     {
@@ -61,9 +65,84 @@
       "sha256": "9052c40b81bddd180593bab314e033eeb50fee24234f2287d28426d54e43c8fc"
     },
     {
+      "name": "非遗-桃源绣.jpg",
+      "bytes": 33593856,
+      "sha256": "832046af1b742383250ab1e7a33a543f93865130d434b6723f39d00e8bf533d0"
+    },
+    {
+      "name": "合院1-室内.jpg",
+      "bytes": 21352555,
+      "sha256": "6f48b0c656c1198c8ded953fa7e0f835ed105cd780852280f74cc66cd5cfda9d"
+    },
+    {
+      "name": "擂-茶-制作-01.jpg",
+      "bytes": 12924127,
+      "sha256": "bd69a6e5e8300961f43111bad24727da7bb7b1ba6ee5c418d3747ccc4edd1f3d"
+    },
+    {
+      "name": "擂茶宴.jpg",
+      "bytes": 16162251,
+      "sha256": "b601f91ae8745ebafb76ace9edb0b43e4f54a17d70c0de8b2913c78a84ca41e1"
+    },
+    {
+      "name": "戏楼.jpg",
+      "bytes": 16686867,
+      "sha256": "c0afbe01aa4d83417c7ccdce4232da1ffe62f10e02c0af43c250d5eb722bd25f"
+    },
+    {
+      "name": "云舍村-村落风景-01.webp",
+      "bytes": 909982,
+      "sha256": "1ed83fa1b0ea434b52018a133cf22e734ce2f683c90214638612cf160e837bba"
+    },
+    {
+      "name": "云舍村-村落风景-02.webp",
+      "bytes": 1744536,
+      "sha256": "78a8d5b192260937185cda8be37c8049f6f1d01d568ea76711ddc029ffeb4e7c"
+    },
+    {
+      "name": "云舍村-村落风景-03.webp",
+      "bytes": 1663196,
+      "sha256": "bd51ace48408fdd77a8e59d8979908e3ef89a4c53f6b37ab951835790e465e87"
+    },
+    {
+      "name": "云舍村-村落风景-04.webp",
+      "bytes": 1850020,
+      "sha256": "c089a64657be7d8fac49f9c90697241cc37f07bbae9d60bf57c92c65b0f9c949"
+    },
+    {
+      "name": "云舍村-村落风景-05.webp",
+      "bytes": 1743536,
+      "sha256": "2bcb094847d68eed278ab9714f0cedbbaeb66406fca401483084e8e67a265bf3"
+    },
+    {
+      "name": "云舍村-村落风景-06.webp",
+      "bytes": 1132900,
+      "sha256": "ccd2c1790915a8fcfd971405eb4a223436340ef45d5dba185b1fc109c9022b0c"
+    },
+    {
+      "name": "云舍村-村落风景-07.webp",
+      "bytes": 1056296,
+      "sha256": "3ffd1f8a1142c2cb88c9be1c64bc6b29d670e3afcb75e29aa4b398b15fd40652"
+    },
+    {
       "name": "云舍村-稻田耕牛.jpg",
       "bytes": 167120,
       "sha256": "3f56236a11cb740eb2bb2364125f7f7fa1fe01acdcc21fc8068d498212c11bc3"
+    },
+    {
+      "name": "云舍村-稻田鸭群.png",
+      "bytes": 611330,
+      "sha256": "4ee5c4c12c02a25299aff835bd5542f4c52bda39a48ff47d903354e2c5d48d09"
+    },
+    {
+      "name": "云舍村-儿童住宿费用表.png",
+      "bytes": 20053,
+      "sha256": "2aa0bd1bf97a900faa65cd8a87cfb60693c916a871ada9288a1f0e79648ad806"
+    },
+    {
+      "name": "云舍村-泛舟夜景.webp",
+      "bytes": 956770,
+      "sha256": "35772e5d799e632749016e2d000bec515f0bb509e02d2498c80c1f77ee25bd41"
     },
     {
       "name": "云舍村-古戏楼.jpg",
@@ -81,6 +160,11 @@
       "sha256": "9ee4293293ff421558e9366bc62489a7e29b5a4003f91052344cca5c93272093"
     },
     {
+      "name": "云舍村-品牌标识.webp",
+      "bytes": 28614,
+      "sha256": "72b86d7961dd6a75498d7d457d76db9d076e477a7806031f8958866529ab707c"
+    },
+    {
       "name": "云舍村-品牌横幅.jpg",
       "bytes": 23892,
       "sha256": "ad6fae3bbdf45a248b343e2c64e0d3e9fd201caeced7dff71287178a40fda39a"
@@ -96,9 +180,39 @@
       "sha256": "1d44e60274e178dcdd09b04120567d0f6b9c83ebdbdd977e10dda633bd538aaf"
     },
     {
+      "name": "云舍村-苔藓院落.webp",
+      "bytes": 2512888,
+      "sha256": "6e0a7c534741bfc2deafb3be61eb02b33bda9c5fdb15a53b5f8048913497b8ce"
+    },
+    {
       "name": "云舍村-雅室陈设.jpg",
       "bytes": 245266,
       "sha256": "9a3c98a93870471134a12a0ebd3d3a06d6f245757d68dac4fbabe50a94d4adab"
+    },
+    {
+      "name": "云舍村-预约按钮底图.png",
+      "bytes": 1468,
+      "sha256": "7bbb4e951feeafd488c5a780d4782e597db8a4e1474eadef7fca40c6d7f5c91d"
+    },
+    {
+      "name": "云舍村-预约标识.png",
+      "bytes": 2948,
+      "sha256": "7b8946c01d73b655ffe7da84fc0b4045ba5f571c5690c63d9805d360814f4849"
+    },
+    {
+      "name": "云舍村-预约条款背景.png",
+      "bytes": 54835,
+      "sha256": "e24d6b1de30c4074c3a735ba3cc6adb0fae5c3dec5a9b2ae8c19f970723ff6af"
+    },
+    {
+      "name": "云舍村-预约页导航背景.png",
+      "bytes": 203345,
+      "sha256": "482cf015b88ac685aab8cb651b11d4c477495b358d045127da5a21a872cca889"
+    },
+    {
+      "name": "云舍村-中文品牌标识.png",
+      "bytes": 3100,
+      "sha256": "f730604255d1da6cdd1f3c2e91ea2a15a24534bb8aab58b0256f21c3e135d0d2"
     },
     {
       "name": "云舍村-竹林小径.jpg",

@@ -3,6 +3,7 @@
     "navigationBarTitleText":  "什么是云舍村",
     "usingComponents":  {
                             "coustom-head":  "../../components/coustomHead",
-                            "float-button-kf":  "/components/new/FloatButtonKf"
+                            "float-button-kf":  "/components/new/FloatButtonKf",
+                            "bottom-nav": "../../components/bottomNav"
                         }
 }

@@ -109,6 +109,7 @@
 }
 
 .ui_memberCenter .memberCenterBg.data-v-ad1bceae {
+    display: none;
     left: 0;
     pointer-events: none;
     position: absolute;
@@ -356,10 +357,11 @@
 }
 
 .ui_memberCenter .userCard.data-v-ad1bceae {
+    background-color: #e8dfd1;
     background-repeat: no-repeat;
     background-size: 100% 100%;
     border-radius: 16rpx;
-    color: #fff;
+    color: #302e29;
     height: 204rpx;
     margin-bottom: 24rpx;
     padding: 28rpx 32rpx;
@@ -368,14 +370,14 @@
 
 .ui_memberCenter .userCard .relation.data-v-ad1bceae {
     bottom: 28rpx;
-    color: #fff;
+    color: #4d473e;
     font-size: 28rpx;
     left: 32rpx;
     position: absolute
 }
 
 .ui_memberCenter .userCard .cardName.data-v-ad1bceae {
-    color: #fff;
+    color: #302e29;
     font-family: Source Han Serif CN;
     font-size: 32rpx
 }
@@ -386,7 +388,7 @@
 }
 
 .ui_memberCenter .userCard .cardProcess.data-v-ad1bceae {
-    background: hsla(0,0%,100%,.25);
+    background: rgba(48,46,41,.2);
     border-radius: 4rpx;
     bottom: 28rpx;
     height: 8rpx;
@@ -396,7 +398,19 @@
 }
 
 .ui_memberCenter .userCard .cardProcess .process.data-v-ad1bceae {
-    background: #fff;
+    background: #6f5639;
     border-radius: 4rpx;
     height: 8rpx
 }
+
+/* 会员中心与村落内容页保持同一纸色与阅读层级。 */
+.ui_memberCenter.data-v-ad1bceae { background: #f7f4ee; color: #302e29; font-family: "PingFang SC", "Microsoft YaHei", sans-serif; }
+.ui_memberCenter .memberHead .userName.data-v-ad1bceae { font-family: "STKaiti", "KaiTi", "FZKai-Z03", "PingFang SC", sans-serif; font-size: 42rpx; }
+.ui_memberCenter .memberTips.data-v-ad1bceae { background: #efe9df; color: #6f675d; font-size: 27rpx; line-height: 1.6; }
+.ui_memberCenter .orderWrapper.data-v-ad1bceae { border: 1rpx solid #e5dfd5; border-radius: 10rpx; box-shadow: 0 6rpx 24rpx rgba(55,46,32,.07); }
+.ui_memberCenter .orderListBox .orderItem.data-v-ad1bceae { font-size: 29rpx; color: #4d473e; }
+.ui_memberCenter .orderWrapper .orders wx-swiper wx-swiper-item .order.data-v-ad1bceae { background: #f4f0e9; }
+.ui_memberCenter .userCard.data-v-ad1bceae { border-radius: 10rpx; }
+.ui_memberCenter .userCard.data-v-ad1bceae { background-image: none !important; }
+.ui_memberCenter .userCard .cardName.data-v-ad1bceae { font-family: "STKaiti", "KaiTi", "FZKai-Z03", "PingFang SC", sans-serif; }
+.ui_memberCenter .memberCenterLogo.data-v-ad1bceae { display: none; }

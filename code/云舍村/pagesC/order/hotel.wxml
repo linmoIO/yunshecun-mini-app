@@ -21,8 +21,7 @@
                 <view class="fadeBg data-v-acdc94be" style="{{'background-image:'+s}}">
                     <view class="fadeInfoBox data-v-acdc94be" wx:if="{{o}}">
                         <view class="hotelName data-v-acdc94be">{{p}}</view>
-                        <view class="subDesc data-v-acdc94be"> 海拔{{q}}m </view>
-                        <view bindtap="{{r}}" class="subName data-v-acdc94be"> 下拉查看酒店简介<view class="icon iconfont icon-a-12_changxialajiantou_bai data-v-acdc94be"></view>
+                        <view bindtap="{{r}}" class="subName data-v-acdc94be"> 下拉查看村舍简介<view class="icon iconfont icon-a-12_changxialajiantou_bai data-v-acdc94be"></view>
                         </view>
                     </view>
                 </view>
@@ -32,7 +31,6 @@
                 <scroll-view bindscroll="{{B}}" class="seeMoreInner data-v-acdc94be" scrollTop="{{A}}" scrollY="{{true}}">
                     <view class="mockHeight data-v-acdc94be"></view>
                     <view class="hotelName data-v-acdc94be">{{x}}</view>
-                    <view class="subDesc data-v-acdc94be"> 海拔{{y}}m </view>
                     <mp-html bind:__l="__l" class="infoText data-v-acdc94be" uI="acdc94be-3" uP="{{z}}" wx:if="{{z}}"></mp-html>
                     <view class="mockHeight2 data-v-acdc94be"></view>
                 </scroll-view>

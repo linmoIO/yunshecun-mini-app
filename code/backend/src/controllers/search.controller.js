@@ -37,7 +37,7 @@ const toHotelItem = (h) => ({
   secondTitle: h.description || '',
   pics: h.coverImage || '',
   tagApiDtos: h.city ? [{ tageDesc: h.city }] : [],
-  minPriceDto: { payType: 'CASH', price: h.priceFrom || 0 },
+  minPriceDto: { payType: 'CASH', price: h.roomTypes?.[0]?.price || 0 },
   skuFlag: true,
 });
 
@@ -70,6 +70,7 @@ const searchProducts = async (req, res) => {
     prisma.hotel.findMany({
       where: { status: 1, ...(kw && { name: { contains: kw } }) },
       take: Number(pageSize),
+      include: { roomTypes: { where: { status: 1 }, orderBy: { price: 'asc' }, take: 1 } },
     }),
     prisma.activity.findMany({
       where: { status: 1, ...(kw && { title: { contains: kw } }) },
@@ -106,15 +107,19 @@ const searchProducts = async (req, res) => {
 const getHotWords = async (req, res) => {
   const cfgs = await prisma.sysConfig.findFirst({ where: { key: 'search_hot_words' } });
   const words = cfgs?.value
-    ? tryParse(cfgs.value, ['精品旅行', '云舍酒店', '休闲度假', '特色体验', '亲子游'])
-    : ['精品旅行', '云舍酒店', '休闲度假', '特色体验', '亲子游'];
+    ? tryParse(cfgs.value, ['云舍村', '桃花源'])
+    : ['云舍村', '桃花源'];
+  const searchableWords = words.filter((word) => {
+    const text = typeof word === 'string' ? word : word?.text;
+    return text === '云舍村' || text === '桃花源';
+  });
 
   // 前端 useSearchTravel 期望: retVal[].{ dictionaryCode, dictionaryDesc, jumpUrl, picUrl, searchDisplay }
   return res.json({
     code: 0,
     result: 0,
     msg: 'success',
-    retVal: words.map((w, i) => ({
+    retVal: searchableWords.map((w, i) => ({
       dictionaryCode: typeof w === 'string' ? w : w.text,
       dictionaryDesc: typeof w === 'string' ? w : w.text,
       jumpUrl: typeof w === 'object' ? w.url || '' : '',

@@ -85,7 +85,9 @@
                 iconfont: "icon-a-12_jiudian_hei"
               }))), m.value = !1
             } catch {
-              G.value = [], m.value = !0
+              G.value = []
+            } finally {
+              m.value = !1
             }
           }
         } else G.value = []
@@ -153,7 +155,9 @@
             }
             q.value = !1
           } catch {
-            q.value = !0
+            S.value = []
+          } finally {
+            q.value = !1
           }
         }
       },

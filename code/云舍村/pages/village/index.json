@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "探索云舍村",
+  "navigationBarTextStyle": "black",
+  "navigationBarBackgroundColor": "#f7f4ee",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "bottom-nav": "../../components/bottomNav"
+  }
+}

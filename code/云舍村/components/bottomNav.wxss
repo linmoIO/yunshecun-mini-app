@@ -157,7 +157,7 @@
 
 .bottomNav .nav-item .desc.data-v-73de3d25 {
     font-family: PingFangSC-Medium;
-    font-size: 20rpx;
+    font-size: 22rpx;
     font-weight: 600;
     margin-top: 6rpx
 }
@@ -168,10 +168,8 @@
 }
 
 .bottomNav .nav-item .logo.large.data-v-73de3d25 {
-    height: 88rpx;
-    position: relative;
-    top: -30rpx;
-    width: 88rpx
+    height: 48rpx;
+    width: 48rpx
 }
 
 .bottomNav .nav-item .largeTxt.data-v-73de3d25 {
@@ -192,38 +190,4 @@
 
 .bottomNav .nav-item.active .icon-active.data-v-73de3d25 {
     display: block
-}
-
-.bottomNav .bgWrapper.data-v-73de3d25 {
-    bottom: 0;
-    display: flex;
-    height: 100%;
-    left: 0;
-    position: absolute;
-    width: 100%;
-    z-index: -1
-}
-
-.bottomNav .bgWrapper .bgBox.data-v-73de3d25 {
-    align-items: center;
-    color: #999;
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    font-size: 22rpx;
-    justify-content: center;
-    position: relative
-}
-
-.bottomNav .bgWrapper .bgBox .bg.data-v-73de3d25 {
-    background: #fff;
-    border-radius: 50%;
-    box-shadow: 0 4rpx 16rpx rgba(0,0,0,.4);
-    height: 132rpx;
-    left: 50%;
-    position: absolute;
-    top: -50rpx;
-    transform: translate(-50%);
-    width: 132rpx;
-    z-index: -1
 }

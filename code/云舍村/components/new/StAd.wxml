@@ -5,5 +5,8 @@
         </view>
         <image lazyLoad class="st-ad__cover data-v-01b76427" hidden="{{!f}}" mode="aspectFill" src="{{g}}"></image>
     </video>
-    <image lazyLoad class="st-ad__cover data-v-01b76427" mode="aspectFill" src="{{v}}" wx:elif="{{t}}"></image>
+    <block wx:elif="{{t}}">
+        <image lazyLoad class="st-ad__cover data-v-01b76427" mode="aspectFill" src="{{v}}"></image>
+        <view class="st-ad__title data-v-01b76427" wx:if="{{z}}">{{z}}</view>
+    </block>
 </view>

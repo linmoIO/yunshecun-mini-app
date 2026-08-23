@@ -3,6 +3,9 @@
     line-clamp: 1
 }
 
+page { background: #f7f4ee; color: #302e29; font-family: "PingFang SC", "Microsoft YaHei", sans-serif; }
+.guide-title, .guide-page-title, .title.data-v-438fed38 { font-family: "STKaiti", "KaiTi", "FZKai-Z03", "PingFang SC", sans-serif; }
+
 .line-clamp-1.data-v-438fed38,.line-clamp-2.data-v-438fed38 {
     -webkit-box-orient: vertical;
     display: -webkit-box;

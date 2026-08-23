@@ -295,3 +295,4 @@
     </view>
 </bottom-dialog>
 <float-button-kf bind:__l="__l" uI="64fa72d1-3"></float-button-kf>
+<bottom-nav></bottom-nav>

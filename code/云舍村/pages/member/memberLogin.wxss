@@ -25,12 +25,20 @@
 }
 
 .login-content-btns.data-v-6ada9f64 {
+    background: rgba(25, 20, 14, .62);
+    border-radius: 16rpx;
+    box-sizing: border-box;
     padding: 0 48rpx;
+    padding-bottom: 24rpx;
+    padding-top: 24rpx;
+    position: relative;
+    z-index: 1;
     width: 100%
 }
 
 .login-content-btns .btn-item.data-v-6ada9f64 {
-    width: 100%
+    width: 100%;
+    z-index: 1
 }
 
 .login-content-btns .btn-phone.data-v-6ada9f64 {

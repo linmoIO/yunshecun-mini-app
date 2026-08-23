@@ -1,8 +1,12 @@
 <scroll-view class="diy-wrap" scroll-y>
   <!-- 顶部介绍 -->
   <view class="diy-hero">
+    <image class="diy-hero-image" src="{{heroImage}}" mode="aspectFill" wx:if="{{heroImage}}"></image>
+    <view class="diy-hero-shade"></view>
+    <view class="diy-hero-copy">
     <view class="diy-hero-title">{{title}}</view>
     <view class="diy-hero-desc" wx:if="{{intro}}">{{intro}}</view>
+    </view>
   </view>
 
   <!-- 后台自定义内容区 -->
@@ -12,7 +16,7 @@
 
   <!-- 需求填写表单 -->
   <view class="diy-form-card">
-    <view class="diy-form-title">📝 告诉我们您的需求</view>
+    <view class="diy-form-title">告诉我们您的需求</view>
 
     <view class="diy-field">
       <view class="diy-label">意向目的地</view>
@@ -46,7 +50,7 @@
     </view>
 
     <view class="diy-divider"></view>
-    <view class="diy-form-title">📞 联系方式</view>
+    <view class="diy-form-title">联系方式</view>
 
     <view class="diy-field">
       <view class="diy-label">您的姓名</view>
@@ -66,3 +70,4 @@
   </view>
   <view style="height:60rpx"></view>
 </scroll-view>
+<bottom-nav></bottom-nav>

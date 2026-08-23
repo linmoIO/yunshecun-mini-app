@@ -422,6 +422,8 @@
             var a;
             if (!re.reserveOrderDto.contactName) return void t.jAlert3("请填写联系人姓名");
             if (!re.reserveOrderDto.contactMobile) return void t.jAlert3("请填写联系人手机号");
+            re.reserveOrderDto.contactMobile = String(re.reserveOrderDto.contactMobile).trim();
+            if (!/^1\d{10}$/.test(re.reserveOrderDto.contactMobile)) return void t.jAlert3("请输入正确的联系人手机号");
             if (!K.value) return;
             const r = {
                 hotelCode: C.hotelCode,

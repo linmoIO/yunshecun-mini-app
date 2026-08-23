@@ -89,7 +89,7 @@ const getHotelList = async (req, res) => {
       hotelPic: h.coverImage || '',
       hotelCity: h.city || '',
       address: h.address || '',
-      star: h.starLevel || 5,
+      star: h.starLevel == null ? null : h.starLevel,
       priceMin: priceFrom,
       productType: 'Hotel',
       pics: h.coverImage || '',
@@ -112,8 +112,8 @@ const getHotelList = async (req, res) => {
 const getHotelInfo = async (req, res) => {
   const { hotelCode, id } = req.query;
   const hotel = id
-    ? await prisma.hotel.findUnique({ where: { id: Number(id) }, include: { roomTypes: true } })
-    : await prisma.hotel.findUnique({ where: { hotelCode }, include: { roomTypes: true } });
+    ? await prisma.hotel.findFirst({ where: { id: Number(id), status: 1 }, include: { roomTypes: { where: { status: 1 } } } })
+    : await prisma.hotel.findFirst({ where: { hotelCode, status: 1 }, include: { roomTypes: { where: { status: 1 } } } });
   if (!hotel) return error(res, '酒店不存在');
   return success(res, { ...formatHotel(hotel), roomTypes: hotel.roomTypes.map(formatRoom) });
 };
@@ -135,14 +135,15 @@ const buildWechatHotelDetail = (hotel, fromDate, toDate, inventoryMap = new Map(
       phone: hotel.phone || '',
       logo: hotel.coverImage || '',
       description: hotel.description || '',
+      htmlInfo: hotel.description || '',
       resrvNoticePp: '',
       resrvNoticeCs: '',
-      starLevel: hotel.starLevel || 5,
+      starLevel: hotel.starLevel == null ? null : hotel.starLevel,
     },
     gcHotelExtra: { logo: hotel.coverImage || '' },
-    minPrice: hotel.priceFrom || (minRoomPrice === 999999 ? 0 : minRoomPrice),
+    minPrice: minRoomPrice === 999999 ? 0 : minRoomPrice,
     productRoomList: rooms,
-    roomImagesList: [],
+    roomImagesList: hotel.coverImage ? [{ pictures: hotel.coverImage }] : [],
   };
 };
 
@@ -165,7 +166,7 @@ const buildWechatRoom = (hotel, room, fromDate, toDate, dateInventory) => {
     canBook,
     bedType: room.bedType || '',
     area: room.area ? `${room.area}㎡` : '',
-    capacity: room.capacity || 2,
+    capacity: room.capacity == null ? null : room.capacity,
   };
 
   return {
@@ -174,7 +175,7 @@ const buildWechatRoom = (hotel, room, fromDate, toDate, dateInventory) => {
     roomDescript: room.name,
     bedType: room.bedType || '',
     area: room.area ? `${room.area}㎡` : '',
-    capacity: room.capacity || 2,
+    capacity: room.capacity == null ? null : room.capacity,
     roomPicCount: Math.max(1, images.length),
     gcRoomExtra: {
       logo: images[0] || hotel.coverImage || '',

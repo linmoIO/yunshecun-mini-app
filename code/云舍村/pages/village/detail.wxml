@@ -1,0 +1,21 @@
+<scroll-view class="part-page" scroll-y wx:if="{{part}}">
+  <view class="part-hero">
+    <image src="{{part.cover}}" mode="aspectFill" class="part-hero-image" />
+    <view class="part-hero-shade"></view>
+    <view class="part-hero-copy">
+      <view class="part-hero-title">{{part.title}}</view>
+      <view class="part-hero-summary">{{part.summary}}</view>
+    </view>
+  </view>
+  <view class="part-flow" wx:if="{{part.blocks.length}}">
+    <block wx:for="{{part.blocks}}" wx:key="index">
+      <view class="part-paragraph" wx:if="{{item.type==='text'}}">{{item.value}}</view>
+      <view class="part-visual" wx:elif="{{item.type==='image'}}">
+        <image src="{{item.value.image}}" mode="widthFix" class="part-page-image" data-current="{{item.value.image}}" bindtap="previewImage" />
+        <view class="part-caption" wx:if="{{item.value.caption}}">{{item.value.caption}}</view>
+      </view>
+    </block>
+  </view>
+</scroll-view>
+<view class="part-empty" wx:elif="{{!loading}}">内容暂时无法加载，请返回重试</view>
+<bottom-nav></bottom-nav>

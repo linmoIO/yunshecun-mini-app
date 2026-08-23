@@ -8,7 +8,13 @@
   var i = {};
   const g = {
       data: () => ({
-        navList: {},
+        navList: [
+          { logoA: "/images/reservationTabbarIcon.png", logoB: "/images/reservationTabbarIcon.png", isLarge: "F", desc: "预订", url: "/pages/travel/index" },
+          { logoA: "/images/indexTabBarIcon.png", logoB: "/images/indexTabBarIcon.png", isLarge: "F", desc: "在地体验", url: "/pages/trip/index" },
+          { logoA: "/images/Vector.png", logoB: "/images/Vector.png", isLarge: "F", desc: "全部产品", url: "/pages/travel/destinations" },
+          { logoA: "/images/table_bar_icon2.png", logoB: "/images/table_bar_icon2_selected.png", isLarge: "F", desc: "风物", url: "/pages/scenery/scenery" },
+          { logoA: "/images/profileTabbarIcon.png", logoB: "/images/profileTabbarIcon.png", isLarge: "F", desc: "我的", url: "/pages/member/memberCenter" }
+        ],
         curPage: !1
       }),
       props: {
@@ -41,7 +47,13 @@
         }
       },
       mounted() {
-        t.getStorage("navList") ? (this.navList = t.getStorage("navList"), this.setDefaultPage()) : this.getNav()
+        this.navList = [
+          { logoA: "/images/reservationTabbarIcon.png", logoB: "/images/reservationTabbarIcon.png", isLarge: "F", desc: "预订", url: "/pages/travel/index" },
+          { logoA: "/images/indexTabBarIcon.png", logoB: "/images/indexTabBarIcon.png", isLarge: "F", desc: "在地体验", url: "/pages/trip/index" },
+          { logoA: "/images/Vector.png", logoB: "/images/Vector.png", isLarge: "F", desc: "全部产品", url: "/pages/travel/destinations" },
+          { logoA: "/images/table_bar_icon2.png", logoB: "/images/table_bar_icon2_selected.png", isLarge: "F", desc: "风物", url: "/pages/scenery/scenery" },
+          { logoA: "/images/profileTabbarIcon.png", logoB: "/images/profileTabbarIcon.png", isLarge: "F", desc: "我的", url: "/pages/member/memberCenter" }
+        ], this.setDefaultPage()
       },
       created() {
         i = t.getStorage("config")

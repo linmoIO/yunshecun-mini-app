@@ -17,6 +17,12 @@
     color: #000
 }
 
+.search.data-v-2cc5369c { background: #f7f4ee; color: #302e29; font-family: "PingFang SC", "Microsoft YaHei", sans-serif; }
+.search .top--fixed.data-v-2cc5369c { background: #f7f4ee; border-bottom: 1rpx solid #e5dfd5; }
+.search .navbar-header .tab.data-v-2cc5369c { font-family: "STKaiti", "KaiTi", "FZKai-Z03", "PingFang SC", sans-serif; font-size: 32rpx; }
+.search .group-title.data-v-2cc5369c { font-family: "STKaiti", "KaiTi", "FZKai-Z03", "PingFang SC", sans-serif; font-size: 34rpx; color: #4d473e; }
+.search .group-content--grid .item.data-v-2cc5369c, .search .group-content--list .item.data-v-2cc5369c { background: #fff; border-color: #e5dfd5; font-size: 28rpx; }
+
 .w-baseBtn[disabled].data-v-2cc5369c {
     color: #000!important;
     opacity: .8

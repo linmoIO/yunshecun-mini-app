@@ -11,7 +11,12 @@
     banner2: PUBLIC_BASE_URL + "/uploads/images/云舍村-村落风景-03.webp",
     banner3: PUBLIC_BASE_URL + "/uploads/images/云舍村-村落风景-02.webp",
     banner4: PUBLIC_BASE_URL + "/uploads/images/云舍村-泛舟夜景.webp",
-    banner5: PUBLIC_BASE_URL + "/uploads/images/云舍村-村落风景-05.webp"
+    banner5: PUBLIC_BASE_URL + "/uploads/images/云舍村-村落风景-05.webp",
+    room: PUBLIC_BASE_URL + "/uploads/images/合院1-室内.jpg",
+    embroidery: PUBLIC_BASE_URL + "/uploads/images/非遗-桃源绣.jpg",
+    tea: PUBLIC_BASE_URL + "/uploads/images/擂茶宴.jpg",
+    farming: PUBLIC_BASE_URL + "/uploads/images/云舍村-稻田耕牛.jpg",
+    theatre: PUBLIC_BASE_URL + "/uploads/images/戏楼.jpg"
   };
 
   function createAd(id, name, fileUrl, path) {
@@ -30,9 +35,8 @@
         location: 1,
         infos: {
           topCarousel: [
-            createAd("home-top-1", "桃花源·云舍村", HOME_IMG.banner2, "/pages/scenery/culture-detail"),
-            createAd("home-top-2", "湖湘民居与庭院", HOME_IMG.banner2, "/pages/scenery/culture-detail"),
-            createAd("home-top-3", "水岸泛舟", HOME_IMG.banner4, "/pages/scenery/culture-detail")
+            createAd("home-top-1", "水上泛舟", HOME_IMG.banner4, "/pages/activity-guide/detail?activity=泛舟"),
+            createAd("home-top-2", "桃花源·云舍村舍", HOME_IMG.room, "/pagesC/order/hotel?hotelCode=DEMO-HOTEL-YUNSHE")
           ]
         }
       }, {
@@ -52,28 +56,28 @@
       }, {
         location: 4,
         infos: {
-          ul: [createAd("dest-ul", "归居院落", HOME_IMG.banner1, "/pages/scenery/culture-detail")],
-          ur1: [createAd("dest-ur1", "溪畔漫游", HOME_IMG.banner3, "/pages/scenery/culture-detail")],
-          ur2: [createAd("dest-ur2", "传统院落", HOME_IMG.banner2, "/pages/scenery/culture-detail")],
-          dl1: [createAd("dest-dl1", "水岸泛舟", HOME_IMG.banner4, "/pages/scenery/culture-detail")],
-          dl2: [createAd("dest-dl2", "雨后青石板路", HOME_IMG.banner5, "/pages/scenery/culture-detail")],
-          dr: [createAd("dest-dr", "水溪庭园", HOME_IMG.banner3, "/pages/scenery/culture-detail")]
+          ul: [createAd("dest-ul", "云舍村序章", HOME_IMG.banner1, "/pages/village/detail?part=序章")],
+          ur1: [createAd("dest-ur1", "建村与营造", HOME_IMG.banner3, "/pages/village/detail?part=营造")],
+          ur2: [createAd("dest-ur2", "东方村落文明", HOME_IMG.banner2, "/pages/village/detail?part=文明")],
+          dl1: [createAd("dest-dl1", "村落空间", HOME_IMG.banner4, "/pages/village/detail?part=空间")],
+          dl2: [createAd("dest-dl2", "四时景致", HOME_IMG.banner5, "/pages/village/detail?part=四时")],
+          dr: [createAd("dest-dr", "村落生活", HOME_IMG.banner3, "/pages/village/detail?part=生活")]
         }
       }, {
         location: 5,
         infos: {
-          up: [createAd("hot-up", "水溪与庭园", HOME_IMG.banner3, "/pages/scenery/culture-detail")],
-          down1: [createAd("hot-down-1", "雨后青石板路", HOME_IMG.banner5, "/pages/scenery/culture-detail")],
-          down2: [createAd("hot-down-2", "传统院落", HOME_IMG.banner2, "/pages/scenery/culture-detail")],
-          down3: [createAd("hot-down-3", "水岸泛舟", HOME_IMG.banner4, "/pages/scenery/culture-detail")],
-          down4: [createAd("hot-down-4", "苔痕庭院", HOME_IMG.banner1, "/pages/scenery/culture-detail")]
+          up: [createAd("hot-up", "水上泛舟", HOME_IMG.banner4, "/pages/activity-guide/detail?activity=泛舟")],
+          down1: [createAd("hot-down-1", "桃源绣娘刺绣课程", HOME_IMG.embroidery, "/pages/activity-guide/detail?activity=刺绣")],
+          down2: [createAd("hot-down-2", "擂茶与烧烤", HOME_IMG.tea, "/pages/activity-guide/detail?activity=擂茶")],
+          down3: [createAd("hot-down-3", "田园耕种", HOME_IMG.farming, "/pages/activity-guide/detail?activity=农事")],
+          down4: [createAd("hot-down-4", "戏曲表演", HOME_IMG.theatre, "/pages/activity-guide/detail?activity=戏曲")]
         }
       }, {
         location: 6,
         infos: {
           row1: [createAd("explore-1", "旅行攻略", HOME_IMG.banner2, "/pages/travel/destinations")],
           row2: [createAd("explore-2", "专属旅程", HOME_IMG.banner5, "/pages/trip/index")],
-          row3: [createAd("explore-3", "行程助手", HOME_IMG.banner3, "/pages/guide/guide")]
+          row3: [createAd("explore-3", "入住指南", HOME_IMG.banner3, "/pages/stay-guide/index")]
         }
       }, {
         location: 7,

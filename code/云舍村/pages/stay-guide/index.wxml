@@ -1,0 +1,38 @@
+<scroll-view class="guide-page" scroll-y wx:if="{{content}}">
+  <view class="guide-hero">
+    <image src="{{content.heroImage}}" mode="aspectFill" class="guide-hero-image" />
+    <view class="guide-hero-shade"></view>
+    <view class="guide-hero-copy">
+      <view class="guide-kicker">桃花源·云舍村</view>
+      <view class="guide-title">{{content.title}}</view>
+      <view class="guide-subtitle">{{content.subtitle}}</view>
+    </view>
+  </view>
+
+  <view class="guide-highlights" wx:if="{{content.highlights.length}}">
+    <view class="guide-highlight" wx:for="{{content.highlights}}" wx:key="title">
+      <view class="guide-highlight-title">{{item.title}}</view>
+      <view class="guide-highlight-text">{{item.text}}</view>
+    </view>
+  </view>
+
+  <view class="guide-sections" wx:for="{{content.sections}}" wx:key="title">
+    <view class="guide-section-title">{{item.title}}</view>
+    <view class="guide-section-body">
+      <view class="guide-item" wx:for="{{item.items}}" wx:for-item="detail" wx:key="*this">
+        <text class="guide-dot">·</text>{{detail}}
+      </view>
+      <view class="guide-note" wx:if="{{item.note}}">{{item.note}}</view>
+    </view>
+  </view>
+
+  <view class="guide-schedule-title">活动时间表</view>
+  <view class="guide-schedule" wx:for="{{content.schedules}}" wx:key="period">
+    <view class="guide-period">{{item.period}}</view>
+    <view class="guide-schedule-item" wx:for="{{item.items}}" wx:for-item="scheduleItem" wx:key="*this">{{scheduleItem}}</view>
+  </view>
+
+  <view class="guide-end">请以管家最终确认的行程单为准</view>
+  <bottom-nav></bottom-nav>
+</scroll-view>
+<view class="guide-empty" wx:elif="{{!loading}}">入住指南暂时无法加载，请稍后再试</view>

@@ -10,7 +10,7 @@
 }
 
 .destinations .top--fixed.data-v-c4667504 {
-    background-color: #fff;
+    background-color: #f7f4ee;
     position: sticky;
     top: 0;
     z-index: 10
@@ -46,7 +46,8 @@
 .destinations .tabs .tabs-scroll .tab.data-v-c4667504 {
     color: gray;
     display: inline-block;
-    font-size: 32rpx;
+    font-family: "STKaiti", "KaiTi", "FZKai-Z03", "PingFang SC", sans-serif;
+    font-size: 34rpx;
     height: 100%;
     line-height: 48rpx;
     margin-right: 24rpx;
@@ -78,7 +79,7 @@
 
 .destinations .second-tabs .tab.data-v-c4667504 {
     display: inline-block;
-    font-size: 24rpx;
+    font-size: 27rpx;
     height: 100%;
     line-height: 36rpx;
     margin: 0 8rpx;

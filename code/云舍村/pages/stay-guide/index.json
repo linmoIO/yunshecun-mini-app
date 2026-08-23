@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "入住指南",
+  "navigationBarTextStyle": "black",
+  "navigationBarBackgroundColor": "#f7f4ee",
+  "usingComponents": {
+    "bottom-nav": "../../components/bottomNav"
+  }
+}

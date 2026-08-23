@@ -164,14 +164,14 @@
         function qe() {
           g().then(e => {
             y(e).then(e => {
-              o.jAlert3("兑换成功"), ra()
+              ra()
             })
           })
         }
 
         function we() {
           b(Pe.value).then(e => {
-            Pe.value = "", o.jAlert3("兑换成功"), ra()
+            Pe.value = "", ra()
           })
         }
 

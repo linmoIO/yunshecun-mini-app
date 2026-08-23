@@ -299,6 +299,7 @@ const { success: _diyOk, error: _diyErr } = require('../utils/response');
 router.post('/diy/submit', optionalAuth, async (req, res) => {
   const { phone, name, destinations, startDate, duration, persons, budget, requirements } = req.body;
   if (!phone) return _diyErr(res, '请填写联系电话');
+  if (!/^1\d{10}$/.test(String(phone).trim())) return _diyErr(res, '手机号格式不正确');
   const memberId = req.member?.memberId || null;
   const nickname = req.member?.nickname || name || null;
   const record = await _diyPrisma.diyTripRequest.create({

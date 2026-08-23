@@ -32,7 +32,11 @@
       var self = this;
       api('GET', '/member/memberInfo.json').then(function(d) {
         var u = getUser();
-        self.setData({ info: Object.assign({}, u, d || {}) });
+        var info = Object.assign({}, u, d || {});
+        info.phone = info.phone || info.mobile || '';
+        info.mobile = info.mobile || info.phone || '';
+        self.setData({ info: info });
+        setUser(Object.assign({}, u, info));
       }).catch(function() { self.setData({ info: getUser() }); });
     },
 

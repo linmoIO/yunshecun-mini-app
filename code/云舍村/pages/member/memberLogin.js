@@ -49,7 +49,7 @@
           L = e.ref(!1),
           V = e.ref(!1),
           U = e.ref(),
-          E = e.ref("");
+          E = e.ref(`${c.config.baseUrlmall.replace(/\/api\/?$/, "")}/uploads/images/云舍村-苔藓院落.webp`);
         e.useRequest(s.api.advertisementPage, {
           defaultParams: [{
             hotelCode: c.config.hotelCode,
@@ -197,9 +197,13 @@
         }
 
         function K(o, r, n) {
+          // 微信小程序会将自定义响应头规范化为小写，兼容不同基础库/代理行为。
+          const headers = n || {},
+            accessToken = headers.accessToken || headers.accesstoken || headers["Access-Token"] || r && r.memberToken || "",
+            refreshToken = headers.refreshToken || headers.refreshtoken || headers["Refresh-Token"] || accessToken;
           f.setUserToken({
-            accessToken: n.accessToken,
-            refreshToken: n.refreshToken
+            accessToken,
+            refreshToken
           }), b.setStorage("user_new", r), e.index.showLoading({
             title: "账号绑定中...",
             mask: !0

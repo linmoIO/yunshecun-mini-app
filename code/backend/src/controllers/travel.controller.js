@@ -68,8 +68,8 @@ const getTravelProductList = async (req, res) => {
 const getTravelProductDetail = async (req, res) => {
   const { productCode, id } = req.query;
   const product = id
-    ? await prisma.travelProduct.findUnique({ where: { id: Number(id) } })
-    : await prisma.travelProduct.findUnique({ where: { productCode } });
+    ? await prisma.travelProduct.findFirst({ where: { id: Number(id), status: 1 } })
+    : await prisma.travelProduct.findFirst({ where: { productCode, status: 1 } });
   if (!product) return error(res, '产品不存在');
   return success(res, formatProduct(product));
 };
@@ -90,9 +90,10 @@ const saveOrder = async (req, res) => {
   const couponNo = body.couponNo;
 
   if (!productCode) return error(res, '缺少产品编码');
+  if (contactPhone && !/^1\d{10}$/.test(String(contactPhone).trim())) return error(res, '手机号格式不正确');
 
   const product = await prisma.travelProduct.findFirst({
-    where: { OR: [{ productCode }, { id: isNaN(productCode) ? -1 : Number(productCode) }] },
+    where: { status: 1, OR: [{ productCode }, { id: isNaN(productCode) ? -1 : Number(productCode) }] },
   });
   if (!product) return error(res, '产品不存在');
 

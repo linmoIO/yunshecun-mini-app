@@ -27,11 +27,14 @@
       title: '定制专属行程',
       intro: '',
       content: '',
+      heroImage: '',
       submitting: false,
       form: { destinations: '', startDate: '', duration: '', persons: '', budget: '', requirements: '', name: '', phone: '' },
     },
 
     onLoad: function() {
+      var publicBase = BASE.replace(/\/api\/?$/, '');
+      this.setData({ heroImage: publicBase + '/uploads/images/云舍村-航拍全景.jpg' });
       // 预填用户信息
       try {
         var u = wx.getStorageSync('user');
@@ -72,7 +75,7 @@
       post('/diy/submit', f).then(function() {
         self.setData({ submitting: false });
         wx.showModal({
-          title: '提交成功 🎉',
+          title: '已收到定制需求',
           content: '感谢您的信任！我们的专属顾问将在1个工作日内联系您，为您量身定制专属行程。',
           confirmText: '好的', showCancel: false,
           success: function() { wx.navigateBack(); }

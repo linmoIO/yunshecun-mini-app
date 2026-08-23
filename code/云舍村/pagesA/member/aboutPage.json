@@ -1,1 +1,6 @@
-{"navigationBarTitleText":"关于云舍村","navigationBarBackgroundColor":"#1a1a1a","navigationBarTextStyle":"white"}
+{
+  "navigationBarTitleText": "关于云舍村",
+  "navigationBarBackgroundColor": "#f7f4ee",
+  "navigationBarTextStyle": "black",
+  "usingComponents": { "bottom-nav": "../../components/bottomNav" }
+}

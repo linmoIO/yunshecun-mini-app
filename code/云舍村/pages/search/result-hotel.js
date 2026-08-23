@@ -63,9 +63,9 @@
           }, 300), q())
         }
         return e.onLoad(e => {
-          (null == e ? void 0 : e.startDate) && (null == e ? void 0 : e.endDate) && (l.value = e.startDate, c.value = e.endDate), (null == e ? void 0 : e.keyword) && (i.value = e.keyword, setTimeout(() => {
-            g.value = !0, _()
-          }, 500))
+          (null == e ? void 0 : e.startDate) && (null == e ? void 0 : e.endDate) && (l.value = e.startDate, c.value = e.endDate), (null == e ? void 0 : e.keyword) && (i.value = e.keyword), setTimeout(() => {
+            g.value = !0, i.value && _()
+          }, 500)
         }), (t, s) => ({
           a: e.o(e.unref(d)),
           b: e.o(k),
@@ -108,7 +108,8 @@
               height: e.unref(u.pxTransform)(24, 375)
             }
           }),
-          n: "resultView" === n.value ? "#f8f8f8" : ""
+          n: "resultView" === n.value ? "#f8f8f8" : "",
+          o: "resultView" === n.value && !v.value && 0 === (e.unref(m) || []).length
         })
       }
     }),

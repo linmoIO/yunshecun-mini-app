@@ -1,0 +1,27 @@
+page { background: #f7f4ee; color: #252522; font-family: "PingFang SC", "Microsoft YaHei", sans-serif; }
+.village-page { height: 100vh; box-sizing: border-box; padding-bottom: 140rpx; }
+.village-hero { height: 560rpx; position: relative; overflow: hidden; }
+.village-hero-image { width: 100%; height: 100%; display: block; }
+.village-hero-shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.06), rgba(0,0,0,.58)); }
+.village-hero-copy { position: absolute; left: 44rpx; right: 44rpx; bottom: 56rpx; color: #fff; }
+.village-kicker { font-size: 26rpx; letter-spacing: 4rpx; opacity: .9; }
+.village-title { margin-top: 18rpx; font-family: "STKaiti", "KaiTi", "FZKai-Z03", "PingFang SC", sans-serif; font-size: 50rpx; line-height: 1.25; font-weight: 600; }
+.village-subtitle { margin-top: 16rpx; font-size: 26rpx; line-height: 1.6; opacity: .9; }
+.village-intro { margin: 40rpx 36rpx 16rpx; font-size: 32rpx; line-height: 1.85; color: #393832; }
+.village-heading { display: flex; align-items: baseline; justify-content: space-between; margin: 46rpx 36rpx 24rpx; }
+.village-heading-title { font-family: "STKaiti", "KaiTi", "FZKai-Z03", "PingFang SC", sans-serif; font-size: 40rpx; font-weight: 600; line-height: 1.4; }
+.village-heading-note { font-size: 26rpx; color: #70695f; }
+.part-list { padding: 0 28rpx; }
+.part-item { display: flex; min-height: 250rpx; margin-bottom: 24rpx; overflow: hidden; background: #fff; border-radius: 12rpx; box-shadow: 0 8rpx 28rpx rgba(55,46,32,.08); }
+.part-cover { width: 290rpx; min-height: 250rpx; height: auto; flex: none; }
+.part-copy { padding: 28rpx 26rpx; flex: 1; min-width: 0; }
+.part-index { font-size: 26rpx; color: #8b765e; letter-spacing: 2rpx; }
+.part-title { margin-top: 8rpx; font-family: "STKaiti", "KaiTi", "FZKai-Z03", "PingFang SC", sans-serif; font-size: 34rpx; font-weight: 600; line-height: 1.4; }
+.part-range { margin-top: 6rpx; font-size: 26rpx; color: #70695f; }
+.part-summary { margin-top: 14rpx; font-size: 29rpx; line-height: 1.8; color: #5f5b53; }
+.part-action { margin-top: 14rpx; font-size: 26rpx; color: #776044; }
+.part-arrow { margin-left: 8rpx; font-size: 30rpx; }
+.village-empty { margin: 160rpx 36rpx; text-align: center; color: #8b877e; }
+.village-contact { display: flex; align-items: center; justify-content: space-between; margin: 48rpx 36rpx 0; padding-top: 28rpx; border-top: 1rpx solid #ded8cc; font-size: 28rpx; color: #5d554a; }
+.contact-button { padding: 14rpx 24rpx; border: 1rpx solid #5d554a; border-radius: 6rpx; color: #3f382e; }
+.village-bottom-space { height: 80rpx; }

@@ -3,35 +3,18 @@
 const router = require('express').Router();
 const ctrl = require('../controllers/shop.controller');
 const { authMiddleware, optionalAuth } = require('../middleware/auth');
-const config = require('../config');
-
-const toPublicAssetUrl = (value, publicBaseUrl) => {
-  if (!value || typeof value !== 'string') return value || '';
-  if (/^https?:\/\//i.test(value)) return value;
-  if (!value.startsWith('/uploads/')) return value;
-  const base = (publicBaseUrl || config.publicBaseUrl || `http://localhost:${config.port || 3000}`).replace(/\/$/, '');
-  return `${base}${value}`;
-};
 
 // 公开
 router.get('/shop/listGoods.json', optionalAuth, ctrl.listGoods);
 router.get('/shop/goodsDetail.json', optionalAuth, ctrl.goodsDetail);
 router.get('/shop/goodsSku.json', optionalAuth, ctrl.goodsSku);
 router.get('/shop/getShopButtonConfig.json', async (req, res) => {
-  // 读取后台配置的中间大按钮Logo
-  const { PrismaClient: _PC } = require('@prisma/client');
-  const _pc = new _PC();
-  const [logoCfg, publicBaseCfg] = await Promise.all([
-    _pc.sysConfig.findFirst({ where: { key: 'nav_logo_center' } }).catch(() => null),
-    _pc.sysConfig.findFirst({ where: { key: 'public_base_url' } }).catch(() => null),
-  ]);
-  const centerLogo = toPublicAssetUrl(logoCfg?.value || '', publicBaseCfg?.value || '');
   const navItems = [
-    { logoA: '', logoB: '', isLarge: 'F', desc: '预订', url: '/pages/travel/index' },
-    { logoA: '', logoB: '', isLarge: 'F', desc: '在地体验', url: '/pages/trip/index' },
-    { logoA: centerLogo, logoB: centerLogo, isLarge: 'T', desc: '全部产品', url: '/pages/travel/destinations' },
-    { logoA: '', logoB: '', isLarge: 'F', desc: '风物', url: '/pages/scenery/scenery' },
-    { logoA: '', logoB: '', isLarge: 'F', desc: '我的', url: '/pages/member/memberCenter' },
+    { logoA: '/images/reservationTabbarIcon.png', logoB: '/images/reservationTabbarIcon.png', isLarge: 'F', desc: '预订', url: '/pages/travel/index' },
+    { logoA: '/images/indexTabBarIcon.png', logoB: '/images/indexTabBarIcon.png', isLarge: 'F', desc: '在地体验', url: '/pages/trip/index' },
+    { logoA: '/images/Vector.png', logoB: '/images/Vector.png', isLarge: 'F', desc: '全部产品', url: '/pages/travel/destinations' },
+    { logoA: '/images/table_bar_icon2.png', logoB: '/images/table_bar_icon2_selected.png', isLarge: 'F', desc: '风物', url: '/pages/scenery/scenery' },
+    { logoA: '/images/profileTabbarIcon.png', logoB: '/images/profileTabbarIcon.png', isLarge: 'F', desc: '我的', url: '/pages/member/memberCenter' },
   ];
   res.json({ code: 0, result: 1, retVal: [{ info: JSON.stringify(navItems) }] });
 });

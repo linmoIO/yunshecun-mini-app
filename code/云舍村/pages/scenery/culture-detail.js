@@ -2,12 +2,13 @@ Page({
   data: {
     heroImage: '',
     contentImage: '',
-    title: '这里是云舍村',
+    title: '东方村落文明的一种诠释',
     paragraphs: [
-      '云舍村位于湖南省桃源县西南水溪附近，是以湖湘传统村落为意境营造的归居式村落。',
-      '村内六十余栋院落掩映于茂林修竹之间，青石板路、溪流、园林与传统民居共同构成一处可居、可游、可感知的东方村落空间。',
+      '村落是我们最早的家园，是扎在大地上最深的根。',
+      '作为东方村落文明的一种诠释，云舍村秉承着对中华传统文化的尊崇和极具匠心的追寻，致力于保护和传承东方的村落文明。以陶渊明笔下的《桃花源记》与刘禹锡的《陋室铭》为意境，呈现出千百年来历久弥新的民间工艺与智慧，赋予无尽薪火相传的民间文化遗产以时代价值，使之焕发新生，为当代和未来的造访者再现梦中的世外桃源……',
+      '保护与传承东方村落文明是云舍村的出发点和落脚点，也贯穿了村落营造的全过程。',
     ],
-    address: '湖南省常德市桃花源风景区',
+    address: '湖南省桃源县桃花源镇桃花源村二组息楼西北方向880米',
     phone: '0736-7070666',
     gallery: [],
   },
@@ -16,8 +17,8 @@ Page({
     const base = cfg.config.baseUrlmall || 'http://localhost:3000/api';
     const publicBase = base.replace(/\/api\/?$/, '');
     const fallback = {
-      heroImage: publicBase + '/images/云舍村-苔藓院落.webp',
-      contentImage: publicBase + '/images/云舍村-村落风景-02.webp',
+      heroImage: publicBase + '/uploads/images/云舍村-苔藓院落.webp',
+      contentImage: publicBase + '/uploads/images/云舍村-青石板古道.jpg',
     };
     this.setData(fallback);
     wx.request({
@@ -25,7 +26,14 @@ Page({
       method: 'GET',
       success: (res) => {
         const content = res.data && res.data.code === 0 && res.data.data && res.data.data.content;
-        if (content && typeof content === 'object') this.setData(content);
+        if (content && typeof content === 'object') {
+          this.setData({
+            ...content,
+            contentImage: content.contentImage || content.image || fallback.contentImage,
+            paragraphs: Array.isArray(content.paragraphs) ? content.paragraphs : [],
+            gallery: Array.isArray(content.gallery) ? content.gallery : [],
+          });
+        }
       },
     });
   },

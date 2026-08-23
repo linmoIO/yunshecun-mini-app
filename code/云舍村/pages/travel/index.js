@@ -93,7 +93,7 @@
               const p = d.get(3);
               (null == (t = null == p ? void 0 : p.homePageIntroduction) ? void 0 : t.length) && (h.value.whatIs = p.homePageIntroduction.map(e => {
                 var n;
-                const o = (null == e ? void 0 : e.name) ? e.name.replace(/松赞/g, "云舍村") : "",
+                const o = (null == e ? void 0 : e.name) || "",
                   i = "/pages/scenery/culture-detail";
                 return {
                   ...e,
@@ -193,7 +193,7 @@
         });
         const I = {
           title: "云舍村与你相遇",
-          imageUrl: "https://dsplatweb.oss-cn-chengdu.aliyuncs.com/songzan/images/songzan.jpg"
+          imageUrl: "/images/reservationTabbarIcon.png"
         };
         return e.onShareAppMessage(() => I), e.onShareTimeline(() => I), (n, o) => {
           var i, u, r, d, v, p, m, f, g, b, y, T, _, M, j, I, F, P, L, E, B, z, D, G, O, V, N, $, H, K, J, Q, W, X, Y, Z, ee, le, ne, ae, oe, ie, te, ue, re, de, ve, se, pe, me, fe, ce, he, ge, be, ye, Te, _e, Ue, we, Me, je, ke, Se, qe, Ae, xe, Ce, Re, Ie, Fe, Pe, Le, Ee, Be, ze, De, Ge, Oe, Ve, Ne, $e;

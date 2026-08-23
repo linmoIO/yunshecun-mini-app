@@ -1,0 +1,20 @@
+<scroll-view class="activity-page" scroll-y wx:if="{{activity}}">
+  <view class="activity-hero">
+    <image class="activity-image" src="{{activity.image}}" mode="aspectFill" />
+    <view class="activity-shade"></view>
+    <view class="activity-heading">
+      <view class="activity-group">{{activity.group}}</view>
+      <view class="activity-title">{{activity.title}}</view>
+    </view>
+  </view>
+  <view class="activity-content">
+    <view class="content-title">活动说明</view>
+    <view class="activity-detail" wx:for="{{activity.details}}" wx:key="*this">
+      <text class="activity-dot">·</text>
+      <text>{{item}}</text>
+    </view>
+    <view class="guide-link" bindtap="openGuide">查看完整入住指南</view>
+  </view>
+</scroll-view>
+<view class="activity-empty" wx:elif="{{!loading}}">活动内容暂时无法加载，请返回重试</view>
+<bottom-nav></bottom-nav>

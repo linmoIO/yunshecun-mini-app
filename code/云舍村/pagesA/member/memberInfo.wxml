@@ -55,6 +55,10 @@
       <text class="mi-label">积分</text>
       <text class="mi-val">{{info.points||0}}</text>
     </view>
+    <view class="mi-item">
+      <text class="mi-label">会员编号</text>
+      <text class="mi-val mi-id">{{info.memberId||'未登录'}}</text>
+    </view>
   </view>
 
   <!-- 绑定手机号弹出层 -->

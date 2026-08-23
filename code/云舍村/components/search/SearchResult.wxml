@@ -8,6 +8,6 @@
     </view>
     <view class="empty data-v-2978d863" wx:else>
         <image class="empty-image data-v-2978d863" src="{{i}}"></image>
-        <text class="empty-title data-v-2978d863">更多产品敬请期待</text>
+        <text class="empty-title data-v-2978d863">未找到相关内容</text>
     </view>
 </view>

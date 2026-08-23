@@ -317,7 +317,7 @@
             c: V.value,
             d: j.value
           }, j.value ? {
-            e: e.unref(v).headPortraitUrl ? e.unref(v).headPortraitUrl : "https://dsplatweb.oss-cn-chengdu.aliyuncs.com/songzan/images/avatar.png",
+            e: e.unref(v).headPortraitUrl ? e.unref(v).headPortraitUrl : "/images/logo.png",
             f: e.t(e.unref(v).nickname ? e.unref(v).nickname : "云舍村家人"),
             g: e.o(e => E("/pagesA/member/memberInfo", "memberInfo"))
           } : {
@@ -355,7 +355,7 @@
             B: e.f(T.value, (t, a, o) => e.e({
               a: a < N.value
             }, a < N.value ? e.e({
-              b: t.link ? e.unref(l.imageMogr2)(t.link, "96x") : "https://dsplatweb.oss-cn-chengdu.aliyuncs.com/songzan/images/defaultImage.png",
+              b: t.link ? e.unref(l.imageMogr2)(t.link, "96x") : "/images/logo.png",
               c: e.t(t.title),
               d: e.t(t.orderStaDesc),
               e: t.countTime

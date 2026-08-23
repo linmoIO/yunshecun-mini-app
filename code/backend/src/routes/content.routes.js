@@ -199,7 +199,7 @@ async function handleInterfaceTransfer(req, res) {
     });
     const result = hotels.map(h => {
       const minRoomPrice = h.roomTypes.reduce((m, r) => Math.min(m, r.price || 999999), 999999);
-      const effectiveMinPrice = h.priceFrom || (minRoomPrice === 999999 ? 0 : minRoomPrice);
+      const effectiveMinPrice = minRoomPrice === 999999 ? 0 : minRoomPrice;
 
       const productRoomList = h.roomTypes.map(r => {
         const roomPrice = Number(r.price) || 0;
@@ -221,7 +221,7 @@ async function handleInterfaceTransfer(req, res) {
           canBook,
           bedType: r.bedType || '',
           area: r.area ? `${r.area}㎡` : '',
-          capacity: r.capacity || 2,
+          capacity: r.capacity == null ? null : r.capacity,
         };
 
         return {
@@ -230,7 +230,7 @@ async function handleInterfaceTransfer(req, res) {
           roomDescript: r.name,    // roomList.js 组件读 t.roomDescript 作为房间名称
           bedType: r.bedType || '大床',
           area: r.area ? `${r.area}㎡` : '',
-          capacity: r.capacity || 2,
+          capacity: r.capacity == null ? null : r.capacity,
           gcRoomExtra: {
             logo: logoImg,
             picturesList: roomImages,
@@ -286,10 +286,13 @@ async function handleInterfaceTransfer(req, res) {
           phone: h.phone || '',
           logo: h.coverImage || '',
           description: h.description || '',
-          starLevel: h.starLevel || 5,
+          htmlInfo: h.description || '',
+          starLevel: h.starLevel == null ? null : h.starLevel,
         },
+        gcHotelExtra: { logo: h.coverImage || '' },
         minPrice: effectiveMinPrice,
         productRoomList,
+        roomImagesList: h.coverImage ? [{ pictures: h.coverImage }] : [],
       };
     });
     return res.json({ code: 0, result: 1, retVal: { result: 0, retVal: result } });
@@ -302,7 +305,7 @@ async function handleInterfaceTransfer(req, res) {
 
   if (method.includes('getPriceDefine')) {
     const activity = query.activityCode
-      ? await _prisma.activity.findUnique({ where: { activityCode: query.activityCode } })
+      ? await _prisma.activity.findFirst({ where: { activityCode: query.activityCode, status: 1 } })
       : null;
     const price = Number(activity?.price || 0);
     return res.json({
@@ -325,15 +328,19 @@ async function handleInterfaceTransfer(req, res) {
 
   // 酒店列表（按状态/全量）
   if (method.includes('getGcHotelListByStatus') || method.includes('hotelListAllNew')) {
-    const hotels = await _prisma.hotel.findMany({ where: { status: 1 }, orderBy: { sortOrder: 'asc' } });
+    const hotels = await _prisma.hotel.findMany({
+      where: { status: 1 },
+      include: { roomTypes: { where: { status: 1 }, orderBy: { price: 'asc' }, take: 1 } },
+      orderBy: { sortOrder: 'asc' },
+    });
     return res.json({ code: 0, result: 1, retVal: { retVal: hotels.map(h => ({
       hotelCode: h.hotelCode,
       hotelName: h.name,
       hotelPic: h.coverImage || '',
       city: h.city || '',
       address: h.address || '',
-      star: h.starLevel || 5,
-      priceMin: h.priceFrom || 0,
+      star: h.starLevel == null ? null : h.starLevel,
+      priceMin: h.roomTypes?.[0]?.price || 0,
     })) } });
   }
 
@@ -342,6 +349,7 @@ async function handleInterfaceTransfer(req, res) {
     const kw = query.hotelName || '';
     const hotels = await _prisma.hotel.findMany({
       where: { status: 1, ...(kw && { name: { contains: kw } }) },
+      include: { roomTypes: { where: { status: 1 }, orderBy: { price: 'asc' }, take: 1 } },
       orderBy: { sortOrder: 'asc' }, take: 20,
     });
     return res.json({ code: 0, result: 1, retVal: { retVal: hotels.map(h => ({
@@ -350,8 +358,8 @@ async function handleInterfaceTransfer(req, res) {
       hotelPic: h.coverImage || '',
       city: h.city || '',
       address: h.address || '',
-      star: h.starLevel || 5,
-      priceMin: h.priceFrom || 0,
+      star: h.starLevel == null ? null : h.starLevel,
+      priceMin: h.roomTypes?.[0]?.price || 0,
     })) } });
   }
 
@@ -462,7 +470,7 @@ async function handleInterfaceTransfer(req, res) {
     // 方式1：用 travelType 查产品价格
     if (!unitPrice && travelType) {
       const prod = await _prisma.travelProduct.findFirst({
-        where: { OR: [{ productCode: travelType }, { productCode: travelType.split('-')[0] }] }
+        where: { status: 1, OR: [{ productCode: travelType }, { productCode: travelType.split('-')[0] }] }
       });
       unitPrice = prod?.price || 0;
     }
@@ -523,7 +531,7 @@ async function handleInterfaceTransfer(req, res) {
   if (method.includes('listDailyDetailWithTag') || method.includes('listTravelProductDailyDetail')) {
     const travelType = query.travelType || '';
     const product = travelType ? await _prisma.travelProduct.findFirst({
-      where: { OR: [{ productCode: travelType }, { id: isNaN(travelType) ? -1 : Number(travelType) }] }
+      where: { status: 1, OR: [{ productCode: travelType }, { id: isNaN(travelType) ? -1 : Number(travelType) }] }
     }) : null;
     const price = product?.price || 0;
     const duration = product?.duration || 5;
@@ -681,9 +689,14 @@ async function getProductShelf(req, res) {
   if (wantHotel) {
     const where = { status: 1 };
     if (keyword) where.name = { contains: keyword };
-    const hotels = await _prisma.hotel.findMany({ where, orderBy: [{ sortOrder: 'asc' }, { createdAt: 'desc' }], take: TAKE });
+    const hotels = await _prisma.hotel.findMany({
+      where,
+      include: { roomTypes: { where: { status: 1 }, orderBy: { price: 'asc' }, take: 1 } },
+      orderBy: [{ sortOrder: 'asc' }, { createdAt: 'desc' }],
+      take: TAKE,
+    });
     hotels.forEach(h => {
-      const minPrice = h.priceFrom || 0;
+      const minPrice = h.roomTypes?.[0]?.price || 0;
       results.push({
         productId: h.hotelCode, productType: 'hotel', categorySub: 'Hotel',
         travelType: null, hotelCode: h.hotelCode,

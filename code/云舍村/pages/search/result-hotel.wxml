@@ -11,6 +11,7 @@
         <auto-complete bind:__l="__l" class="data-v-7803decc" uI="7803decc-3" uP="{{i}}" wx:if="{{i}}"></auto-complete>
         <view class="search-result data-v-7803decc" hidden="{{!k}}">
             <product-card-list bind:__l="__l" class="data-v-7803decc" uI="7803decc-4" uP="{{j}}" wx:if="{{j}}"></product-card-list>
+            <view class="search-empty data-v-7803decc" wx:if="{{o}}">未找到相关酒店</view>
         </view>
     </view>
     <safe-area bind:__l="__l" class="data-v-7803decc" uI="7803decc-5" uP="{{m}}" wx:if="{{m}}"></safe-area>

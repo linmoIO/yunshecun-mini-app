@@ -69,7 +69,6 @@
       } = t.useRequest(s.search, {
         manual: !0,
         onSuccess(e) {
-          if (null == e ? void 0 : e.retVal) {
             const {
               journeyList: t,
               destPackageList: r,
@@ -85,7 +84,6 @@
               DayActivity: h
             };
             f.value = v, null == i || i(v)
-          }
         }
       }),
       p = e.ref(!1),

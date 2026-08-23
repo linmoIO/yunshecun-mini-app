@@ -107,6 +107,7 @@
             } : {}, {
               o: "image" === l.type,
               q: "swiper-" + i,
+              s: l.name || "",
               r: e.o(e => function(e, l) {
                 var n, i, o, r;
                 u.adaptor.sendEvent("click_book_page_subject_control", (null == e ? void 0 : e.trackingData) || {}), a.qdTracker.track("mini_homepage_banner_click", (null == e ? void 0 : e.trackingData) || {}), "video" !== e.type ? "image" === e.type && e.path && t.goPage(e.path) : "video" !== (null == (n = s.list[l]) ? void 0 : n.type) || h.value || null == (r = null == (o = null == (i = g.value[l]) ? void 0 : i.context) ? void 0 : o.play) || r.call(o)

@@ -79,7 +79,7 @@ model Hotel {
   city         String?
   province     String?
   phone        String?
-  description  String?
+  description  String?        @db.Text
   coverImage   String?
   images       String?       @db.Text
   videoUrl     String?

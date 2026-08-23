@@ -87,7 +87,7 @@
         </block>
     </block>
     <view class="memberCenterLogo data-v-ad1bceae">
-        <image class="img data-v-ad1bceae" src="https://dsplatweb.oss-cn-chengdu.aliyuncs.com/songzan/images/memberCenterLogo.png"></image>
+        <image class="img data-v-ad1bceae" src="/images/logo.png"></image>
     </view>
     <bottom-nav bind:__l="__l" class="data-v-ad1bceae" uI="ad1bceae-3"></bottom-nav>
     <kf-dialog bind:__l="__l" class="r data-v-ad1bceae" uI="ad1bceae-4" uP="{{aa}}" uR="kf" wx:if="{{aa}}"></kf-dialog>

@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "云舍村活动",
+  "navigationBarTextStyle": "black",
+  "navigationBarBackgroundColor": "#f7f4ee",
+  "usingComponents": {
+    "bottom-nav": "../../components/bottomNav"
+  }
+}

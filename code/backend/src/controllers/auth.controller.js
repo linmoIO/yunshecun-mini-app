@@ -455,7 +455,9 @@ const refreshToken = async (req, res) => {
     const newToken = generateToken(member);
     await prisma.member.update({ where: { id: member.id }, data: { memberToken: newToken } });
 
-    return success(res, { accessToken: newToken, tokenType: 'Bearer' });
+    // 前端 tokenManager 需要成对保存 access/refresh token；当前 JWT 无独立刷新令牌，
+    // 使用同一个轮换后的 JWT 维持现有会话契约。
+    return success(res, { accessToken: newToken, refreshToken: newToken, tokenType: 'Bearer' });
   } catch (e) {
     return error(res, 'Token 无效');
   }

@@ -18,7 +18,8 @@
     </view>
     <view class="about-section">
       <view class="about-sec-title">联系我们</view>
-      <view class="about-sec-text">地址：湖南省常德市桃花源风景区\n咨询电话：0736-7070666</view>
+      <view class="about-sec-text">地址：湖南省桃源县桃花源镇桃花源村二组息楼西北方向880米</view>
+      <view class="about-phone" bindtap="callPhone">拨打咨询电话 0736-7070666</view>
     </view>
   </view>
   <view class="about-links">
@@ -30,5 +31,6 @@
     <view class="about-sep">|</view>
     <view class="about-link" bindtap="goChat">联系客服</view>
   </view>
-  <view style="height:60rpx"></view>
+  <view style="height:160rpx"></view>
 </scroll-view>
+<bottom-nav></bottom-nav>

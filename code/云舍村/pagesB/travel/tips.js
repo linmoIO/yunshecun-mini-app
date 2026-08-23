@@ -91,8 +91,8 @@
               returnUrl: n,
               ...i
             }).then(e => {
-              p.value = !1, 1 == e.result ? setTimeout(() => {
-                G(), l.goPage(e.msg, !0)
+                p.value = !1, 1 == e.result ? setTimeout(() => {
+                G(), l.goPage(typeof e.msg === "string" && e.msg.indexOf("/") === 0 ? e.msg : n, !0)
               }, 1e3) : t.jAlert3(e.msg)
             })
           })()

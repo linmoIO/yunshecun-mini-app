@@ -37,5 +37,12 @@
     goChat() {
       wx.navigateTo({ url: '/pagesA/other/chat' });
     },
+
+    callPhone() {
+      wx.makePhoneCall({
+        phoneNumber: '0736-7070666',
+        fail: function() { wx.showToast({ title: '暂无法拨打，请稍后重试', icon: 'none' }); },
+      });
+    },
   });
 }();

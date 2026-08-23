@@ -1,0 +1,38 @@
+<scroll-view class="village-page" scroll-y>
+  <view class="village-hero" wx:if="{{heroImage}}">
+    <image class="village-hero-image" src="{{heroImage}}" mode="aspectFill" />
+    <view class="village-hero-shade"></view>
+    <view class="village-hero-copy">
+      <view class="village-kicker">桃花源·云舍村</view>
+      <view class="village-title">{{title}}</view>
+      <view class="village-subtitle">{{subtitle}}</view>
+    </view>
+  </view>
+
+  <view class="village-intro" wx:if="{{intro}}">{{intro}}</view>
+
+  <view class="village-heading">
+    <view class="village-heading-title">村落八章</view>
+    <view class="village-heading-note">从营造、空间到四时生活，完整认识云舍村</view>
+  </view>
+
+  <view class="part-list" wx:if="{{parts.length}}">
+    <view class="part-item" wx:for="{{parts}}" wx:key="id" data-id="{{item.id}}" bindtap="openPart">
+      <image class="part-cover" src="{{item.cover}}" mode="aspectFill" />
+      <view class="part-copy">
+        <view class="part-index">{{item.displayIndex}}</view>
+        <view class="part-title">{{item.title}}</view>
+        <view class="part-summary">{{item.summary}}</view>
+        <view class="part-action">阅读本章 <text class="part-arrow">→</text></view>
+      </view>
+    </view>
+  </view>
+
+  <view class="village-empty" wx:elif="{{!loading}}">内容暂时无法加载，请稍后再试</view>
+  <view class="village-contact" wx:if="{{contact.phone}}">
+    <view>咨询电话 {{contact.phone}}</view>
+    <view class="contact-button" bindtap="callPhone">联系管家</view>
+  </view>
+  <view class="village-bottom-space"></view>
+</scroll-view>
+<bottom-nav></bottom-nav>

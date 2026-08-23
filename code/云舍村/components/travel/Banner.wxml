@@ -14,6 +14,11 @@
             </view>
             <view class="swiper-item data-v-1a32bab8" wx:elif="{{item.o}}">
                 <image lazyLoad class="swiper-item__image data-v-1a32bab8" mode="aspectFill" src="{{item.p}}"></image>
+                <view class="swiper-item__shade data-v-1a32bab8"></view>
+                <view class="swiper-item__copy data-v-1a32bab8" wx:if="{{item.s}}">
+                    <view class="swiper-item__title data-v-1a32bab8">{{item.s}}</view>
+                    <view class="swiper-item__hint data-v-1a32bab8">点击了解云舍村</view>
+                </view>
             </view>
         </swiper-item>
     </swiper>

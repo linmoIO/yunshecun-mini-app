@@ -21,9 +21,6 @@
         </view>
         <view class="{{['data-v-c4667504',n&&'hidden']}}">
             <product-card-list bind:__l="__l" class="data-v-c4667504" uI="c4667504-2" uP="{{k}}" wx:if="{{k}}"></product-card-list>
-            <view class="ad-custom-travel data-v-c4667504">
-                <image bindtap="{{m}}" class="ad-custom-travel__image data-v-c4667504" mode="widthFix" src="{{l}}"></image>
-            </view>
         </view>
         <view class="{{['data-v-c4667504',p&&'hidden']}}">
             <error-block bind:__l="__l" class="data-v-c4667504" uI="c4667504-3" uP="{{o}}" wx:if="{{o}}"></error-block>

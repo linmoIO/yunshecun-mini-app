@@ -62,10 +62,11 @@
         accessToken: i,
         refreshToken: k
       } = function(e) {
-        var r, n, o, s;
+        var r, n;
+        const headers = (null == e ? void 0 : e.headers) || {};
         return {
-          accessToken: (null == (r = null == e ? void 0 : e.headers) ? void 0 : r.accessToken) || (null == (n = null == e ? void 0 : e.data) ? void 0 : n.accessToken) || (null == e ? void 0 : e.accessToken),
-          refreshToken: (null == (o = null == e ? void 0 : e.headers) ? void 0 : o.refreshToken) || (null == (s = null == e ? void 0 : e.data) ? void 0 : s.refreshToken) || (null == e ? void 0 : e.refreshToken)
+          accessToken: headers.accessToken || headers.accesstoken || headers["Access-Token"] || (null == (r = null == e ? void 0 : e.data) ? void 0 : r.accessToken) || (null == e ? void 0 : e.accessToken),
+          refreshToken: headers.refreshToken || headers.refreshtoken || headers["Refresh-Token"] || (null == (n = null == e ? void 0 : e.data) ? void 0 : n.refreshToken) || (null == e ? void 0 : e.refreshToken)
         }
       }(a);
       return i && k ? (r.setUserToken({

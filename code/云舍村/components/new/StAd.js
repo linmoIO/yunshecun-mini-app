@@ -146,7 +146,8 @@
             rounded: o.rounded
           }),
           x: e.s(o.customStyle),
-          y: e.o(g)
+          y: e.o(g),
+          z: o.trackingData && o.trackingData.banner_name
         }) : {})
       }
     }),

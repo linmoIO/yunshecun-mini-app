@@ -39,6 +39,7 @@
     height: 100%;
     -o-object-fit: cover;
     object-fit: cover;
+    position: relative;
     width: 100%
 }
 
@@ -110,4 +111,41 @@
     -o-object-fit: cover;
     object-fit: cover;
     width: 100%
+}
+
+.home-banner .home-swiper .swiper-item__shade.data-v-1a32bab8 {
+    background: linear-gradient(180deg, rgba(20, 18, 13, 0) 45%, rgba(20, 18, 13, .7) 100%);
+    bottom: 0;
+    left: 0;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 11;
+}
+
+.home-banner .home-swiper .swiper-item__copy.data-v-1a32bab8 {
+    bottom: 108rpx;
+    color: #fff;
+    left: 40rpx;
+    pointer-events: none;
+    position: absolute;
+    right: 40rpx;
+    z-index: 12;
+}
+
+.home-banner .home-swiper .swiper-item__title.data-v-1a32bab8 {
+    font-family: "STKaiti", "KaiTi", "FZKai-Z03", "PingFang SC", sans-serif;
+    font-size: 52rpx;
+    font-weight: 600;
+    line-height: 1.25;
+    text-shadow: 0 2rpx 8rpx rgba(0,0,0,.35);
+}
+
+.home-banner .home-swiper .swiper-item__hint.data-v-1a32bab8 {
+    font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+    font-size: 26rpx;
+    line-height: 1.6;
+    margin-top: 12rpx;
+    opacity: .92;
 }

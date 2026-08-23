@@ -26,4 +26,5 @@
   </view>
 
   <float-button-kf></float-button-kf>
+  <bottom-nav></bottom-nav>
 </view>

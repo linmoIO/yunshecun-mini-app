@@ -48,6 +48,93 @@ test('mini-program startup configuration endpoints are reachable over HTTPS', as
   }
 });
 
+test('search returns stable empty results and only usable hot words', async () => {
+  const hotWords = await request('/api/shopapi/search/getHomeHotWordList');
+  assert.equal(hotWords.response.status, 200);
+  const words = hotWords.json().retVal.map((item) => item.dictionaryDesc);
+  assert.deepEqual(words, ['云舍村', '桃花源']);
+
+  const empty = await request('/api/shopapi/search/product', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ keyword: '不存在的测试关键词XYZ', pageSize: 20 }),
+  });
+  assert.equal(empty.response.status, 200);
+  const result = empty.json().retVal;
+  for (const key of ['journeyList', 'destPackageList', 'goodsList', 'hotelList', 'activitiesList']) {
+    assert.deepEqual(result[key], [], key);
+  }
+});
+
+test('member login preserves tokens across normalized headers and refresh', async () => {
+  const memberId = '9f825402-2c46-498a-9e90-b10c49875226';
+  const memberLogin = await request(`/api/member/memberLoginOpen.json?memberId=${memberId}`);
+  assert.equal(memberLogin.response.status, 200);
+  const memberBody = memberLogin.json();
+  assert.equal(memberBody.result, 1);
+  const initialToken = memberBody.data?.memberToken;
+  assert.ok(initialToken);
+
+  const authorization = await request('/api/auth-center/api/login/authorization', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      loginType: 'wechat',
+      authData: { openid: memberBody.retVal?.openid },
+    }),
+  });
+  assert.equal(authorization.response.status, 200);
+  const authorizationBody = authorization.json();
+  assert.equal(authorizationBody.success, true);
+  assert.ok(authorizationBody.data?.member?.memberToken);
+  assert.ok(authorization.response.headers.get('accesstoken'));
+
+  const refreshed = await request('/api/auth-center/api/auth/refresh/token', {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${initialToken}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ refreshToken: initialToken }),
+  });
+  assert.equal(refreshed.response.status, 200);
+  const refreshedBody = refreshed.json();
+  assert.equal(refreshedBody.code, 0);
+  assert.ok(refreshedBody.data?.accessToken);
+  assert.equal(refreshedBody.data?.refreshToken, refreshedBody.data?.accessToken);
+});
+
+test('hotel shelf and detail expose price, hero image and introduction', async () => {
+  const shelf = await request('/api/shop-api/productShelfApp/getProductShelfInfoList', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ type: 'hotel', pageSize: 20 }),
+  });
+  assert.equal(shelf.response.status, 200);
+  const hotelItem = shelf.json().data.find((item) => item.hotelCode === 'DEMO-HOTEL-YUNSHE');
+  assert.ok(hotelItem);
+  assert.ok(hotelItem.minPriceDto.price > 0);
+
+  const detail = await request('/api/sync/interfaceTransfer', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      config: { interfaceMethod: 'api/travelGroup/hotelListAllForSongZan' },
+      query: {
+        hotelCodes: ['DEMO-HOTEL-YUNSHE'],
+        fromDate: '2026-08-23',
+        toDate: '2026-08-24',
+      },
+    }),
+  });
+  assert.equal(detail.response.status, 200);
+  const hotel = detail.json().retVal.retVal[0];
+  assert.ok(hotel.gcHotelExtra.logo);
+  assert.ok(hotel.gcHotel.htmlInfo);
+  assert.equal(hotel.minPrice, hotelItem.minPriceDto.price);
+  assert.equal(new Set(hotel.productRoomList.map((room) => room.gcRoomExtra.logo)).size, hotel.productRoomList.length);
+});
+
 test('travel home advertisement API exposes HTTPS images without legacy URLs', async () => {
   const advertisement = await request('/api/shopapi/sz/advertisementPage/v2?hotelGroupCode=SONGTSAM&clientTypes=wechat_mini&channel=mini_app&showLocation=1%2C2%2C3%2C4%2C5%2C6%2C7');
   assert.equal(advertisement.response.status, 200);

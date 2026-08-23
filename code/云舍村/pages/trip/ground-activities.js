@@ -33,7 +33,7 @@
             hotRecommendTop: [],
             hotRecommendSwiper: []
           }),
-          f = e.ref(),
+          f = e.ref(`${s.baseUrlmall.replace(/\/api\/?$/, "")}/uploads/images/云舍村-水岸泛舟.jpg`),
           m = e.ref(!1),
           g = e.ref(!1),
           b = e.ref(),

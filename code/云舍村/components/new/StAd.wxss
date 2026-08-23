@@ -26,6 +26,21 @@
     z-index: 10
 }
 
+.st-ad__title.data-v-01b76427 {
+    background: linear-gradient(180deg, transparent, rgba(0,0,0,.72));
+    bottom: 0;
+    box-sizing: border-box;
+    color: #fff;
+    font-family: "STKaiti", "KaiTi", "FZKai-Z03", "PingFang SC", sans-serif;
+    font-size: 30rpx;
+    left: 0;
+    line-height: 1.4;
+    padding: 44rpx 24rpx 18rpx;
+    position: absolute;
+    right: 0;
+    z-index: 12
+}
+
 .st-ad .control-play.data-v-01b76427 {
     align-items: center;
     border: 1px solid #fff;

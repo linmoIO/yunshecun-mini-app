@@ -1,1 +1,6 @@
-{ "navigationBarTitleText": "定制行程", "navigationBarBackgroundColor": "#1a1a1a", "navigationBarTextStyle": "white" }
+{
+  "navigationBarTitleText": "定制行程",
+  "navigationBarBackgroundColor": "#f7f4ee",
+  "navigationBarTextStyle": "black",
+  "usingComponents": { "bottom-nav": "../../components/bottomNav" }
+}

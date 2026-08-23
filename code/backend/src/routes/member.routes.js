@@ -259,6 +259,7 @@ router.get('/diy/my-requests', auth, async (req, res) => {
 router.post('/diy/request', auth, async (req, res) => {
   const { phone, name, destinations, startDate, duration, persons, budget, requirements } = req.body;
   if (!phone) return _me(res, '请填写联系手机号');
+  if (!/^1\d{10}$/.test(String(phone).trim())) return _me(res, '手机号格式不正确');
   const r = await _mp.diyTripRequest.create({ data: {
     memberId: req.member.memberId, nickname: req.member.nickname || '',
     phone, name: name || req.member.realName || '', destinations, startDate, duration, persons, budget, requirements,

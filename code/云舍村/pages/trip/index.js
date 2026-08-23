@@ -8,9 +8,9 @@
     l = require("../../utils/utils.js"),
     i = require("../../base/channel.js"),
     n = require("../../base/jAlert/jAlert.js"),
-    d = require("../../assets/index.js"),
     u = require("../../services/trip.js"),
-    s = require("../../utils/qdTracker.js");
+    s = require("../../utils/qdTracker.js"),
+    cfig = require("../../utils/config.js");
   Array || e.resolveComponent("FloatButtonKf")(), Math || (c + m + p)();
   const c = () => "../../components/notice.js",
     p = () => "../../components/bottomDialog.js",
@@ -991,7 +991,7 @@
             showInfo: 1
           })
         } : {})) : {
-          w: e.unref(d.assets).indexBg,
+          w: `${cfig.config.baseUrlmall.replace(/\/api\/?$/, "")}/uploads/images/云舍村-航拍全景.jpg`,
           x: e.o(e => he()),
           y: e.o(e => he())
         }, {
