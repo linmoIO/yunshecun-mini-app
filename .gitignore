@@ -23,6 +23,11 @@ npm-debug.log*
 /deploy/cloud-test/.env
 /deploy/cloud-test/.env.*
 !/deploy/cloud-test/.env.example
+/deploy/aliyun-prod/backup/
+/deploy/aliyun-prod/runtime/
+/deploy/aliyun-prod/.env
+/deploy/aliyun-prod/.env.*
+!/deploy/aliyun-prod/.env.example
 
 # Non-deployment source material and task records
 materials

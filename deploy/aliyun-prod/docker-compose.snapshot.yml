@@ -1,0 +1,27 @@
+services:
+  mysql:
+    volumes:
+      - ../local/bootstrap/mysql:/docker-entrypoint-initdb.d:ro
+
+  uploads-init:
+    image: alpine:3.22
+    env_file:
+      - ${ENV_FILE:?ENV_FILE must be set to the private environment file}
+    environment:
+      SYNC_UPLOADS: ${SYNC_UPLOADS:-0}
+    command:
+      - /bin/sh
+      - -c
+      - |
+        if [ "$${SYNC_UPLOADS:-0}" = "1" ] || [ -z "$$(find /target -type f -print -quit)" ]; then
+          cp -a /bootstrap/. /target/
+        fi
+    volumes:
+      - ../local/bootstrap/uploads:/bootstrap:ro
+      - yunshecun_prod_uploads:/target
+    restart: "no"
+
+  backend:
+    depends_on:
+      uploads-init:
+        condition: service_completed_successfully
