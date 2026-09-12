@@ -2,8 +2,10 @@ FROM node:22-bookworm AS build
 
 WORKDIR /app
 
+ARG NPM_REGISTRY=https://registry.npmjs.org
+
 COPY code/backend/package.json code/backend/package-lock.json ./
-RUN npm ci --no-audit --no-fund
+RUN npm ci --registry="$NPM_REGISTRY" --no-audit --no-fund
 
 COPY code/backend/prisma ./prisma
 RUN npx prisma generate

@@ -20,6 +20,8 @@ services:
     build:
       context: ../..
       dockerfile: deploy/aliyun-prod/Dockerfile
+      args:
+        NPM_REGISTRY: ${NPM_REGISTRY:-https://registry.npmjs.org}
     env_file:
       - ${ENV_FILE:?ENV_FILE must be set to the private environment file}
     command: ["npx", "prisma", "db", "push", "--skip-generate"]
@@ -34,6 +36,8 @@ services:
     build:
       context: ../..
       dockerfile: deploy/aliyun-prod/Dockerfile
+      args:
+        NPM_REGISTRY: ${NPM_REGISTRY:-https://registry.npmjs.org}
     env_file:
       - ${ENV_FILE:?ENV_FILE must be set to the private environment file}
     environment:
@@ -54,6 +58,8 @@ services:
     build:
       context: ../..
       dockerfile: deploy/aliyun-prod/Dockerfile
+      args:
+        NPM_REGISTRY: ${NPM_REGISTRY:-https://registry.npmjs.org}
     env_file:
       - ${ENV_FILE:?ENV_FILE must be set to the private environment file}
     ports:

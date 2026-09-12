@@ -4,8 +4,8 @@
   const p = require("../common/vendor.js");
 
   // 由 npm run env:local / npm run env:remote 切换，仓库默认使用本地 Docker HTTPS。
-  const API_MODE = "local";
-  const CLOUD_API_BASE_URL = "https://test.yunshecun.com/api";
+  const API_MODE = "remote";
+  const CLOUD_API_BASE_URL = "https://yunshecun.com/api";
   const LOCAL_API_BASE_URL = "https://localhost:3443/api";
   const USE_LOCAL_BACKEND = API_MODE === "local";
   const API_BASE_URL = USE_LOCAL_BACKEND ? LOCAL_API_BASE_URL : CLOUD_API_BASE_URL;
