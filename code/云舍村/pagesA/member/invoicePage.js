@@ -64,8 +64,9 @@
       recordsLoading: true,
     },
 
-    onLoad: function() {
+    onLoad: function(options) {
       wx.setNavigationBarTitle({ title: '开票信息' });
+      if (options && options.tab === '1') this.setData({ tab: 1 });
       this.loadOrders();
       this.loadRecords();
     },

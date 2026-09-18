@@ -1,1 +1,5 @@
-<text>pagesA/other/codeText.wxml</text>
+<scroll-view class="policy-wrap" scroll-y>
+  <view wx:if="{{loading}}" class="policy-state">加载中...</view>
+  <rich-text wx:elif="{{content}}" class="policy-content" nodes="{{content}}"></rich-text>
+  <view wx:else class="policy-state">暂无内容</view>
+</scroll-view>
