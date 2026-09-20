@@ -108,7 +108,7 @@
               if (c && Object.keys(c).length) {
                 const e = [];
                 ["down1", "down2", "down3", "down4"].forEach(l => {
-                  null == c || c[l].forEach(l => {
+                  (Array.isArray(c[l]) ? c[l] : []).forEach(l => {
                     var n;
                     e.push({
                       ...l,
@@ -117,7 +117,7 @@
                   })
                 }), h.value.hotRecommendTop = null == c ? void 0 : c.up, h.value.hotRecommendSwiper = e
               }
-              const b = d.get(6),
+              const b = d.get(6) || {},
                 T = Object.keys(b);
               if (b && T.length) {
                 const e = [];

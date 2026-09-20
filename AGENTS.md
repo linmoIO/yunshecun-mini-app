@@ -1,7 +1,7 @@
 # AGENTS.md
 
 - 本项目是“云舍村”微信小程序工作区，包含小程序前端、Node.js/Express 后端、部署文档和任务记录。
-- 关键目录/文件：`code/backend` 后端服务；`code/云舍村` 小程序前端；`code/证书` 微信支付证书；`code/说明.md` 项目说明；`deploy/local` 本地 Docker 验证；`deploy/cloud-test` 云端测试环境部署；`task/` 当前任务说明；`docs/历史部署/` 旧版部署手册。
+- 关键目录/文件：`code/backend` 后端服务；`code/云舍村` 小程序前端；`code/证书` 微信支付证书；`code/说明.md` 项目说明；`deploy/local` 本地 Docker 验证；`deploy/aliyun-prod` 阿里云正式环境部署；`task/` 当前任务说明；`docs/历史部署/` 旧版部署手册。
 - 每次任务开始必须先读取本文件，并遵循这里的约定。
 - 全程使用简体中文，先读代码/文档再行动，避免猜测。
 - 执行任务前先反思不清晰点，提出 `Question` 等待用户回答；对齐后给出 `TODO`，用户 review 通过后再逐项执行。

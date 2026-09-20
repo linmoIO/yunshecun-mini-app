@@ -6,8 +6,10 @@ const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
 const morgan = require('morgan');
+const fs = require('fs');
 const path = require('path');
 const rateLimit = require('express-rate-limit');
+const sharp = require('sharp');
 
 const config = require('./config');
 const routes = require('./routes');
@@ -60,6 +62,48 @@ app.use((_req, res, next) => {
   const originalJson = res.json.bind(res);
   res.json = (body) => originalJson(normalizePublicAssetUrls(body, config.publicBaseUrl));
   next();
+});
+
+// 小程序会给图片 URL 附加 imageMogr2/thumbnail/宽度 参数；本地上传文件不是 OSS，
+// Express 静态文件服务会忽略该参数，导致首屏直接传输几十 MB 原图。按请求缩放后再返回，
+// 不带该参数的下载保持原行为。
+app.use('/uploads/images', async (req, res, next) => {
+  const match = req.path.match(/^\/(.+)$/);
+  const widthMatch = req.originalUrl.match(/[?&]imageMogr2\/thumbnail\/(\d+)x(?:&|$)/);
+  if (!match || !widthMatch) return next();
+
+  let relativePath;
+  try {
+    relativePath = decodeURIComponent(match[1]);
+  } catch {
+    return res.status(400).end();
+  }
+  const imageRoots = [
+    path.resolve(path.join(__dirname, '../uploads/images')),
+    path.resolve(path.join(__dirname, '../public/images')),
+  ];
+  const candidates = imageRoots.map((root) => path.resolve(path.join(root, relativePath)));
+  if (candidates.some((candidate, index) => !candidate.startsWith(`${imageRoots[index]}${path.sep}`))) {
+    return res.status(400).end();
+  }
+  const filePath = candidates.find((candidate) => fs.existsSync(candidate));
+  if (!filePath) return next();
+
+  try {
+    const width = Math.max(1, Math.min(Number(widthMatch[1]), 2400));
+    const image = sharp(filePath).resize({ width, withoutEnlargement: true });
+    const extension = path.extname(filePath).toLowerCase();
+    if (!['.jpg', '.jpeg', '.png', '.webp'].includes(extension)) return next();
+    const output = extension === '.png'
+      ? await image.png().toBuffer()
+      : extension === '.webp'
+        ? await image.webp({ quality: 82 }).toBuffer()
+        : await image.jpeg({ quality: 82, progressive: true }).toBuffer();
+    res.set('Cache-Control', 'public, max-age=2592000, immutable');
+    res.type(extension === '.png' ? 'png' : extension === '.webp' ? 'webp' : 'jpg').send(output);
+  } catch (err) {
+    return next(err);
+  }
 });
 
 // 上传文件以 UUID 命名，更新会使用新 URL，可安全使用长期浏览器缓存。
