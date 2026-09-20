@@ -341,8 +341,10 @@
               memberId: p.value.memberId,
               goodsId: ""
             }).then(e => {
-              A.value = e.retVal, se()
-            })
+              A.value = e && Array.isArray(e.retVal) ? e.retVal : []
+            }, () => {
+              A.value = []
+            }).then(se)
           },
           se = () => {
             var t;
@@ -386,6 +388,8 @@
                   []
                 ];
               o.forEach(e => e.forEach((e, t) => a[t].push(e))), _.value[0] = [..._.value[0], ...a[0]], _.value[1] = [..._.value[1], ...a[1]]
+            }).catch(t => {
+              console.error("tripRecommendFeed failed:", t), w.value = !1, e.index.hideLoading()
             })
           },
           ce = (e = [], t = 1) => {

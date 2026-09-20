@@ -20,11 +20,6 @@
             <view class="num data-v-ad1bceae" wx:else> 0 </view>
             <view class="title data-v-ad1bceae">{{o}}</view>
         </view>
-        <view bindtap="{{t}}" class="userAsset data-v-ad1bceae">
-            <view class="num data-v-ad1bceae" wx:if="{{q}}">{{r}}</view>
-            <view class="num data-v-ad1bceae" wx:else> 0 </view>
-            <view class="title data-v-ad1bceae">{{s}}</view>
-        </view>
     </view>
     <view class="memberTips data-v-ad1bceae" wx:if="{{v}}">{{w}}</view>
     <view class="{{['orderWrapper','data-v-ad1bceae',K&&'hasOrder']}}">

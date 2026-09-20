@@ -1,1 +1,84 @@
-/* pagesA/member/memberListPoint.wxss */
+page {
+  background: #f5f5f5;
+}
+
+.pt-wrap {
+  padding: 24rpx;
+}
+
+.pt-card {
+  background: linear-gradient(135deg, #1a1a1a, #3a3a3a);
+  border-radius: 20rpx;
+  padding: 48rpx 40rpx;
+  text-align: center;
+}
+
+.pt-label {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 24rpx;
+  margin-bottom: 12rpx;
+}
+
+.pt-val {
+  color: #fff;
+  font-size: 64rpx;
+  font-weight: 700;
+}
+
+.pt-section {
+  color: #1a1a1a;
+  font-size: 30rpx;
+  font-weight: 600;
+  margin: 36rpx 8rpx 20rpx;
+}
+
+.pt-state {
+  padding: 96rpx 40rpx;
+  color: #888;
+  font-size: 26rpx;
+  text-align: center;
+}
+
+.pt-list {
+  background: #fff;
+  border-radius: 16rpx;
+  padding: 0 28rpx;
+}
+
+.pt-row {
+  display: flex;
+  align-items: center;
+  padding: 28rpx 0;
+  border-bottom: 1rpx solid #f2f2f2;
+}
+
+.pt-row:last-child {
+  border-bottom: none;
+}
+
+.pt-row-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.pt-row-desc {
+  color: #1a1a1a;
+  font-size: 28rpx;
+}
+
+.pt-row-time {
+  color: #999;
+  font-size: 22rpx;
+  margin-top: 8rpx;
+}
+
+.pt-row-amount {
+  color: #555;
+  font-size: 32rpx;
+  font-weight: 600;
+  margin-left: 16rpx;
+}
+
+.pt-row-amount.plus {
+  color: #c8161d;
+}

@@ -1,1 +1,83 @@
-/* pagesA/member/couponList.wxss */
+page {
+  background: #f5f5f5;
+}
+
+.cl-wrap {
+  padding: 24rpx;
+}
+
+.cl-state {
+  padding: 160rpx 40rpx;
+  color: #888;
+  font-size: 28rpx;
+  text-align: center;
+}
+
+.cl-state-title {
+  color: #262626;
+  font-size: 30rpx;
+  margin-bottom: 16rpx;
+}
+
+.cl-state-desc {
+  font-size: 24rpx;
+  line-height: 1.6;
+}
+
+.cl-card {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 16rpx;
+  padding: 28rpx 24rpx;
+  margin-bottom: 20rpx;
+}
+
+.cl-card.off {
+  opacity: 0.5;
+}
+
+.cl-value {
+  width: 170rpx;
+  flex-shrink: 0;
+  text-align: center;
+  border-right: 1rpx dashed #ddd;
+  margin-right: 24rpx;
+}
+
+.cl-value-num {
+  color: #1a1a1a;
+  font-size: 40rpx;
+  font-weight: 700;
+}
+
+.cl-value-cond {
+  color: #888;
+  font-size: 22rpx;
+  margin-top: 8rpx;
+}
+
+.cl-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.cl-name {
+  color: #1a1a1a;
+  font-size: 30rpx;
+  font-weight: 600;
+}
+
+.cl-desc,
+.cl-time {
+  color: #888;
+  font-size: 22rpx;
+  margin-top: 8rpx;
+}
+
+.cl-status {
+  color: #555;
+  font-size: 24rpx;
+  flex-shrink: 0;
+  margin-left: 16rpx;
+}

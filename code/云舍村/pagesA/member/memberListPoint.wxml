@@ -1,1 +1,18 @@
-<text>pagesA/member/memberListPoint.wxml</text>
+<view class="pt-wrap">
+  <view class="pt-card">
+    <view class="pt-label">当前可用积分</view>
+    <view class="pt-val">{{points}}</view>
+  </view>
+  <view class="pt-section">积分明细</view>
+  <view wx:if="{{loading}}" class="pt-state">加载中...</view>
+  <view wx:elif="{{!list.length}}" class="pt-state">暂无积分记录，预订云舍村产品可获得积分</view>
+  <view wx:else class="pt-list">
+    <view wx:for="{{list}}" wx:key="id" class="pt-row">
+      <view class="pt-row-main">
+        <view class="pt-row-desc">{{item.desc}}</view>
+        <view class="pt-row-time">{{item.time}}</view>
+      </view>
+      <view class="pt-row-amount {{item.plus ? 'plus' : ''}}">{{item.amount}}</view>
+    </view>
+  </view>
+</view>

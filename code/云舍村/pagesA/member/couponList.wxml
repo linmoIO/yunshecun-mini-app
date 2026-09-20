@@ -1,1 +1,21 @@
-<text>pagesA/member/couponList.wxml</text>
+<view class="cl-wrap">
+  <view wx:if="{{loading}}" class="cl-state">加载中...</view>
+  <view wx:elif="{{!list.length}}" class="cl-state">
+    <view class="cl-state-title">暂无优惠券</view>
+    <view class="cl-state-desc">参与云舍村活动或预订后获得的优惠券会显示在这里</view>
+  </view>
+  <view wx:else>
+    <view wx:for="{{list}}" wx:key="id" class="cl-card {{item.usable ? '' : 'off'}}">
+      <view class="cl-value">
+        <view class="cl-value-num">{{item.valueText || '优惠'}}</view>
+        <view class="cl-value-cond">{{item.condText}}</view>
+      </view>
+      <view class="cl-info">
+        <view class="cl-name">{{item.name}}</view>
+        <view wx:if="{{item.desc}}" class="cl-desc">{{item.desc}}</view>
+        <view class="cl-time">{{item.timeText}}</view>
+      </view>
+      <view class="cl-status">{{item.statusText}}</view>
+    </view>
+  </view>
+</view>
