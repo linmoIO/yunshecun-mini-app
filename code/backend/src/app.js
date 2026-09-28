@@ -3,6 +3,7 @@
 require('dotenv').config();
 
 const express = require('express');
+require('./middleware/asyncErrors');
 const cors = require('cors');
 const helmet = require('helmet');
 const morgan = require('morgan');
