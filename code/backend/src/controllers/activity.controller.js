@@ -378,6 +378,116 @@ const formatActivity = (a) => ({
   images: tryParse(a.images, []),
 });
 
+// ---- 活动详情页（pagesE/dailyActivity/dailyActivityDetail）经 interfaceTransfer 调用的兼容接口 ----
+// 按《云舍村入住细则》：活动每日两个时段，需提前 8 小时预约
+const ACTIVITY_SLOTS = [['10:00', '12:00'], ['15:00', '17:00']];
+const ACTIVITY_EARLY_HOURS = 8;
+const CALENDAR_MAX_DAYS = 92;
+
+const toMinPriceDto = (price) => ({
+  payType: 'CASH',
+  priceType: Number(price) > 0 ? 'CASH' : 'FREE',
+  price: Number(price) || 0,
+  mixPrice: 0,
+  credit: 0,
+  mixCredit: 0,
+});
+
+// api/activity/getOneActivityWithPrice
+const getActivityWithPriceForMiniApp = async (activityCode) => {
+  const activity = activityCode
+    ? await prisma.activity.findFirst({ where: { activityCode, status: 1 } })
+    : null;
+  if (!activity) return null;
+  const images = tryParse(activity.images, []);
+  const pictures = images.length ? images : [activity.coverImage].filter(Boolean);
+  const phone = (await prisma.sysConfig.findFirst({ where: { key: 'cs_phone' } }).catch(() => null))?.value || '0736-7070666';
+  return {
+    activityCode: activity.activityCode,
+    name: activity.title,
+    introduce: activity.description || '',
+    indexPicture: activity.coverImage || '',
+    roundPictures: pictures.join(';'),
+    videoUrls: activity.videoUrl || '',
+    shareReport: activity.coverImage || '',
+    typeDescript: activity.category || '',
+    tagsList: activity.category ? [activity.category] : [],
+    minPriceDto: toMinPriceDto(activity.price),
+    minCapacity: 0,
+    maxCapacity: activity.maxPersons || 0,
+    adapterPeople: 'ALL',
+    earlyDays: ACTIVITY_EARLY_HOURS,
+    resrvRule: 'ONE_HOUR',
+    capacityType: activity.maxPersons == null ? 'INFINITY' : 'LIMIT',
+    phone,
+    activityBegin: ACTIVITY_SLOTS[0][0],
+    activityEnd: ACTIVITY_SLOTS[ACTIVITY_SLOTS.length - 1][1],
+    location: activity.location || '',
+    priceExplain: activity.description || '',
+    useRule: '',
+    benefit: '',
+    extraTips: '',
+    resrvNotice: '',
+    questions: '',
+    belongHotels: '',
+    canResrv: 'T',
+    minSaleSize: 1,
+  };
+};
+
+// 每日余量与 saveActivityOrder 的扣减规则保持一致：有日期库存按库存，否则按 maxPersons 减去当日有效订单，都没有则不限
+const getActivityRemaining = async (activity, day) => {
+  const inv = await prisma.dateInventory.findFirst({
+    where: { type: 'activity', targetId: activity.id, date: day, status: 1 },
+  });
+  if (inv) return Math.max(0, Number(inv.stock));
+  if (activity.maxPersons == null) return null;
+  const used = await prisma.activityOrder.aggregate({
+    where: { activityId: activity.id, activityDate: day, status: { notIn: ['cancelled', 'refunded'] } },
+    _sum: { quantity: true },
+  });
+  return Math.max(0, Number(activity.maxPersons) - Number(used._sum.quantity || 0));
+};
+
+// api/singleWechat/onSaleCalendarWithMoney：返回 { 'YYYY-MM-DD': { calendarWithPriceDto, sumCapacity, minPriceDto } }
+const getActivityCalendarForMiniApp = async ({ activityCode, startDate, endDate }) => {
+  const activity = activityCode
+    ? await prisma.activity.findFirst({ where: { activityCode, status: 1 } })
+    : null;
+  if (!activity) return {};
+  const today = new Date().toISOString().slice(0, 10);
+  const from = [normalizeDate(startDate) || today, normalizeDate(activity.startDate), today].filter(isValidDate).sort().pop();
+  const to = [normalizeDate(endDate), normalizeDate(activity.endDate)].filter(isValidDate).sort()[0];
+  if (!from || !to || from > to) return {};
+
+  const result = {};
+  const cursor = new Date(`${from}T00:00:00Z`);
+  for (let i = 0; i < CALENDAR_MAX_DAYS; i++) {
+    const day = cursor.toISOString().slice(0, 10);
+    if (day > to) break;
+    const remaining = await getActivityRemaining(activity, day);
+    if (remaining !== 0) {
+      const capacityType = remaining == null ? 'INFINITY' : 'LIMIT';
+      const capacity = remaining == null ? 999 : remaining;
+      result[day] = {
+        sumCapacity: capacity,
+        minPriceDto: toMinPriceDto(activity.price),
+        calendarWithPriceDto: ACTIVITY_SLOTS.map(([start, end]) => ({
+          bizDate: day,
+          startDate: start,
+          endDate: end,
+          onSaleCode: `${activity.activityCode}|${day}|${start}`,
+          capacity,
+          capacityType,
+          price: Number(activity.price) || 0,
+        })),
+      };
+    }
+    cursor.setUTCDate(cursor.getUTCDate() + 1);
+  }
+  return result;
+};
+
 const formatActivityOrder = (o) => ({
   ...o,
   activity: o.activity ? formatActivity(o.activity) : null,
@@ -389,4 +499,5 @@ module.exports = {
   getActivityOrderList, calculateActivityPrice, cancelActivityOrder,
   adminListActivities, adminCreateActivity, adminUpdateActivity,
   adminDeleteActivity, adminUpdateActivityMedia, adminListOrders,
+  getActivityWithPriceForMiniApp, getActivityCalendarForMiniApp,
 };
