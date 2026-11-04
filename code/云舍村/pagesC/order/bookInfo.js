@@ -227,6 +227,7 @@
             clientChannel: "WECHAT",
             otaChannel: W.value,
             productCode: A.value,
+            rmtype: k.value,
             openid: null == I ? void 0 : I.openid,
             memberNo: "",
             cardLevel: "",
@@ -394,6 +395,7 @@
                 clientChannel: "WECHAT",
                 otaChannel: W.value,
                 productCode: A.value,
+                rmtype: k.value,
                 memberNo: "",
                 cardLevel: "",
                 cardType: "",
@@ -419,10 +421,10 @@
             if (N && N.memberId && (v.memberNo = N.cardNo ? N.cardNo : "", v.cardLevel = N.cardLevel ? N.cardLevel : "", v.cardType = N.cardType ? N.cardType : "", v.memberId = N.memberId ? N.memberId : ""), "HOUR" === W.value) {
               v.rsvClass = "D";
               const a = Number(X.value),
-                o = `${e.dayjs().format("YYYY-MM-DD")} ${ve.value}:00`,
+                hourStart = `${e.dayjs().format("YYYY-MM-DD")} ${ve.value}:00`,
                 t = e.dayjs().format("YYYY-MM-DD") + " 23:59:59",
-                l = e.dayjs(o).add(a, "hours").format("YYYY-MM-DD HH:mm:ss");
-              e.dayjs(l).isAfter(t) ? v.depTime = "23:59:59" : v.depTime = e.dayjs(o).add(a, "hours").format("HH:mm:ss")
+                l = e.dayjs(hourStart).add(a, "hours").format("YYYY-MM-DD HH:mm:ss");
+              e.dayjs(l).isAfter(t) ? v.depTime = "23:59:59" : v.depTime = e.dayjs(hourStart).add(a, "hours").format("HH:mm:ss")
             }!async function(t) {
               var l, u, r, v;
               if (K.value) return !1;
@@ -458,12 +460,12 @@
                       child_num: Le.value + Ge.value + Oe.value,
                       coupon_code: ((null == (u = Z.value) ? void 0 : u.map(e => e.couponCode)) || []).join(",")
                     });
-                    const o = {
-                      orderNo: a.retVal,
+                    const payPageQuery = {
+                      orderNo: (a.retVal && a.retVal.orderNo) || a.retVal,
                       productType: "hotel"
                     };
                     e.index.redirectTo({
-                      url: "/pagesB/other/pay?" + m.createUrl(o)
+                      url: "/pagesB/other/pay?" + m.createUrl(payPageQuery)
                     }), K.value = !1
                   } else K.value = !1, o.jAlert3(a.msg)
                 }).catch(e => {

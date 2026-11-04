@@ -2,6 +2,7 @@
   "use strict";
   const e = require("./request.js"),
     t = require("./utils.js"),
+    a = require("./wxuser.js"),
     s = {
       getMyTravelList: t => e.request.post("/api/team/order/myTravelList", t),
       getPresentCouponDetail: t => e.request.get("/api/coupon/getPresentCouponDetail.json", t),
@@ -30,12 +31,16 @@
       findCouponDetailListByCondi: t => e.request.get("/api/member/findCouponDetailListByCondi.json", t),
       resrvCheck: t => e.request.post(`/api/hotel/product/resrvCheck.json?appid=${t.appid}&componentAppid=${t.componentAppid}`, t),
       makeOrder: t => e.request.post(`/api/hotel/product/makeOrder.json?appid=${t.appid}&componentAppid=${t.componentAppid}`, t),
-      deleteGoodsCollection: t => e.request.post("/api/shop/deleteGoodsCollection.json", t),
+      deleteGoodsCollection: t => e.request.post("/api/shop/deleteGoodsCollection.json", t, {
+        memberToken: (a.getStorage("user") || {}).memberToken || ""
+      }),
       getGoodsIsCollection: t => e.request.get("/api/shop/getGoodsIsCollection.json", t),
       addGoodsCollection: t => e.request.post("/api/shop/addGoodsCollection.json", t),
       findHotel: t => e.request.post(`/api/hotel/findHotelByCondition.json?appid=${t.appid}&componentAppid=${t.componentAppid}`, t),
       updateUserinfoByMiniOpenId: t => e.request.post("/api/wxMiniApp/updateUserinfoByMiniOpenId.json", t),
-      listAccount: t => e.request.get("/api/member/getAccountIncludeTreatList.json", t),
+      listAccount: t => e.request.get("/api/member/getAccountIncludeTreatList.json", t, {
+        memberToken: (a.getStorage("user") || {}).memberToken || ""
+      }),
       listPointByMemberId: t => e.request.get("/api/member/listPointByMemberId.json", t),
       queryMemberCardByCondition: t => e.request.post("/api/member/queryMemberCardByCondition.json", t),
       bindCardToMember: t => e.request.post("/api/member/bindCardToMember.json", t),
