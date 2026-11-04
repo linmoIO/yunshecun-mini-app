@@ -17,13 +17,7 @@
       origin: e,
       query: i
     } = r(t);
-    return `${e}?${Object.entries({...i,...n}).map(([r,t])=>`
-    $ {
-      r
-    } = $ {
-      t
-    }
-    `).join("&")}`
+    return `${e}?${Object.entries({...i,...n}).map(([r, t]) => `${r}=${t}`).join("&")}`
   }, exports.joinUrl = function(r, t) {
     return `${r}?${Object.entries(t).map(([r,t])=>`${r}=${t}`).join("&")}`
   }, exports.parseUrl = r
