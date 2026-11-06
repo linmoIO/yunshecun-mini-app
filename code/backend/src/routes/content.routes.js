@@ -3,6 +3,7 @@
 const router = require('express').Router();
 const ctrl = require('../controllers/content.controller');
 const couponCtrl = require('../controllers/coupon.controller');
+const activityCtrl = require('../controllers/activity.controller');
 const { optionalAuth, authMiddleware } = require('../middleware/auth');
 
 // 广告/Banner/内容页
@@ -301,6 +302,18 @@ async function handleInterfaceTransfer(req, res) {
   // 日活动确认页依赖的兼容接口：返回旧页面可直接消费的空集合/价格定义。
   if (method.includes('listCouponByUse')) {
     return res.json({ code: 0, result: 1, retVal: { result: 0, retVal: [] } });
+  }
+
+  // 日活动详情与可订日历（dailyActivityDetail 页）
+  if (method.includes('getOneActivityWithPrice')) {
+    const detail = await activityCtrl.getActivityWithPriceForMiniApp(query.activityCode);
+    if (!detail) return res.json({ code: 0, result: 1, retVal: { result: 1, msg: '活动不存在或已下架', retVal: null } });
+    return res.json({ code: 0, result: 1, retVal: { result: 0, retVal: detail } });
+  }
+
+  if (method.includes('onSaleCalendarWithMoney')) {
+    const calendar = await activityCtrl.getActivityCalendarForMiniApp(query);
+    return res.json({ code: 0, result: 1, retVal: { result: 0, retVal: calendar } });
   }
 
   if (method.includes('getPriceDefine')) {

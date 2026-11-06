@@ -15,19 +15,21 @@ router.get('/shopapi/sz/queryMarketingPageTags.json', (req, res) => res.json({ c
 router.get('/shopapi/marketingActivity/tripAssistantRecommendation', optionalAuth, tripRecommendFeed);
 router.post('/shopapi/marketingActivity/tripAssistantRecommendation', optionalAuth, tripRecommendFeed);
 
-async function tripRecommendFeed(req, res) {
-  const { PrismaClient } = require('@prisma/client');
-  const prisma = new PrismaClient();
-  const { curPage = 1, pageSize = 8, isRecommendDayActivity } = { ...(req.body || {}), ...(req.query || {}) };
-  const skip = (Number(curPage) - 1) * Number(pageSize);
-  const limit = Number(pageSize);
+const { PrismaClient: _FeedPrisma } = require('@prisma/client');
+const _feedPrisma = new _FeedPrisma();
 
-  // 取旅游产品 + 活动，混合返回
+// 在地体验推荐流（pages/trip/index 的 water 卡片）。
+// 旅游产品与活动先完整交叉排列再分页，避免按比例各取 3 条导致只能看到前几项。
+async function tripRecommendFeed(req, res) {
+  const { curPage = 1, pageSize = 8 } = { ...(req.body || {}), ...(req.query || {}) };
+  const page = Math.max(1, Number(curPage) || 1);
+  const limit = Math.min(Math.max(1, Number(pageSize) || 8), 50);
+  const orderBy = [{ sortOrder: 'asc' }, { createdAt: 'desc' }];
+
   const [travels, activities] = await Promise.all([
-    prisma.travelProduct.findMany({ where: { status: 1 }, orderBy: [{ sortOrder: 'asc' }, { createdAt: 'desc' }], skip, take: Math.ceil(limit * 0.7) }),
-    prisma.activity.findMany({ where: { status: 1 }, orderBy: [{ sortOrder: 'asc' }, { createdAt: 'desc' }], skip, take: Math.ceil(limit * 0.3) }),
+    _feedPrisma.travelProduct.findMany({ where: { status: 1 }, orderBy }),
+    _feedPrisma.activity.findMany({ where: { status: 1 }, orderBy }),
   ]);
-  await prisma.$disconnect();
 
   const CATEGORY_TO_TYPE = { Travel:'travel', DestPackage:'travel', ExchangeCoupon:'tdq', Hotel:'hotel', DayActivity:'daily' };
 
@@ -36,27 +38,27 @@ async function tripRecommendFeed(req, res) {
     const code = p.productCode || String(p.id);
     return {
       id: code, goodsId: code, travelType: code,
-      title: p.title, pics: p.coverImage || '',
-      secondTitle: p.description || '',
+      title: p.title, pics: p.coverImage || '', coverUrl: p.coverImage || '',
+      secondTitle: p.description || '', tagList: [],
       productType: CATEGORY_TO_TYPE[categorySub] || 'travel', categorySub,
       minPriceDto: { payType: 'CASH', price: p.price || 0 },
       specificationsType: 'PEOPLE', skuFlag: true,
       numberOfPreviews: Math.floor(Math.random() * 500 + 100),
-      element: 'travel',
     };
   });
 
+  // contentType=ACTIVITY_PRODUCT 时 water 卡片显示价格并跳转 dailyActivityDetail
   const activityItems = activities.map(a => {
     const code = a.activityCode || String(a.id);
     return {
       id: code, goodsId: code, activityCode: code,
-      title: a.title, pics: a.coverImage || '',
-      secondTitle: a.description || '',
+      contentType: 'ACTIVITY_PRODUCT',
+      title: a.title, pics: a.coverImage || '', coverUrl: a.coverImage || '',
+      secondTitle: a.description || '', tagList: a.category ? [a.category] : [],
       productType: 'daily', categorySub: 'DayActivity',
       minPriceDto: { payType: 'CASH', price: a.price || 0 },
       skuFlag: true,
       numberOfPreviews: Math.floor(Math.random() * 300 + 50),
-      element: 'activity',
     };
   });
 
@@ -67,8 +69,9 @@ async function tripRecommendFeed(req, res) {
     if (i < aLen) datas.push(activityItems[i]);
   }
 
+  const start = (page - 1) * limit;
   // services/request.js 检查 n.success，必须有才能 resolve
-  return res.json({ code: 0, result: 0, msg: 'success', success: true, retVal: { datas: datas.slice(0, limit), hasMore: datas.length >= limit } });
+  return res.json({ code: 0, result: 0, msg: 'success', success: true, retVal: { datas: datas.slice(start, start + limit), hasMore: start + limit < datas.length } });
 }
 router.get('/shopapi/sz/shopGoodsPage', optionalAuth, ctrl.getTravelProductList);
 
