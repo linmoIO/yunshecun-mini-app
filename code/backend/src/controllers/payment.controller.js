@@ -32,6 +32,10 @@ const pay = async (req, res) => {
 
     const order = await findOrder(orderNo, orderType);
     if (!order) return failForMiniProgram(res, '订单不存在');
+    // 只能为自己的订单发起支付
+    if (order.memberId && req.member?.id && Number(order.memberId) !== Number(req.member.id)) {
+      return failForMiniProgram(res, '订单不存在');
+    }
     if (order.status !== 'pending') return failForMiniProgram(res, '订单状态不支持支付');
 
     const originalAmount = Number(order.totalAmount || payload.payAmount || payload.money || 0);
@@ -327,16 +331,19 @@ const getWechatPayConfig = async () => {
     'wxpay_refund_notify_url',
   ]);
 
+  // 私钥文件路径与部署机器相关：优先使用当前部署的环境变量，数据库中的路径仅作兜底，
+  // 避免库里残留的其他机器路径（如 Windows 本地路径）导致所有支付失败。
   const privateKey = normalizePrivateKey(
     dbConfig.wxpay_private_key ||
     process.env.WECHAT_PAY_PRIVATE_KEY ||
-    readPrivateKey(dbConfig.wxpay_private_key_path || config.wechatPay.privateKeyPath)
+    readPrivateKey(config.wechatPay.privateKeyPath || dbConfig.wxpay_private_key_path)
   );
 
   const cfg = {
     appId: dbConfig.wechat_app_id || config.wechat.appId,
     mchId: dbConfig.wxpay_mch_id || config.wechatPay.mchId,
-    merchantSerialNumber: dbConfig.wxpay_serial_no || config.wechatPay.merchantSerialNumber,
+    // 序列号必须与私钥属于同一张商户证书，优先从部署的证书文件读取，避免配置残留旧证书序列号导致 SIGN_ERROR
+    merchantSerialNumber: readCertSerialNumber(config.wechatPay.certPath) || dbConfig.wxpay_serial_no || config.wechatPay.merchantSerialNumber,
     privateKey,
     apiV3Key: dbConfig.wxpay_api_v3_key || config.wechatPay.apiV3Key,
     payNotifyUrl: dbConfig.wxpay_notify_url || config.wechatPay.payNotifyUrl || config.wechatPay.notifyUrl,
@@ -572,6 +579,15 @@ const readPrivateKey = (privateKeyPath) => {
     return fs.readFileSync(privateKeyPath, 'utf8');
   } catch (err) {
     throw new Error(`读取微信支付私钥失败: ${privateKeyPath} (${err.message})`);
+  }
+};
+
+const readCertSerialNumber = (certPath) => {
+  if (!certPath) return '';
+  try {
+    return new crypto.X509Certificate(fs.readFileSync(certPath)).serialNumber;
+  } catch {
+    return '';
   }
 };
 
