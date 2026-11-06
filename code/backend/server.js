@@ -50,6 +50,11 @@ start().catch((err) => {
   process.exit(1);
 });
 
+// 兜底：路由之外的 Promise 拒绝只记录，不让单个异常拖垮整个服务
+process.on('unhandledRejection', (reason) => {
+  console.error('[unhandledRejection]', reason?.message || reason);
+});
+
 // 优雅退出
 process.on('SIGTERM', async () => {
   await prisma.$disconnect();
