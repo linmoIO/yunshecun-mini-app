@@ -22,7 +22,7 @@
     box-sizing: border-box;
     color: gray;
     flex-shrink: 0;
-    font-family: PingFang SC;
+    font-family: "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-size: 28rpx;
     font-weight: 400;
     padding: 16rpx

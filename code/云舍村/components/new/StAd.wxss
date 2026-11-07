@@ -31,7 +31,7 @@
     bottom: 0;
     box-sizing: border-box;
     color: #fff;
-    font-family: "STKaiti", "KaiTi", "FZKai-Z03", "PingFang SC", sans-serif;
+    font-family: "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-size: 30rpx;
     left: 0;
     line-height: 1.4;

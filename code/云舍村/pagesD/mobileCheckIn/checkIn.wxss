@@ -176,7 +176,7 @@
 
 .checkIn_ui .hotel-box .qrcode_wrap .qrcode_text.data-v-43c2940e {
     color: #000;
-    font-family: PingFang SC;
+    font-family: "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-size: 28rpx;
     font-weight: 700;
     letter-spacing: 0;
@@ -266,7 +266,7 @@
     align-items: center;
     color: gray;
     display: flex;
-    font-family: PingFang SC;
+    font-family: "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-size: 24rpx;
     font-weight: 400;
     letter-spacing: 0;

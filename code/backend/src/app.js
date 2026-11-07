@@ -117,6 +117,13 @@ app.use('/uploads/images', express.static(path.join(__dirname, '../public/images
   maxAge: '30d',
   immutable: true,
 }));
+// 小程序 wx.loadFontFace 全局加载的网页字体（霞鹜文楷常用字子集，OFL-1.1，许可见 public/fonts/LXGWWenKai-OFL.txt）。
+// 字体请求来自 servicewechat.com，需单独允许跨域；正式环境 CORS_ORIGIN 只放行管理后台域名。
+app.use('/uploads/fonts', express.static(path.join(__dirname, '../public/fonts'), {
+  maxAge: '30d',
+  immutable: true,
+  setHeaders: (res) => res.set('Access-Control-Allow-Origin', '*'),
+}));
 
 // 管理后台网页（访问 http://localhost:3000 即可打开）
 app.use(express.static(path.join(__dirname, '../public')));

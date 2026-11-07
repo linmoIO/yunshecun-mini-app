@@ -135,7 +135,7 @@
 }
 
 .home-banner .home-swiper .swiper-item__title.data-v-1a32bab8 {
-    font-family: "STKaiti", "KaiTi", "FZKai-Z03", "PingFang SC", sans-serif;
+    font-family: "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-size: 52rpx;
     font-weight: 600;
     line-height: 1.25;
@@ -143,7 +143,7 @@
 }
 
 .home-banner .home-swiper .swiper-item__hint.data-v-1a32bab8 {
-    font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+    font-family: "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-size: 26rpx;
     line-height: 1.6;
     margin-top: 12rpx;

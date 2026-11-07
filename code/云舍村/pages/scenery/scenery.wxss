@@ -1,4 +1,4 @@
-page { background: #f7f4ee; color: #302e29; font-family: "PingFang SC", "Microsoft YaHei", sans-serif; height: 100%; }
+page { background: #f7f4ee; color: #302e29; font-family: "LXGW WenKai", "STKaiti", "KaiTi", serif; height: 100%; }
 
 .scenery-page { display: flex; flex-direction: column; height: 100vh; }
 .scenery-wrap { flex: 1; overflow: hidden; background: #f7f4ee; }
@@ -19,7 +19,7 @@ page { background: #f7f4ee; color: #302e29; font-family: "PingFang SC", "Microso
 .goods-card { background: #fff; border-radius: 16rpx; overflow: hidden; box-shadow: 0 2rpx 12rpx rgba(0,0,0,.06); }
 .goods-card-img { width: 100%; height: 280rpx; display: block; }
 .goods-card-info { padding: 16rpx 20rpx 20rpx; }
-.goods-name { font-family: "STKaiti", "KaiTi", "FZKai-Z03", "PingFang SC", sans-serif; font-size: 30rpx; color: #302e29; font-weight: 600; line-height: 1.4; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+.goods-name { font-family: "LXGW WenKai", "STKaiti", "KaiTi", serif; font-size: 30rpx; color: #302e29; font-weight: 600; line-height: 1.4; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
 .goods-desc { font-size: 25rpx; color: #81796e; margin-top: 6rpx; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .goods-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 16rpx; }
 .goods-price { font-size: 32rpx; color: #8b4f3b; font-weight: 700; }

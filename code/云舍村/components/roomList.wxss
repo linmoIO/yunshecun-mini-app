@@ -187,7 +187,7 @@
 
 .ui_roomList .room .roomTypeBox .theRoom .leftPart .priceItem .money {
     color: #000;
-    font-family: Montserrat;
+    font-family: Montserrat, "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-size: 36rpx;
     font-weight: 600
 }
@@ -197,7 +197,7 @@
     border-radius: 8rpx;
     color: #000;
     display: inline-block;
-    font-family: Montserrat;
+    font-family: Montserrat, "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-size: 20rpx;
     margin-top: 8rpx;
     padding: 8rpx

@@ -140,7 +140,7 @@
 
 .pay_ui .price.data-v-bf26b57e,.pay_ui .rateSum.data-v-bf26b57e {
     color: #000;
-    font-family: Montserrat;
+    font-family: Montserrat, "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-weight: 600;
     margin-top: 24rpx;
     text-align: center
@@ -246,7 +246,7 @@
 }
 
 .pay_ui .balance-ded .info .label.data-v-bf26b57e {
-    font-family: PingFang SC;
+    font-family: "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-size: 28rpx;
     font-style: normal;
     font-weight: 400;
@@ -261,7 +261,7 @@
 
 .pay_ui .balance-ded .info .val.red.data-v-bf26b57e {
     color: #a43127;
-    font-family: Montserrat;
+    font-family: Montserrat, "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-weight: 600
 }
 
@@ -361,7 +361,7 @@
 
 .pay_ui .content-wrapper .check_title.data-v-bf26b57e {
     color: #000;
-    font-family: PingFang SC;
+    font-family: "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-size: 32rpx;
     font-weight: 700;
     letter-spacing: 0;
@@ -371,7 +371,7 @@
 
 .pay_ui .content-wrapper .content.data-v-bf26b57e {
     color: gray;
-    font-family: PingFang SC;
+    font-family: "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-weight: 400;
     letter-spacing: 0;
     line-height: 44rpx;
@@ -407,7 +407,7 @@
 
 .pay_ui .content-wrapper .dialog-footer .cancel-btn.data-v-bf26b57e {
     color: #000;
-    font-family: PingFang SC;
+    font-family: "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-size: 32rpx;
     font-weight: 400;
     letter-spacing: 0;
@@ -440,7 +440,7 @@
 }
 
 .pay_ui .pay-box .pay-price .rmb.data-v-bf26b57e {
-    font-family: Montserrat;
+    font-family: Montserrat, "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-size: 64rpx;
     font-style: normal;
     font-weight: 600;
@@ -457,7 +457,7 @@
 
 .pay_ui .pay-box .pay-price .pay-input.data-v-bf26b57e {
     flex: 1;
-    font-family: Montserrat;
+    font-family: Montserrat, "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-size: 64rpx;
     font-style: normal;
     font-weight: 600;

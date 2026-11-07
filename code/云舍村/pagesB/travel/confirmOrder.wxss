@@ -676,7 +676,7 @@
 }
 
 .ui_confirmOrder .footer .price-info .price .price-box.data-v-5c545993 {
-    font-family: Montserrat
+    font-family: Montserrat, "LXGW WenKai", "STKaiti", "KaiTi", serif
 }
 
 .ui_confirmOrder .footer .price-info .price .price-box.point-box .point.data-v-5c545993 {
@@ -686,7 +686,7 @@
 
 .ui_confirmOrder .footer .price-info .price .price-box .point.data-v-5c545993 {
     color: #a43127;
-    font-family: Montserrat;
+    font-family: Montserrat, "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-size: 24rpx;
     font-style: normal;
     font-weight: 600;

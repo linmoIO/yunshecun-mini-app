@@ -258,7 +258,7 @@
 
 .card-content .card-price__number {
     color: #000;
-    font-family: Montserrat;
+    font-family: Montserrat, "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-size: 36rpx;
     font-weight: 700;
     line-height: 52rpx;

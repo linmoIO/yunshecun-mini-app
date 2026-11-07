@@ -213,7 +213,7 @@
     border: 1px solid #ddd;
     border-radius: 8rpx;
     display: flex;
-    font-family: PingFang SC;
+    font-family: "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-size: 28rpx;
     height: 92rpx;
     justify-content: center;

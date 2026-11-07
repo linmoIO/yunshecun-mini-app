@@ -317,7 +317,7 @@
 }
 
 .ui_tripChange .tripChange .info-box .info-list .info-item .val.weight.data-v-6f5255df {
-    font-family: Montserrat;
+    font-family: Montserrat, "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-size: 28rpx;
     font-style: normal;
     font-weight: 600
@@ -365,7 +365,7 @@
 
 .ui_tripChange .tripChange .info-box2 .info-head .info-head-state.data-v-6f5255df {
     color: #a43127;
-    font-family: PingFang SC;
+    font-family: "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-size: 28rpx;
     font-style: normal;
     font-weight: 400;

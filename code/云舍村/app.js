@@ -5,7 +5,20 @@
   });
   const e = require("./common/vendor.js"),
     r = require("./utils/aplus.js"),
-    a = require("./utils/qdTracker.js");
+    a = require("./utils/qdTracker.js"),
+    c = require("./utils/config.js");
+  // 全局楷体：霞鹜文楷常用字子集（OFL-1.1），由后端 /uploads/fonts 提供；加载失败时 app.wxss 中的字体栈回退到系统字体
+  const loadKaiFont = () => {
+    const base = String(c.config.baseUrlmall || "").replace(/\/api\/?$/, "");
+    if (!base || !wx.loadFontFace) return;
+    wx.loadFontFace({
+      global: !0,
+      family: "LXGW WenKai",
+      source: `url("${base}/uploads/fonts/LXGWWenKai-Regular.subset.woff2")`,
+      scopes: ["webview", "native"],
+      fail: e => console.warn("[app] loadFontFace failed:", e)
+    })
+  };
   let o = {
     userInfo: {},
     navInfo: {
@@ -59,7 +72,7 @@
           } catch (e) {
             console.warn("[app] qdTracker init failed:", e)
           }
-          t()
+          t(), loadKaiFont()
         }), () => {}
       }
     });

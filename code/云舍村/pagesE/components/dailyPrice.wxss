@@ -169,7 +169,7 @@
 
 .activity_dailyPrice .dailyPriceBox .monthList .monthItem .timeTitle {
     color: #666;
-    font-family: PingFang SC;
+    font-family: "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-size: 28rpx;
     font-style: normal;
     font-weight: 500;
@@ -193,7 +193,7 @@
     align-items: center;
     color: #333;
     display: flex;
-    font-family: PingFang SC;
+    font-family: "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-size: 24rpx;
     font-style: normal;
     font-weight: 400;
@@ -268,7 +268,7 @@
 
 .activity_dailyPrice .dailyPriceBox .calendar .monthBox .monthDay .day .currentDay {
     color: #000;
-    font-family: PingFang SC;
+    font-family: "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-size: 28rpx;
     font-style: normal;
     font-weight: 700;
@@ -357,7 +357,7 @@
 
 .activity_dailyPrice .dates .time_val {
     color: #000;
-    font-family: PingFang SC;
+    font-family: "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-size: 28rpx;
     font-style: normal;
     letter-spacing: 0;
@@ -373,7 +373,7 @@
 
 .activity_dailyPrice .dates .time_num {
     color: gray;
-    font-family: PingFang SC;
+    font-family: "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-size: 20rpx;
     font-style: normal;
     font-weight: 400;

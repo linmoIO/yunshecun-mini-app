@@ -17,7 +17,7 @@
     color: #000
 }
 
-.search.data-v-7803decc { background: #f7f4ee !important; color: #302e29; font-family: "PingFang SC", "Microsoft YaHei", sans-serif; }
+.search.data-v-7803decc { background: #f7f4ee !important; color: #302e29; font-family: "LXGW WenKai", "STKaiti", "KaiTi", serif; }
 .search .navbar-header.data-v-7803decc { background: #f7f4ee; border-bottom: 1rpx solid #e5dfd5; }
 
 .w-baseBtn[disabled].data-v-7803decc {

@@ -127,7 +127,7 @@
 
 .ui_confirmOrder .hotel_name.data-v-9ce70134 {
     color: #fff;
-    font-family: PingFang SC;
+    font-family: "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-size: 28rpx;
     font-weight: 400;
     letter-spacing: 0;
@@ -151,7 +151,7 @@
 
 .ui_confirmOrder .time_infos .info .label_name.data-v-9ce70134 {
     color: #fff;
-    font-family: PingFang SC;
+    font-family: "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-size: 28rpx;
     font-weight: 400;
     letter-spacing: 0;
@@ -426,7 +426,7 @@
 
 .ui_confirmOrder .form-infos .form-info .form-inline .val .select-box .red.data-v-9ce70134 {
     color: #a43127;
-    font-family: Montserrat;
+    font-family: Montserrat, "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-weight: 600
 }
 
@@ -574,7 +574,7 @@
 }
 
 .ui_confirmOrder .footer .price-info .price .price-box.data-v-9ce70134 {
-    font-family: Montserrat
+    font-family: Montserrat, "LXGW WenKai", "STKaiti", "KaiTi", serif
 }
 
 .ui_confirmOrder .footer .price-info .price .price-box.point-box .point.data-v-9ce70134 {
@@ -584,7 +584,7 @@
 
 .ui_confirmOrder .footer .price-info .price .price-box .point.data-v-9ce70134,.ui_confirmOrder .footer .price-info .price .price-box .point_footer.data-v-9ce70134 {
     color: #a43127;
-    font-family: Montserrat;
+    font-family: Montserrat, "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-size: 24rpx;
     font-style: normal;
     font-weight: 600;
@@ -655,7 +655,7 @@
     border-bottom: 1px solid #eee;
     color: #000;
     display: flex;
-    font-family: PingFang SC;
+    font-family: "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-size: 32rpx;
     font-style: normal;
     font-weight: 600;
@@ -763,7 +763,7 @@
 .ui_confirmOrder .pric_sty.data-v-9ce70134 {
     color: gray;
     display: flex;
-    font-family: PingFang SC;
+    font-family: "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-size: 28rpx;
     font-weight: 400;
     line-height: 28rpx;
@@ -935,7 +935,7 @@
 .ui_confirmOrder .discount-list .discount-item .discount-lf .discount-val.data-v-9ce70134 {
     color: #a43127;
     display: inline-block;
-    font-family: Montserrat;
+    font-family: Montserrat, "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-size: 48rpx;
     font-style: normal;
     font-weight: 600;
@@ -946,7 +946,7 @@
 .ui_confirmOrder .discount-list .discount-item .discount-lf .discount-val .val-desc.data-v-9ce70134 {
     color: #000;
     display: inline;
-    font-family: PingFang SC;
+    font-family: "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-size: 28rpx;
     font-style: normal;
     font-weight: 400

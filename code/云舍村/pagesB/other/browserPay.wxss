@@ -48,7 +48,7 @@
 }
 
 .ui_browserPay .content-wrapper .header .price-number.data-v-3cd849b3 {
-    font-family: Montserrat;
+    font-family: Montserrat, "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-size: 56rpx;
     font-weight: 600;
     padding: 30rpx 0
@@ -62,7 +62,7 @@
 
 .ui_browserPay .content-wrapper .check_title.data-v-3cd849b3 {
     color: #000;
-    font-family: PingFang SC;
+    font-family: "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-size: 32rpx;
     font-weight: 700;
     letter-spacing: 0;
@@ -110,7 +110,7 @@
 
 .ui_browserPay .content-wrapper .dialog-footer .cancel-btn.data-v-3cd849b3 {
     color: #000;
-    font-family: PingFang SC;
+    font-family: "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-size: 32rpx;
     font-weight: 400;
     letter-spacing: 0;

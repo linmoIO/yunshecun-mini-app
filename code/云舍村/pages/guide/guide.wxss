@@ -3,8 +3,8 @@
     line-clamp: 1
 }
 
-page { background: #f7f4ee; color: #302e29; font-family: "PingFang SC", "Microsoft YaHei", sans-serif; }
-.guide-title, .guide-page-title, .title.data-v-438fed38 { font-family: "STKaiti", "KaiTi", "FZKai-Z03", "PingFang SC", sans-serif; }
+page { background: #f7f4ee; color: #302e29; font-family: "LXGW WenKai", "STKaiti", "KaiTi", serif; }
+.guide-title, .guide-page-title, .title.data-v-438fed38 { font-family: "LXGW WenKai", "STKaiti", "KaiTi", serif; }
 
 .line-clamp-1.data-v-438fed38,.line-clamp-2.data-v-438fed38 {
     -webkit-box-orient: vertical;
@@ -117,7 +117,7 @@ page { background: #f7f4ee; color: #302e29; font-family: "PingFang SC", "Microso
     background-image: url(https://songtsam-internal-static.oss-cn-chengdu.aliyuncs.com/mobile/assets/travel-assistant/guide_label.png);
     background-size: 100% 100%;
     color: #fff;
-    font-family: PingFang SC;
+    font-family: "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-size: 28rpx;
     height: 80rpx;
     line-height: 72rpx;
@@ -135,7 +135,7 @@ page { background: #f7f4ee; color: #302e29; font-family: "PingFang SC", "Microso
 
 .guide .guide-wrap .guide-wrap-head .head-box .head-content .head-content-text.data-v-438fed38 {
     color: #fff;
-    font-family: PingFang SC;
+    font-family: "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-size: 28rpx;
     line-height: 44rpx;
     margin-top: 40rpx
@@ -194,7 +194,7 @@ page { background: #f7f4ee; color: #302e29; font-family: "PingFang SC", "Microso
     align-items: center;
     display: flex;
     flex: 1;
-    font-family: PingFang SC;
+    font-family: "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-size: 32rpx;
     height: 96rpx;
     justify-content: center;

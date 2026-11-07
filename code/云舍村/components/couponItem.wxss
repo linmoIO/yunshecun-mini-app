@@ -116,7 +116,7 @@
 
 .ui_couponItem .couponPrice.data-v-69a10e74 {
     color: #a43127;
-    font-family: Montserrat;
+    font-family: Montserrat, "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-size: 48rpx;
     font-weight: 600;
     margin-top: 32rpx

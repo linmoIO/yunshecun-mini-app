@@ -75,8 +75,8 @@
     white-space: normal
 }
 
-page { background: #f7f4ee; color: #302e29; font-family: "PingFang SC", "Microsoft YaHei", sans-serif; }
-.ui_hotel .hotelName.data-v-acdc94be, .ui_hotel .bigTitle.data-v-acdc94be { font-family: "STKaiti", "KaiTi", "FZKai-Z03", "PingFang SC", sans-serif; }
+page { background: #f7f4ee; color: #302e29; font-family: "LXGW WenKai", "STKaiti", "KaiTi", serif; }
+.ui_hotel .hotelName.data-v-acdc94be, .ui_hotel .bigTitle.data-v-acdc94be { font-family: "LXGW WenKai", "STKaiti", "KaiTi", serif; }
 .ui_hotel .bigTitle.data-v-acdc94be { color: #4d473e; font-size: 40rpx; }
 .ui_hotel .hotelName.data-v-acdc94be { font-size: 42rpx; }
 .ui_hotel .priceItem.data-v-acdc94be { color: #8b4f3b; font-size: 29rpx; }
@@ -284,7 +284,7 @@ page { background: #f7f4ee; color: #302e29; font-family: "PingFang SC", "Microso
 
 .ui_hotel .roomInfo .bookFooter .leftPart .priceItem .price.data-v-acdc94be {
     color: #000;
-    font-family: Montserrat;
+    font-family: Montserrat, "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-size: 40rpx;
     font-weight: 600
 }
@@ -462,7 +462,7 @@ page { background: #f7f4ee; color: #302e29; font-family: "PingFang SC", "Microso
 
 .ui_hotel .hotelItem .topBox .priceItem .price.data-v-acdc94be {
     color: #a43127;
-    font-family: Montserrat;
+    font-family: Montserrat, "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-size: 40rpx;
     font-weight: 600
 }
@@ -653,7 +653,7 @@ page { background: #f7f4ee; color: #302e29; font-family: "PingFang SC", "Microso
 
 .ui_hotel .bgItem .seeMoreBox .infoText.data-v-acdc94be {
     color: #fff;
-    font-family: "STKaiti", "KaiTi", "FZKai-Z03", "PingFang SC", sans-serif;
+    font-family: "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-size: 30rpx !important;
     line-height: 1.95 !important;
     letter-spacing: .3rpx;
@@ -748,7 +748,7 @@ page { background: #f7f4ee; color: #302e29; font-family: "PingFang SC", "Microso
 
 .ui_hotel .bgItem .bgInfoBox .infoText.data-v-acdc94be {
     color: #fff;
-    font-family: "STKaiti", "KaiTi", "FZKai-Z03", "PingFang SC", sans-serif;
+    font-family: "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-size: 30rpx;
     line-height: 1.95;
     opacity: .8

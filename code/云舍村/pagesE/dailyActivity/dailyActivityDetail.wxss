@@ -120,7 +120,7 @@
 }
 
 .dailyDetail_ui.data-v-0fa8995e {
-    font-family: PingFang SC;
+    font-family: "LXGW WenKai", "STKaiti", "KaiTi", serif;
     padding-bottom: calc(200rpx + env(safe-area-inset-bottom))
 }
 
@@ -266,7 +266,7 @@
 
 .dailyDetail_ui .product-info .product-price.data-v-0fa8995e {
     color: #a43127;
-    font-family: Montserrat;
+    font-family: Montserrat, "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-size: 40rpx;
     font-style: normal;
     font-weight: 600;
@@ -313,7 +313,7 @@
 
 .dailyDetail_ui .intro_wrap .intro_item.data-v-0fa8995e {
     display: flex;
-    font-family: PingFang SC;
+    font-family: "LXGW WenKai", "STKaiti", "KaiTi", serif;
     margin-bottom: 24rpx
 }
 
@@ -502,7 +502,7 @@
 
 .dailyDetail_ui .product-info-box .dates .date .val.data-v-0fa8995e,.dailyDetail_ui .product-info-box .dates .date_time .val.data-v-0fa8995e {
     color: #000;
-    font-family: PingFang SC;
+    font-family: "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-size: 32rpx;
     font-weight: 700;
     line-height: 1;
@@ -537,7 +537,7 @@
 
 .dailyDetail_ui .product-info-box .time_val.data-v-0fa8995e {
     color: #000;
-    font-family: PingFang SC;
+    font-family: "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-size: 28rpx;
     font-weight: 400;
     letter-spacing: 0;
@@ -793,7 +793,7 @@
 
 .dailyDetail_ui .product-info-box .travel-date-item .day-travel-list .day-travel .day-travel-info .day-travel-desc.data-v-0fa8995e {
     color: gray;
-    font-family: PingFang SC;
+    font-family: "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-size: 28rpx;
     line-height: 44rpx;
     margin-top: 24rpx
@@ -978,7 +978,7 @@
 
 .dailyDetail_ui .product-info-box .travel-date .travel-date-lf .val.data-v-0fa8995e {
     color: #000;
-    font-family: Montserrat;
+    font-family: Montserrat, "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-size: 40rpx;
     font-style: normal;
     font-weight: 600;
