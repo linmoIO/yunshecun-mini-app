@@ -162,14 +162,18 @@ router.get('/cms/:key', async (req, res) => {
 // ---- 出行偏好（基于历史订单 + 手动设置）----
 router.get('/member/travel-preference', auth, async (req, res) => {
   // 从历史订单分析偏好
-  const orders = await _mp.travelOrder.findMany({ where: { memberId: req.member.id }, include: { product: { select: { category: true, destination: true, tags: true, title: true } } }, orderBy: { createdAt: 'desc' }, take: 20 });
+  // 只统计已成交的订单（待支付、已取消、退款中/已退款不算“出行记录”）
+  const orders = await _mp.travelOrder.findMany({ where: { memberId: req.member.id, status: { notIn: ['pending', 'cancelled', 'refunding', 'refunded'] } }, include: { product: { select: { category: true, destination: true, tags: true, title: true } } }, orderBy: { createdAt: 'desc' }, take: 20 });
   const destCount = {}, catCount = {};
   orders.forEach(o => {
     if (o.product?.destination) destCount[o.product.destination] = (destCount[o.product.destination] || 0) + 1;
     if (o.product?.category) catCount[o.product.category] = (catCount[o.product.category] || 0) + 1;
   });
-  const topDest = Object.entries(destCount).sort((a,b) => b[1]-a[1]).slice(0,3).map(e=>e[0]);
-  const topCat = Object.entries(catCount).sort((a,b) => b[1]-a[1]).slice(0,2).map(e=>e[0]);
+  // 产品表里存的是编码（如 taoyuan / Travel），页面直接显示英文；转成中文名，未知编码原样显示
+  const DEST_LABELS = { taoyuan: '桃源' };
+  const CATEGORY_LABELS = { Travel: '旅行套餐', DestPackage: '目的地套餐', DayActivity: '一日游', FreeTravel: '自由行', ThemeGroup: '主题团', Custom: '私人定制' };
+  const topDest = Object.entries(destCount).sort((a,b) => b[1]-a[1]).slice(0,3).map(e => DEST_LABELS[String(e[0]).toLowerCase()] || e[0]);
+  const topCat = Object.entries(catCount).sort((a,b) => b[1]-a[1]).slice(0,2).map(e => CATEGORY_LABELS[e[0]] || e[0]);
   // 手动设置的偏好
   const cfg = await _mp.sysConfig.findFirst({ where: { key: `member_pref_${req.member.id}` } }).catch(() => null);
   const manualPref = cfg?.value ? JSON.parse(cfg.value) : {};

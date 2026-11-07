@@ -298,7 +298,14 @@
                   enhanceSta: o.status === 'pending',
                   title: fi.productName || '风物商品',
                   link: img,
-                  orderTimeStr: (fi.skuInfo && fi.skuInfo !== '{}' && fi.skuInfo !== '[]') ? fi.skuInfo : '',
+                  // 后端返回的 skuInfo 已解析为对象（无规格时为 {}），原先直接显示成 "{}"；转成“规格值 / 规格值”文本
+                  orderTimeStr: (function(s) {
+                    if (!s) return '';
+                    if (typeof s === 'string') { try { s = JSON.parse(s); } catch (_e) { return s; } }
+                    if (Array.isArray(s)) return s.filter(Boolean).join(' / ');
+                    if (typeof s === 'object') return Object.keys(s).map(function(k) { return s[k]; }).filter(function(v) { return v !== '' && v != null && typeof v !== 'object'; }).join(' / ');
+                    return String(s);
+                  })(fi.skuInfo),
                   price: o.totalAmount || 0,
                   showPay: o.status === 'pending',
                   showAfterSales: ['shipped', 'completed'].includes(o.status),
