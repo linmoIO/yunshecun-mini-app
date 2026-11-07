@@ -57,14 +57,16 @@
         function C() {
           T.value && d("change", I.value)
         }
-        const D = e.ref(!0);
-        e.watch(() => [m.value, T.value], () => {
-          D.value && T.value && !m.value && (D.value = !1, ae("member"))
+        const D = e.ref(!0),
+          w = e.ref(!1);
+        // 酒店/旅游订单需用户在“会员折扣”与“累计积分”间选择；会员折扣不可用时唯一可选的是
+        // “不使用折扣，累计积分”（不改变支付金额），直接选中，避免因未选择而提示“请选择会员折扣方案”无法下单
+        e.watch(() => [m.value, T.value, w.value], () => {
+          D.value && T.value && (m.value ? w.value || (D.value = !1, ae("point")) : (D.value = !1, ae("member")))
         }, {
           immediate: !0
         });
-        const w = e.ref(!1),
-          j = e.computed(() => {
+        const j = e.computed(() => {
             var e, a, o;
             const l = ((null == (e = p.payPrice) ? void 0 : e.basicTeamRateSum) || 0) + ((null == (a = p.payPrice) ? void 0 : a.singleRoomRateSum) || 0) + ((null == (o = p.payPrice) ? void 0 : o.guaranteedPrice) || 0);
             return S.value.filter(e => l >= e.discountPriceBegin)

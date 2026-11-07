@@ -77,7 +77,9 @@
           price: 0,
           ...asObject(A.minPriceDto)
         };
-          E = e.ref(r.defaultActivityChannel),
+        // 上面的兜底语句插在了 const 声明链中间，导致 E/I/R 变成未声明变量，严格模式下进入页面即报
+        // “ReferenceError: E is not defined”，活动预订页整页空白无法下单；这里补回 const 声明
+        const E = e.ref(r.defaultActivityChannel),
           I = e.ref(),
           R = e.ref();
         e.ref([]), e.ref(0);
