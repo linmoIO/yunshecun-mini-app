@@ -50,13 +50,11 @@ router.get('/albumCategory/listRootCategory', optionalAuth, (req, res) => res.js
 router.get('/microSoftWare/admin/getWxacodeUnlimitUrl.json', authMiddleware, (req, res) => res.json({ code: 0, data: { url: '' } }));
 
 // 订单聚合
-// orderAggregation: 酒旅订单聚合（支持 openid/memberid/memberToken 多种鉴权，支持 orderStatus 过滤）
+// orderAggregation: 酒旅订单聚合（memberToken 鉴权，openid 兜底；支持 orderStatus 过滤）
 router.get('/orderAggregation/orderList.json', optionalAuth, async (req, res) => {
-  const { PrismaClient: _P2 } = require('@prisma/client');
-  const _p3 = new _P2();
+  const _p3 = _prisma; // 复用本文件共享的 PrismaClient，不再每次请求新建连接池
   const q = req.query || {};
   const openid = q.openid || '';
-  const memberIdParam = q.memberid || q.memberId || '';
   const orderStatusFilter = q.orderStatus || ''; // 逗号分隔，如 "1" 或 "2,4"
 
   // orderStatus 数字码 → DB 状态字符串
@@ -66,10 +64,10 @@ router.get('/orderAggregation/orderList.json', optionalAuth, async (req, res) =>
 
   let member = null;
   try {
+    // 只信任登录 token；不再接受裸 memberid 查询（memberId 会出现在邀请分享链接里，任何人可凭它查看他人订单）。
+    // openid 不对外暴露，保留为 token 失效时的兼容兜底。
     if (req.member) {
       member = await _p3.member.findUnique({ where: { id: req.member.id } });
-    } else if (memberIdParam) {
-      member = await _p3.member.findFirst({ where: { memberId: String(memberIdParam) } });
     } else if (openid) {
       member = await _p3.member.findFirst({ where: { wechatOpenId: openid } });
     }
@@ -106,7 +104,6 @@ router.get('/orderAggregation/orderList.json', optionalAuth, async (req, res) =>
       orders.sort((a, b) => b.orderNo.localeCompare(a.orderNo));
     } catch(err) { console.error('[orderAggregation]', err); }
   }
-  await _p3.$disconnect();
   return res.json({ code: 0, result: 1, retVal: { orderList: orders, total: orders.length } });
 });
 

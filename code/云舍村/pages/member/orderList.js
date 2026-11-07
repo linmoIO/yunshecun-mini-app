@@ -178,7 +178,8 @@
           let a = "",
             r = "",
             u = "";
-          f && f.mobile && (r = f.memberId, u = f.memberToken || ""), g && g.openid && (a = g.openid);
+          // 已登录即携带 memberToken（仅微信登录、未绑定手机号的会员 mobile 为空，原先订单列表显示“暂无订单”）
+          f && f.memberId && (r = f.memberId, u = f.memberToken || ""), g && g.openid && (a = g.openid);
           const i = e.ref(""),
             c = {
               firstResult: y.value,

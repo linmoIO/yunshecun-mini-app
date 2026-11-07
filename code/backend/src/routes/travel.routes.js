@@ -275,17 +275,8 @@ router.get('/travel/orderQueryStatus', authMiddleware, ctrl.queryOrderStatus);
 
 // 订单取消（待支付/已支付可取消）
 router.post('/travel/cancelOrder', authMiddleware, ctrl.cancelOrder);
-// 前端 confirmOrder.js 的 cancelOrder 路径兼容
-router.get('/travel/cancelSingleActivityOrder', authMiddleware, (req, res) => {
-  const { PrismaClient: _PC } = require('@prisma/client');
-  const _pc = new _PC();
-  const { orderNo } = req.query;
-  _pc.travelOrder.findFirst({ where: { orderNo } }).then(async o => {
-    if (o) await _pc.travelOrder.update({ where: { orderNo }, data: { status: 'cancelled' } });
-    await _pc.$disconnect();
-    res.json({ code: 0, result: 1, msg: '取消成功' });
-  }).catch(async () => { await _pc.$disconnect(); res.json({ code: -1, msg: '取消失败' }); });
-});
+// 已移除 /travel/cancelSingleActivityOrder：前端从未调用（单项活动取消走 /singleActivity/cancelSingleActivityOrder），
+// 而它不校验订单归属和状态，任何登录用户都能凭订单号把他人（含已支付）旅游订单改成已取消，且不回补库存。
 
 // 行程相关
 router.get('/team/order/detail/:orderNo', authMiddleware, ctrl.getOrderDetail);
