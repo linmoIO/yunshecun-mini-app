@@ -259,6 +259,7 @@
             <view class="login-tips"> 登录后可保存行程并查看预约信息。 </view>
         </view>
     </view>
+    <trip-culture></trip-culture>
     <view class="recd">
         <view class="recd-title" wx:if="{{z}}">云舍村推荐</view>
         <view class="recd-box">

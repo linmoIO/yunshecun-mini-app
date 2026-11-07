@@ -8,6 +8,7 @@
                             "bottom-dialog":  "../../components/bottomDialog",
                             "water":  "../../components/water",
                             "bottom-nav":  "../../components/bottomNav",
-                            "float-button-kf":  "/components/new/FloatButtonKf"
+                            "float-button-kf":  "/components/new/FloatButtonKf",
+                            "trip-culture":  "../../components/tripCulture/index"
                         }
 }

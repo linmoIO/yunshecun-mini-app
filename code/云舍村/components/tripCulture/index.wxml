@@ -1,0 +1,34 @@
+<view class="tc" wx:if="{{term || itineraries.length}}">
+  <view class="tc-section" wx:if="{{term}}">
+    <view class="tc-head" bindtap="openTerms">
+      <view class="tc-title">二十四节气 · 东方村落文明</view>
+      <view class="tc-more">全年活动 ›</view>
+    </view>
+    <view class="tc-term" bindtap="openTerms">
+      <view class="tc-term-top">
+        <view class="tc-term-name">{{term.name}}</view>
+        <view class="tc-term-date">{{term.dateText}}</view>
+      </view>
+      <view class="tc-row" wx:if="{{term.fun}}"><view class="tc-label">乐</view><view class="tc-text">{{term.fun}}</view></view>
+      <view class="tc-row" wx:if="{{term.food}}"><view class="tc-label">食</view><view class="tc-text">{{term.food}}</view></view>
+      <view class="tc-row" wx:if="{{term.explore}}"><view class="tc-label">探</view><view class="tc-text">{{term.explore}}</view></view>
+      <view class="tc-row" wx:if="{{term.paddy || term.garden}}"><view class="tc-label">耕</view><view class="tc-text tc-ellipsis">{{term.paddy || term.garden}}</view></view>
+      <view class="tc-next" wx:if="{{nextTerm}}">下一个节气：{{nextTerm.name}} · {{nextTerm.dateText}}</view>
+    </view>
+  </view>
+
+  <view class="tc-section" wx:if="{{itineraries.length}}">
+    <view class="tc-head">
+      <view class="tc-title">推荐行程</view>
+    </view>
+    <scroll-view class="tc-scroll" scroll-x enhanced show-scrollbar="{{false}}">
+      <view class="tc-card" wx:for="{{itineraries}}" wx:key="id" data-id="{{item.id}}" bindtap="openItinerary">
+        <image class="tc-cover" src="{{item.cover}}" mode="aspectFill" lazy-load></image>
+        <view class="tc-card-body">
+          <view class="tc-card-title">{{item.title}}</view>
+          <view class="tc-card-meta" wx:if="{{item.meta}}">{{item.meta}}</view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+</view>

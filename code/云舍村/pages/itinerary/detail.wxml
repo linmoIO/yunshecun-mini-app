@@ -1,0 +1,36 @@
+<view class="it-page" wx:if="{{itinerary}}">
+  <view class="it-hero">
+    <image class="it-cover" src="{{itinerary.cover}}" mode="aspectFill"></image>
+    <view class="it-shade"></view>
+    <view class="it-heading">
+      <view class="it-meta" wx:if="{{itinerary.meta}}">{{itinerary.meta}}</view>
+      <view class="it-title">{{itinerary.title}}</view>
+      <view class="it-tags" wx:if="{{itinerary.tags.length}}">
+        <view class="it-tag" wx:for="{{itinerary.tags}}" wx:key="*this">{{item}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="it-day" wx:for="{{itinerary.days}}" wx:for-item="day" wx:key="title">
+    <view class="it-day-title">{{day.title}}</view>
+    <view class="it-day-sub" wx:if="{{day.subtitle}}">{{day.subtitle}}</view>
+    <view class="it-section" wx:for="{{day.sections}}" wx:for-item="section" wx:key="label">
+      <view class="it-dot"></view>
+      <view class="it-section-body">
+        <view class="it-label">{{section.label}}</view>
+        <view class="it-item" wx:for="{{section.items}}" wx:key="name">
+          <view class="it-item-name">{{item.name}}</view>
+          <view class="it-item-desc" wx:if="{{item.desc}}">{{item.desc}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="it-notice" wx:if="{{notice}}">{{notice}}</view>
+</view>
+<view class="it-empty" wx:elif="{{!loading}}">行程内容暂时无法加载，请返回重试</view>
+
+<view class="it-bar" wx:if="{{itinerary && (phone || bookPath)}}">
+  <view class="it-btn it-btn-line" wx:if="{{phone}}" bindtap="callButler">联系管家定制</view>
+  <view class="it-btn it-btn-fill" wx:if="{{bookPath}}" bindtap="book">预订村舍</view>
+</view>

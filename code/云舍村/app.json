@@ -16,6 +16,8 @@
     "pages/village/index",
     "pages/village/detail",
     "pages/activity-guide/detail",
+    "pages/itinerary/detail",
+    "pages/solar-terms/index",
     "pages/stay-guide/index",
     "pages/search/index",
     "pages/search/result",
