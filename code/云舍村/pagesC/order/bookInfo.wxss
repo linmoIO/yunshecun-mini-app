@@ -603,7 +603,7 @@
 .ui_bookInfo .footer .price-info .price.data-v-e7b28f9e {
     color: #a43127;
     display: flex;
-    font-family: Montserrat
+    font-family: Montserrat, "LXGW WenKai", "STKaiti", "KaiTi", serif
 }
 
 .ui_bookInfo .footer .price-info .price.weight.data-v-e7b28f9e {
@@ -673,7 +673,7 @@
     border-bottom: 1px solid #eee;
     color: #000;
     display: flex;
-    font-family: PingFang SC;
+    font-family: "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-size: 32rpx;
     font-style: normal;
     font-weight: 600;

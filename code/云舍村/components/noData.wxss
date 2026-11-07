@@ -131,7 +131,7 @@
 
 .noData_ui .text.data-v-d9640da5 {
     color: #000;
-    font-family: PingFang SC;
+    font-family: "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-size: 36rpx;
     font-style: normal;
     font-weight: 500;
@@ -142,7 +142,7 @@
 
 .noData_ui .tips.data-v-d9640da5 {
     color: gray;
-    font-family: PingFang SC;
+    font-family: "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-size: 28rpx;
     font-style: normal;
     font-weight: 400;

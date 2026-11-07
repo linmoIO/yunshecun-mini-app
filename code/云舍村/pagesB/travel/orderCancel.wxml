@@ -1,9 +1,9 @@
 <view class="paySuccess_ui data-v-f28ce492">
     <view class="pay-sta data-v-f28ce492">
         <view class="icon iconfont icon-a-120_tijiaochenggong data-v-f28ce492"></view>
-        <view class="tl data-v-f28ce492">取消原因已提交</view>
+        <view class="tl data-v-f28ce492">订单已取消</view>
         <view class="progress data-v-f28ce492"></view>
-        <view class="tips data-v-f28ce492"> 感谢您的建议，给您带来不便我们深感抱歉<view class="data-v-f28ce492"></view>请联系客服为您处理取消订单事宜 </view>
+        <view class="tips data-v-f28ce492"> 感谢您的反馈，所选房间/名额已为您释放<view class="data-v-f28ce492"></view>如有疑问可随时联系管家 </view>
         <image class="bg data-v-f28ce492" mode="widthFix" src="https://dsplatweb.oss-cn-chengdu.aliyuncs.com/songzan/images/authBg.png"></image>
         <view class="pay-actions data-v-f28ce492">
             <view class="pay-action--block data-v-f28ce492">

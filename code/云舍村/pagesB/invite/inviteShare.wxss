@@ -29,7 +29,7 @@
 
 .ui_invite_share .top .rowMemberCard.data-v-b685e1e6 {
     color: #fff;
-    font-family: PingFang SC;
+    font-family: "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-size: 24rpx;
     font-weight: 400;
     letter-spacing: 0;
@@ -39,7 +39,7 @@
 
 .ui_invite_share .top .rowUserName.data-v-b685e1e6 {
     color: #fff;
-    font-family: PingFang SC;
+    font-family: "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-size: 32rpx;
     font-weight: 500;
     letter-spacing: 0;
@@ -62,7 +62,7 @@
 .ui_invite_share .title2.data-v-b685e1e6 {
     color: #fff;
     flex: 1;
-    font-family: PingFang SC;
+    font-family: "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-size: 28rpx;
     font-weight: 400;
     letter-spacing: 0;
@@ -75,7 +75,7 @@
     background-color: #fff;
     border-radius: 8rpx;
     display: flex;
-    font-family: PingFang SC;
+    font-family: "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-size: 32rpx;
     font-weight: 400;
     height: 96rpx;

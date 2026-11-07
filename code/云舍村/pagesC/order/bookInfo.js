@@ -15,6 +15,7 @@
     s = require("../../utils/umengAdaptor.js"),
     m = require("../../utils/utils.js"),
     p = require("../../utils/wxuser.js");
+  const MAX_ROOMS_PER_ORDER = 2;
   Array || (e.resolveComponent("mp-html") + e.resolveComponent("FloatButtonKf"))(), Math || (g + D + (() => "../../uni_modules/mp-html/components/mp-html/mp-html.js") + C + f + y + h + b + T)();
   const f = () => "../../components/bottomDialog.js",
     h = () => "../../components/couponItem.js",
@@ -207,6 +208,8 @@
         function Qe(a) {
           let t = x.value;
           if ("plus" === a && Z.value.length > 0 && ("FR" === Z.value[0].couponType || "RF" === Z.value[0].couponType)) return o.jAlert3("当前优惠券只能选一个房晚"), !1;
+          // 每单最多 2 间（后端同样校验，见 backend/src/utils/roomAvailability.js MAX_ROOMS_PER_ORDER）
+          if ("plus" === a && x.value >= MAX_ROOMS_PER_ORDER) return o.jAlert3(`每单最多预订 ${MAX_ROOMS_PER_ORDER} 间，如需更多请联系管家`), !1;
           if ("mins" === a) {
             if (Z.value.length === x.value && x.value > 1) return o.jAlert3("您当前选择的房间数量小于可使用的优惠券数量,请先取消一张优惠券再选择房间数量"), !1;
             if (x.value <= 1) return !1;
@@ -227,6 +230,7 @@
             clientChannel: "WECHAT",
             otaChannel: W.value,
             productCode: A.value,
+            rmtype: k.value,
             openid: null == I ? void 0 : I.openid,
             memberNo: "",
             cardLevel: "",
@@ -394,6 +398,7 @@
                 clientChannel: "WECHAT",
                 otaChannel: W.value,
                 productCode: A.value,
+                rmtype: k.value,
                 memberNo: "",
                 cardLevel: "",
                 cardType: "",
@@ -419,10 +424,10 @@
             if (N && N.memberId && (v.memberNo = N.cardNo ? N.cardNo : "", v.cardLevel = N.cardLevel ? N.cardLevel : "", v.cardType = N.cardType ? N.cardType : "", v.memberId = N.memberId ? N.memberId : ""), "HOUR" === W.value) {
               v.rsvClass = "D";
               const a = Number(X.value),
-                o = `${e.dayjs().format("YYYY-MM-DD")} ${ve.value}:00`,
+                hourStart = `${e.dayjs().format("YYYY-MM-DD")} ${ve.value}:00`,
                 t = e.dayjs().format("YYYY-MM-DD") + " 23:59:59",
-                l = e.dayjs(o).add(a, "hours").format("YYYY-MM-DD HH:mm:ss");
-              e.dayjs(l).isAfter(t) ? v.depTime = "23:59:59" : v.depTime = e.dayjs(o).add(a, "hours").format("HH:mm:ss")
+                l = e.dayjs(hourStart).add(a, "hours").format("YYYY-MM-DD HH:mm:ss");
+              e.dayjs(l).isAfter(t) ? v.depTime = "23:59:59" : v.depTime = e.dayjs(hourStart).add(a, "hours").format("HH:mm:ss")
             }!async function(t) {
               var l, u, r, v;
               if (K.value) return !1;
@@ -458,12 +463,12 @@
                       child_num: Le.value + Ge.value + Oe.value,
                       coupon_code: ((null == (u = Z.value) ? void 0 : u.map(e => e.couponCode)) || []).join(",")
                     });
-                    const o = {
-                      orderNo: a.retVal,
+                    const payPageQuery = {
+                      orderNo: (a.retVal && a.retVal.orderNo) || a.retVal,
                       productType: "hotel"
                     };
                     e.index.redirectTo({
-                      url: "/pagesB/other/pay?" + m.createUrl(o)
+                      url: "/pagesB/other/pay?" + m.createUrl(payPageQuery)
                     }), K.value = !1
                   } else K.value = !1, o.jAlert3(a.msg)
                 }).catch(e => {

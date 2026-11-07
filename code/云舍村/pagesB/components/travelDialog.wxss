@@ -269,7 +269,7 @@
 
 .travel-dates .travel-date-item .day-travel-list .day-travel .day-travel-info .day-travel-desc.data-v-b835ce78 {
     color: gray;
-    font-family: PingFang SC;
+    font-family: "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-size: 28rpx;
     line-height: 44rpx;
     margin-top: 24rpx
@@ -316,7 +316,7 @@
 
 .travel-dates .travel-date .travel-date-lf .val.data-v-b835ce78 {
     color: #000;
-    font-family: Montserrat;
+    font-family: Montserrat, "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-size: 40rpx;
     font-style: normal;
     font-weight: 600;

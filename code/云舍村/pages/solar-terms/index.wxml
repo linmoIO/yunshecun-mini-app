@@ -1,0 +1,33 @@
+<view class="st-page" wx:if="{{months.length}}">
+  <view class="st-header">
+    <view class="st-title">二十四节气 · 东方村落文明</view>
+    <view class="st-intro" wx:if="{{intro}}">{{intro}}</view>
+  </view>
+
+  <view class="st-block" wx:if="{{daily.length}}">
+    <view class="st-block-title">日常体验 · 全年</view>
+    <view class="st-chips">
+      <view class="st-chip" wx:for="{{daily}}" wx:key="*this">{{item}}</view>
+    </view>
+  </view>
+
+  <view class="st-month" wx:for="{{months}}" wx:for-item="group" wx:key="month">
+    <view class="st-month-name">{{group.month}}</view>
+    <view class="st-card {{term.isCurrent ? 'st-card-current' : ''}}" id="{{term.key}}" wx:for="{{group.terms}}" wx:for-item="term" wx:key="key">
+      <view class="st-card-top">
+        <view class="st-name">{{term.name}}</view>
+        <view class="st-date">{{term.dateText}}</view>
+        <view class="st-badge" wx:if="{{term.isCurrent}}">当前</view>
+        <view class="st-badge st-badge-festival" wx:elif="{{term.type === 'festival'}}">节日</view>
+      </view>
+      <view class="st-row" wx:if="{{term.fun}}"><view class="st-label">乐</view><view class="st-text">{{term.fun}}</view></view>
+      <view class="st-row" wx:if="{{term.food}}"><view class="st-label">食</view><view class="st-text">{{term.food}}</view></view>
+      <view class="st-row" wx:if="{{term.explore}}"><view class="st-label">探</view><view class="st-text">{{term.explore}}</view></view>
+      <view class="st-row" wx:if="{{term.garden}}"><view class="st-label">耕</view><view class="st-text">菜园：{{term.garden}}</view></view>
+      <view class="st-row" wx:if="{{term.paddy}}"><view class="st-label st-label-blank">耕</view><view class="st-text">水稻田：{{term.paddy}}</view></view>
+      <view class="st-note-toggle" wx:if="{{term.note}}" data-key="{{term.key}}" bindtap="toggleNote">{{expanded[term.key] ? '收起民俗说明' : '民俗说明'}}</view>
+      <view class="st-note" wx:if="{{term.note && expanded[term.key]}}">{{term.note}}</view>
+    </view>
+  </view>
+</view>
+<view class="st-empty" wx:elif="{{!loading}}">节气活动暂时无法加载，请返回重试</view>

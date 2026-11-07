@@ -189,7 +189,7 @@
 }
 
 .counponList .counpon .travelersInfo-item .val.price.data-v-f272cdab {
-    font-family: Montserrat;
+    font-family: Montserrat, "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-size: 32rpx;
     font-weight: 600
 }
@@ -237,7 +237,7 @@
 
 .counponList .counpon .couponNo .no.data-v-f272cdab {
     color: #000;
-    font-family: Montserrat;
+    font-family: Montserrat, "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-size: 36rpx;
     font-weight: 400
 }

@@ -60,7 +60,7 @@
 
 .ui_addBaggage .baggageList .item .baggage-rt .no.data-v-3a77aafa {
     color: #000;
-    font-family: PingFang SC;
+    font-family: "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-size: 32rpx;
     font-style: normal;
     font-weight: 500;

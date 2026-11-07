@@ -14,8 +14,7 @@ router.post('/singleActivity/pay', authMiddleware, ctrl.activityPay);
 // 查询支付状态
 router.get('/pay/status', authMiddleware, ctrl.queryPayStatus);
 
-// 退款
-router.post('/pay/refund', authMiddleware, ctrl.refund);
+// 退款只允许管理后台发起：POST /api/admin/payments/refund（需管理员登录）
 
 
 // 回调（不需要登录）

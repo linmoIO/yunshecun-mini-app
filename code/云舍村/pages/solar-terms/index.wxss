@@ -1,0 +1,27 @@
+page { background: #f7f4ee; color: #302e29; }
+.st-page { padding: 0 32rpx calc(60rpx + env(safe-area-inset-bottom)); }
+.st-header { padding: 44rpx 8rpx 12rpx; }
+.st-title { font-size: 44rpx; font-weight: 600; line-height: 1.35; color: #2b261f; }
+.st-intro { margin-top: 14rpx; font-size: 26rpx; line-height: 1.75; color: #6b6358; }
+
+.st-block { margin-top: 28rpx; padding: 30rpx; background: #fff; border-radius: 12rpx; }
+.st-block-title { font-size: 30rpx; font-weight: 600; color: #59472f; }
+.st-chips { display: flex; flex-wrap: wrap; margin-top: 18rpx; }
+.st-chip { margin: 0 14rpx 14rpx 0; padding: 6rpx 18rpx; border-radius: 4rpx; background: #f4efe6; font-size: 24rpx; color: #59472f; }
+
+.st-month { margin-top: 36rpx; }
+.st-month-name { margin: 0 8rpx 16rpx; font-size: 30rpx; font-weight: 600; color: #8a7559; }
+.st-card { margin-bottom: 20rpx; padding: 30rpx 30rpx 24rpx; background: #fff; border-radius: 12rpx; border: 2rpx solid transparent; }
+.st-card-current { border-color: #9b7950; }
+.st-card-top { display: flex; align-items: baseline; margin-bottom: 12rpx; }
+.st-name { font-size: 38rpx; font-weight: 600; color: #59472f; }
+.st-date { margin-left: 16rpx; font-size: 24rpx; color: #8a7559; }
+.st-badge { margin-left: auto; padding: 2rpx 14rpx; border-radius: 4rpx; background: #59472f; color: #fff; font-size: 22rpx; }
+.st-badge-festival { background: #b4604a; }
+.st-row { display: flex; margin-top: 12rpx; font-size: 27rpx; line-height: 1.65; }
+.st-label { flex: 0 0 40rpx; height: 40rpx; margin: 4rpx 18rpx 0 0; border-radius: 6rpx; background: #756044; color: #fff; font-size: 23rpx; line-height: 40rpx; text-align: center; }
+.st-label-blank { visibility: hidden; }
+.st-text { flex: 1; color: #4c4840; }
+.st-note-toggle { margin-top: 16rpx; font-size: 25rpx; color: #8a7559; }
+.st-note { margin-top: 10rpx; padding: 18rpx 20rpx; border-radius: 8rpx; background: #f7f4ee; font-size: 25rpx; line-height: 1.75; color: #6b6358; }
+.st-empty { padding-top: 360rpx; text-align: center; font-size: 28rpx; color: #817b71; }

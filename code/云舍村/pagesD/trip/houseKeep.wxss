@@ -63,7 +63,7 @@
 
 .ui_houseKeep .swiper-box .houseKeep-info .name.data-v-70b82410 {
     color: #fff;
-    font-family: PingFang SC;
+    font-family: "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-size: 40rpx;
     font-style: normal;
     font-weight: 700

@@ -287,7 +287,7 @@
 
 .orderDetail_ui .travelersInfo .counponList .counpon .couponNo .no.data-v-4e23aa1e {
     color: #000;
-    font-family: Montserrat;
+    font-family: Montserrat, "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-size: 36rpx;
     font-weight: 400
 }
@@ -314,7 +314,7 @@
 
 .orderDetail_ui .travelersInfo .explain-item.data-v-4e23aa1e {
     color: gray;
-    font-family: PingFang SC;
+    font-family: "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-size: 24rpx;
     font-style: normal;
     line-height: 36rpx;
@@ -426,7 +426,7 @@
 }
 
 .orderDetail_ui .travelersInfo .travelersInfo-item2 .val.price.data-v-4e23aa1e {
-    font-family: Montserrat;
+    font-family: Montserrat, "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-size: 32rpx;
     font-weight: 600
 }
@@ -481,7 +481,7 @@
 }
 
 .orderDetail_ui .travelersInfo .travelersInfo-item.total-price .val.data-v-4e23aa1e {
-    font-family: Montserrat;
+    font-family: Montserrat, "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-size: 32rpx;
     font-weight: 600
 }
@@ -524,7 +524,7 @@
 }
 
 .orderDetail_ui .travelersInfo .travelersInfo-item .val.price.data-v-4e23aa1e {
-    font-family: Montserrat;
+    font-family: Montserrat, "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-size: 32rpx;
     font-weight: 600
 }

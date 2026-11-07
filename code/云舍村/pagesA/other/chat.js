@@ -74,7 +74,8 @@
       if (getToken()) return true;
       wx.showToast({ title: '请先登录后联系客服', icon: 'none' });
       setTimeout(function() {
-        wx.navigateTo({ url: '/pages/login/login', fail: function() { wx.navigateBack(); } });
+        // 小程序没有 /pages/login/login，跳转必然失败并直接退回上一页；改为跳到实际登录页，登录后回到客服页
+        wx.redirectTo({ url: '/pages/member/memberLogin?redirect_url=' + encodeURIComponent('/pagesA/other/chat'), fail: function() { wx.navigateBack(); } });
       }, 800);
       return false;
     },

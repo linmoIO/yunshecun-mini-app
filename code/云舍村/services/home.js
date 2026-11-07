@@ -150,14 +150,20 @@
       return console.warn("[services/home] getDestinationsConfigSeries fallback:", null == o ? void 0 : o.message), createDestinationsSeriesFallback();
     }
   }, exports.getDestinationsProductsByTab = async function(t, r) {
+    const useDailyCompat = t && t.productSeriesCode === "taoyuan" && t.type === "daily";
+    const requestParams = useDailyCompat ? { ...t, productSeriesCode: "all", isAll: true, type: null } : t;
     try {
-      return await e.request({
+      const items = await e.request({
         url: "/shop-api/productShelfApp/getProductShelfInfoList",
         method: "POST",
-        data: t,
+        data: requestParams,
         ...r,
         showErrorToast: !1
       });
+      if (!useDailyCompat) return items;
+      return (Array.isArray(items) ? items : [])
+        .filter(p => p && p.categorySub === "DayActivity" && (!p.seriesCode || p.seriesCode === "taoyuan"))
+        .map(p => ({ ...p, productType: p.activityCode ? "daily" : "travel" }));
     } catch (o) {
       return console.warn("[services/home] getDestinationsProductsByTab fallback:", null == o ? void 0 : o.message), createDestinationsProductsFallback(t);
     }

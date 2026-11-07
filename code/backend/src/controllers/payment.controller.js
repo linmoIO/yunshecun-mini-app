@@ -7,6 +7,7 @@ const { PrismaClient } = require('@prisma/client');
 const { v4: uuidv4 } = require('uuid');
 const config = require('../config');
 const { success, error } = require('../utils/response');
+const { isPendingExpired, getRoomAvailability } = require('../utils/roomAvailability');
 
 const prisma = new PrismaClient();
 const WX_PAY_HOST = 'https://api.mch.weixin.qq.com';
@@ -32,11 +33,18 @@ const pay = async (req, res) => {
 
     const order = await findOrder(orderNo, orderType);
     if (!order) return failForMiniProgram(res, '订单不存在');
+    // 只能为自己的订单发起支付
+    if (order.memberId && req.member?.id && Number(order.memberId) !== Number(req.member.id)) {
+      return failForMiniProgram(res, '订单不存在');
+    }
     if (order.status !== 'pending') return failForMiniProgram(res, '订单状态不支持支付');
 
     const originalAmount = Number(order.totalAmount || payload.payAmount || payload.money || 0);
     if (!originalAmount || originalAmount <= 0) return failForMiniProgram(res, '支付金额不正确');
     const detectedOrderType = orderType || await detectOrderType(order);
+    if (await hotelOrderLostRoom(order, detectedOrderType)) {
+      return failForMiniProgram(res, '订单已超时，所选房间已被预订，请重新下单');
+    }
     const pointsCalc = await calculatePointDeduction(payload, order, originalAmount);
     const amount = roundMoney(originalAmount - pointsCalc.pointMoney);
     if (amount < 0) return failForMiniProgram(res, '积分抵扣金额不正确');
@@ -101,6 +109,15 @@ const pay = async (req, res) => {
     console.error('[WxPay] create payment failed:', err.response?.data || err.message);
     return failForMiniProgram(res, getPaymentFailureMessage(err));
   }
+};
+
+// 超过保留时间仍未支付的酒店订单已释放房间，付款前重新确认余量，避免超订
+const hotelOrderLostRoom = async (order, orderType) => {
+  if (orderType !== 'hotel' || !order.roomTypeId || !isPendingExpired(order)) return false;
+  const roomType = await prisma.roomType.findUnique({ where: { id: order.roomTypeId } });
+  if (!roomType) return true;
+  const available = (await getRoomAvailability(prisma, [roomType], order.checkIn, order.checkOut, { excludeOrderNo: order.orderNo })).get(roomType.id);
+  return available != null && available < Number(order.rooms || 1);
 };
 
 const travelPay = async (req, res) => {
@@ -327,16 +344,19 @@ const getWechatPayConfig = async () => {
     'wxpay_refund_notify_url',
   ]);
 
+  // 私钥文件路径与部署机器相关：优先使用当前部署的环境变量，数据库中的路径仅作兜底，
+  // 避免库里残留的其他机器路径（如 Windows 本地路径）导致所有支付失败。
   const privateKey = normalizePrivateKey(
     dbConfig.wxpay_private_key ||
     process.env.WECHAT_PAY_PRIVATE_KEY ||
-    readPrivateKey(dbConfig.wxpay_private_key_path || config.wechatPay.privateKeyPath)
+    readPrivateKey(config.wechatPay.privateKeyPath || dbConfig.wxpay_private_key_path)
   );
 
   const cfg = {
     appId: dbConfig.wechat_app_id || config.wechat.appId,
     mchId: dbConfig.wxpay_mch_id || config.wechatPay.mchId,
-    merchantSerialNumber: dbConfig.wxpay_serial_no || config.wechatPay.merchantSerialNumber,
+    // 序列号必须与私钥属于同一张商户证书，优先从部署的证书文件读取，避免配置残留旧证书序列号导致 SIGN_ERROR
+    merchantSerialNumber: readCertSerialNumber(config.wechatPay.certPath) || dbConfig.wxpay_serial_no || config.wechatPay.merchantSerialNumber,
     privateKey,
     apiV3Key: dbConfig.wxpay_api_v3_key || config.wechatPay.apiV3Key,
     payNotifyUrl: dbConfig.wxpay_notify_url || config.wechatPay.payNotifyUrl || config.wechatPay.notifyUrl,
@@ -572,6 +592,15 @@ const readPrivateKey = (privateKeyPath) => {
     return fs.readFileSync(privateKeyPath, 'utf8');
   } catch (err) {
     throw new Error(`读取微信支付私钥失败: ${privateKeyPath} (${err.message})`);
+  }
+};
+
+const readCertSerialNumber = (certPath) => {
+  if (!certPath) return '';
+  try {
+    return new crypto.X509Certificate(fs.readFileSync(certPath)).serialNumber;
+  } catch {
+    return '';
   }
 };
 

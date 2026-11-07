@@ -103,7 +103,8 @@
           let e = "",
             t = "",
             a = "";
-          v.value && v.value.mobile && (t = v.value.memberId, a = v.value.memberToken || ""), m.value && m.value.openid && (e = m.value.openid);
+          // 已登录即携带 memberToken（仅微信登录、未绑定手机号的会员 mobile 为空，原先会查不到自己的订单）
+          v.value && v.value.memberId && (t = v.value.memberId, a = v.value.memberToken || ""), m.value && m.value.openid && (e = m.value.openid);
           const r = {
             firstResult: 0,
             mobile: "",

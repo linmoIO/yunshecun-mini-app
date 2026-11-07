@@ -2,7 +2,7 @@
 
 const { PrismaClient } = require('@prisma/client');
 const { success, error, paginate } = require('../utils/response');
-const { decrementDateInventory, normalizeDate } = require('../utils/inventory');
+const { MAX_ROOMS_PER_ORDER, PENDING_HOLD_MINUTES, getRoomAvailability } = require('../utils/roomAvailability');
 
 const prisma = new PrismaClient();
 const tryParse = (s, f) => { try { return s ? JSON.parse(s) : f; } catch { return f; } };
@@ -34,8 +34,18 @@ const normalizeHotelOrderInput = (body = {}) => {
     guestName: body.guestName || request.contactName || request.rsvMan || '',
     guestPhone: body.guestPhone || request.contactMobile || request.mobile || '',
     notes: body.notes || request.remark || '',
+    // 预订页“到店时间”（如 14:00）；订单表没有单独字段，下单时写入备注，管家后台可见，订单详情据此显示“预计到店”
+    arriveTime: String(body.arriveTime || request.arriveTime || '').trim().slice(0, 20),
     couponNo: body.couponNo || request.couponNo || '',
   };
+};
+
+const ARRIVE_TIME_NOTE = /预计到店 (\d{1,2}:\d{2})/;
+// 以北京时间格式化为 YYYY-MM-DD HH:mm:ss（与服务器时区无关）
+const formatCnDateTime = (value) => {
+  if (!value) return '';
+  const time = new Date(value).getTime();
+  return Number.isNaN(time) ? '' : new Date(time + 8 * 3600000).toISOString().replace('T', ' ').slice(0, 19);
 };
 
 const validateHotelOrderInput = (input, requireContact = false) => {
@@ -118,8 +128,8 @@ const getHotelInfo = async (req, res) => {
   return success(res, { ...formatHotel(hotel), roomTypes: hotel.roomTypes.map(formatRoom) });
 };
 
-const buildWechatHotelDetail = (hotel, fromDate, toDate, inventoryMap = new Map()) => {
-  const rooms = (hotel.roomTypes || []).map(room => buildWechatRoom(hotel, room, fromDate, toDate, inventoryMap.get(room.id)));
+const buildWechatHotelDetail = (hotel, fromDate, toDate, availabilityMap = new Map()) => {
+  const rooms = (hotel.roomTypes || []).map(room => buildWechatRoom(hotel, room, fromDate, toDate, availabilityMap.get(room.id)));
   const minRoomPrice = rooms.reduce((min, room) => {
     const price = Number(room.gcProductBases?.[0]?.pbMinPriceWithPromotion) || 0;
     return price > 0 ? Math.min(min, price) : min;
@@ -147,9 +157,9 @@ const buildWechatHotelDetail = (hotel, fromDate, toDate, inventoryMap = new Map(
   };
 };
 
-const buildWechatRoom = (hotel, room, fromDate, toDate, dateInventory) => {
+const buildWechatRoom = (hotel, room, fromDate, toDate, available) => {
   const images = tryParse(room.images, []);
-  const stock = dateInventory ? Number(dateInventory.stock) : (room.stock != null ? Number(room.stock) : 10);
+  const stock = available !== undefined ? (available == null ? 10 : available) : (room.stock != null ? Number(room.stock) : 10);
   const canBook = stock > 0;
   const price = Number(room.price) || 0;
   const roomCode = room.roomCode || String(room.id);
@@ -232,8 +242,12 @@ const showOrder = async (req, res) => {
     });
     if (!order) return error(res, '订单不存在');
 
+    const formatted = formatHotelOrder(order);
+    // 待支付订单的剩余保留时间按下单时间计算（此前固定返回 30 分钟，每次进入支付页都会重新从 30:00 倒计时）
+    const holdLeftSeconds = Math.floor((new Date(order.createdAt).getTime() + PENDING_HOLD_MINUTES * 60000 - Date.now()) / 1000);
+    const arriveTime = (order.notes || '').match(ARRIVE_TIME_NOTE)?.[1] || '';
     const retVal = {
-      ...formatHotelOrder(order),
+      ...formatted,
       crsNo: order.orderNo,
       gcRsvNo: order.orderNo,
       orderNo: order.orderNo,
@@ -245,11 +259,19 @@ const showOrder = async (req, res) => {
       paySubject: order.roomType?.name || order.hotel?.name || '酒店预订',
       rateSum: Number(order.totalAmount || 0),
       payRate: Number(order.totalAmount || 0),
-      leftTimeSeconds: order.status === 'pending' ? 30 * 60 : 0,
+      leftTimeSeconds: order.status === 'pending' ? Math.max(0, holdLeftSeconds) : 0,
       paySta: order.status === 'paid' ? '2' : '1',
       sta: order.status === 'cancelled' ? 'X' : 'R',
       arr: order.checkIn,
       dep: order.checkOut,
+      // 订单详情页（pagesC/order/orderInfo）展示用字段
+      rmnum: Number(order.rooms || 1),
+      logoUrl: formatted.roomType?.images?.[0] || order.hotel?.coverImage || '',
+      arrStr: arriveTime ? `${order.checkIn} ${arriveTime.padStart(5, '0')}` : '',
+      createDatetime: formatCnDateTime(order.createdAt),
+      crsPayDatetime: formatCnDateTime(order.paymentTime),
+      rsvMan: order.guestName || '',
+      mobile: order.guestPhone || '',
       adult: 1,
       baby: 0,
       children: 0,
@@ -267,16 +289,10 @@ const showOrder = async (req, res) => {
     include: { roomTypes: { where: { status: 1 } } },
   });
   if (!hotel) return error(res, '酒店不存在');
-  const inventoryRows = checkIn ? await prisma.dateInventory.findMany({
-    where: {
-      type: 'hotel_room',
-      targetId: { in: hotel.roomTypes.map(r => r.id) },
-      date: normalizeDate(checkIn),
-      status: 1,
-    },
-  }) : [];
-  const inventoryMap = new Map(inventoryRows.map(row => [row.targetId, row]));
-  const detail = buildWechatHotelDetail(hotel, checkIn, checkOut, inventoryMap);
+  const availabilityMap = toUtcDate(checkIn) && toUtcDate(checkOut)
+    ? await getRoomAvailability(prisma, hotel.roomTypes, checkIn, checkOut)
+    : new Map();
+  const detail = buildWechatHotelDetail(hotel, checkIn, checkOut, availabilityMap);
   return success(res, {
     hotel: formatHotel(hotel),
     roomTypes: hotel.roomTypes.map(formatRoom),
@@ -284,6 +300,14 @@ const showOrder = async (req, res) => {
     checkIn,
     checkOut,
   });
+};
+
+// 超过每单上限或所选日期余量不足时返回提示文案，可订时返回空字符串
+const getHotelUnavailableMessage = async (roomType, input, db = prisma) => {
+  if (input.rooms > MAX_ROOMS_PER_ORDER) return `每单最多预订 ${MAX_ROOMS_PER_ORDER} 间，如需更多请联系管家`;
+  const available = (await getRoomAvailability(db, [roomType], input.checkIn, input.checkOut)).get(roomType.id);
+  if (available == null || available >= input.rooms) return '';
+  return available > 0 ? `该房型所选日期仅剩 ${available} 间` : '该房型所选日期已订满，请更换日期或房型';
 };
 
 const checkHotelReservation = async (req, res) => {
@@ -298,16 +322,19 @@ const checkHotelReservation = async (req, res) => {
     : null;
   if (!roomType) return res.json({ code: 0, result: 1, msg: '房型不存在或已下架', retVal: { isBookAble: 1 } });
 
+  // 不可订时返回 result:0，订房页（bookInfo）才会弹出提示；result:1 + isBookAble:1 时前端无任何反馈
+  const unavailableMsg = await getHotelUnavailableMessage(roomType, input);
+  if (unavailableMsg) return res.json({ code: 0, result: 0, msg: unavailableMsg, retVal: { isBookAble: 1 } });
+
   const dailyRate = Number(roomType.price || 0) * input.rooms;
-  const isBookAble = roomType.stock != null && Number(roomType.stock) < input.rooms ? 1 : 0;
   return res.json({
     code: 0,
     result: 1,
-    msg: isBookAble ? '该房型库存不足' : 'success',
+    msg: 'success',
     retVal: {
       result: 0,
-      isBookAble,
-      msg: isBookAble ? '该房型库存不足' : '',
+      isBookAble: 0,
+      msg: '',
       rateSum: dailyRate * input.nights,
       everyDayDetails: buildDailyPriceDetails(input.checkIn, input.nights, dailyRate),
       gcProductDetailDto: { arrivalFrom: hotel.checkInTime || '12:00', arrivalTo: '23:59', productGcLevel: '000', tickets: '' },
@@ -322,7 +349,8 @@ const makeHotelOrder = async (req, res) => {
   const input = normalizeHotelOrderInput(req.body || {});
   const validationError = validateHotelOrderInput(input, true);
   if (validationError) return error(res, validationError);
-  const { hotelCode, roomCode, checkIn, checkOut, rooms, nights, guestName, guestPhone, notes } = input;
+  const { hotelCode, roomCode, checkIn, checkOut, rooms, nights, guestName, guestPhone, arriveTime } = input;
+  const notes = [input.notes, /^\d{1,2}:\d{2}$/.test(arriveTime) ? `预计到店 ${arriveTime}` : ''].filter(Boolean).join('；');
 
   const hotel = await prisma.hotel.findUnique({ where: { hotelCode } });
   if (!hotel) return error(res, '酒店不存在');
@@ -336,28 +364,17 @@ const makeHotelOrder = async (req, res) => {
   const totalAmount = pricePerNight * Number(rooms) * nights;
 
   const roomCount = Number(rooms);
+  if (roomCount > MAX_ROOMS_PER_ORDER) return error(res, `每单最多预订 ${MAX_ROOMS_PER_ORDER} 间，如需更多请联系管家`);
   let order;
   try {
     order = await prisma.$transaction(async (tx) => {
-      if (roomType) {
-        const dateInventory = await decrementDateInventory(tx, {
-          type: 'hotel_room',
-          targetId: roomType.id,
-          targetCode: roomType.roomCode,
-          date: normalizeDate(checkIn),
-          quantity: roomCount,
-        });
-        if (!dateInventory) {
-          const updated = await tx.roomType.updateMany({
-            where: { id: roomType.id, stock: { gte: roomCount } },
-            data: { stock: { decrement: roomCount } },
-          });
-          if (updated.count !== 1) {
-            const err = new Error(`该房型库存不足，当前剩余 ${roomType.stock}`);
-            err.code = 'OUT_OF_STOCK';
-            throw err;
-          }
-        }
+      // 锁住该房型，串行化同一房型的下单，避免并发超订；余量按每晚实时计算，不再扣减库存
+      await tx.$queryRaw`SELECT id FROM RoomType WHERE id = ${roomType.id} FOR UPDATE`;
+      const unavailableMsg = await getHotelUnavailableMessage(roomType, { ...input, rooms: roomCount }, tx);
+      if (unavailableMsg) {
+        const err = new Error(unavailableMsg);
+        err.code = 'OUT_OF_STOCK';
+        throw err;
       }
       return tx.hotelOrder.create({
         data: {

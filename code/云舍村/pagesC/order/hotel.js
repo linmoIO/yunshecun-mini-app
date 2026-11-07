@@ -184,6 +184,12 @@
 
         function qe(a) {
           if (!N.value || !N.value.memberId) return g.toLogin(), !1;
+          if (!a.travelGroupCode) {
+            const matchedRoom = $.value.find(o => o.roomCode === a.roomCode);
+            if (matchedRoom && matchedRoom.gcProductBases && matchedRoom.gcProductBases.length > 0) {
+              return Ye({ roomType: matchedRoom.gcProductBases[0], room: matchedRoom });
+            }
+          }
           console.log(a), ne.value = a.travelGroupCode, n.api.interfaceTransfer({
             query: {
               unitCode: A.hotelGroupCode,
@@ -275,9 +281,7 @@
           f.setStorage("hotelOrderRoom", Object.assign(o, {
             roomDescript: t.roomDescript,
             gcRoomExtra: t.gcRoomExtra
-          })), e.index.navigateTo({
-            url: "/pagesC/order/bookInfo?" + g.createUrl(l)
-          })
+          })), g.goPage("/pagesC/order/bookInfo?" + g.createUrl(l))
         }
 
         function Ue(a) {

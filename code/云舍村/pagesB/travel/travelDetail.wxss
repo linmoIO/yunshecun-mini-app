@@ -294,7 +294,7 @@
     align-items: baseline;
     color: #a43127;
     display: flex;
-    font-family: Montserrat;
+    font-family: Montserrat, "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-size: 40rpx;
     font-weight: 600;
     line-height: 1;
@@ -550,7 +550,7 @@
 
 .travelDetail_ui .product-info-box .journeys .journey__price.data-v-96fa774f {
     color: #a43127;
-    font-family: Montserrat;
+    font-family: Montserrat, "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-size: 32rpx;
     font-weight: 600;
     line-height: 1
@@ -922,7 +922,7 @@
 
 .travelDetail_ui .product-info-box .travel-date-item .day-travel-list .day-travel .day-travel-info .day-travel-desc.data-v-96fa774f {
     color: gray;
-    font-family: PingFang SC;
+    font-family: "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-size: 28rpx;
     line-height: 44rpx;
     margin-top: 24rpx
@@ -996,7 +996,7 @@
 
 .travelDetail_ui .product-info-box .travel-date .travel-date-lf .val.data-v-96fa774f {
     color: #000;
-    font-family: Montserrat;
+    font-family: Montserrat, "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-size: 40rpx;
     font-style: normal;
     font-weight: 600;

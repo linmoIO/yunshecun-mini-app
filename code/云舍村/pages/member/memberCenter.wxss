@@ -186,7 +186,7 @@
 
 .ui_memberCenter .userAssets .userAsset .num.data-v-ad1bceae {
     color: #000;
-    font-family: Montserrat;
+    font-family: Montserrat, "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-size: 32rpx;
     font-weight: 600;
     margin-bottom: 24rpx
@@ -404,13 +404,13 @@
 }
 
 /* 会员中心与村落内容页保持同一纸色与阅读层级。 */
-.ui_memberCenter.data-v-ad1bceae { background: #f7f4ee; color: #302e29; font-family: "PingFang SC", "Microsoft YaHei", sans-serif; }
-.ui_memberCenter .memberHead .userName.data-v-ad1bceae { font-family: "STKaiti", "KaiTi", "FZKai-Z03", "PingFang SC", sans-serif; font-size: 42rpx; }
+.ui_memberCenter.data-v-ad1bceae { background: #f7f4ee; color: #302e29; font-family: "LXGW WenKai", "STKaiti", "KaiTi", serif; }
+.ui_memberCenter .memberHead .userName.data-v-ad1bceae { font-family: "LXGW WenKai", "STKaiti", "KaiTi", serif; font-size: 42rpx; }
 .ui_memberCenter .memberTips.data-v-ad1bceae { background: #efe9df; color: #6f675d; font-size: 27rpx; line-height: 1.6; }
 .ui_memberCenter .orderWrapper.data-v-ad1bceae { border: 1rpx solid #e5dfd5; border-radius: 10rpx; box-shadow: 0 6rpx 24rpx rgba(55,46,32,.07); }
 .ui_memberCenter .orderListBox .orderItem.data-v-ad1bceae { font-size: 29rpx; color: #4d473e; }
 .ui_memberCenter .orderWrapper .orders wx-swiper wx-swiper-item .order.data-v-ad1bceae { background: #f4f0e9; }
 .ui_memberCenter .userCard.data-v-ad1bceae { border-radius: 10rpx; }
 .ui_memberCenter .userCard.data-v-ad1bceae { background-image: none !important; }
-.ui_memberCenter .userCard .cardName.data-v-ad1bceae { font-family: "STKaiti", "KaiTi", "FZKai-Z03", "PingFang SC", sans-serif; }
+.ui_memberCenter .userCard .cardName.data-v-ad1bceae { font-family: "LXGW WenKai", "STKaiti", "KaiTi", serif; }
 .ui_memberCenter .memberCenterLogo.data-v-ad1bceae { display: none; }

@@ -166,7 +166,7 @@
     -webkit-box-orient: vertical;
     color: #000;
     display: -webkit-box;
-    font-family: PingFangSC-Medium;
+    font-family: "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-size: 32rpx;
     font-weight: 700;
     line-height: 48rpx;
@@ -194,7 +194,7 @@
 
 .moreTrip_ui .product-list .product-item .product-info .product-bt .product-price.data-v-8b4aa604 {
     color: #000;
-    font-family: PingFangSC-Semibold;
+    font-family: "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-size: 32rpx;
     font-weight: 700
 }

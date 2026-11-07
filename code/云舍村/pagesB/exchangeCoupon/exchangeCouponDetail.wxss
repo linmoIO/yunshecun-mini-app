@@ -221,7 +221,7 @@
 
 .travelDetail_ui .product-info .product-price.data-v-250a8c56 {
     color: #a43127;
-    font-family: Montserrat;
+    font-family: Montserrat, "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-size: 40rpx;
     font-weight: 600;
     line-height: 1;
@@ -1010,7 +1010,7 @@
 
 .travelDetail_ui .package .travel-date .travel-date-lf .val.data-v-250a8c56 {
     color: #000;
-    font-family: Montserrat;
+    font-family: Montserrat, "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-size: 40rpx;
     font-style: normal;
     font-weight: 600;

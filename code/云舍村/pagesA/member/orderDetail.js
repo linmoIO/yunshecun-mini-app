@@ -15,6 +15,14 @@
 
   const STATUS_TRAVEL = { pending:'待付款', paid:'待出行', confirmed:'待出行', completed:'已完成', cancelled:'已取消', refunded:'已退款' };
   const STATUS_SHOP = { pending:'待付款', paid:'待发货', confirmed:'待发货', shipped:'待收货', completed:'待评价', cancelled:'已取消', refunded:'已退款' };
+  // 接口时间为 ISO 字符串（UTC），按北京时间显示为 YYYY-MM-DD HH:mm
+  function fmtTime(v) {
+    if (!v || typeof v !== 'string') return v || '';
+    var t = Date.parse(v);
+    if (isNaN(t)) return v;
+    var d = new Date(t + 8 * 3600000).toISOString();
+    return d.slice(0, 10) + ' ' + d.slice(11, 16);
+  }
 
   Page({
     data: { order: null, type: 'travel', loading: true, orderNo: '' },
@@ -32,6 +40,7 @@
       var s = this;
       var url = type === 'shop' ? '/shop/order-detail/' + orderNo : '/travel/order-detail/' + orderNo;
       req(url).then(function(d) {
+        if (d && d.createdAt) d.createdAt = fmtTime(d.createdAt);
         s.setData({ order: d, loading: false });
       }).catch(function() {
         // 兜底：从 orderAggregation 列表里找

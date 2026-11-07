@@ -174,8 +174,7 @@ router.get('/activities', activityCtrl.adminListActivities);
 router.post('/activities', activityCtrl.adminCreateActivity);
 router.get('/activities/orders', activityCtrl.adminListOrders);
 router.get('/activities/:id', async (req, res) => {
-  const { PrismaClient } = require('@prisma/client');
-  const prisma = new PrismaClient();
+  // 使用文件顶部共享的 prisma，避免每次请求新建连接池且不释放
   const a = await prisma.activity.findUnique({ where: { id: Number(req.params.id) } });
   if (!a) return res.json({ code: -1, msg: '不存在' });
   const { success } = require('../utils/response');

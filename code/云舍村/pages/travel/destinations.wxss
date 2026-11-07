@@ -46,7 +46,7 @@
 .destinations .tabs .tabs-scroll .tab.data-v-c4667504 {
     color: gray;
     display: inline-block;
-    font-family: "STKaiti", "KaiTi", "FZKai-Z03", "PingFang SC", sans-serif;
+    font-family: "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-size: 34rpx;
     height: 100%;
     line-height: 48rpx;

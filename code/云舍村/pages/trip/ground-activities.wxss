@@ -1,7 +1,7 @@
 .ground-activities.data-v-3cd7f3c9 {
     background: #f7f4ee;
     color: #302e29;
-    font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+    font-family: "LXGW WenKai", "STKaiti", "KaiTi", serif;
     padding-bottom: 200rpx;
     min-height: 100vh
 }
@@ -44,7 +44,7 @@
 }
 
 .ground-activities .ground-activities__content__title.data-v-3cd7f3c9 {
-    font-family: "STKaiti", "KaiTi", "FZKai-Z03", "PingFang SC", sans-serif;
+    font-family: "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-size: 40rpx;
     font-weight: 500;
     margin-bottom: 32rpx;

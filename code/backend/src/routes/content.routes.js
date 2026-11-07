@@ -3,6 +3,9 @@
 const router = require('express').Router();
 const ctrl = require('../controllers/content.controller');
 const couponCtrl = require('../controllers/coupon.controller');
+const activityCtrl = require('../controllers/activity.controller');
+const { getRoomAvailability } = require('../utils/roomAvailability');
+const { restoreTravelDeparture, restoreDateInventory } = require('../utils/inventory');
 const { optionalAuth, authMiddleware } = require('../middleware/auth');
 
 // 广告/Banner/内容页
@@ -48,13 +51,11 @@ router.get('/albumCategory/listRootCategory', optionalAuth, (req, res) => res.js
 router.get('/microSoftWare/admin/getWxacodeUnlimitUrl.json', authMiddleware, (req, res) => res.json({ code: 0, data: { url: '' } }));
 
 // 订单聚合
-// orderAggregation: 酒旅订单聚合（支持 openid/memberid/memberToken 多种鉴权，支持 orderStatus 过滤）
+// orderAggregation: 酒旅订单聚合（memberToken 鉴权，openid 兜底；支持 orderStatus 过滤）
 router.get('/orderAggregation/orderList.json', optionalAuth, async (req, res) => {
-  const { PrismaClient: _P2 } = require('@prisma/client');
-  const _p3 = new _P2();
+  const _p3 = _prisma; // 复用本文件共享的 PrismaClient，不再每次请求新建连接池
   const q = req.query || {};
   const openid = q.openid || '';
-  const memberIdParam = q.memberid || q.memberId || '';
   const orderStatusFilter = q.orderStatus || ''; // 逗号分隔，如 "1" 或 "2,4"
 
   // orderStatus 数字码 → DB 状态字符串
@@ -64,10 +65,10 @@ router.get('/orderAggregation/orderList.json', optionalAuth, async (req, res) =>
 
   let member = null;
   try {
+    // 只信任登录 token；不再接受裸 memberid 查询（memberId 会出现在邀请分享链接里，任何人可凭它查看他人订单）。
+    // openid 不对外暴露，保留为 token 失效时的兼容兜底。
     if (req.member) {
       member = await _p3.member.findUnique({ where: { id: req.member.id } });
-    } else if (memberIdParam) {
-      member = await _p3.member.findFirst({ where: { memberId: String(memberIdParam) } });
     } else if (openid) {
       member = await _p3.member.findFirst({ where: { wechatOpenId: openid } });
     }
@@ -104,7 +105,6 @@ router.get('/orderAggregation/orderList.json', optionalAuth, async (req, res) =>
       orders.sort((a, b) => b.orderNo.localeCompare(a.orderNo));
     } catch(err) { console.error('[orderAggregation]', err); }
   }
-  await _p3.$disconnect();
   return res.json({ code: 0, result: 1, retVal: { orderList: orders, total: orders.length } });
 });
 
@@ -118,9 +118,11 @@ router.post('/wxMiniApp/updateUserinfoByMiniOpenId.json', authMiddleware, (req, 
 router.post('/wxMiniApp/decryptV2.json', (req, res) => res.json({ code: 0, data: {} }));
 
 // 活动相关
-// memberCenter.js line 283: 1===e.result && e.retVal.length → y.value=true → 显示功能列表
+// memberCenter.js：1===e.result && e.retVal.length 时才显示“邀请好友体验云舍村”入口（只控制这一个入口）。
+// 邀请有礼的后端（邀请记录、小程序码、奖励）尚未实现：“立即邀请”点了没反应、人数/积分为空，先返回空规则隐藏入口；
+// 以后实现了邀请功能，在这里返回真实规则即可自动显示。
 router.post('/activityapi/InvitationSpoil/selectInvitationSpoilRules', optionalAuth, (req, res) => res.json({
-  code: 0, result: 1, retVal: [{ ruleType: 'DEFAULT', status: 1 }]
+  code: 0, result: 1, retVal: []
 }));
 router.post('/activityapi/InvitationSpoil/saveInvitationYQHYRecord', authMiddleware, (req, res) => res.json({ code: 0, data: null }));
 router.post('/activityapi/InvitationSpoil/saveInvitationJSYQRecord', authMiddleware, (req, res) => res.json({ code: 0, data: null }));
@@ -138,6 +140,9 @@ router.get('/wechat/platform/game/prizewinner.json', authMiddleware, (req, res) 
 router.get('/wechat/platform/game/rewardlist', authMiddleware, (req, res) => res.json({ code: 0, data: [] }));
 router.get('/wechat/platform/game/savePrizeAddress.json', authMiddleware, (req, res) => res.json({ code: 0, data: null }));
 
+// 支付页/取消结果页底部“推荐产品”（components/RecommendProducts）：暂未配置推荐，返回空结果（组件不展示），避免每次 404
+router.post('/shopapi/marketingActivity/payCompletionPageRecommendation', (req, res) => res.json({ code: 0, result: 1, retVal: null }));
+
 // 白名单
 router.get('/marketingActivity/whitelist/checkWhitelist', authMiddleware, (req, res) => res.json({ code: 0, data: { inWhitelist: false } }));
 
@@ -145,11 +150,138 @@ router.get('/marketingActivity/whitelist/checkWhitelist', authMiddleware, (req, 
 const { PrismaClient: _Prisma } = require('@prisma/client');
 const _prisma = new _Prisma();
 
+// ---- 订单取消（components/order/OrderCancelDialog.js 经 interfaceTransfer 调用）----
+// 原模板流程：选择取消原因 → 提交 → 结果页。此处只把本人“待支付”订单直接取消，并回补下单时扣减的库存、
+// 返还发起支付时已扣的抵扣积分；已支付订单不在小程序端自动退款，引导联系管家处理（不自动动钱）。
+const ORDER_CANCEL_REASONS = [
+  { enumCode: '1', reason: '行程有变，暂时不去了' },
+  { enumCode: '2', reason: '信息填写有误，需要重新下单' },
+  { enumCode: '3', reason: '选错了日期或房型' },
+  { enumCode: '4', reason: '找到了更合适的安排' },
+  { enumCode: '100', reason: '其他原因' },
+];
+const CANCELLABLE_ORDER_MODELS = [['hotel', 'hotelOrder'], ['travel', 'travelOrder'], ['activity', 'activityOrder'], ['shop', 'shopOrder']];
+
+async function findMemberOrder(memberId, orderNo) {
+  for (const [type, model] of CANCELLABLE_ORDER_MODELS) {
+    const order = await _prisma[model].findFirst({ where: { orderNo, memberId } });
+    if (order) return { type, model, order };
+  }
+  return null;
+}
+
+async function cancelPendingOrderForMember(member, query) {
+  const orderNo = String(query.orderNo || '').trim();
+  if (!member?.id) return { result: 1, msg: '登录已过期，请重新登录后再取消' };
+  if (!orderNo) return { result: 1, msg: '缺少订单号' };
+  const found = await findMemberOrder(member.id, orderNo);
+  if (!found) return { result: 1, msg: '订单不存在' };
+  if (found.order.status !== 'pending') return { result: 1, msg: '订单已支付或已处理，如需取消请联系管家' };
+  // 5 分钟内发起过、仍未回调的支付视为进行中：此时取消可能与支付成功回调交错（订单被回调改回已支付，
+  // 但库存和抵扣积分已被退回），先请用户稍后再试
+  const inflightPayment = await _prisma.payment.findFirst({
+    where: { orderNo, status: 'pending', createdAt: { gte: new Date(Date.now() - 5 * 60000) } },
+  });
+  if (inflightPayment) return { result: 1, msg: '订单支付处理中，请稍后再试或联系管家' };
+
+  const enumCode = String(query.enumCode || '');
+  const reason = enumCode === '100'
+    ? String(query.reason || '').trim().slice(0, 100)
+    : (ORDER_CANCEL_REASONS.find((r) => r.enumCode === enumCode)?.reason || '');
+  const data = { status: 'cancelled' };
+  if (found.type === 'travel') data.cancelReason = reason;
+  else if (reason) data.notes = [found.order.notes, `【用户取消】${reason}`].filter(Boolean).join('\n');
+
+  await _prisma.$transaction(async (tx) => {
+    // 条件更新防并发：只有仍是 pending 的订单才会被取消
+    const updated = await tx[found.model].updateMany({ where: { orderNo, memberId: member.id, status: 'pending' }, data });
+    if (updated.count !== 1) {
+      const err = new Error('订单状态已变化，请刷新后重试');
+      err.code = 'ORDER_STATE_CHANGED';
+      throw err;
+    }
+    // 回补下单时扣减的库存（酒店房量按有效订单实时计算，订单取消后自动释放，无需回补）
+    const o = found.order;
+    if (found.type === 'travel') {
+      const product = o.productId ? await tx.travelProduct.findUnique({ where: { id: o.productId } }) : null;
+      await restoreTravelDeparture(tx, { productId: o.productId, productCode: product?.productCode, date: o.startDate, quantity: 1 });
+    } else if (found.type === 'activity') {
+      await restoreDateInventory(tx, { type: 'activity', targetId: o.activityId, date: o.activityDate, quantity: Number(o.quantity || 1) });
+    } else if (found.type === 'shop') {
+      const items = await tx.shopOrderItem.findMany({ where: { orderId: o.id } });
+      for (const item of items) {
+        if (item.productId) await tx.shopProduct.update({ where: { id: item.productId }, data: { stock: { increment: item.quantity } } });
+      }
+    }
+    // 发起支付时已扣减的抵扣积分（用户未完成支付）随取消原数返还
+    const redeem = await tx.pointTransaction.findFirst({ where: { memberId: member.id, orderId: orderNo, type: 'redeem' } });
+    const returned = redeem && await tx.pointTransaction.findFirst({ where: { memberId: member.id, orderId: orderNo, type: 'cancel_redeem_return' } });
+    const points = redeem ? Math.abs(Number(redeem.points || 0)) : 0;
+    if (points > 0 && !returned) {
+      await tx.member.update({ where: { id: member.id }, data: { points: { increment: points } } });
+      await tx.pointTransaction.create({ data: { memberId: member.id, points, type: 'cancel_redeem_return', description: `订单 ${orderNo} 取消返还抵扣积分`, orderId: orderNo } });
+    }
+  });
+  return { result: 0, msg: '订单已取消', retVal: { orderNo, cancelled: true } };
+}
+
 async function handleInterfaceTransfer(req, res) {
   const body = req.body || {};
   const { config = {}, query = {}, params = {} } = body;
   const method = config.interfaceMethod || '';
   const path = config.path || '';
+
+  // 订单取消：取消原因枚举 / 是否已有取消申请 / 提交取消
+  if (method.includes('/ordercancelenum/query')) {
+    return res.json({ code: 0, result: 1, retVal: { result: 0, retVal: ORDER_CANCEL_REASONS } });
+  }
+  if (method.includes('/orderCancel/queryOrderCancel')) {
+    const found = req.member?.id && query.orderNo ? await findMemberOrder(req.member.id, String(query.orderNo)) : null;
+    // 非待支付订单（已支付等）直接弹“一键咨询”联系管家；待支付订单弹出取消原因选择
+    if (found && found.order.status !== 'pending') {
+      return res.json({ code: 0, result: 1, retVal: { result: 0, retVal: { orderNo: found.order.orderNo } } });
+    }
+    return res.json({ code: 0, result: 1, retVal: { result: 1, retVal: null } });
+  }
+  if (method.includes('/orderCancel/insert')) {
+    try {
+      return res.json({ code: 0, result: 1, retVal: await cancelPendingOrderForMember(req.member, query) });
+    } catch (err) {
+      if (err.code === 'ORDER_STATE_CHANGED') return res.json({ code: 0, result: 1, retVal: { result: 1, msg: err.message } });
+      throw err;
+    }
+  }
+
+  // 酒店订单详情页“费用明细”（pagesC/order/orderInfo.js）：只按订单记录的实际金额返回，不虚构任何折扣/优惠。
+  // 下方旅游/活动计价分支查不到酒店订单，订单总价会显示 ¥0；非酒店订单号继续交给下方分支处理。
+  const payDetailHotelOrder = method.includes('queryPayDetail') && query.orderNo
+    ? await _prisma.hotelOrder.findUnique({ where: { orderNo: String(query.orderNo) } })
+    : null;
+  if (payDetailHotelOrder) {
+    const order = payDetailHotelOrder;
+    const total = Number(order.totalAmount || 0);
+    const pointMoney = Number(order.pointMoney || 0);
+    const paid = ['paid', 'confirmed', 'completed'].includes(order.status);
+    const cashPaid = paid ? Number(order.paidAmount ?? Math.max(0, total - pointMoney)) : 0;
+    return res.json({ code: 0, result: 1, retVal: { result: 0, retVal: {
+      rateSum: total,
+      payType: pointMoney > 0 ? (total - pointMoney > 0 ? 'INTEGRALCASH' : 'INTEGRAL') : 'CASH',
+      point: pointMoney, // 积分抵扣金额（元）
+      memberDscAmount: 0,
+      memberLevelDesc: '',
+      memberDiscount: 1,
+      couponRateSum: 0,
+      couponSimpleInfoDtoList: [],
+      exchangeRateSum: 0,
+      gwDiscount: 0,
+      breakMoney: 0,
+      travelRateSumDto: {},
+      paySta: paid ? '2' : '1',
+      alreadyPayFund: cashPaid,
+      alreadyPayMember: 0,
+      readyPay: order.status === 'pending' ? Math.max(0, Math.round((total - pointMoney) * 100) / 100) : 0,
+    } } });
+  }
 
   // 风物页商品列表：weimoInterfaceTransfer with config.path="/weimob_shop/v2.0/goods/getList"
   if (path.includes('goods/getList') || path.includes('weimob_shop')) {
@@ -197,14 +329,16 @@ async function handleInterfaceTransfer(req, res) {
       where: hotelCodes.length ? { hotelCode: { in: hotelCodes }, status: 1 } : { status: 1 },
       include: { roomTypes: { where: { status: 1 }, orderBy: { sortOrder: 'asc' } } },
     });
+    // 按入住日期逐晚计算余量（RoomType.stock 为实际间数，已占房的订单会被扣除）
+    const availability = await getRoomAvailability(_prisma, hotels.flatMap(h => h.roomTypes), fromDate, toDate);
     const result = hotels.map(h => {
       const minRoomPrice = h.roomTypes.reduce((m, r) => Math.min(m, r.price || 999999), 999999);
       const effectiveMinPrice = minRoomPrice === 999999 ? 0 : minRoomPrice;
 
       const productRoomList = h.roomTypes.map(r => {
         const roomPrice = Number(r.price) || 0;
-        // stock: null（prisma返回null而非undefined）会让 !== undefined 判断出错，须用 != null
-        const stock = (r.stock != null) ? Number(r.stock) : 10;
+        const available = availability.get(r.id);
+        const stock = available == null ? 10 : available;
         const canBook = stock > 0;
         const roomImages = (() => { try { return r.images ? JSON.parse(r.images) : []; } catch { return []; } })();
         const logoImg = roomImages[0] || h.coverImage || '';
@@ -301,6 +435,18 @@ async function handleInterfaceTransfer(req, res) {
   // 日活动确认页依赖的兼容接口：返回旧页面可直接消费的空集合/价格定义。
   if (method.includes('listCouponByUse')) {
     return res.json({ code: 0, result: 1, retVal: { result: 0, retVal: [] } });
+  }
+
+  // 日活动详情与可订日历（dailyActivityDetail 页）
+  if (method.includes('getOneActivityWithPrice')) {
+    const detail = await activityCtrl.getActivityWithPriceForMiniApp(query.activityCode);
+    if (!detail) return res.json({ code: 0, result: 1, retVal: { result: 1, msg: '活动不存在或已下架', retVal: null } });
+    return res.json({ code: 0, result: 1, retVal: { result: 0, retVal: detail } });
+  }
+
+  if (method.includes('onSaleCalendarWithMoney')) {
+    const calendar = await activityCtrl.getActivityCalendarForMiniApp(query);
+    return res.json({ code: 0, result: 1, retVal: { result: 0, retVal: calendar } });
   }
 
   if (method.includes('getPriceDefine')) {
@@ -617,8 +763,9 @@ async function handleInterfaceTransfer(req, res) {
   return res.json({ code: 0, result: 0, data: null, retVal: null });
 }
 
-router.post('/sync/interfaceTransfer', handleInterfaceTransfer);
-router.post('/shopapi/weimobCloud/interfaceTransfer', handleInterfaceTransfer);
+// optionalAuth：携带 memberToken 时解析出 req.member（订单取消等需要识别本人），不带 token 的公开查询不受影响
+router.post('/sync/interfaceTransfer', optionalAuth, handleInterfaceTransfer);
+router.post('/shopapi/weimobCloud/interfaceTransfer', optionalAuth, handleInterfaceTransfer);
 
 // 商品搜索
 router.post('/shopapi/search/product', optionalAuth, require('../controllers/search.controller').searchProducts);

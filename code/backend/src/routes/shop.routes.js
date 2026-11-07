@@ -63,9 +63,12 @@ router.get('/shop/getScrollPic.json', (req, res) => res.json({ code: 0, data: []
 router.get('/shop/getWjxUrl', (req, res) => res.json({ code: 0, data: '' }));
 // 新版商品详情页专用接口（公开）
 // 公开 Banner 接口（风物页等轮播图使用）
+// 复用模块级 PrismaClient：此前每次请求 new 一个且从不 $disconnect，每打开一次风物页就泄漏一个 MySQL 连接，
+// 累计超过 max_connections 后整个后端都无法访问数据库。
+const { PrismaClient } = require('@prisma/client');
+const bannerPrisma = new PrismaClient();
 router.get('/banners/public', async (req, res) => {
-  const { PrismaClient } = require('@prisma/client');
-  const prisma = new PrismaClient();
+  const prisma = bannerPrisma;
   const { position, limit = 3 } = req.query;
   const where = { status: 1 };
   if (position) where.position = position;

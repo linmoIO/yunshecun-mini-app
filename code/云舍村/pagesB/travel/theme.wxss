@@ -166,7 +166,7 @@
 }
 
 .ui_productGroup .product-group .tl.data-v-6b522bac {
-    font-family: PingFang SC;
+    font-family: "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-size: 36rpx;
     font-style: normal;
     font-weight: 700;
@@ -237,7 +237,7 @@
     -webkit-line-clamp: 1;
     color: #000;
     display: -webkit-box;
-    font-family: PingFang SC;
+    font-family: "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-size: 32rpx;
     font-weight: 700;
     line-height: 48rpx;
@@ -364,7 +364,7 @@
 
 .product-price.data-v-6b522bac {
     color: #000;
-    font-family: Montserrat;
+    font-family: Montserrat, "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-size: 36rpx;
     font-weight: 600;
     height: 1;

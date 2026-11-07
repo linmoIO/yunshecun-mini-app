@@ -66,7 +66,9 @@
           payType: "CASH",
           singleSupplement: 0
         }]), Array.isArray(A.specificationsPriceDtos) || (A.specificationsPriceDtos = []), Array.isArray(A.skuInfo) || (A.skuInfo = []);
-          P = e.computed(() => "ThemeGroup" === A.orderType && "FAMILY" !== A.priceModel || "ButlerCustomized" === A.orderType || "FreeTravel" === A.orderType || "DestPackage" === A.orderType),
+        // 上面的兜底语句插在了 const 声明链中间，后续 P/I/O/M… 变成未声明变量，严格模式下进入页面即
+        // ReferenceError，旅游套餐确认订单页无法使用；这里补回 const 声明
+        const P = e.computed(() => "ThemeGroup" === A.orderType && "FAMILY" !== A.priceModel || "ButlerCustomized" === A.orderType || "FreeTravel" === A.orderType || "DestPackage" === A.orderType),
           I = e.ref(!1),
           O = e.ref(),
           M = e.ref(""),

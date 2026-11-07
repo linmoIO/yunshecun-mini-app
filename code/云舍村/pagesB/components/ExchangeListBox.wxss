@@ -57,7 +57,7 @@
 
 .exchange-list .item .info .product-price .number.data-v-cbb87eff {
     color: #000;
-    font-family: Montserrat;
+    font-family: Montserrat, "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-size: 36rpx;
     font-weight: 700
 }

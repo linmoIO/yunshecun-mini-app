@@ -180,7 +180,7 @@
     -webkit-box-orient: vertical;
     color: #000;
     display: -webkit-box;
-    font-family: PingFangSC-Medium;
+    font-family: "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-size: 32rpx;
     font-weight: 700;
     height: 96rpx;
@@ -209,7 +209,7 @@
 
 .product .product-list .product-item .product-info .product-bt .product-price.data-v-1429ceef {
     color: #000;
-    font-family: Montserrat;
+    font-family: Montserrat, "LXGW WenKai", "STKaiti", "KaiTi", serif;
     font-size: 32rpx;
     font-weight: 600
 }

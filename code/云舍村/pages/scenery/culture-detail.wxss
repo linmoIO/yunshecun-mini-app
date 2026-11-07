@@ -24,7 +24,7 @@ page {
 }
 
 .section-title {
-  font-family: "STKaiti", "KaiTi", "FZKai-Z03", "PingFang SC", sans-serif;
+  font-family: "LXGW WenKai", "STKaiti", "KaiTi", serif;
   font-size: 40rpx;
   font-weight: 600;
   line-height: 1.4;
