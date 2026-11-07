@@ -79,7 +79,9 @@
             value: "browserPay",
             subTitle: "复制链接跳转浏览器打开页面付款",
             hasNotice: !1
-          }]),
+          }].filter(e => "weChatPay" === e.value)),
+          // ↑ 后端目前只支持微信小程序全额支付：“定金支付”实际仍按订单全额扣款，“浏览器支付”走支付宝 H5 会被后端拒绝，
+          //   且引导到站外支付不符合小程序审核规范，暂只保留微信支付（后端支持后去掉 filter 即可恢复）
           K = e.ref(!0),
           Y = e.ref(!0),
           X = e.ref(!1),
@@ -671,8 +673,8 @@
               }(l.value), l.value),
               l: l.value
             })),
-            s: Z.value
-          }, Z.value ? {
+            s: Z.value && de.value.length > ne.value.length
+          }, Z.value && de.value.length > ne.value.length ? {
             t: e.o(ye)
           } : {}, {
             v: e.o(e => be("")),

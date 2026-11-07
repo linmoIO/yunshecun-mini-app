@@ -2,7 +2,7 @@
 
 const { PrismaClient } = require('@prisma/client');
 const { success, error, paginate } = require('../utils/response');
-const { MAX_ROOMS_PER_ORDER, getRoomAvailability } = require('../utils/roomAvailability');
+const { MAX_ROOMS_PER_ORDER, PENDING_HOLD_MINUTES, getRoomAvailability } = require('../utils/roomAvailability');
 
 const prisma = new PrismaClient();
 const tryParse = (s, f) => { try { return s ? JSON.parse(s) : f; } catch { return f; } };
@@ -34,8 +34,18 @@ const normalizeHotelOrderInput = (body = {}) => {
     guestName: body.guestName || request.contactName || request.rsvMan || '',
     guestPhone: body.guestPhone || request.contactMobile || request.mobile || '',
     notes: body.notes || request.remark || '',
+    // 预订页“到店时间”（如 14:00）；订单表没有单独字段，下单时写入备注，管家后台可见，订单详情据此显示“预计到店”
+    arriveTime: String(body.arriveTime || request.arriveTime || '').trim().slice(0, 20),
     couponNo: body.couponNo || request.couponNo || '',
   };
+};
+
+const ARRIVE_TIME_NOTE = /预计到店 (\d{1,2}:\d{2})/;
+// 以北京时间格式化为 YYYY-MM-DD HH:mm:ss（与服务器时区无关）
+const formatCnDateTime = (value) => {
+  if (!value) return '';
+  const time = new Date(value).getTime();
+  return Number.isNaN(time) ? '' : new Date(time + 8 * 3600000).toISOString().replace('T', ' ').slice(0, 19);
 };
 
 const validateHotelOrderInput = (input, requireContact = false) => {
@@ -232,8 +242,12 @@ const showOrder = async (req, res) => {
     });
     if (!order) return error(res, '订单不存在');
 
+    const formatted = formatHotelOrder(order);
+    // 待支付订单的剩余保留时间按下单时间计算（此前固定返回 30 分钟，每次进入支付页都会重新从 30:00 倒计时）
+    const holdLeftSeconds = Math.floor((new Date(order.createdAt).getTime() + PENDING_HOLD_MINUTES * 60000 - Date.now()) / 1000);
+    const arriveTime = (order.notes || '').match(ARRIVE_TIME_NOTE)?.[1] || '';
     const retVal = {
-      ...formatHotelOrder(order),
+      ...formatted,
       crsNo: order.orderNo,
       gcRsvNo: order.orderNo,
       orderNo: order.orderNo,
@@ -245,11 +259,19 @@ const showOrder = async (req, res) => {
       paySubject: order.roomType?.name || order.hotel?.name || '酒店预订',
       rateSum: Number(order.totalAmount || 0),
       payRate: Number(order.totalAmount || 0),
-      leftTimeSeconds: order.status === 'pending' ? 30 * 60 : 0,
+      leftTimeSeconds: order.status === 'pending' ? Math.max(0, holdLeftSeconds) : 0,
       paySta: order.status === 'paid' ? '2' : '1',
       sta: order.status === 'cancelled' ? 'X' : 'R',
       arr: order.checkIn,
       dep: order.checkOut,
+      // 订单详情页（pagesC/order/orderInfo）展示用字段
+      rmnum: Number(order.rooms || 1),
+      logoUrl: formatted.roomType?.images?.[0] || order.hotel?.coverImage || '',
+      arrStr: arriveTime ? `${order.checkIn} ${arriveTime.padStart(5, '0')}` : '',
+      createDatetime: formatCnDateTime(order.createdAt),
+      crsPayDatetime: formatCnDateTime(order.paymentTime),
+      rsvMan: order.guestName || '',
+      mobile: order.guestPhone || '',
       adult: 1,
       baby: 0,
       children: 0,
@@ -327,7 +349,8 @@ const makeHotelOrder = async (req, res) => {
   const input = normalizeHotelOrderInput(req.body || {});
   const validationError = validateHotelOrderInput(input, true);
   if (validationError) return error(res, validationError);
-  const { hotelCode, roomCode, checkIn, checkOut, rooms, nights, guestName, guestPhone, notes } = input;
+  const { hotelCode, roomCode, checkIn, checkOut, rooms, nights, guestName, guestPhone, arriveTime } = input;
+  const notes = [input.notes, /^\d{1,2}:\d{2}$/.test(arriveTime) ? `预计到店 ${arriveTime}` : ''].filter(Boolean).join('；');
 
   const hotel = await prisma.hotel.findUnique({ where: { hotelCode } });
   if (!hotel) return error(res, '酒店不存在');

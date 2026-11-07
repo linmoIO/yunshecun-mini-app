@@ -490,5 +490,6 @@
     height: 76rpx;
     justify-content: center;
     margin: 0 16rpx;
-    padding: 0 32rpx
+    padding: 0 16rpx;
+    white-space: nowrap
 }

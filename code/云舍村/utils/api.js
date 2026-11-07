@@ -23,7 +23,8 @@
       membercardInterestDesc: t => e.request.get("/api/member/membercardInterestDesc.json", t),
       orderAggregation: t => e.request.get("/api/orderAggregation/orderList.json", t),
       hotelInfo: t => e.request.get("/api/hotel/info.json", t),
-      pay: t => e.request.get("/api/pay/pay.json", t),
+      // 与旅游/活动/风物支付一致改为 POST：GET 会把 memberToken、openid 等写进 URL，被 nginx/morgan 访问日志记录
+      pay: t => e.request.post("/api/pay/pay.json", t),
       showOrder: t => e.request.get("/api/hotel/product/showOrder.json", t),
       getCancelRule: t => e.request.post("/api/wxMiniApp/getCancelRule.json?" + t),
       saveUserViewPrivacyPop: t => e.request.get("/api/wxMiniApp/saveUserViewPrivacyPop", t),

@@ -221,7 +221,7 @@
               e: e.t(a.mobile),
               f: l
             })),
-            o: e.t((r = s.value.arrStr, e.dayjs(r).format("HH:mm"))),
+            o: e.t((r = s.value.arrStr) ? e.dayjs(r).format("HH:mm") : "未填写"),
             p: "T" !== c.value
           }, "T" !== c.value ? {
             q: e.t(e.unref(t.valFormat)(F.value))

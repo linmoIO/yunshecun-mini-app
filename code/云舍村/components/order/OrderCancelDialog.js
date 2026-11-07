@@ -45,6 +45,8 @@
           b = e.ref(""),
           y = e.ref(),
           j = e.ref(!1);
+        // 顶层带 memberId 时 utils/request 会自动附带 memberToken，后端据此只允许取消本人订单
+        const memberIdOf = () => (u.getStorage("user") || {}).memberId || "";
 
         function G(e) {
           d("update:show", e > 0)
@@ -61,6 +63,7 @@
 
         function _() {
           t.api.interfaceTransfer({
+            memberId: memberIdOf(),
             query: {
               unitCode: p.hotelGroupCode,
               orderNo: i.orderNo
@@ -74,7 +77,7 @@
             }
           }).then(e => {
             var o, r, t, l;
-            0 === e.retVal.result && (null == (r = null == (o = e.retVal) ? void 0 : o.retVal) ? void 0 : r.orderNo) ? null == (t = c.value) || t.showDialog() : null == (l = f.value) || l.showDialog()
+            0 === (e.retVal || {}).result && (null == (r = null == (o = e.retVal) ? void 0 : o.retVal) ? void 0 : r.orderNo) ? null == (t = c.value) || t.showDialog() : null == (l = f.value) || l.showDialog()
           })
         }
         async function q() {
@@ -90,6 +93,7 @@
             if (l.hasIllegalInputValue(u)) return o.jAlert3("不能输入emoji & 特殊字符")
           }
           await s(), j.value = !0, t.api.interfaceTransfer({
+            memberId: memberIdOf(),
             query: {
               unitCode: p.hotelGroupCode,
               orderNo: i.orderNo,
@@ -105,7 +109,11 @@
               hotelGroupCode: p.hotelGroupCode
             }
           }).then(e => {
-            j.value = !1, 0 === e.retVal.result ? l.goPage(`/pagesB/travel/orderCancel?productType=${i.productType}&orderId=${i.orderId}&orderNo=${i.orderNo}`, !0) : o.jAlert3(e.retVal.msg)
+            if (j.value = !1, 0 === (e.retVal || {}).result) {
+              // 先关闭底部弹层（恢复页面滚动、移除遮罩）再跳结果页；弹层打开时直接 redirectTo，
+              // 残留遮罩会挡住结果页“联系客服 / 订单详情”按钮的点击
+              f.value && f.value.hideDialog(), setTimeout(() => l.goPage(`/pagesB/travel/orderCancel?productType=${i.productType}&orderId=${i.orderId}&orderNo=${i.orderNo}`), 300)
+            } else o.jAlert3((e.retVal || {}).msg || "取消失败，请联系管家处理")
           }).catch(() => {
             j.value = !1
           })
