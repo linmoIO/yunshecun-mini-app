@@ -7,6 +7,7 @@ const { PrismaClient } = require('@prisma/client');
 const { v4: uuidv4 } = require('uuid');
 const config = require('../config');
 const { success, error } = require('../utils/response');
+const { isPendingExpired, getRoomAvailability } = require('../utils/roomAvailability');
 
 const prisma = new PrismaClient();
 const WX_PAY_HOST = 'https://api.mch.weixin.qq.com';
@@ -41,6 +42,9 @@ const pay = async (req, res) => {
     const originalAmount = Number(order.totalAmount || payload.payAmount || payload.money || 0);
     if (!originalAmount || originalAmount <= 0) return failForMiniProgram(res, '支付金额不正确');
     const detectedOrderType = orderType || await detectOrderType(order);
+    if (await hotelOrderLostRoom(order, detectedOrderType)) {
+      return failForMiniProgram(res, '订单已超时，所选房间已被预订，请重新下单');
+    }
     const pointsCalc = await calculatePointDeduction(payload, order, originalAmount);
     const amount = roundMoney(originalAmount - pointsCalc.pointMoney);
     if (amount < 0) return failForMiniProgram(res, '积分抵扣金额不正确');
@@ -105,6 +109,15 @@ const pay = async (req, res) => {
     console.error('[WxPay] create payment failed:', err.response?.data || err.message);
     return failForMiniProgram(res, getPaymentFailureMessage(err));
   }
+};
+
+// 超过保留时间仍未支付的酒店订单已释放房间，付款前重新确认余量，避免超订
+const hotelOrderLostRoom = async (order, orderType) => {
+  if (orderType !== 'hotel' || !order.roomTypeId || !isPendingExpired(order)) return false;
+  const roomType = await prisma.roomType.findUnique({ where: { id: order.roomTypeId } });
+  if (!roomType) return true;
+  const available = (await getRoomAvailability(prisma, [roomType], order.checkIn, order.checkOut, { excludeOrderNo: order.orderNo })).get(roomType.id);
+  return available != null && available < Number(order.rooms || 1);
 };
 
 const travelPay = async (req, res) => {

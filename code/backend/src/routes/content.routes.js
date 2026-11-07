@@ -4,6 +4,7 @@ const router = require('express').Router();
 const ctrl = require('../controllers/content.controller');
 const couponCtrl = require('../controllers/coupon.controller');
 const activityCtrl = require('../controllers/activity.controller');
+const { getRoomAvailability } = require('../utils/roomAvailability');
 const { optionalAuth, authMiddleware } = require('../middleware/auth');
 
 // 广告/Banner/内容页
@@ -198,14 +199,16 @@ async function handleInterfaceTransfer(req, res) {
       where: hotelCodes.length ? { hotelCode: { in: hotelCodes }, status: 1 } : { status: 1 },
       include: { roomTypes: { where: { status: 1 }, orderBy: { sortOrder: 'asc' } } },
     });
+    // 按入住日期逐晚计算余量（RoomType.stock 为实际间数，已占房的订单会被扣除）
+    const availability = await getRoomAvailability(_prisma, hotels.flatMap(h => h.roomTypes), fromDate, toDate);
     const result = hotels.map(h => {
       const minRoomPrice = h.roomTypes.reduce((m, r) => Math.min(m, r.price || 999999), 999999);
       const effectiveMinPrice = minRoomPrice === 999999 ? 0 : minRoomPrice;
 
       const productRoomList = h.roomTypes.map(r => {
         const roomPrice = Number(r.price) || 0;
-        // stock: null（prisma返回null而非undefined）会让 !== undefined 判断出错，须用 != null
-        const stock = (r.stock != null) ? Number(r.stock) : 10;
+        const available = availability.get(r.id);
+        const stock = available == null ? 10 : available;
         const canBook = stock > 0;
         const roomImages = (() => { try { return r.images ? JSON.parse(r.images) : []; } catch { return []; } })();
         const logoImg = roomImages[0] || h.coverImage || '';
