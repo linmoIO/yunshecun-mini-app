@@ -118,9 +118,11 @@ router.post('/wxMiniApp/updateUserinfoByMiniOpenId.json', authMiddleware, (req, 
 router.post('/wxMiniApp/decryptV2.json', (req, res) => res.json({ code: 0, data: {} }));
 
 // 活动相关
-// memberCenter.js line 283: 1===e.result && e.retVal.length → y.value=true → 显示功能列表
+// memberCenter.js：1===e.result && e.retVal.length 时才显示“邀请好友体验云舍村”入口（只控制这一个入口）。
+// 邀请有礼的后端（邀请记录、小程序码、奖励）尚未实现：“立即邀请”点了没反应、人数/积分为空，先返回空规则隐藏入口；
+// 以后实现了邀请功能，在这里返回真实规则即可自动显示。
 router.post('/activityapi/InvitationSpoil/selectInvitationSpoilRules', optionalAuth, (req, res) => res.json({
-  code: 0, result: 1, retVal: [{ ruleType: 'DEFAULT', status: 1 }]
+  code: 0, result: 1, retVal: []
 }));
 router.post('/activityapi/InvitationSpoil/saveInvitationYQHYRecord', authMiddleware, (req, res) => res.json({ code: 0, data: null }));
 router.post('/activityapi/InvitationSpoil/saveInvitationJSYQRecord', authMiddleware, (req, res) => res.json({ code: 0, data: null }));
